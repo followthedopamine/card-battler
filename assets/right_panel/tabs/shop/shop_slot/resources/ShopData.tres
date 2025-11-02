@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ShopData" load_steps=11 format=3 uid="uid://cpmmj5444k2ii"]
+
+[ext_resource type="Script" uid="uid://b53v2ikroxkgs" path="res://assets/right_panel/tabs/shop/shop_slot/scripts/ShopData.gd" id="1_43vxk"]
+[ext_resource type="Script" uid="uid://dgaaqxo1s7olq" path="res://assets/right_panel/tabs/shop/shop_slot/scripts/ShopItemData.gd" id="2_cbdoc"]
+[ext_resource type="Texture2D" uid="uid://c480utaticeyk" path="res://assets/right_panel/tabs/shop/shop_slot/images/placeholder_card_1.png" id="3_mxj6i"]
+[ext_resource type="Texture2D" uid="uid://cqmbngwmt7fyn" path="res://assets/right_panel/tabs/shop/shop_slot/images/placeholder_card_2.png" id="4_me2c0"]
+[ext_resource type="Texture2D" uid="uid://d68dtnn7maij" path="res://assets/right_panel/tabs/shop/shop_slot/images/placeholder_card_3.png" id="5_2uu3x"]
+[ext_resource type="Texture2D" uid="uid://fq2hvr681ovf" path="res://assets/right_panel/tabs/shop/shop_slot/images/placeholder_card_4.png" id="6_hkjxs"]
+
+[sub_resource type="Resource" id="Resource_bjqil"]
+script = ExtResource("2_cbdoc")
+thumbnail = ExtResource("3_mxj6i")
+base_price = 20
+metadata/_custom_type_script = "uid://dgaaqxo1s7olq"
+
+[sub_resource type="Resource" id="Resource_2uu3x"]
+script = ExtResource("2_cbdoc")
+thumbnail = ExtResource("4_me2c0")
+base_price = 10
+metadata/_custom_type_script = "uid://dgaaqxo1s7olq"
+
+[sub_resource type="Resource" id="Resource_mwwxl"]
+script = ExtResource("2_cbdoc")
+thumbnail = ExtResource("5_2uu3x")
+base_price = 5
+metadata/_custom_type_script = "uid://dgaaqxo1s7olq"
+
+[sub_resource type="Resource" id="Resource_i46ag"]
+script = ExtResource("2_cbdoc")
+thumbnail = ExtResource("6_hkjxs")
+base_price = 8
+metadata/_custom_type_script = "uid://dgaaqxo1s7olq"
+
+[resource]
+script = ExtResource("1_43vxk")
+shop_items = Array[ExtResource("2_cbdoc")]([SubResource("Resource_bjqil"), SubResource("Resource_2uu3x"), SubResource("Resource_mwwxl"), SubResource("Resource_i46ag")])
