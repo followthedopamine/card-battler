@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://b653dafp8uotu"]
+
+[ext_resource type="Script" uid="uid://cmkv7da2ilckk" path="res://scenes/play_panel.gd" id="1_jgck7"]
+[ext_resource type="PackedScene" uid="uid://dnvmslc0lunfw" path="res://scenes/packs/pack_opening/PackOpening.tscn" id="1_x324g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fi6o"]
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgck7"]
+bg_color = Color(0.20033002, 0.20033002, 0.20032999, 0.45490196)
+
+[node name="PlayPanelContainer" type="PanelContainer"]
+anchors_preset = -1
+anchor_left = 0.002
+anchor_right = 0.002
+offset_left = -2.3040001
+offset_right = 830.696
+offset_bottom = 404.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_1fi6o")
+script = ExtResource("1_jgck7")
+
+[node name="PackOpeningPanelContainer" parent="." instance=ExtResource("1_x324g")]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jgck7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerSide" type="Control" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EnemySide" type="Control" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
