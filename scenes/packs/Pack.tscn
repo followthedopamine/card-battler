@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b8lmu1lufvt4j"]
 
-[ext_resource type="Texture2D" uid="uid://c480utaticeyk" path="res://assets/right_panel/tabs/shop/shop_slot/images/placeholder_card_1.png" id="1_25bmc"]
-[ext_resource type="Script" uid="uid://b038b25jswgru" path="res://assets/pack/scripts/Pack.gd" id="2_co50a"]
+[ext_resource type="Texture2D" uid="uid://c480utaticeyk" path="res://scenes/right_panel/tabs/shop/shop_slot/images/placeholder_card_1.png" id="1_25bmc"]
+[ext_resource type="Script" uid="uid://b038b25jswgru" path="res://scenes/packs/scripts/Pack.gd" id="2_co50a"]
 
 [node name="Pack" type="TextureRect"]
 texture = ExtResource("1_25bmc")

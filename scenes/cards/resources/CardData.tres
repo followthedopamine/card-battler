@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://dcd3tbx2gontl"]
+
+[ext_resource type="Script" uid="uid://dpjqhxy4qigbr" path="res://scenes/cards/CardData.gd" id="1_4pjgk"]
+[ext_resource type="PackedScene" uid="uid://bnbjytwf244cb" path="res://scenes/cards/placeholder_1/placeholder_1.tscn" id="1_uifwk"]
+[ext_resource type="PackedScene" uid="uid://che2q6550r7cc" path="res://scenes/cards/placeholder_2/placeholder_2.tscn" id="2_twahu"]
+[ext_resource type="PackedScene" uid="uid://fa06u4g1i25n" path="res://scenes/cards/placeholder_3/placeholder_3.tscn" id="3_irfg7"]
+
+[resource]
+script = ExtResource("1_4pjgk")
+cards = Array[PackedScene]([ExtResource("1_uifwk"), ExtResource("2_twahu"), ExtResource("3_irfg7")])

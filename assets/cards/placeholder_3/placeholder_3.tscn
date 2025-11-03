@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://fa06u4g1i25n"]
-
-[ext_resource type="Texture2D" uid="uid://fq2hvr681ovf" path="res://assets/right_panel/tabs/shop/shop_slot/images/placeholder_card_4.png" id="1_bqv7q"]
-[ext_resource type="Script" uid="uid://c531eyaws05rr" path="res://assets/card/Card.gd" id="2_kliw0"]
-
-[node name="Placeholder1" type="TextureRect"]
-texture = ExtResource("1_bqv7q")
-script = ExtResource("2_kliw0")
-metadata/_custom_type_script = "uid://c531eyaws05rr"
