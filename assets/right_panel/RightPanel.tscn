@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddmjclkybk575"]
+
+[ext_resource type="Script" uid="uid://c2jjuqmtswytd" path="res://assets/right_panel/scripts/RightPanelTabs.gd" id="1_txi6o"]
+[ext_resource type="PackedScene" uid="uid://5uq7pgxmnqrh" path="res://assets/right_panel/tabs/shop/Shop.tscn" id="2_sx3cv"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_ig7tw"]
+
+[node name="RightPanelContainer" type="PanelContainer" node_paths=PackedStringArray("shop_button", "stats_button", "settings_button", "shop_tab", "stats_tab", "settings_tab")]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 387.0
+offset_bottom = 647.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("1_txi6o")
+shop_button = NodePath("TabsVBoxContainer/TabsContainer/ShopButton")
+stats_button = NodePath("TabsVBoxContainer/TabsContainer/StatsButton")
+settings_button = NodePath("TabsVBoxContainer/TabsContainer/SettingsButton")
+shop_tab = NodePath("TabsVBoxContainer/ShopVBoxContainer")
+stats_tab = NodePath("TabsVBoxContainer/StatsVBoxContainer")
+settings_tab = NodePath("TabsVBoxContainer/SettingsVBoxContainer")
+
+[node name="TabsVBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TabsContainer" type="HBoxContainer" parent="TabsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="ShopButton" type="Button" parent="TabsVBoxContainer/TabsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_ig7tw")
+text = "Shop"
+
+[node name="StatsButton" type="Button" parent="TabsVBoxContainer/TabsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ig7tw")
+text = "Stats
+"
+
+[node name="SettingsButton" type="Button" parent="TabsVBoxContainer/TabsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ig7tw")
+text = "Settings"
+
+[node name="ShopVBoxContainer" parent="TabsVBoxContainer" instance=ExtResource("2_sx3cv")]
+layout_mode = 2
+
+[node name="StatsVBoxContainer" type="VBoxContainer" parent="TabsVBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="SettingsVBoxContainer" type="VBoxContainer" parent="TabsVBoxContainer"]
+visible = false
+layout_mode = 2

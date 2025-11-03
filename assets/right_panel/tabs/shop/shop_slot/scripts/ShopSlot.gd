@@ -1,13 +1,13 @@
 extends MarginContainer
 class_name ShopSlot
 
-@export var all_shop_items: ShopData
+@export var shop_data: ShopData
 
 @export var buy_button: Button
-@export var slot_thumbnail: TextureRect
+@export var slot_item: Control
 
-var current_item: ShopItemData
-
+@onready var current_item: Control
+@onready var current_item_data: ShopItemData
 
 func _ready() -> void:
 	buy_button.pressed.connect(_on_buy_button_pressed)
@@ -17,13 +17,34 @@ func _on_buy_button_pressed() -> void:
 	buy_item()
 
 func buy_item() -> void:
-	if PlayerManager.currency >= current_item.base_price:
-		PlayerManager.currency -= current_item.base_price
-		# TODO: Add item transferring
-		restock_item()
+	if PlayerManager.currency < current_item_data.base_price:
+		return
+	PlayerManager.currency -= current_item_data.base_price
+	# TODO: Add item transferring
+	if current_item is Pack:
+		SignalBus.pack_opened.emit()
+	restock_item()
 
 func restock_item() -> void:
-	# Uses less resources to edit the old items instead of assigning a new one to memory
-	current_item = all_shop_items.shop_items.pick_random()
-	buy_button.text = str(current_item.base_price)
-	slot_thumbnail.texture = current_item.thumbnail
+	# Okay so there are a few options here.
+	# 1. Find a way to make sure all instances of an item have an image associated with them
+	# and then use that image to display in the shop.
+	# 2. Create an instance of the item in the shop and work around the weird typing.
+	# 3. Add an image to all the ShopItemData items.
+	# Going to start with 2 for now, seems the best mix of flexible and low dev time.
+	
+	# A potential flaw with this option is that nodes will have to be freed and instantiated
+	# which is pretty terrible way to manage memory. It shouldn't have a noticable impact on 
+	# performance though unless there are 100s of shop slots.
+	current_item_data = shop_data.shop_items.pick_random()
+	buy_button.text = str(current_item_data.base_price)
+	create_item()
+	
+	
+func create_item() -> void:
+	var new_item_instance: Node = current_item_data.item.instantiate()
+	if current_item != null:
+		current_item.queue_free()
+	slot_item.add_child(new_item_instance)
+	current_item = new_item_instance
+	
