@@ -1,8 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://b653dafp8uotu"]
+[gd_scene load_steps=14 format=3 uid="uid://b653dafp8uotu"]
 
 [ext_resource type="Script" uid="uid://cmkv7da2ilckk" path="res://scenes/play_panel/play_panel.gd" id="1_jgck7"]
 [ext_resource type="PackedScene" uid="uid://dnvmslc0lunfw" path="res://scenes/packs/pack_opening/PackOpening.tscn" id="1_x324g"]
-[ext_resource type="Shader" uid="uid://ypp5n7yfu5gd" path="res://scenes/play_panel/EnemyGridSkew.gdshader" id="3_1tnxq"]
 [ext_resource type="Script" uid="uid://bbka3kooxxw1r" path="res://scenes/play_panel/grid.gd" id="4_uajrv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fi6o"]
@@ -20,10 +19,6 @@ gradient = SubResource("Gradient_oegss")
 fill = 2
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0, 0)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uajrv"]
-shader = ExtResource("3_1tnxq")
-shader_parameter/vChangeY = 25.0
 
 [sub_resource type="Gradient" id="Gradient_inh0s"]
 offsets = PackedFloat32Array(0, 0.60714287, 0.71428573, 0.76785713)
@@ -76,7 +71,6 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jgck7")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -117,7 +111,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="EnemyGrid" type="GridContainer" parent="Panel/HBoxContainer/EnemySide"]
-material = SubResource("ShaderMaterial_uajrv")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
