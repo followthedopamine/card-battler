@@ -1,28 +1,35 @@
 [gd_scene load_steps=4 format=3 uid="uid://dm7jexr54pml4"]
 
-[ext_resource type="Texture2D" uid="uid://d00r8ttcrm6qt" path="res://icon.svg" id="1_elggy"]
 [ext_resource type="Script" uid="uid://bxknk2n2fnfax" path="res://assets/right_panel/tabs/shop/shop_slot/scripts/ShopSlot.gd" id="1_hr8cm"]
 [ext_resource type="Resource" uid="uid://cpmmj5444k2ii" path="res://assets/right_panel/tabs/shop/shop_slot/resources/ShopData.tres" id="2_teigl"]
+[ext_resource type="PackedScene" uid="uid://b8lmu1lufvt4j" path="res://assets/pack/Pack.tscn" id="3_teigl"]
 
-[node name="ShopSlot" type="MarginContainer" node_paths=PackedStringArray("buy_button", "slot_thumbnail")]
+[node name="ShopSlot" type="MarginContainer" node_paths=PackedStringArray("buy_button", "slot_item")]
 custom_minimum_size = Vector2(140, 200)
 offset_right = 140.0
 offset_bottom = 200.0
 size_flags_horizontal = 6
 size_flags_vertical = 0
 script = ExtResource("1_hr8cm")
-all_shop_items = ExtResource("2_teigl")
+shop_data = ExtResource("2_teigl")
 buy_button = NodePath("ShopSlotVBoxContainer/ShopSlotBuyButton")
-slot_thumbnail = NodePath("ShopSlotVBoxContainer/ShopSlotThumbnailTextureRect")
+slot_item = NodePath("ShopSlotVBoxContainer/SlotItemControl")
 metadata/_custom_type_script = "uid://bxknk2n2fnfax"
 
 [node name="ShopSlotVBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="ShopSlotThumbnailTextureRect" type="TextureRect" parent="ShopSlotVBoxContainer"]
+[node name="SlotItemControl" type="Control" parent="ShopSlotVBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("1_elggy")
+
+[node name="Pack" parent="ShopSlotVBoxContainer/SlotItemControl" instance=ExtResource("3_teigl")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ShopSlotBuyButton" type="Button" parent="ShopSlotVBoxContainer"]
 layout_mode = 2

@@ -12,5 +12,5 @@ func _ready() -> void:
 func _on_shop_reroll_button_pressed() -> void:
 	if PlayerManager.currency >= REROLL_PRICE:
 		PlayerManager.currency -= REROLL_PRICE
-	for shop_slot: ShopSlot in shop_slots:
-		shop_slot.restock_item()
+		for shop_slot: ShopSlot in shop_slots:
+			shop_slot.restock_item()

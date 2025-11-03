@@ -1,129 +1,41 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2fckbvtof2w3"]
+[gd_scene load_steps=3 format=3 uid="uid://d2fckbvtof2w3"]
 
-[ext_resource type="Script" uid="uid://c2jjuqmtswytd" path="res://assets/right_panel/scripts/RightPanelTabs.gd" id="1_0xm2m"]
-[ext_resource type="Texture2D" uid="uid://d00r8ttcrm6qt" path="res://icon.svg" id="1_ig7tw"]
-[ext_resource type="Script" uid="uid://dau1qjar800ji" path="res://assets/right_panel/tabs/shop/scripts/Shop.gd" id="2_h2yge"]
-[ext_resource type="Script" uid="uid://cyaf1gwxm1g2p" path="res://assets/right_panel/tabs/shop/scripts/CurrencyDisplay.gd" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://dm7jexr54pml4" path="res://assets/right_panel/tabs/shop/shop_slot/ShopSlot.tscn" id="4_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dnvmslc0lunfw" path="res://assets/pack/pack_opening/PackOpening.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://ddmjclkybk575" path="res://assets/right_panel/RightPanel.tscn" id="1_ig7tw"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_ig7tw"]
-
-[node name="Main" type="Node2D"]
-
-[node name="RightPanelContainer" type="PanelContainer" parent="." node_paths=PackedStringArray("shop_button", "stats_button", "settings_button", "shop_tab", "stats_tab", "settings_tab")]
-anchors_preset = 11
-anchor_left = 1.0
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 387.0
-offset_bottom = 647.0
-grow_horizontal = 0
+grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_0xm2m")
-shop_button = NodePath("TabsVBoxContainer/TabsContainer/ShopButton")
-stats_button = NodePath("TabsVBoxContainer/TabsContainer/StatsButton")
-settings_button = NodePath("TabsVBoxContainer/TabsContainer/SettingsButton")
-shop_tab = NodePath("TabsVBoxContainer/ShopVBoxContainer")
-stats_tab = NodePath("TabsVBoxContainer/StatsVBoxContainer")
-settings_tab = NodePath("TabsVBoxContainer/SettingsVBoxContainer")
 
-[node name="TabsVBoxContainer" type="VBoxContainer" parent="RightPanelContainer"]
-layout_mode = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="TabsContainer" type="HBoxContainer" parent="RightPanelContainer/TabsVBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="ShopButton" type="Button" parent="RightPanelContainer/TabsVBoxContainer/TabsContainer"]
+[node name="GamePanelContainer" type="PanelContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-toggle_mode = true
-button_pressed = true
-button_group = SubResource("ButtonGroup_ig7tw")
-text = "Shop"
 
-[node name="StatsButton" type="Button" parent="RightPanelContainer/TabsVBoxContainer/TabsContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-toggle_mode = true
-button_group = SubResource("ButtonGroup_ig7tw")
-text = "Stats
-"
-
-[node name="SettingsButton" type="Button" parent="RightPanelContainer/TabsVBoxContainer/TabsContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-toggle_mode = true
-button_group = SubResource("ButtonGroup_ig7tw")
-text = "Settings"
-
-[node name="ShopVBoxContainer" type="VBoxContainer" parent="RightPanelContainer/TabsVBoxContainer" node_paths=PackedStringArray("shop_slots", "shop_reroll_button")]
-layout_mode = 2
-script = ExtResource("2_h2yge")
-shop_slots = [NodePath("ShopItemsMarginContainer2/ShopItemsHBoxContainer/ShopSlot"), NodePath("ShopItemsMarginContainer2/ShopItemsHBoxContainer/ShopSlot2")]
-shop_reroll_button = NodePath("ShopRerollMarginContainer/ShopRerollButton")
-
-[node name="ShopkeeperMarginContainer" type="MarginContainer" parent="RightPanelContainer/TabsVBoxContainer/ShopVBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="ShopkeeperPanelContainer" type="MarginContainer" parent="RightPanelContainer/TabsVBoxContainer/ShopVBoxContainer/ShopkeeperMarginContainer"]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-
-[node name="ShopkeeperTextureRect" type="TextureRect" parent="RightPanelContainer/TabsVBoxContainer/ShopVBoxContainer/ShopkeeperMarginContainer/ShopkeeperPanelContainer"]
-layout_mode = 2
-texture = ExtResource("1_ig7tw")
-
-[node name="ShopItemsMarginContainer2" type="MarginContainer" parent="RightPanelContainer/TabsVBoxContainer/ShopVBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="ShopItemsHBoxContainer" type="HBoxContainer" parent="RightPanelContainer/TabsVBoxContainer/ShopVBoxContainer/ShopItemsMarginContainer2"]
+[node name="GameVBoxContainer" type="VBoxContainer" parent="HBoxContainer/GamePanelContainer"]
 layout_mode = 2
 
-[node name="ShopSlot" parent="RightPanelContainer/TabsVBoxContainer/ShopVBoxContainer/ShopItemsMarginContainer2/ShopItemsHBoxContainer" instance=ExtResource("4_lquwl")]
+[node name="PlayPanelContainer" type="PanelContainer" parent="HBoxContainer/GamePanelContainer/GameVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PackOpeningPanelContainer" parent="HBoxContainer/GamePanelContainer/GameVBoxContainer/PlayPanelContainer" instance=ExtResource("1_0xm2m")]
 layout_mode = 2
 
-[node name="ShopSlot2" parent="RightPanelContainer/TabsVBoxContainer/ShopVBoxContainer/ShopItemsMarginContainer2/ShopItemsHBoxContainer" instance=ExtResource("4_lquwl")]
+[node name="CardPanelContainer" type="PanelContainer" parent="HBoxContainer/GamePanelContainer/GameVBoxContainer"]
+custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 
-[node name="ShopRerollMarginContainer" type="MarginContainer" parent="RightPanelContainer/TabsVBoxContainer/ShopVBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_right = 20
-
-[node name="ShopRerollButton" type="Button" parent="RightPanelContainer/TabsVBoxContainer/ShopVBoxContainer/ShopRerollMarginContainer"]
-layout_mode = 2
-text = "Reroll ($5)"
-
-[node name="ShopCurrencyMarginContainer3" type="MarginContainer" parent="RightPanelContainer/TabsVBoxContainer/ShopVBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="CurrencyDisplay" type="RichTextLabel" parent="RightPanelContainer/TabsVBoxContainer/ShopVBoxContainer/ShopCurrencyMarginContainer3"]
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 50
-text = "$100"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 1
-script = ExtResource("4_1bvp3")
-
-[node name="StatsVBoxContainer" type="VBoxContainer" parent="RightPanelContainer/TabsVBoxContainer"]
-visible = false
-layout_mode = 2
-
-[node name="SettingsVBoxContainer" type="VBoxContainer" parent="RightPanelContainer/TabsVBoxContainer"]
-visible = false
+[node name="RightPanelContainer" parent="HBoxContainer" instance=ExtResource("1_ig7tw")]
 layout_mode = 2
