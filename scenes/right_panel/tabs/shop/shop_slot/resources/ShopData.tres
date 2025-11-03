@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="ShopData" load_steps=5 format=3 uid="uid://cpmmj5444k2ii"]
 
-[ext_resource type="Script" uid="uid://b53v2ikroxkgs" path="res://assets/right_panel/tabs/shop/shop_slot/scripts/ShopData.gd" id="1_43vxk"]
-[ext_resource type="Script" uid="uid://dgaaqxo1s7olq" path="res://assets/right_panel/tabs/shop/shop_slot/scripts/ShopItemData.gd" id="2_cbdoc"]
-[ext_resource type="PackedScene" uid="uid://b8lmu1lufvt4j" path="res://assets/pack/Pack.tscn" id="3_bjqil"]
+[ext_resource type="Script" uid="uid://b53v2ikroxkgs" path="res://scenes/right_panel/tabs/shop/shop_slot/scripts/ShopData.gd" id="1_43vxk"]
+[ext_resource type="Script" uid="uid://dgaaqxo1s7olq" path="res://scenes/right_panel/tabs/shop/shop_slot/scripts/ShopItemData.gd" id="2_cbdoc"]
+[ext_resource type="PackedScene" uid="uid://b8lmu1lufvt4j" path="res://scenes/packs/Pack.tscn" id="3_bjqil"]
 
 [sub_resource type="Resource" id="Resource_bjqil"]
 script = ExtResource("2_cbdoc")

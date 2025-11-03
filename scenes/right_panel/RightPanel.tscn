@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ddmjclkybk575"]
 
-[ext_resource type="Script" uid="uid://c2jjuqmtswytd" path="res://assets/right_panel/scripts/RightPanelTabs.gd" id="1_txi6o"]
-[ext_resource type="PackedScene" uid="uid://5uq7pgxmnqrh" path="res://assets/right_panel/tabs/shop/Shop.tscn" id="2_sx3cv"]
+[ext_resource type="Script" uid="uid://c2jjuqmtswytd" path="res://scenes/right_panel/scripts/RightPanelTabs.gd" id="1_txi6o"]
+[ext_resource type="PackedScene" uid="uid://5uq7pgxmnqrh" path="res://scenes/right_panel/tabs/shop/Shop.tscn" id="2_sx3cv"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_ig7tw"]
 

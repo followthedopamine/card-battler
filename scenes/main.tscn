@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2fckbvtof2w3"]
 
-[ext_resource type="PackedScene" uid="uid://dnvmslc0lunfw" path="res://assets/pack/pack_opening/PackOpening.tscn" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://ddmjclkybk575" path="res://assets/right_panel/RightPanel.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://b653dafp8uotu" path="res://scenes/play_panel_container.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://ddmjclkybk575" path="res://scenes/right_panel/RightPanel.tscn" id="1_ig7tw"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -26,11 +26,7 @@ size_flags_horizontal = 3
 [node name="GameVBoxContainer" type="VBoxContainer" parent="HBoxContainer/GamePanelContainer"]
 layout_mode = 2
 
-[node name="PlayPanelContainer" type="PanelContainer" parent="HBoxContainer/GamePanelContainer/GameVBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="PackOpeningPanelContainer" parent="HBoxContainer/GamePanelContainer/GameVBoxContainer/PlayPanelContainer" instance=ExtResource("1_0xm2m")]
+[node name="PlayPanelContainer" parent="HBoxContainer/GamePanelContainer/GameVBoxContainer" instance=ExtResource("1_0xm2m")]
 layout_mode = 2
 
 [node name="CardPanelContainer" type="PanelContainer" parent="HBoxContainer/GamePanelContainer/GameVBoxContainer"]
