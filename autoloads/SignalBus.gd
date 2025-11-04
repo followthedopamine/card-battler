@@ -4,6 +4,9 @@ extends Node2D
 signal currency_changed
 signal pack_opened
 
+# Timer signal
+signal game_tick
+
 # Card signals
 signal card_dragged(card: Card)
 signal card_hovered(card: Card)

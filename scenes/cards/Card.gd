@@ -81,12 +81,13 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	dragging_node.set_script(null)
 	preview_parent.add_child(dragging_node)
 	dragging_node.position = -at_position
+	dragging_node.z_index = 100
 
 	# add a little shadow when card is picked up
 	var new_style = panel.get_theme_stylebox("panel").duplicate()
 	new_style.shadow_color.a = 0.3
 	new_style.shadow_size = 8
-	new_style.shadow_offset  = Vector2(3, 3)
+	new_style.shadow_offset	= Vector2(3, 3)
 	var dragging_panel: Panel = dragging_node.get_node("Panel")
 	dragging_panel.add_theme_stylebox_override("panel", new_style)
 

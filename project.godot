@@ -25,6 +25,10 @@ SignalBus="*res://autoloads/SignalBus.gd"
 window/size/viewport_width=1000
 window/size/viewport_height=800
 
+[global_group]
+
+GlobalTimer=""
+
 [input]
 
 click={
