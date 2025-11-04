@@ -102,7 +102,7 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	var new_style = panel.get_theme_stylebox("panel").duplicate()
 	new_style.shadow_color.a = 0.3
 	new_style.shadow_size = 8
-	new_style.shadow_offset  = Vector2(3, 3)
+	new_style.shadow_offset	= Vector2(3, 3)
 	var dragging_panel: Panel = dragging_node.get_node("Panel")
 	dragging_panel.add_theme_stylebox_override("panel", new_style)
 
