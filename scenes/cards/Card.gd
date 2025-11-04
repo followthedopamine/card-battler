@@ -4,6 +4,8 @@ class_name Card extends Control
 
 signal completed(card: Card)
 
+const ROTATION_AMOUNT: float = 100.0
+
 @export var switch_interface: TextureRect
 
 @export_range(0.0, 5.0) var duration := 2.0
@@ -18,12 +20,15 @@ var time_remaining := duration
 
 var dragging_node : Control = null
 var threshold := 130
-var last_position: Vector2
 var dragging := false
 var activated := false
 
 var held_card: Card
 var hovered_card: Card
+
+var mouse_pos: Vector2
+var previous_mouse_pos: Vector2
+var smooth_velocity: Vector2
 
 const DISABLED_COLOUR: Color = Color(0.08, 0.08, 0.08, 1.0)
 
@@ -56,8 +61,12 @@ func _process(delta: float) -> void:
 		timer_spinner.rotation += delta * 10
 	
 	# This looping on every single card which probably isn't the most
-	# efficient way to do things. 
+	# efficient way to do things.
+	previous_mouse_pos = mouse_pos
+	mouse_pos = get_viewport().get_mouse_position()
 	handle_switch_interface()
+	if dragging:
+		handle_rotation(delta)
 		
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	if !data.get_parent() is Hand:
@@ -115,13 +124,6 @@ func _input(event: InputEvent) -> void:
 			if self.get_index() < get_parent().get_child_count() - 1:
 				get_parent().move_child(self, self.get_index() + 1)
 				
-
-	# if dragging left/right, give it a lil rotation
-	if last_position.x > dragging_node.global_position.x:
-		dragging_node.rotation_degrees = 5
-	else :
-		dragging_node.rotation_degrees = -5
-	last_position = dragging_node.global_position
 	
 	
 	if dragging and event.is_action_released("click"):
@@ -153,8 +155,8 @@ func handle_switch_interface() -> void:
 		hide_switch_interface()
 		return
 		
-	var mousePos = get_viewport().get_mouse_position()
-	if !self.get_global_rect().has_point(mousePos):
+	
+	if !self.get_global_rect().has_point(mouse_pos):
 		hide_switch_interface()
 		return
 		
@@ -165,6 +167,21 @@ func handle_switch_interface() -> void:
 		show_switch_interface()
 	else:
 		hide_switch_interface()
+		
+func handle_rotation(delta) -> void:
+	# Maybe for added effect in the future we could change the pivot point of 
+	# the dragged card - for now though this looks fine I think.
+	
+	# if dragging left/right, give it a lil rotation (based on mouse velocity)
+	var mouse_vel: Vector2 = (mouse_pos - previous_mouse_pos) * ROTATION_AMOUNT
+	smooth_velocity = smooth_velocity.lerp(mouse_vel, 0.1) 
+		
+	var direction: float = -1.0
+	if smooth_velocity.x > 0.0:
+		direction = 1.0
+	
+	dragging_node.rotation_degrees = direction * smooth_velocity.length() * delta
+	
 
 func switch_cards(new_card: Card, old_card: Card) -> void:
 	new_card.reparent(old_card.get_parent())
