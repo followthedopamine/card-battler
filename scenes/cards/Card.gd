@@ -25,6 +25,7 @@ var activated := false
 var held_card: Card
 var hovered_card: Card
 
+
 const colours := [
 	Color(255, 0, 0),
 	Color(0, 255, 0),
@@ -56,24 +57,10 @@ func _process(delta: float) -> void:
 		timer_spinner.rotation += delta * 10
 		
 	# This is looping on every single card which probably isn't the most
-	# efficient way to do things. I don't think we can use _get_drag_data
-	# though because it only has access to the held card and not the 
-	# card that's hovered.
+	# efficient way to do things. 
 	
-	# The other option that comes to mind is updating the hovered card using
-	# a SignalBus signal and a mouse_entered signal and then you could use
-	# _get_drag_data which would be cleaner and probably be n cards more
-	# efficient.
-	
-	# The hovered card approach actually probably makes switching between parents
-	# a lot simpler also.
-	
-	# We'll still need to check at drop time if the card is under the mouse though
-	# since we don't want to be setting the hovered_card to null by every card
-	# or it will always be null.
-	
-	# I tried the hovered_card approach but it doesn't play nicely with
-	# _get_drag_data for some reason.
+	# I tried to put similar code in _get_drag_data but it never updates the
+	# hovered card inside that callback.
 	var mousePos = get_viewport().get_mouse_position()
 	if !self.get_global_rect().has_point(mousePos):
 		hide_switch_interface()
@@ -112,8 +99,7 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	dragging = true
 	SignalBus.card_dragged.emit(self)
 	
-	# This will crash if you've never hovered a card, but how did you drag a card
-	# without hovering over it?
+	# This doesn't print when a new card is hovered
 	#if hovered_card.get_parent() != self.get_parent():
 		#print(hovered_card)
 		#hovered_card.show_switch_interface()
@@ -121,6 +107,10 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion or event is InputEventScreenDrag:
+		if PlayerManager.hand_size != PlayerManager.max_hand_size:
+			# This should ideally not reference hovered card parent and instead should be the hand
+			if self.get_parent() != hovered_card.get_parent():
+				self.reparent(hovered_card.get_parent())
 		# if dragging left/right update the position in the hbox (hand)
 		if dragging_node.global_position.x < global_position.x - threshold:
 			if self.get_index() > 0:
@@ -147,9 +137,10 @@ func _input(event: InputEvent) -> void:
 		hide_switch_interface()
 		if hovered_card.get_parent() != self.get_parent():
 			# Trying to swap with a half activated card seems like a bad idea
-			# It's probably not that bad though.
 			if !hovered_card.activated:
 				switch_cards(self, hovered_card)
+		else:
+			SignalBus.card_chosen.emit(self)
 		held_card = null
 		dragging = false
 		panel.show()
@@ -168,10 +159,13 @@ func _on_card_hovered(card: Card) -> void:
 	if card != held_card:
 		hovered_card = card
 		
+#func add_card_to_hand(new_card: Card, old_card: Card) -> void:
+	
+		
 func switch_cards(new_card: Card, old_card: Card) -> void:
 	new_card.reparent(old_card.get_parent())
 	old_card.get_parent().move_child(new_card, old_card.get_index())
-	# Used to remove card from hand or completed event will crash
+	# Used to remove card from hand or Card.completed signal will crash
 	SignalBus.card_discarded.emit(old_card)
 	SignalBus.card_chosen.emit(new_card)
 	# Cleanup of the card happens in Hand.gd so we can remove it from the card
