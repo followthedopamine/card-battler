@@ -20,6 +20,11 @@ config/icon="res://assets/icon.svg"
 PlayerManager="*res://autoloads/PlayerManager.gd"
 SignalBus="*res://autoloads/SignalBus.gd"
 
+[display]
+
+window/size/viewport_width=1000
+window/size/viewport_height=800
+
 [global_group]
 
 GlobalTimer=""

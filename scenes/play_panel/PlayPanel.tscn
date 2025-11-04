@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://b653dafp8uotu"]
 
-[ext_resource type="Script" uid="uid://cmkv7da2ilckk" path="res://scenes/play_panel/play_panel.gd" id="1_jgck7"]
+[ext_resource type="Script" uid="uid://cmkv7da2ilckk" path="res://scenes/play_panel/PlayPanel.gd" id="1_jgck7"]
 [ext_resource type="PackedScene" uid="uid://dnvmslc0lunfw" path="res://scenes/packs/pack_opening/PackOpening.tscn" id="1_x324g"]
-[ext_resource type="Script" uid="uid://bbka3kooxxw1r" path="res://scenes/play_panel/grid.gd" id="4_uajrv"]
+[ext_resource type="Script" uid="uid://bbka3kooxxw1r" path="res://scenes/play_panel/Grid.gd" id="4_uajrv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fi6o"]
 bg_color = Color(1, 1, 1, 0)
@@ -61,10 +61,6 @@ grow_vertical = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_1fi6o")
 script = ExtResource("1_jgck7")
-
-[node name="PackOpeningPanelContainer" parent="." instance=ExtResource("1_x324g")]
-visible = false
-layout_mode = 2
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 2
@@ -225,6 +221,9 @@ metadata/_edit_use_anchors_ = true
 [node name="GridNode" type="Sprite2D" parent="Panel/GridContainer"]
 position = Vector2(0, 202)
 script = ExtResource("4_uajrv")
-speed = 24
+
+[node name="PackOpeningPanelContainer" parent="." instance=ExtResource("1_x324g")]
+z_index = 10
+layout_mode = 2
 
 [connection signal="resized" from="Panel/GridContainer" to="Panel/GridContainer/GridNode" method="_on_grid_container_resized"]
