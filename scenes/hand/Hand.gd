@@ -6,8 +6,7 @@ class_name Hand extends HBoxContainer
 var cards: Array[Card]
 
 func _ready() -> void:
-	SignalBus.card_discarded.connect(_on_card_discarded)
-	SignalBus.card_chosen.connect(_on_card_chosen)
+	#SignalBus.card_discarded.connect(_on_card_discarded)
 	
 	for i in range(PlayerManager.hand_size):
 		var new_card = card_scene.instantiate()
@@ -18,21 +17,26 @@ func _ready() -> void:
 
 	start_round()
 	
-func _on_card_discarded(card: Card) -> void:
-	cards.erase(card)
-	card.queue_free()
-
-func _on_card_chosen(card: Card) -> void:
-	# Refresh the cards array when we get a new card. (Simpler than passing
-	# the old card's index).
+func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
+	return !PlayerManager.hand_size == PlayerManager.max_hand_size
+	
+# Hand needs drop data as well as Card since you want to be able to drop 
+# cards into an empty hand.
+func _drop_data(_at_position: Vector2, data: Variant) -> void:
+	data.reparent(self)
+	SignalBus.card_chosen.emit(data)
+	
+	
+func refresh_card_array() -> void:
 	cards = []
 	for child: Node in self.get_children():
 		if child.is_queued_for_deletion():
 			continue
 		if child is Card:
+			if !child.completed.is_connected(on_card_completed):
+				child.connect("completed", on_card_completed)
 			cards.append(child)
 	
-	card.connect("completed", on_card_completed)
 	PlayerManager.hand_size = cards.size()
 
 func start_round():
@@ -63,6 +67,10 @@ func draw(card: Card) -> bool:
 
 
 func on_card_completed(card: Card):
+	# Calling refresh card array here means we don't have to signal when
+	# we get a new card, and also fixes a bug where cards would sometimes
+	# activate out of order.
+	refresh_card_array()
 	var i = cards.find(card)
 
 	if i < cards.size() - 1:

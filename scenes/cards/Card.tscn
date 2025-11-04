@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dxrk3ym1qbjt8"]
 
 [ext_resource type="Script" uid="uid://c531eyaws05rr" path="res://scenes/cards/Card.gd" id="1_fa4yn"]
-[ext_resource type="Texture2D" uid="uid://d00r8ttcrm6qt" path="res://assets/icon.svg" id="2_5xgwh"]
+[ext_resource type="Texture2D" uid="uid://bydjxdlit5oij" path="res://scenes/cards/images/exchange_icon_placeholder.png" id="2_5xgwh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5xgwh"]
 content_margin_left = 0.0
@@ -59,10 +59,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_5xgwh")
 visible = false
 z_index = 50
 layout_mode = 0
-offset_left = 10.0
-offset_top = -64.0
-offset_right = 138.0
-offset_bottom = 64.0
+offset_left = 42.0
+offset_top = -2.0
+offset_right = 106.0
+offset_bottom = 62.0
 texture = ExtResource("2_5xgwh")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
