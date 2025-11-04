@@ -1,0 +1,110 @@
+[gd_scene load_steps=12 format=3 uid="uid://ccae2vjmj3444"]
+
+[ext_resource type="Texture2D" uid="uid://bb36c6obq1w5m" path="res://assets/background/bg1.png" id="1_rlhm7"]
+[ext_resource type="Texture2D" uid="uid://bo57h7esepw7d" path="res://assets/background/bg2.png" id="2_sl7lf"]
+[ext_resource type="Texture2D" uid="uid://ct3ldblws35n6" path="res://assets/background/bg3.png" id="3_cgj4j"]
+[ext_resource type="Texture2D" uid="uid://bpradaiwqny8q" path="res://assets/background/bg4.png" id="4_1pl5n"]
+
+[sub_resource type="Gradient" id="Gradient_sl7lf"]
+offsets = PackedFloat32Array(0, 0.26098192, 0.51937985, 0.81653744, 1)
+colors = PackedColorArray(0.5803922, 0.49411765, 0.72156864, 1, 0.5166072, 0.406724, 0.65208894, 1, 0.5759622, 0.48525774, 0.7159456, 1, 0.5176471, 0.40784314, 0.6509804, 1, 0.58118075, 0.49569485, 0.72190964, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yi37m"]
+gradient = SubResource("Gradient_sl7lf")
+fill_from = Vector2(0.24358974, 0)
+fill_to = Vector2(1, 0.7222222)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1pl5n"]
+texture = SubResource("GradientTexture2D_yi37m")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yi37m"]
+texture = ExtResource("1_rlhm7")
+texture_margin_left = 132.0
+texture_margin_top = 125.0
+texture_margin_right = 120.0
+texture_margin_bottom = 66.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cgj4j"]
+texture = ExtResource("2_sl7lf")
+texture_margin_left = 44.0
+texture_margin_top = 47.0
+texture_margin_right = 44.0
+texture_margin_bottom = 47.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mwp34"]
+texture = ExtResource("3_cgj4j")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1koi7"]
+texture = ExtResource("4_1pl5n")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchor_right = 0.91700006
+anchor_bottom = 0.91700006
+offset_right = -201.40002
+offset_bottom = 62.399963
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="gradient" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1203.0
+offset_bottom = 801.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_1pl5n")
+
+[node name="large_window" type="Panel" parent="."]
+layout_mode = 0
+offset_top = 21.0
+offset_right = 763.0
+offset_bottom = 800.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_yi37m")
+
+[node name="bottom_right_window" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 772.0
+offset_top = 295.0
+offset_right = 1190.0
+offset_bottom = 790.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_cgj4j")
+
+[node name="button1" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 773.0
+offset_top = 37.0
+offset_right = 903.0
+offset_bottom = 89.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_mwp34")
+
+[node name="button2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 921.0
+offset_top = 38.0
+offset_right = 1046.0
+offset_bottom = 89.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_mwp34")
+
+[node name="button3" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 1062.0
+offset_top = 38.0
+offset_right = 1188.0
+offset_bottom = 89.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_mwp34")
+
+[node name="top_right_window" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 772.0
+offset_top = 97.0
+offset_right = 1188.0
+offset_bottom = 291.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_1koi7")
