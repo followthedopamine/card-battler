@@ -10,6 +10,7 @@ signal game_tick
 # Draggable signals
 signal draggable_picked_up(draggable: Draggable)
 signal draggable_hovered(draggable: Draggable)
+signal draggable_released
 
 # Card signals
 signal card_discarded(card: Card)

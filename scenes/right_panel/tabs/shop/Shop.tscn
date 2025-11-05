@@ -1,64 +1,80 @@
-[gd_scene load_steps=5 format=3 uid="uid://5uq7pgxmnqrh"]
+[gd_scene load_steps=7 format=3 uid="uid://5uq7pgxmnqrh"]
 
 [ext_resource type="Script" uid="uid://dau1qjar800ji" path="res://scenes/right_panel/tabs/shop/scripts/Shop.gd" id="1_xx35e"]
 [ext_resource type="Texture2D" uid="uid://d00r8ttcrm6qt" path="res://assets/icon.svg" id="2_rddpp"]
 [ext_resource type="PackedScene" uid="uid://dm7jexr54pml4" path="res://scenes/right_panel/tabs/shop/shop_slot/ShopSlot.tscn" id="3_up7xk"]
 [ext_resource type="Script" uid="uid://cyaf1gwxm1g2p" path="res://scenes/right_panel/tabs/shop/scripts/CurrencyDisplay.gd" id="4_xmkj5"]
+[ext_resource type="Script" uid="uid://kcuevxah7vrq" path="res://scenes/right_panel/tabs/shop/Sell.gd" id="5_rsvis"]
 
-[node name="ShopVBoxContainer" type="VBoxContainer" node_paths=PackedStringArray("shop_slots", "shop_reroll_button")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_40vqg"]
+bg_color = Color(0.09411765, 0.09411765, 0.09411765, 0.9411765)
+
+[node name="Shop" type="MarginContainer" node_paths=PackedStringArray("shop_slots", "shop_reroll_button", "shopping_area_vbox", "sell_panel")]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 324.0
+grow_vertical = 2
 script = ExtResource("1_xx35e")
-shop_slots = [NodePath("ShopItemsMarginContainer/ShopItemsHBoxContainer/ShopSlot"), NodePath("ShopItemsMarginContainer/ShopItemsHBoxContainer/ShopSlot2")]
-shop_reroll_button = NodePath("ShopRerollMarginContainer/ShopRerollButton")
+shop_slots = [NodePath("ShopVBoxContainer/ShoppingAreaPanelContainer/ShopItemsMarginContainer/ShopItemsHBoxContainer/ShopSlot"), NodePath("ShopVBoxContainer/ShoppingAreaPanelContainer/ShopItemsMarginContainer/ShopItemsHBoxContainer/ShopSlot2")]
+shop_reroll_button = NodePath("ShopVBoxContainer/ShoppingAreaPanelContainer/ShopRerollMarginContainer/ShopRerollButton")
+shopping_area_vbox = NodePath("ShopVBoxContainer/ShoppingAreaPanelContainer")
+sell_panel = NodePath("SellPanel")
 
-[node name="ShopkeeperMarginContainer" type="MarginContainer" parent="."]
+[node name="ShopVBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ShopkeeperMarginContainer" type="MarginContainer" parent="ShopVBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="ShopkeeperPanelContainer" type="MarginContainer" parent="ShopkeeperMarginContainer"]
+[node name="ShopkeeperPanelContainer" type="MarginContainer" parent="ShopVBoxContainer/ShopkeeperMarginContainer"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="ShopkeeperTextureRect" type="TextureRect" parent="ShopkeeperMarginContainer/ShopkeeperPanelContainer"]
+[node name="ShopkeeperTextureRect" type="TextureRect" parent="ShopVBoxContainer/ShopkeeperMarginContainer/ShopkeeperPanelContainer"]
 layout_mode = 2
 texture = ExtResource("2_rddpp")
 
-[node name="ShopItemsMarginContainer" type="MarginContainer" parent="."]
+[node name="ShoppingAreaPanelContainer" type="VBoxContainer" parent="ShopVBoxContainer"]
+layout_mode = 2
+
+[node name="ShopItemsMarginContainer" type="MarginContainer" parent="ShopVBoxContainer/ShoppingAreaPanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="ShopItemsHBoxContainer" type="HBoxContainer" parent="ShopItemsMarginContainer"]
+[node name="ShopItemsHBoxContainer" type="HBoxContainer" parent="ShopVBoxContainer/ShoppingAreaPanelContainer/ShopItemsMarginContainer"]
 layout_mode = 2
 
-[node name="ShopSlot" parent="ShopItemsMarginContainer/ShopItemsHBoxContainer" instance=ExtResource("3_up7xk")]
+[node name="ShopSlot" parent="ShopVBoxContainer/ShoppingAreaPanelContainer/ShopItemsMarginContainer/ShopItemsHBoxContainer" instance=ExtResource("3_up7xk")]
 layout_mode = 2
 
-[node name="ShopSlot2" parent="ShopItemsMarginContainer/ShopItemsHBoxContainer" instance=ExtResource("3_up7xk")]
+[node name="ShopSlot2" parent="ShopVBoxContainer/ShoppingAreaPanelContainer/ShopItemsMarginContainer/ShopItemsHBoxContainer" instance=ExtResource("3_up7xk")]
 layout_mode = 2
 
-[node name="ShopRerollMarginContainer" type="MarginContainer" parent="."]
+[node name="ShopRerollMarginContainer" type="MarginContainer" parent="ShopVBoxContainer/ShoppingAreaPanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_right = 20
 
-[node name="ShopRerollButton" type="Button" parent="ShopRerollMarginContainer"]
+[node name="ShopRerollButton" type="Button" parent="ShopVBoxContainer/ShoppingAreaPanelContainer/ShopRerollMarginContainer"]
 layout_mode = 2
 text = "Reroll ($5)"
 
-[node name="ShopCurrencyMarginContainer3" type="MarginContainer" parent="."]
+[node name="ShopCurrencyMarginContainer3" type="MarginContainer" parent="ShopVBoxContainer/ShoppingAreaPanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="CurrencyDisplay" type="RichTextLabel" parent="ShopCurrencyMarginContainer3"]
+[node name="CurrencyDisplay" type="RichTextLabel" parent="ShopVBoxContainer/ShoppingAreaPanelContainer/ShopCurrencyMarginContainer3"]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 50
 text = "$100"
@@ -66,3 +82,35 @@ fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
 script = ExtResource("4_xmkj5")
+
+[node name="SellPanel" type="Panel" parent="." node_paths=PackedStringArray("price_label")]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_40vqg")
+script = ExtResource("5_rsvis")
+price_label = NodePath("MarginContainer/VBoxContainer/PriceRichTextLabel")
+
+[node name="MarginContainer" type="MarginContainer" parent="SellPanel"]
+layout_mode = 0
+offset_right = 324.0
+offset_bottom = 648.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SellPanel/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="SellRichTextLabel" type="RichTextLabel" parent="SellPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 60
+text = "Sell"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="PriceRichTextLabel" type="RichTextLabel" parent="SellPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 40
+text = "$0"
+fit_content = true
+horizontal_alignment = 1
