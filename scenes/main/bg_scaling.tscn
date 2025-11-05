@@ -1,0 +1,158 @@
+[gd_scene load_steps=13 format=3 uid="uid://ccae2vjmj3444"]
+
+[ext_resource type="Texture2D" uid="uid://bb36c6obq1w5m" path="res://assets/background/bg1.png" id="1_ltp6v"]
+[ext_resource type="Texture2D" uid="uid://ct3ldblws35n6" path="res://assets/background/bg3.png" id="2_aar1f"]
+[ext_resource type="Texture2D" uid="uid://bpradaiwqny8q" path="res://assets/background/bg4.png" id="3_5r7lj"]
+[ext_resource type="Texture2D" uid="uid://bo57h7esepw7d" path="res://assets/background/bg2.png" id="4_et12n"]
+[ext_resource type="Texture2D" uid="uid://fhngtspuqeg2" path="res://assets/background/placeholder_card.png" id="5_nq0mu"]
+
+[sub_resource type="Gradient" id="Gradient_1pl5n"]
+offsets = PackedFloat32Array(0, 0.26098192, 0.51937985, 0.81653744, 1)
+colors = PackedColorArray(0.5803922, 0.49411765, 0.72156864, 1, 0.5166072, 0.406724, 0.65208894, 1, 0.5759622, 0.48525774, 0.7159456, 1, 0.5176471, 0.40784314, 0.6509804, 1, 0.58118075, 0.49569485, 0.72190964, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yi37m"]
+gradient = SubResource("Gradient_1pl5n")
+fill_from = Vector2(0.24358974, 0)
+fill_to = Vector2(1, 0.7222222)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mwp34"]
+texture = SubResource("GradientTexture2D_yi37m")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1koi7"]
+texture = ExtResource("1_ltp6v")
+texture_margin_left = 132.0
+texture_margin_top = 125.0
+texture_margin_right = 120.0
+texture_margin_bottom = 63.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5lt6v"]
+texture = ExtResource("2_aar1f")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s521i"]
+texture = ExtResource("3_5r7lj")
+texture_margin_left = 95.0
+texture_margin_top = 11.0
+texture_margin_right = 95.0
+texture_margin_bottom = 11.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nsvoh"]
+texture = ExtResource("4_et12n")
+texture_margin_left = 43.0
+texture_margin_top = 49.0
+texture_margin_right = 45.0
+texture_margin_bottom = 47.0
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1.9970703
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.9975099)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="gradient" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mwp34")
+
+[node name="HBoxContainer_main" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 0.22991943
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="large_window" type="Panel" parent="HBoxContainer_main"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.18
+theme_override_styles/panel = SubResource("StyleBoxTexture_1koi7")
+
+[node name="MarginContainer_l" type="MarginContainer" parent="HBoxContainer_main"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer_l" type="VBoxContainer" parent="HBoxContainer_main/MarginContainer_l"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer_buttons" type="MarginContainer" parent="HBoxContainer_main/MarginContainer_l/VBoxContainer_l"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 8
+
+[node name="buttons_container" type="HBoxContainer" parent="HBoxContainer_main/MarginContainer_l/VBoxContainer_l/MarginContainer_buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="button1" type="Panel" parent="HBoxContainer_main/MarginContainer_l/VBoxContainer_l/MarginContainer_buttons/buttons_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_5lt6v")
+
+[node name="button2" type="Panel" parent="HBoxContainer_main/MarginContainer_l/VBoxContainer_l/MarginContainer_buttons/buttons_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_5lt6v")
+
+[node name="button3" type="Panel" parent="HBoxContainer_main/MarginContainer_l/VBoxContainer_l/MarginContainer_buttons/buttons_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_5lt6v")
+
+[node name="top_right_window" type="Panel" parent="HBoxContainer_main/MarginContainer_l/VBoxContainer_l"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_s521i")
+
+[node name="bottom_right_window" type="Panel" parent="HBoxContainer_main/MarginContainer_l/VBoxContainer_l"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_nsvoh")
+
+[node name="card_placeholders" type="Node" parent="."]
+
+[node name="PlaceholderCard2" type="Sprite2D" parent="card_placeholders"]
+position = Vector2(153.79999, 686.4941)
+scale = Vector2(0.24, 0.23940237)
+texture = ExtResource("5_nq0mu")
+
+[node name="PlaceholderCard3" type="Sprite2D" parent="card_placeholders"]
+position = Vector2(287.8, 686.49414)
+scale = Vector2(0.24, 0.23940237)
+texture = ExtResource("5_nq0mu")
+
+[node name="PlaceholderCard4" type="Sprite2D" parent="card_placeholders"]
+position = Vector2(420.8, 687.49414)
+scale = Vector2(0.24, 0.23940237)
+texture = ExtResource("5_nq0mu")
+
+[node name="PlaceholderCard5" type="Sprite2D" parent="card_placeholders"]
+position = Vector2(553.8, 687.49414)
+scale = Vector2(0.24, 0.23940237)
+texture = ExtResource("5_nq0mu")
+
+[node name="PlaceholderCard6" type="Sprite2D" parent="card_placeholders"]
+position = Vector2(686.8, 687.49414)
+scale = Vector2(0.24, 0.23940237)
+texture = ExtResource("5_nq0mu")
