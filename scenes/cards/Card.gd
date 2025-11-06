@@ -62,6 +62,7 @@ func activate():
 	panel.position.y = -10
 	change_colour(DISABLED_COLOUR)
 	
+	
 	time_remaining = duration
 
 	timer_label.show()
@@ -74,9 +75,12 @@ func deactivate():
 
 	panel.position.y = 0
 	change_colour(colour)
+	
 
 	timer_label.hide()
 	timer_spinner.hide()
-	completed.emit(self)
-
+	# Card needs to be deactivated before the signal emits or when there is one
+	# card in hand it will lose the signal race to reactivate itself and mess
+	# with the visuals.
 	activated = false
+	completed.emit(self)

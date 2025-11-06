@@ -1,7 +1,7 @@
 class_name Draggable extends Control
 
-const ROTATION_AMOUNT: float = 100.0
-const MAX_ROTATION: float = 20.0
+const ROTATION_AMOUNT: float = 1.0
+const MAX_ROTATION: float = 50.0
 
 @export var switch_interface: TextureRect
 
@@ -37,9 +37,11 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	if !data.get_parent() is Hand:
 		switch_cards(data, self)
 	else:
-		SignalBus.card_chosen.emit(self)
+		# Need this check to prevent pack closing on shuffling hand with pack open
+		if !get_parent() is Hand:
+			SignalBus.card_chosen.emit(self)
 
-func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
+func _can_drop_data(_at_position: Vector2, _data: Variant) -> bool:
 	if !self.get_parent() is Hand:
 		return false
 	# Trying to swap with a half activated card seems like a bad idea
@@ -74,6 +76,16 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	return self
 	
 func _input(event: InputEvent) -> void:
+	# Default Godot dragging behaviour will destroy our preview and crash us
+	# on right click if we don't explicity handle it.
+	if event.is_action_pressed("right_click"):
+		end_drag()
+		return
+		
+	if dragging and event.is_action_released("click"):
+		end_drag()
+		return
+		
 	if event is InputEventMouseMotion or event is InputEventScreenDrag:
 		if PlayerManager.hand_size != PlayerManager.max_hand_size:
 				# This should ideally not reference hovered card parent and instead should be the hand
@@ -89,14 +101,7 @@ func _input(event: InputEvent) -> void:
 			if self.get_index() < get_parent().get_child_count() - 1:
 				get_parent().move_child(self, self.get_index() + 1)
 				
-	if dragging and event.is_action_released("click"):
-		held_draggable = null
-		dragging = false
-		panel.show()
-		set_process_input(false)
-		# Probably want to connect this deferred
-		SignalBus.draggable_released.emit()
-		
+	
 		
 func _on_draggable_picked_up(draggable: Draggable) -> void:
 	held_draggable = draggable
@@ -107,6 +112,14 @@ func _on_mouse_entered() -> void:
 func _on_draggable_hovered(draggable: Draggable) -> void:
 	if draggable != held_draggable:
 		hovered_draggable = draggable
+		
+func end_drag() -> void:
+	held_draggable = null
+	dragging = false
+	panel.show()
+	set_process_input(false)
+	# Probably want to connect this deferred
+	SignalBus.draggable_released.emit()
 
 func handle_switch_interface() -> void:
 	if dragging:
@@ -114,15 +127,20 @@ func handle_switch_interface() -> void:
 	if self.activated:
 		hide_switch_interface()
 		return
-	if !get_parent() is Hand:
-		hide_switch_interface()
-		return
-		
+	
 	if !self.get_global_rect().has_point(mouse_pos):
 		hide_switch_interface()
 		return
 		
 	if held_draggable == null:
+		return
+		
+	if held_draggable.get_parent() is Hand:
+		hide_switch_interface()
+		return
+		
+	if !get_parent() is Hand:
+		hide_switch_interface()
 		return
 		
 	if held_draggable.get_parent() != self.get_parent():
@@ -135,8 +153,12 @@ func handle_rotation(delta) -> void:
 	# the dragged card - for now though this looks fine I think.
 	
 	# if dragging left/right, give it a lil rotation (based on mouse velocity)
-	var mouse_vel: Vector2 = (mouse_pos - previous_mouse_pos) * ROTATION_AMOUNT
-	smooth_velocity = smooth_velocity.lerp(mouse_vel, 0.1) 
+	# This is almost definitely not the right way to use delta here but it does
+	# at least fix rotation going completely crazy on low fps.
+	var mouse_vel: Vector2 = (mouse_pos - previous_mouse_pos) / delta * ROTATION_AMOUNT
+	# Add delta here because on low fps our card will rotate more so we need it to
+	# lerp faster to return to normal rotation at a sensible speed.
+	smooth_velocity = smooth_velocity.lerp(mouse_vel, 0.1 + delta)  
 		
 	var direction: float = -1.0
 	if smooth_velocity.x > 0.0:
