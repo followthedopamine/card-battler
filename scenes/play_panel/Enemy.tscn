@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://rmv71wh2a00f"]
+
+[ext_resource type="Texture2D" uid="uid://d00r8ttcrm6qt" path="res://assets/icon.svg" id="1_1xplb"]
+[ext_resource type="Script" uid="uid://8jw7gx8o6bhk" path="res://scenes/play_panel/Enemy.gd" id="1_76ifo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_76ifo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1xplb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="Node2D" groups=["Enemy"]]
+script = ExtResource("1_76ifo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.125, 0.125)
+sprite_frames = SubResource("SpriteFrames_76ifo")

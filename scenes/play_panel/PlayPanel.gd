@@ -1,10 +1,5 @@
 extends PanelContainer
 
-@export var ray_count = 5
-
-func _ready() -> void:
-	SignalBus.game_tick.connect(_on_game_tick)
-
-
-func _on_game_tick(current_tick):
-	print("current_tick:", current_tick)
+@onready var battle_area: Control = $Panel/VBoxContainer/BattleAreaContainer
+@onready var player_area: Control = $Panel/VBoxContainer/BattleAreaContainer/PlayerArea
+@onready var enemy_area: Control = $Panel/VBoxContainer/BattleAreaContainer/EnemyArea
