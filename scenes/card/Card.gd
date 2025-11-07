@@ -1,19 +1,21 @@
 # Dragging functionality modified from https://www.reddit.com/r/godot/comments/y2cvzu/comment/is58mqe/
 
-class_name Card extends Draggable
+class_name Card extends CardController
 
 signal completed(card: Card)
+
+const MINIMUM_SIZE: Vector2 = Vector2(142.0, 225.0)
+const PIVOT_POINT: Vector2 = Vector2(73.0, 22.0)
+
+@export var card_name: String
+@export var sprite_texture: Texture2D
 
 @export var price: int = 5
 
 @export_range(0.0, 5.0) var duration := 2.0
 var time_remaining := duration
 
-@onready var timer_label: Label = $Panel/TimerLabel
-@onready var timer_spinner: Panel = $Panel/Spinner
 
-@onready var hbox: HBoxContainer = get_parent()
-@onready var timer: Timer = $Timer
 
 # Draggable dependant on this existing
 var activated := false
@@ -32,11 +34,17 @@ var colour: Color;
 
 func _ready() -> void:
 	super()
+	timer.timeout.connect(_on_timer_timeout)
 	set_process_input(false)
 
 	change_colour(colour)
 
 	timer_label.text = "%.1f" % duration
+	card_components.sprite.texture = sprite_texture
+	card_components.name_label.text = card_name
+	
+	custom_minimum_size = MINIMUM_SIZE
+	pivot_offset = PIVOT_POINT
 
 func _process(delta: float) -> void:
 	super(delta)

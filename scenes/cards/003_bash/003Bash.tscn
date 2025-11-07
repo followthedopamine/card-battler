@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://imqxo7pwy7fr"]
+
+[ext_resource type="Script" uid="uid://digy50x3cgxaw" path="res://scenes/cards/003_bash/003Bash.gd" id="1_rsiir"]
+[ext_resource type="Texture2D" uid="uid://fq2hvr681ovf" path="res://scenes/right_panel/tabs/shop/shop_slot/images/placeholder_card_4.png" id="2_6mysx"]
+
+[node name="003Bash" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_rsiir")
+card_name = "Bash"
+sprite_texture = ExtResource("2_6mysx")
+metadata/_custom_type_script = "uid://c531eyaws05rr"
