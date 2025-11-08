@@ -41,6 +41,7 @@ func _ready() -> void:
 	timer = card_components.timer
 	panel = card_components.panel
 	
+	
 
 func _process(delta) -> void:
 	# This looping on every single card which probably isn't the most
@@ -50,6 +51,7 @@ func _process(delta) -> void:
 	handle_switch_interface()
 	if dragging:
 		handle_rotation(delta)
+		
 		
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	if !data.get_parent() is Hand:
@@ -69,6 +71,8 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	# Prevent currently activated cards from being dragged
 	if self.activated:
 		return null
+	
+		
 	var preview_parent = Control.new()
 
 	dragging_node = self.duplicate()
@@ -99,7 +103,6 @@ func _input(event: InputEvent) -> void:
 	# Default Godot dragging behaviour will destroy our preview and crash us
 	# on right click if we don't explicity handle it.
 	if event.is_action_pressed("right_click"):
-		print("Detecting input")
 		end_drag()
 		return
 		
@@ -134,13 +137,24 @@ func _on_card_controller_hovered(card_controller: CardController) -> void:
 	if card_controller != held_card_controller:
 		hovered_card_controller = card_controller
 		
+func add_tooltip(tooltip_string: String) -> void:
+	Tooltip.new(tooltip_string, self)
+		
 func end_drag() -> void:
 	held_card_controller = null
 	dragging = false
 	panel.show()
 	set_process_input(false)
+	update_mouse()
 	# Probably want to connect this deferred
 	SignalBus.card_controller_released.emit()
+	
+func update_mouse() -> void:
+	# This is the worst shit ever straight up.
+	# But it's a workaround for this issue: https://github.com/godotengine/godot/issues/87203
+	# Basically the tooltip won't display after ending the drag unless you move the mouse.
+	# So we fake moving the mouse.
+	warp_mouse(get_local_mouse_position())
 
 func handle_switch_interface() -> void:
 	if dragging:

@@ -9,3 +9,4 @@ anchors_preset = 0
 script = ExtResource("1_o2y2q")
 card_name = "Strike"
 sprite_texture = ExtResource("2_lvmms")
+tooltips = Array[String](["This is tooltip 1", "This is tooltip 2", "This is a very long tooltip wow it's so long and hey look it's still a normal size hopefully", "This tooltip will go off the screen and idk how to fix that yet uh oh here it goes going off the screen oh no someone help please the tooltip is escaping"])
