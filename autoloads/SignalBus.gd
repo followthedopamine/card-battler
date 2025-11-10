@@ -15,3 +15,6 @@ signal card_controller_released
 # Card signals
 signal card_discarded(card: Card)
 signal card_chosen(card: Card)
+
+# Relic signals
+signal relic_added(relic: Relic)

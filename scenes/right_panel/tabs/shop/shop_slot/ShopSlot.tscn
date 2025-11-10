@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dm7jexr54pml4"]
+[gd_scene load_steps=3 format=3 uid="uid://dm7jexr54pml4"]
 
 [ext_resource type="Script" uid="uid://bxknk2n2fnfax" path="res://scenes/right_panel/tabs/shop/shop_slot/scripts/ShopSlot.gd" id="1_hr8cm"]
 [ext_resource type="Resource" uid="uid://cpmmj5444k2ii" path="res://scenes/right_panel/tabs/shop/shop_slot/resources/ShopData.tres" id="2_teigl"]
-[ext_resource type="PackedScene" uid="uid://b8lmu1lufvt4j" path="res://scenes/packs/Pack.tscn" id="3_teigl"]
 
 [node name="ShopSlot" type="MarginContainer" node_paths=PackedStringArray("buy_button", "slot_item")]
 custom_minimum_size = Vector2(140, 200)
@@ -22,14 +21,6 @@ layout_mode = 2
 [node name="SlotItemControl" type="Control" parent="ShopSlotVBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-
-[node name="Pack" parent="ShopSlotVBoxContainer/SlotItemControl" instance=ExtResource("3_teigl")]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="ShopSlotBuyButton" type="Button" parent="ShopSlotVBoxContainer"]
 layout_mode = 2

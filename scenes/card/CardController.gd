@@ -137,9 +137,6 @@ func _on_card_controller_hovered(card_controller: CardController) -> void:
 	if card_controller != held_card_controller:
 		hovered_card_controller = card_controller
 		
-func add_tooltip(tooltip_string: String) -> void:
-	Tooltip.new(tooltip_string, self)
-		
 func end_drag() -> void:
 	held_card_controller = null
 	dragging = false

@@ -48,7 +48,7 @@ func _ready() -> void:
 	pivot_offset = PIVOT_POINT
 	
 	for tooltip_string: String in tooltips:
-		add_tooltip(tooltip_string)
+		Tooltip.new(tooltip_string, self)
 
 func _process(delta: float) -> void:
 	super(delta)
