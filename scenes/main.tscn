@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2fckbvtof2w3"]
+[gd_scene load_steps=6 format=3 uid="uid://d2fckbvtof2w3"]
 
 [ext_resource type="PackedScene" uid="uid://b653dafp8uotu" path="res://scenes/play_panel/PlayPanel.tscn" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://ddmjclkybk575" path="res://scenes/right_panel/RightPanel.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://dmlrayuv3piks" path="res://scenes/Main.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bjq04um7xfdx1" path="res://scenes/hand/Hand.tscn" id="2_sugp2"]
+[ext_resource type="PackedScene" uid="uid://vq84ampu1n1v" path="res://scenes/relic/relic_container.tscn" id="5_tbgi4"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -46,6 +47,9 @@ layout_mode = 2
 [node name="RightPanelContainer" parent="HBoxContainer" instance=ExtResource("1_ig7tw")]
 z_index = 1
 layout_mode = 2
+
+[node name="RelicHBoxContainer" parent="." instance=ExtResource("5_tbgi4")]
+layout_mode = 0
 
 [node name="GlobalTimer" type="Timer" parent="." groups=["GlobalTimer"]]
 autostart = true

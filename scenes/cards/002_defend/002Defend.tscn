@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d35rw33uis836"]
+
+[ext_resource type="Script" uid="uid://dd0eigp14wvs1" path="res://scenes/cards/002_defend/002Defend.gd" id="1_ucw34"]
+[ext_resource type="Texture2D" uid="uid://d68dtnn7maij" path="res://scenes/right_panel/tabs/shop/shop_slot/images/placeholder_card_3.png" id="2_x7x73"]
+
+[node name="002Defend" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ucw34")
+card_name = "Defend"
+sprite_texture = ExtResource("2_x7x73")
+tooltips = Array[String](["Here's a way more normal tooltip"])
+metadata/_custom_type_script = "uid://c531eyaws05rr"

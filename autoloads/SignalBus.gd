@@ -4,11 +4,17 @@ extends Node2D
 signal currency_changed
 signal pack_opened
 
+# Draggable signals
+signal card_controller_picked_up(card_controller: CardController)
+signal card_controller_hovered(card_controller: CardController)
+signal card_controller_released
+
 # Card signals
-signal card_dragged(card: Card)
-signal card_hovered(card: Card)
 signal card_discarded(card: Card)
 signal card_chosen(card: Card)
+
+# Relic signals
+signal relic_added(relic: Relic)
 
 signal card_played_target_enemy(card_effect: Dictionary)
 signal card_played_target_player(card_effect: Dictionary)

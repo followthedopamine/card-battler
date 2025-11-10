@@ -17,7 +17,7 @@ func _ready() -> void:
 
 	start_round()
 	
-func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
+func _can_drop_data(_at_position: Vector2, _data: Variant) -> bool:
 	return !PlayerManager.hand_size == PlayerManager.max_hand_size
 	
 # Hand needs drop data as well as Card since you want to be able to drop 
@@ -71,9 +71,25 @@ func on_card_completed(card: Card):
 	# we get a new card, and also fixes a bug where cards would sometimes
 	# activate out of order.
 	refresh_card_array()
-	var i = cards.find(card)
+	activate_next_card(card)
+	
+func activate_next_card(current_card: Card) -> void:
+	# If player can ever sell the last card in hand this will break
+	# First handle case where only one card in hand
+	if cards.size() == 1:
+		current_card.activate()
+		return
+		
+	var i = cards.find(current_card)
 
 	if i < cards.size() - 1:
-		cards[i + 1].activate()
+		# Check if next card is being dragged to prevent holding an activating card
+		if cards[i + 1].dragging:
+			if i < cards.size() - 2:
+				cards[i + 2].activate()
+			else:
+				start_round()
+		else:
+			cards[i + 1].activate()
 	else:
 		start_round()

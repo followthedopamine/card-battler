@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://d24frx2cu7k76"]
+
+[ext_resource type="Script" uid="uid://b3khtev37ydvc" path="res://scenes/relics/money_relic/MoneyRelic.gd" id="1_lv6w0"]
+[ext_resource type="Texture2D" uid="uid://d68dtnn7maij" path="res://scenes/right_panel/tabs/shop/shop_slot/images/placeholder_card_3.png" id="1_rfic2"]
+
+[node name="MoneyRelic" type="MarginContainer"]
+custom_minimum_size = Vector2(50, 50)
+offset_right = 50.0
+offset_bottom = 50.0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("1_lv6w0")
+relic_sprite = ExtResource("1_rfic2")
+relic_name = "Money"
+tooltips = Array[String](["Add 50% money"])
+metadata/_custom_type_script = "uid://dcn785x8e1aj1"
