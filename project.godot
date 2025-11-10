@@ -21,11 +21,6 @@ PlayerManager="*res://autoloads/PlayerManager.gd"
 SignalBus="*res://autoloads/SignalBus.gd"
 TooltipCanvas="*res://scenes/tooltip/TooltipCanvas.tscn"
 
-[display]
-
-window/size/viewport_width=1200
-window/size/viewport_height=800
-
 [global_group]
 
 GlobalTimer=""

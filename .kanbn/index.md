@@ -19,8 +19,13 @@ completedColumns:
 
 ## In Progress
 
+- [bug-adding-cards-to-hand-changes-window-size](tasks/bug-adding-cards-to-hand-changes-window-size.md)
+
 ## Done
 
+- [bug-grid-lines-appear-over-background](tasks/bug-grid-lines-appear-over-background.md)
+- [bug-pack-screen-doesn-t-fit-window](tasks/bug-pack-screen-doesn-t-fit-window.md)
+- [bug-enemies-appear-on-top-of-pack-window](tasks/bug-enemies-appear-on-top-of-pack-window.md)
 - [bug-first-can-t-be-dragged-when-only-two-cards](tasks/bug-first-can-t-be-dragged-when-only-two-cards.md)
 - [bug-game-crashes-on-right-click-while-dragging-a-card](tasks/bug-game-crashes-on-right-click-while-dragging-a-card.md)
 - [bug-card-activation-breaks-when-only-one-card-in-hand](tasks/bug-card-activation-breaks-when-only-one-card-in-hand.md)

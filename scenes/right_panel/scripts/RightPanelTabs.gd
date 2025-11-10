@@ -1,4 +1,4 @@
-extends PanelContainer
+extends MarginContainer
 class_name RightPanelTabs
 
 @export var shop_button: Button
