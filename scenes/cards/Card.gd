@@ -199,6 +199,18 @@ func activate():
 
 	activated = true
 
+
+	#: TODO: the remainder of this function is placeholder code for testing purposes
+	var card_effect_enemy = {
+	"target": "front",
+	"damage": 35,
+	"poison": 5,
+	"bleed": 5,
+	"stun": 5,
+}
+
+	SignalBus.card_played_target_enemy.emit(card_effect_enemy)
+
 func deactivate():
 	timer.stop()
 

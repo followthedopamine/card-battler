@@ -1,5 +1,13 @@
 extends PanelContainer
 
-@onready var battle_area: Control = $Panel/VBoxContainer/BattleAreaContainer
-@onready var player_area: Control = $Panel/VBoxContainer/BattleAreaContainer/PlayerArea
-@onready var enemy_area: Control = $Panel/VBoxContainer/BattleAreaContainer/EnemyArea
+var wave = 0
+
+func get_wave():
+	return wave
+
+func _setup_wave():
+	wave += 1
+	SignalBus.wave_start.emit(wave)
+
+func __ready():
+	_setup_wave()

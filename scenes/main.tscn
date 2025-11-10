@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2fckbvtof2w3"]
+[gd_scene load_steps=5 format=3 uid="uid://d2fckbvtof2w3"]
 
 [ext_resource type="PackedScene" uid="uid://b653dafp8uotu" path="res://scenes/play_panel/PlayPanel.tscn" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://ddmjclkybk575" path="res://scenes/right_panel/RightPanel.tscn" id="1_ig7tw"]
@@ -12,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_sugp2")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -21,13 +22,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="GamePanelContainer" type="PanelContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="GameVBoxContainer" type="VBoxContainer" parent="HBoxContainer/GamePanelContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="PlayPanelContainer" parent="HBoxContainer/GamePanelContainer/GameVBoxContainer" instance=ExtResource("1_0xm2m")]
 layout_mode = 2
