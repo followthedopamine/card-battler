@@ -23,6 +23,8 @@ TooltipCanvas="*res://scenes/tooltip/TooltipCanvas.tscn"
 
 [global_group]
 
+window/size/viewport_width=1200
+window/size/viewport_height=800
 GlobalTimer=""
 
 [input]
