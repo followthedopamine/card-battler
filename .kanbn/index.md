@@ -14,11 +14,14 @@ completedColumns:
 ## Todo
 
 - [display-tooltips-enlarged-cards-on-hover](tasks/display-tooltips-enlarged-cards-on-hover.md)
+- [bug-sometimes-you-can-take-two-cards-from-a-pack](tasks/bug-sometimes-you-can-take-two-cards-from-a-pack.md)
+- [bug-tooltip-doesn-t-refresh-variables-instantly](tasks/bug-tooltip-doesn-t-refresh-variables-instantly.md)
 
 ## In Progress
 
 ## Done
 
+- [bug-first-can-t-be-dragged-when-only-two-cards](tasks/bug-first-can-t-be-dragged-when-only-two-cards.md)
 - [bug-game-crashes-on-right-click-while-dragging-a-card](tasks/bug-game-crashes-on-right-click-while-dragging-a-card.md)
 - [bug-card-activation-breaks-when-only-one-card-in-hand](tasks/bug-card-activation-breaks-when-only-one-card-in-hand.md)
 - [bug-shuffling-cards-in-hand-when-pack-is-open-closes-the-pack](tasks/bug-shuffling-cards-in-hand-when-pack-is-open-closes-the-pack.md)
