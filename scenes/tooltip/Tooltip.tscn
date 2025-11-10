@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://bypicscav41ol"]
+
+[ext_resource type="Script" uid="uid://drrng8se5ggs1" path="res://scenes/tooltip/TooltipData.gd" id="1_rcg70"]
+
+[node name="Tooltip" type="MarginContainer" node_paths=PackedStringArray("label", "container")]
+z_index = 100
+offset_right = 216.0
+offset_bottom = 39.0
+script = ExtResource("1_rcg70")
+label = NodePath("Panel/MarginContainer/RichTextLabel")
+container = NodePath("Panel/MarginContainer")
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/MarginContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "dasfjukasdflklaksdlkfklaklsdfklaksdjflkajsdfklalksdfjlaksjdflkajsdflkasdjkfljasldkflkasdjkflkasjdflkjasdlkfjalksdfasdasdasdasdasdasd"
+fit_content = true

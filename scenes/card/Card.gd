@@ -9,6 +9,7 @@ const PIVOT_POINT: Vector2 = Vector2(73.0, 22.0)
 
 @export var card_name: String
 @export var sprite_texture: Texture2D
+@export var tooltips: Array[String] = []
 
 @export var price: int = 5
 
@@ -45,6 +46,9 @@ func _ready() -> void:
 	
 	custom_minimum_size = MINIMUM_SIZE
 	pivot_offset = PIVOT_POINT
+	
+	for tooltip_string: String in tooltips:
+		add_tooltip(tooltip_string)
 
 func _process(delta: float) -> void:
 	super(delta)

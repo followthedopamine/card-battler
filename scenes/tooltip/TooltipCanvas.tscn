@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbq8t64qy5hcf"]
+
+[ext_resource type="Script" uid="uid://0p4eav7oiaa4" path="res://scenes/tooltip/TooltipCanvas.gd" id="1_kqso8"]
+[ext_resource type="PackedScene" uid="uid://bypicscav41ol" path="res://scenes/tooltip/Tooltip.tscn" id="2_b017j"]
+
+[node name="TooltipCanvas" type="Control" node_paths=PackedStringArray("display", "pool")]
+z_index = 500
+layout_mode = 3
+anchors_preset = 0
+offset_right = 200.0
+offset_bottom = 138.0
+mouse_filter = 2
+script = ExtResource("1_kqso8")
+tooltip_scene = ExtResource("2_b017j")
+display = NodePath("TooltipDisplay")
+pool = NodePath("TooltipPool")
+
+[node name="TooltipDisplay" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TooltipPool" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

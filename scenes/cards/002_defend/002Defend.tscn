@@ -9,4 +9,5 @@ anchors_preset = 0
 script = ExtResource("1_ucw34")
 card_name = "Defend"
 sprite_texture = ExtResource("2_x7x73")
+tooltips = Array[String](["Here's a way more normal tooltip"])
 metadata/_custom_type_script = "uid://c531eyaws05rr"
