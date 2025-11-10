@@ -4,6 +4,8 @@ class_name Card extends Draggable
 
 signal completed(card: Card)
 
+@export var price: int = 5
+
 @export_range(0.0, 5.0) var duration := 2.0
 var time_remaining := duration
 

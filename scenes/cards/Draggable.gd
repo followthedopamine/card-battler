@@ -94,6 +94,9 @@ func _input(event: InputEvent) -> void:
 		dragging = false
 		panel.show()
 		set_process_input(false)
+		# Probably want to connect this deferred
+		SignalBus.draggable_released.emit()
+		
 		
 func _on_draggable_picked_up(draggable: Draggable) -> void:
 	held_draggable = draggable
