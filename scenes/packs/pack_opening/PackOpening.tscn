@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bo16smw5m0b5w" path="res://scenes/packs/pack_opening/scripts/PackOpening.gd" id="1_i2mxl"]
 [ext_resource type="Resource" uid="uid://dcd3tbx2gontl" path="res://scenes/cards/resources/CardData.tres" id="2_ry3jv"]
-[ext_resource type="PackedScene" uid="uid://dxrk3ym1qbjt8" path="res://scenes/cards/Card.tscn" id="3_hnckt"]
+[ext_resource type="PackedScene" uid="uid://dxrk3ym1qbjt8" path="res://scenes/card/Card.tscn" id="3_hnckt"]
 
 [node name="PackOpeningPanelContainer" type="Panel" node_paths=PackedStringArray("skip_button", "card_area")]
 size_flags_vertical = 3

@@ -1,28 +1,46 @@
-class_name Draggable extends Control
+class_name CardController extends Control
 
 const ROTATION_AMOUNT: float = 1.0
 const MAX_ROTATION: float = 50.0
 
-@export var switch_interface: TextureRect
 
-@onready var panel: Panel = $Panel
+# If we don't hard code this path in we'll have to set it up for every new card
+var card_components_scene: PackedScene = preload("res://scenes/card/CardComponents.tscn")
+var card_components: CardComponents
+var switch_interface: TextureRect
+var timer_label: Label
+var timer_spinner: Panel
+var timer: Timer
+var panel: Panel
 
-var dragging_node : Control = null
+@onready var hbox: HBoxContainer = get_parent()
+
+
+var dragging_node : CardController = null
 var threshold := 130
 var dragging := false
 
 
-var held_draggable: Draggable
-var hovered_draggable: Draggable
+var held_card_controller: CardController
+var hovered_card_controller: CardController
 
 var mouse_pos: Vector2
 var previous_mouse_pos: Vector2
 var smooth_velocity: Vector2
 
 func _ready() -> void:
-	self.mouse_entered.connect(_on_mouse_entered)
-	SignalBus.draggable_picked_up.connect(_on_draggable_picked_up)
-	SignalBus.draggable_hovered.connect(_on_draggable_hovered)
+	SignalBus.card_controller_picked_up.connect(_on_card_controller_picked_up)
+	SignalBus.card_controller_hovered.connect(_on_card_controller_hovered)
+	mouse_entered.connect(_on_mouse_entered)
+	
+	card_components = card_components_scene.instantiate()
+	add_child(card_components)
+	switch_interface = card_components.switch_interface
+	timer_label = card_components.timer_label
+	timer_spinner = card_components.timer_spinner
+	timer = card_components.timer
+	panel = card_components.panel
+	
 
 func _process(delta) -> void:
 	# This looping on every single card which probably isn't the most
@@ -64,14 +82,16 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	new_style.shadow_color.a = 0.3
 	new_style.shadow_size = 8
 	new_style.shadow_offset	= Vector2(3, 3)
-	var dragging_panel: Panel = dragging_node.get_node("Panel")
+	
+	#This sucks but getting the panel after removing the script is really hard.
+	var dragging_panel: Panel = dragging_node.get_node("CardComponents/Panel")
 	dragging_panel.add_theme_stylebox_override("panel", new_style)
 
 	set_drag_preview(preview_parent)
 	set_process_input(true)
 	panel.hide()
 	dragging = true
-	SignalBus.draggable_picked_up.emit(self)
+	SignalBus.card_controller_picked_up.emit(self)
 	
 	return self
 	
@@ -79,6 +99,7 @@ func _input(event: InputEvent) -> void:
 	# Default Godot dragging behaviour will destroy our preview and crash us
 	# on right click if we don't explicity handle it.
 	if event.is_action_pressed("right_click"):
+		print("Detecting input")
 		end_drag()
 		return
 		
@@ -90,7 +111,7 @@ func _input(event: InputEvent) -> void:
 		if PlayerManager.hand_size != PlayerManager.max_hand_size:
 				# This should ideally not reference hovered card parent and instead should be the hand
 				if !self.get_parent() is Hand:
-					self.reparent(hovered_draggable.get_parent())
+					self.reparent(hovered_card_controller.get_parent())
 		# if dragging left/right update the position in the parent
 		if dragging_node.global_position.x < global_position.x - threshold:
 			if self.get_index() > 0:
@@ -103,23 +124,23 @@ func _input(event: InputEvent) -> void:
 				
 	
 		
-func _on_draggable_picked_up(draggable: Draggable) -> void:
-	held_draggable = draggable
+func _on_card_controller_picked_up(card_controller: CardController) -> void:
+	held_card_controller = card_controller
 	
 func _on_mouse_entered() -> void:
-	SignalBus.draggable_hovered.emit(self)
+	SignalBus.card_controller_hovered.emit(self)
 	
-func _on_draggable_hovered(draggable: Draggable) -> void:
-	if draggable != held_draggable:
-		hovered_draggable = draggable
+func _on_card_controller_hovered(card_controller: CardController) -> void:
+	if card_controller != held_card_controller:
+		hovered_card_controller = card_controller
 		
 func end_drag() -> void:
-	held_draggable = null
+	held_card_controller = null
 	dragging = false
 	panel.show()
 	set_process_input(false)
 	# Probably want to connect this deferred
-	SignalBus.draggable_released.emit()
+	SignalBus.card_controller_released.emit()
 
 func handle_switch_interface() -> void:
 	if dragging:
@@ -132,10 +153,10 @@ func handle_switch_interface() -> void:
 		hide_switch_interface()
 		return
 		
-	if held_draggable == null:
+	if held_card_controller == null:
 		return
 		
-	if held_draggable.get_parent() is Hand:
+	if held_card_controller.get_parent() is Hand:
 		hide_switch_interface()
 		return
 		
@@ -143,7 +164,7 @@ func handle_switch_interface() -> void:
 		hide_switch_interface()
 		return
 		
-	if held_draggable.get_parent() != self.get_parent():
+	if held_card_controller.get_parent() != self.get_parent():
 		show_switch_interface()
 	else:
 		hide_switch_interface()

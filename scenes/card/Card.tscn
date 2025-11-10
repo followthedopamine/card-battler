@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxrk3ym1qbjt8"]
+
+[ext_resource type="Script" uid="uid://c531eyaws05rr" path="res://scenes/card/Card.gd" id="1_fa4yn"]
+
+[node name="Card" type="Control"]
+custom_minimum_size = Vector2(142, 225)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 142.0
+offset_bottom = 225.0
+pivot_offset = Vector2(73, 22)
+mouse_filter = 1
+script = ExtResource("1_fa4yn")
+card_name = null
+price = null
+duration = null

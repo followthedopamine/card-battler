@@ -34,7 +34,9 @@ func reroll_cards() -> void:
 		card.queue_free()
 	for i: int in range(CARD_SLOTS):
 		#var new_card: Placeholder = card_data.cards.pick_random().instantiate()
-		var new_card: Card = card_scene.instantiate()
-		new_card.set_colour(randi_range(0, new_card.colours.size()))
+		#var new_card: Card = card_scene.instantiate()
+		#new_card.set_colour(randi_range(0, new_card.colours.size()))
+		#card_area.add_child(new_card)
+		var new_card: Card = card_data.cards.pick_random().instantiate()
 		card_area.add_child(new_card)
 		

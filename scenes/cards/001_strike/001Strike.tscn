@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://4ex7gtlfrwxg"]
+
+[ext_resource type="Script" uid="uid://bhf2cspdbatk5" path="res://scenes/cards/001_strike/001Strike.gd" id="1_o2y2q"]
+[ext_resource type="Texture2D" uid="uid://cqmbngwmt7fyn" path="res://scenes/right_panel/tabs/shop/shop_slot/images/placeholder_card_2.png" id="2_lvmms"]
+
+[node name="001Strike" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_o2y2q")
+card_name = "Strike"
+sprite_texture = ExtResource("2_lvmms")

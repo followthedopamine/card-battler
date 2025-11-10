@@ -8,9 +8,9 @@ signal pack_opened
 signal game_tick
 
 # Draggable signals
-signal draggable_picked_up(draggable: Draggable)
-signal draggable_hovered(draggable: Draggable)
-signal draggable_released
+signal card_controller_picked_up(card_controller: CardController)
+signal card_controller_hovered(card_controller: CardController)
+signal card_controller_released
 
 # Card signals
 signal card_discarded(card: Card)

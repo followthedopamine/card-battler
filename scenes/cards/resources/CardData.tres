@@ -1,6 +1,10 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=2 format=3 uid="uid://dcd3tbx2gontl"]
+[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://dcd3tbx2gontl"]
 
-[ext_resource type="Script" uid="uid://dpjqhxy4qigbr" path="res://scenes/cards/CardData.gd" id="1_4pjgk"]
+[ext_resource type="Script" uid="uid://dpjqhxy4qigbr" path="res://scenes/card/CardData.gd" id="1_4pjgk"]
+[ext_resource type="PackedScene" uid="uid://4ex7gtlfrwxg" path="res://scenes/cards/001_strike/001Strike.tscn" id="1_eu71x"]
+[ext_resource type="PackedScene" uid="uid://d35rw33uis836" path="res://scenes/cards/002_defend/002Defend.tscn" id="2_0s4so"]
+[ext_resource type="PackedScene" uid="uid://imqxo7pwy7fr" path="res://scenes/cards/003_bash/003Bash.tscn" id="3_17ju4"]
 
 [resource]
 script = ExtResource("1_4pjgk")
+cards = Array[PackedScene]([ExtResource("1_eu71x"), ExtResource("2_0s4so"), ExtResource("3_17ju4")])
