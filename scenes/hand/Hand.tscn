@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bjq04um7xfdx1"]
 
 [ext_resource type="Script" uid="uid://dj7rwicwlmnf7" path="res://scenes/hand/Hand.gd" id="1_ou7ip"]
-[ext_resource type="PackedScene" uid="uid://dxrk3ym1qbjt8" path="res://scenes/cards/Card.tscn" id="2_0nsk7"]
+[ext_resource type="PackedScene" uid="uid://dxrk3ym1qbjt8" path="res://scenes/card/Card.tscn" id="2_0nsk7"]
 
 [node name="Hand" type="HBoxContainer"]
 size_flags_horizontal = 3

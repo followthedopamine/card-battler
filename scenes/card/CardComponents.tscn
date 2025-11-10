@@ -1,0 +1,89 @@
+[gd_scene load_steps=5 format=3 uid="uid://8sxlwb30boph"]
+
+[ext_resource type="Script" uid="uid://77pqf2vl82d2" path="res://scenes/card/CardComponents.gd" id="1_k6qmu"]
+[ext_resource type="Texture2D" uid="uid://bydjxdlit5oij" path="res://scenes/card/images/exchange_icon_placeholder.png" id="2_axisl"]
+[ext_resource type="Texture2D" uid="uid://c480utaticeyk" path="res://scenes/right_panel/tabs/shop/shop_slot/images/placeholder_card_1.png" id="2_g8rqm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5xgwh"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0)
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 5
+
+[node name="CardComponents" type="Control" node_paths=PackedStringArray("panel", "timer_label", "timer_spinner", "timer", "switch_interface", "name_label", "sprite")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_k6qmu")
+panel = NodePath("Panel")
+timer_label = NodePath("Panel/TimerLabel")
+timer_spinner = NodePath("Panel/Spinner")
+timer = NodePath("Timer")
+switch_interface = NodePath("SwitchInterface")
+name_label = NodePath("Panel/NameLabel")
+sprite = NodePath("Panel/CardSprite")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 152.0
+offset_bottom = 225.0
+mouse_filter = 2
+
+[node name="CardSprite" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_right = 152.0
+offset_bottom = 225.0
+texture = ExtResource("2_g8rqm")
+
+[node name="TimerLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 147.0
+offset_right = 105.0
+offset_bottom = 170.0
+text = "1.2"
+
+[node name="Spinner" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 140.0
+offset_right = 97.0
+offset_bottom = 180.0
+pivot_offset = Vector2(20, 20)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5xgwh")
+
+[node name="NameLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 38.0
+offset_bottom = 61.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.34826973, 0.18297675, 9.62615e-08, 1)
+text = "Test"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="SwitchInterface" type="TextureRect" parent="."]
+visible = false
+z_index = 101
+layout_mode = 0
+offset_left = 42.0
+offset_top = -2.0
+offset_right = 106.0
+offset_bottom = 62.0
+texture = ExtResource("2_axisl")

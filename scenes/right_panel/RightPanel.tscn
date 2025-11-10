@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddmjclkybk575"]
+[gd_scene load_steps=5 format=3 uid="uid://ddmjclkybk575"]
 
 [ext_resource type="Script" uid="uid://c2jjuqmtswytd" path="res://scenes/right_panel/scripts/RightPanelTabs.gd" id="1_txi6o"]
 [ext_resource type="PackedScene" uid="uid://5uq7pgxmnqrh" path="res://scenes/right_panel/tabs/shop/Shop.tscn" id="2_sx3cv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ga76c"]
+bg_color = Color(0.18120003, 0.18120006, 0.18119991, 1)
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_ig7tw"]
 
@@ -10,10 +13,10 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 387.0
-offset_bottom = 647.0
+offset_left = -324.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ga76c")
 script = ExtResource("1_txi6o")
 shop_button = NodePath("TabsVBoxContainer/TabsContainer/ShopButton")
 stats_button = NodePath("TabsVBoxContainer/TabsContainer/StatsButton")

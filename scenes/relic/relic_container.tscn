@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://vq84ampu1n1v"]
+
+[ext_resource type="Script" uid="uid://deg2x7ib23u0u" path="res://scenes/relic/RelicDisplay.gd" id="1_4kypy"]
+
+[node name="RelicHBoxContainer" type="HBoxContainer"]
+offset_bottom = 648.0
+size_flags_vertical = 0
+mouse_filter = 2
+script = ExtResource("1_4kypy")

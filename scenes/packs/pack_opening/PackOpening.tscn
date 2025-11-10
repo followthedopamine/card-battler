@@ -1,13 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://dnvmslc0lunfw"]
 
 [ext_resource type="Script" uid="uid://bo16smw5m0b5w" path="res://scenes/packs/pack_opening/scripts/PackOpening.gd" id="1_i2mxl"]
-[ext_resource type="PackedScene" uid="uid://bnbjytwf244cb" path="res://scenes/cards/placeholder_1/placeholder_1.tscn" id="2_lfroc"]
 [ext_resource type="Resource" uid="uid://dcd3tbx2gontl" path="res://scenes/cards/resources/CardData.tres" id="2_ry3jv"]
+[ext_resource type="PackedScene" uid="uid://dxrk3ym1qbjt8" path="res://scenes/card/Card.tscn" id="3_hnckt"]
 
 [node name="PackOpeningPanelContainer" type="Panel" node_paths=PackedStringArray("skip_button", "card_area")]
 size_flags_vertical = 3
 script = ExtResource("1_i2mxl")
 card_data = ExtResource("2_ry3jv")
+card_scene = ExtResource("3_hnckt")
 skip_button = NodePath("VBoxContainer/SkipButton")
 card_area = NodePath("VBoxContainer/HBoxContainer")
 
@@ -30,13 +31,13 @@ theme_override_constants/separation = 50
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Placeholder1" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_lfroc")]
+[node name="Card" parent="VBoxContainer/HBoxContainer" instance=ExtResource("3_hnckt")]
 layout_mode = 2
 
-[node name="Placeholder2" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_lfroc")]
+[node name="Card2" parent="VBoxContainer/HBoxContainer" instance=ExtResource("3_hnckt")]
 layout_mode = 2
 
-[node name="Placeholder3" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_lfroc")]
+[node name="Card3" parent="VBoxContainer/HBoxContainer" instance=ExtResource("3_hnckt")]
 layout_mode = 2
 
 [node name="SkipButton" type="Button" parent="VBoxContainer"]

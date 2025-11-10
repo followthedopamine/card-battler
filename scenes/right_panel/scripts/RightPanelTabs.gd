@@ -5,7 +5,7 @@ class_name RightPanelTabs
 @export var stats_button: Button
 @export var settings_button: Button
 
-@export var shop_tab: VBoxContainer
+@export var shop_tab: Control
 @export var stats_tab: VBoxContainer
 @export var settings_tab: VBoxContainer
 
