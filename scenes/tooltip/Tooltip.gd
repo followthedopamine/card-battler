@@ -16,11 +16,35 @@ func _init(tooltip_text: String, attached_node: Control) -> void:
 	node.mouse_exited.connect(_on_mouse_exited)
 	
 func _on_mouse_enter() -> void:
-	tooltip = TooltipCanvas.display_tooltip(text)
+	var updated_text = update_tooltip_variables(text)
+	tooltip = TooltipCanvas.display_tooltip(updated_text)
 	position_tooltip()
 	
 func _on_mouse_exited() -> void:
 	TooltipCanvas.hide_tooltip(tooltip)
+	
+func update_tooltip_variables(text_with_variables: String) -> String:
+	var re = RegEx.new()
+	re.compile("%([^%]+)%")
+	var matches = re.search_all(text_with_variables)
+	if matches.size() == 0:
+		return text
+	var last_index = 0
+	var replaced_text: String = ""
+	for variable in matches:
+		var start := variable.get_start()
+		var end := variable.get_end()
+		var variable_string = variable.get_string()
+		variable_string = variable_string.lstrip('%')
+		variable_string = variable_string.rstrip('%')
+		replaced_text += text_with_variables.substr(last_index, start - last_index)
+		if variable_string in node:
+			replaced_text += str(node.get(variable_string))
+		else:
+			print("Tried to include a variable in tooltip that doesn't exist on node %s" % node)
+		last_index = end
+	replaced_text += text_with_variables.substr(last_index, text_with_variables.length() - last_index)
+	return replaced_text
 	
 func position_tooltip() -> void:
 	var x = node.get_rect().size.x + node.global_position.x
