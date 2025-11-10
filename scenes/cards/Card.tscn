@@ -57,7 +57,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_5xgwh")
 
 [node name="SwitchInterface" type="TextureRect" parent="."]
 visible = false
-z_index = 50
+z_index = 101
 layout_mode = 0
 offset_left = 42.0
 offset_top = -2.0

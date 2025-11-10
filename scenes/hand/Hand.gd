@@ -17,7 +17,7 @@ func _ready() -> void:
 
 	start_round()
 	
-func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
+func _can_drop_data(_at_position: Vector2, _data: Variant) -> bool:
 	return !PlayerManager.hand_size == PlayerManager.max_hand_size
 	
 # Hand needs drop data as well as Card since you want to be able to drop 
