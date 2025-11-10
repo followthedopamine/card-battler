@@ -4,9 +4,6 @@ extends Node2D
 signal currency_changed
 signal pack_opened
 
-# Timer signal
-signal game_tick
-
 # Draggable signals
 signal card_controller_picked_up(card_controller: CardController)
 signal card_controller_hovered(card_controller: CardController)
@@ -18,3 +15,15 @@ signal card_chosen(card: Card)
 
 # Relic signals
 signal relic_added(relic: Relic)
+
+signal card_played_target_enemy(card_effect: Dictionary)
+signal card_played_target_player(card_effect: Dictionary)
+signal card_played_target_shop(card_effect: Dictionary)
+
+# PlayPanel signals
+signal wave_start(wave: int)
+signal enemy_attack(damage: float)
+signal enemy_dead(payout: int)
+signal player_max_health(new_value: int)
+signal player_health_change(new_value: int)
+

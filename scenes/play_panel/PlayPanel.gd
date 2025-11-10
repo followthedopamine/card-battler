@@ -1,10 +1,13 @@
 extends PanelContainer
 
-@export var ray_count = 5
+var wave = 0
 
-func _ready() -> void:
-	SignalBus.game_tick.connect(_on_game_tick)
+func get_wave():
+	return wave
 
+func _setup_wave():
+	wave += 1
+	SignalBus.wave_start.emit(wave)
 
-func _on_game_tick(current_tick):
-	print("current_tick:", current_tick)
+func __ready():
+	_setup_wave()
