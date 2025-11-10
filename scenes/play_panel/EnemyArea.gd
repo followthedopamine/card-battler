@@ -39,7 +39,7 @@ func _setup_cells():
 		for col in range(enemy_grid_cols):
 			var current_cell_scene = enemy_cell_scene.instantiate()
 			current_cell_scene.set_grid_pos(Vector2(row, col))
-			current_cell_scene.z_index = 200
+			current_cell_scene.z_index = 0
 			
 			add_child(current_cell_scene)
 			enemy_node_grid[row].push_back(current_cell_scene)

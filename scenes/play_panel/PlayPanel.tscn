@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b653dafp8uotu"]
+[gd_scene load_steps=13 format=3 uid="uid://b653dafp8uotu"]
 
 [ext_resource type="Script" uid="uid://cmkv7da2ilckk" path="res://scenes/play_panel/PlayPanel.gd" id="1_jgck7"]
 [ext_resource type="PackedScene" uid="uid://dnvmslc0lunfw" path="res://scenes/packs/pack_opening/PackOpening.tscn" id="1_x324g"]
@@ -10,9 +10,6 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fi6o"]
 bg_color = Color(1, 1, 1, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgck7"]
-bg_color = Color(0.20033002, 0.20033002, 0.20032999, 0.45490196)
 
 [sub_resource type="Gradient" id="Gradient_1tnxq"]
 offsets = PackedFloat32Array(0, 0.4642857, 1)
@@ -32,6 +29,7 @@ fill = 1
 fill_from = Vector2(0.48125, 0.521875)
 
 [node name="PlayPanel" type="PanelContainer"]
+clip_contents = true
 anchors_preset = -1
 anchor_left = 0.002
 anchor_right = 0.002
@@ -44,9 +42,14 @@ size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_1fi6o")
 script = ExtResource("1_jgck7")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="PackOpeningPanelContainer" parent="." instance=ExtResource("1_x324g")]
+visible = false
+z_index = 2
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jgck7")
+
+[node name="Panel" type="Control" parent="."]
+layout_mode = 2
+mouse_filter = 2
 
 [node name="BackgroundBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
@@ -55,6 +58,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 metadata/_edit_use_anchors_ = true
 
@@ -62,12 +66,14 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 texture = SubResource("GradientTexture2D_uajrv")
 
 [node name="Bottom" type="TextureRect" parent="Panel/BackgroundBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 texture = SubResource("GradientTexture2D_d1k2x")
 
 [node name="GridContainer" type="Control" parent="Panel"]
@@ -77,6 +83,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayAreaGrid" type="Sprite2D" parent="Panel/GridContainer"]
@@ -90,20 +97,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Control" type="Control" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="BattleAreaContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerArea" type="Control" parent="Panel/VBoxContainer/BattleAreaContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
+mouse_filter = 2
 script = ExtResource("3_gws28")
 
 [node name="Player" parent="Panel/VBoxContainer/BattleAreaContainer/PlayerArea" instance=ExtResource("4_gcqk6")]
@@ -111,14 +122,8 @@ script = ExtResource("3_gws28")
 [node name="EnemyArea" type="Control" parent="Panel/VBoxContainer/BattleAreaContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 script = ExtResource("4_mo54i")
-
-[node name="PackOpeningPanelContainer" parent="Panel" instance=ExtResource("1_x324g")]
-visible = false
-z_index = 10
-layout_mode = 0
-offset_right = 833.0
-offset_bottom = 404.0
 
 [node name="PlayerHealthBar" parent="Panel" instance=ExtResource("7_gcqk6")]
 layout_mode = 1
@@ -133,4 +138,5 @@ offset_right = -0.20602417
 offset_bottom = 0.10400009
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
