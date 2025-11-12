@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsgc6i8225s8e"]
+
+[ext_resource type="Script" uid="uid://bthm086bp4wy2" path="res://scenes/cards/004_money/004Money.gd" id="1_xg368"]
+[ext_resource type="Texture2D" uid="uid://fq2hvr681ovf" path="res://scenes/right_panel/tabs/shop/shop_slot/images/placeholder_card_4.png" id="2_4gsnr"]
+
+[node name="004Money" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_xg368")
+card_name = "Money"
+sprite_texture = ExtResource("2_4gsnr")
+tooltips = Array[String](["Add %modified_currency% gold"])
+duration = 2.5
+metadata/_custom_type_script = "uid://c531eyaws05rr"

@@ -1,1 +1,0 @@
-class_name Placeholder extends TextureRect

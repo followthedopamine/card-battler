@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://4nmhmcvfrdn3"]
+
+[ext_resource type="Script" uid="uid://cgkyct6hbfte1" path="res://scenes/relic/relic_components/RelicComponents.gd" id="1_dffkk"]
+[ext_resource type="Texture2D" uid="uid://d68dtnn7maij" path="res://scenes/right_panel/tabs/shop/shop_slot/images/placeholder_card_3.png" id="1_kfsi6"]
+
+[node name="RelicComponents" type="MarginContainer" node_paths=PackedStringArray("texture_rect", "label")]
+offset_right = 100.0
+offset_bottom = 100.0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("1_dffkk")
+texture_rect = NodePath("TextureRect")
+label = NodePath("RichTextLabel")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_kfsi6")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Money Relic"
+fit_content = true

@@ -1,10 +1,12 @@
-extends VBoxContainer
+extends MarginContainer
 class_name Shop
 
 const REROLL_PRICE: int = 5
 
 @export var shop_slots: Array[ShopSlot]
 @export var shop_reroll_button: Button
+@export var shopping_area_vbox: VBoxContainer
+@export var sell_panel: Panel
 	
 func _ready() -> void:
 	shop_reroll_button.pressed.connect(_on_shop_reroll_button_pressed)
