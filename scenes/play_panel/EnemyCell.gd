@@ -32,10 +32,11 @@ func spawn_enemy():
 		has_enemy = true
 		parent.add_cell_to_target_grid(grid_pos)
 
-func process_card_effects(card: Dictionary):
+func process_card_effects(card: CardEffect):
 	if has_enemy && is_instance_valid(enemy_scene):
-		if card["damage"]:
-			enemy_scene.take_damage(card["damage"])
+
+		if card.damage:
+			enemy_scene.take_damage(card.damage)
 		
 
 ## So the enemy can report that it has been removed/defeated/whatever

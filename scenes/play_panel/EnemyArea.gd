@@ -66,12 +66,14 @@ func _position_cells():
 		if (child.is_in_group("EnemyCell")):
 			_position_cell(child, child.get_grid_pos(), h_offset, vertical_slice)
 
-func _get_front_target():
-	var col_index = 0
+func _get_first_col_target(backwards = false):
+	var col_index = (enemy_grid_rows - 1) if backwards else 0
+	var col_shift = -1 if backwards else 1
+	
 	for column in enemy_target_grid:
 		if !column.is_empty():
 			return enemy_node_grid[column.keys()[randi() % column.size()]][col_index]
-		col_index += 1
+		col_index += col_shift
 	
 	return false
 
@@ -79,13 +81,16 @@ func _on_resized():
 	_position_cells()
 
 # TODO: Make this use a card as a resource
-func _on_card_played(card: Dictionary):
-	match card["target"]:
-		"front":
-			var target = _get_front_target()
+func _on_card_played(card: CardEffect):
+	match card.enemy_target:
+		CardEffect.GridTarget.FRONT:
+			var target = _get_first_col_target()
 			if (target):
 				target.process_card_effects(card)
-
+		CardEffect.GridTarget.BACK:
+			var target = _get_first_col_target(true)
+			if (target):
+				target.process_card_effects(card)
 func _ready() -> void:
 	self.connect("resized", _on_resized)
 	SignalBus.card_played_target_enemy.connect(_on_card_played)

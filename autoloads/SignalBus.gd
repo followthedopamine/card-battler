@@ -16,9 +16,6 @@ signal card_chosen(card: Card)
 # Relic signals
 signal relic_added(relic: Relic)
 
-signal card_played_target_enemy(card_effect: Dictionary)
-signal card_played_target_player(card_effect: Dictionary)
-signal card_played_target_shop(card_effect: Dictionary)
 
 # PlayPanel signals
 signal wave_start(wave: int)
@@ -27,3 +24,6 @@ signal enemy_dead(payout: int)
 signal player_max_health(new_value: int)
 signal player_health_change(new_value: int)
 
+signal card_played_target_enemy(card_effect: Dictionary)
+signal card_played_target_player(card_effect: Dictionary)
+signal card_played_target_shop(card_effect: Dictionary)

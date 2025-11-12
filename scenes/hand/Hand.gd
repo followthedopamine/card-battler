@@ -1,7 +1,7 @@
 class_name Hand extends HBoxContainer
 
 
-@export var card_scene : PackedScene
+@export var card_data : CardData
 
 var cards: Array[Card]
 
@@ -9,11 +9,7 @@ func _ready() -> void:
 	#SignalBus.card_discarded.connect(_on_card_discarded)
 	
 	for i in range(PlayerManager.hand_size):
-		var new_card = card_scene.instantiate()
-		new_card.set_colour(i)
-
-		if not draw(new_card):
-			new_card.queue_free()
+		draw_random()
 
 	start_round()
 	
@@ -47,10 +43,11 @@ func start_round():
 		if child is Card:
 			cards.append(child)
 
-	cards[0].activate()
+	if (cards.size()):
+		cards[0].activate()
 
 func draw_random() -> void:
-	var new_card = card_scene.instantiate()
+	var new_card = card_data.cards[randi() % card_data.cards.size()].instantiate()
 	new_card.set_colour(randi())
 
 	if not draw(new_card):
