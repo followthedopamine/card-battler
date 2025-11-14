@@ -37,6 +37,12 @@ func process_card_effects(card: CardEffect):
 
 		if card.damage:
 			enemy_scene.take_damage(card.damage)
+			
+		if card.poison:
+			var status: Status = Status.new()
+			status.effect = Status.Type.BURN
+			status.stacks = card.poison
+			SignalBus.status_updated.emit(status, enemy_scene)
 		
 
 ## So the enemy can report that it has been removed/defeated/whatever

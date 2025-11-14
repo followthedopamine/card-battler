@@ -91,6 +91,9 @@ func _on_card_played(card: CardEffect):
 			var target = _get_first_col_target(true)
 			if (target):
 				target.process_card_effects(card)
+				
+
+	
 func _ready() -> void:
 	self.connect("resized", _on_resized)
 	SignalBus.card_played_target_enemy.connect(_on_card_played)

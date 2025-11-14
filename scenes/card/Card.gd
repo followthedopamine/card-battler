@@ -57,6 +57,7 @@ func _process(delta: float) -> void:
 		timer_spinner.rotation += delta * 10
 
 func _on_timer_timeout() -> void:
+	activate_card_effect()
 	deactivate()
 
 func set_colour(index: int):
@@ -66,7 +67,12 @@ func change_colour(new_colour: Color) -> void:
 	var new_style: StyleBoxFlat = panel.get_theme_stylebox("panel").duplicate()
 	new_style.bg_color = new_colour
 	panel.add_theme_stylebox_override("panel", new_style)
-
+	
+func activate_card_effect() -> void:
+	if is_instance_valid(card_effect):
+		card_effect.run_effects()
+	else:
+		push_error("ERROR: This should not be reachable. In card_name:", card_name, " | ", name)
 
 func activate():
 	timer.start(duration)
@@ -79,10 +85,7 @@ func activate():
 	timer_label.show()
 	timer_spinner.show()
 
-	if is_instance_valid(card_effect):
-		card_effect.run_effects()
-	else:
-		push_error("ERROR: This should not be reachable. In card_name:", card_name, " | ", name)
+	
 
 	activated = true
 

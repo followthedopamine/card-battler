@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://cp7g4rfx2pn4x"]
+
+[ext_resource type="Texture2D" uid="uid://bxgl2e0chtrcw" path="res://assets/icons/Burn.png" id="1_5s64q"]
+[ext_resource type="Script" uid="uid://cm173mr2lia7o" path="res://scenes/status/StatusIcon.gd" id="2_4ba4j"]
+[ext_resource type="FontFile" uid="uid://bkxalv1wd3tsm" path="res://assets/fonts/Vaticanus-G3yVG.ttf" id="2_jmifg"]
+
+[node name="StatusIconTextureRect" type="TextureRect" node_paths=PackedStringArray("label")]
+texture = ExtResource("1_5s64q")
+expand_mode = 2
+stretch_mode = 4
+script = ExtResource("2_4ba4j")
+label = NodePath("StatusLabel")
+
+[node name="StatusLabel" type="RichTextLabel" parent="."]
+texture_filter = 1
+clip_contents = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -6.0
+offset_bottom = 2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_fonts/normal_font = ExtResource("2_jmifg")
+theme_override_font_sizes/normal_font_size = 18
+text = "1"
+fit_content = true
+autowrap_mode = 0
