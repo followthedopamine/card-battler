@@ -8,7 +8,7 @@ var time_elapsed := 0.0
 
 var parent_size = Vector2.ZERO
 
-@onready var parent: Control = get_node("..")
+@onready var parent: Control = get_parent()
 
 func resize():
 	if is_instance_valid(parent):
