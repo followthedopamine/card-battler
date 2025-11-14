@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://l0noipjhw55u"]
+[gd_scene load_steps=6 format=3 uid="uid://l0noipjhw55u"]
 
 [ext_resource type="Script" uid="uid://d2xj3gwx8422e" path="res://scenes/play_panel/enemies/Enemy2.gd" id="1_7dr45"]
 [ext_resource type="Texture2D" uid="uid://fc4qmy08eldp" path="res://assets/background/guy1.png" id="2_7dr45"]
+[ext_resource type="PackedScene" uid="uid://co2mq4qr6rara" path="res://scenes/status/StatusBar.tscn" id="4_cqjum"]
 [ext_resource type="PackedScene" uid="uid://vg0ltwj23njc" path="res://scenes/play_panel/HealthBar.tscn" id="4_cuy5x"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_76ifo"]
@@ -41,3 +42,6 @@ offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="StatusBarHBoxContainer" parent="." instance=ExtResource("4_cqjum")]
+layout_mode = 0
