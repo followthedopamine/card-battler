@@ -20,6 +20,7 @@ enum GridTargetType { NONE, SINGLE, AOE, ALL }
 @export var poison: int
 @export var bleed: int
 @export var stun: int
+@export var burn: int
 
 # PLAYER DEFENSIVE
 @export var shield: float

@@ -21,6 +21,14 @@ PlayerManager="*res://autoloads/PlayerManager.gd"
 SignalBus="*res://autoloads/SignalBus.gd"
 TooltipCanvas="*res://scenes/tooltip/TooltipCanvas.tscn"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
+[display]
+
+window/stretch/mode="viewport"
+
 [global_group]
 
 GlobalTimer=""
