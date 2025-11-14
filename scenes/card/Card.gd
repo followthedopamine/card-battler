@@ -12,11 +12,10 @@ const PIVOT_POINT: Vector2 = Vector2(73.0, 22.0)
 @export var tooltips: Array[String] = []
 
 @export var price: int = 5
+@export var card_effect: CardEffect
 
 @export_range(0.0, 5.0) var duration := 2.0
 var time_remaining := duration
-
-
 
 # Draggable dependant on this existing
 var activated := false
@@ -58,7 +57,6 @@ func _process(delta: float) -> void:
 		timer_spinner.rotation += delta * 10
 
 func _on_timer_timeout() -> void:
-	activate_effect()
 	deactivate()
 
 func set_colour(index: int):
@@ -69,9 +67,6 @@ func change_colour(new_colour: Color) -> void:
 	new_style.bg_color = new_colour
 	panel.add_theme_stylebox_override("panel", new_style)
 
-# Replace this function in card extensions
-func activate_effect() -> void:
-	pass
 
 func activate():
 	timer.start(duration)
@@ -79,11 +74,15 @@ func activate():
 	panel.position.y = -10
 	change_colour(DISABLED_COLOUR)
 	
-	
 	time_remaining = duration
 
 	timer_label.show()
 	timer_spinner.show()
+
+	if is_instance_valid(card_effect):
+		card_effect.run_effects()
+	else:
+		push_error("ERROR: This should not be reachable. In card_name:", card_name, " | ", name)
 
 	activated = true
 
@@ -101,3 +100,8 @@ func deactivate():
 	# with the visuals.
 	activated = false
 	completed.emit(self)
+
+## An exposed version of the equivalent function from the attached card effect
+## So we can access this directly on individual cards more easily
+func add_on_play_callable(callable: Callable):
+	card_effect.add_on_play_callable(callable)

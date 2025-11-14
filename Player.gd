@@ -39,7 +39,7 @@ func _on_enemy_attack(damage: float):
 	health -= damage
 	SignalBus.player_health_change.emit(health)
 
-func _on_attack_card_played(_card: Dictionary):
+func _on_attack_card_played(_card: Resource):
 	is_attacking = true
 
 func _ready() -> void:

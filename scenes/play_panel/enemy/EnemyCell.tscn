@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dhob5ogrrk0n8"]
 
-[ext_resource type="Script" uid="uid://8jw7gx8o6bhk" path="res://scenes/play_panel/EnemyCell.gd" id="1_wpgf4"]
+[ext_resource type="Script" uid="uid://8jw7gx8o6bhk" path="res://scenes/play_panel/enemy/EnemyCell.gd" id="1_wpgf4"]
 
 [node name="EnemyCell" type="Control" groups=["EnemyCell"]]
 layout_mode = 3

@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjq04um7xfdx1"]
+[gd_scene load_steps=5 format=3 uid="uid://bjq04um7xfdx1"]
 
 [ext_resource type="Script" uid="uid://dj7rwicwlmnf7" path="res://scenes/hand/Hand.gd" id="1_ou7ip"]
-[ext_resource type="PackedScene" uid="uid://dxrk3ym1qbjt8" path="res://scenes/card/Card.tscn" id="2_0nsk7"]
+[ext_resource type="Script" uid="uid://dpjqhxy4qigbr" path="res://scenes/card/CardData.gd" id="2_0nsk7"]
+[ext_resource type="PackedScene" uid="uid://4ex7gtlfrwxg" path="res://scenes/cards/001_strike/001Strike.tscn" id="2_e07u2"]
+
+[sub_resource type="Resource" id="Resource_8vxba"]
+script = ExtResource("2_0nsk7")
+cards = Array[PackedScene]([ExtResource("2_e07u2")])
+metadata/_custom_type_script = "uid://dpjqhxy4qigbr"
 
 [node name="Hand" type="HBoxContainer"]
 size_flags_horizontal = 3
 script = ExtResource("1_ou7ip")
-card_scene = ExtResource("2_0nsk7")
+card_data = SubResource("Resource_8vxba")

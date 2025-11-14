@@ -27,6 +27,7 @@ GlobalTimer=""
 Enemy=""
 EnemyCell=""
 Player=""
+EnemyArea=""
 
 [input]
 
