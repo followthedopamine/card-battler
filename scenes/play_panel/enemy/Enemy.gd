@@ -1,13 +1,16 @@
-extends Control
+class_name Enemy extends Control
+
+@export var spawn_value = 1
 
 ## What wave this enemy starts spawning on
 @export var first_available_wave = 1
 
 @export var damage: float = 0.5
 @export var attack_speed: float = 1.5
+@export var max_health: int = 100
+@export var spawn_columns: Array[int] = [0, 1, 2, 3]
 
-var max_health = 100
-var health = max_health
+var health = float(max_health)
 
 # Statuses
 var poison = 0
@@ -24,13 +27,13 @@ var is_attacking := false
 var attack_elapsed := 0.0
 var attack_direction := -1
 
-# Handling fdor displaying the healthbar after taking damage or mousing over
+# Handling for displaying the healthbar after taking damage or mousing over
 var show_mouse_over_health_bar := false
 var show_damage_taken_health_bar := false
 var damage_taken_health_bar_duration := 1
 var damage_taken_health_bar_elapsed := 0.0
 
-@onready var health_bar: ProgressBar = $HealthBar
+@onready var health_bar: HealthBar = $HealthBar
 @onready var sprite: AnimatedSprite2D  = $Sprite
 @onready var parent = get_parent()
 
@@ -40,7 +43,7 @@ func attack():
 	SignalBus.enemy_attack.emit(damage)
 	is_attacking = true
 
-func take_damage(damage_taken: int):
+func take_damage(damage_taken: float):
 	health -= damage_taken
 	health_bar.set_health(health)
 	health_bar.visible = true
@@ -105,8 +108,17 @@ func _on_mouse_exited():
 	show_mouse_over_health_bar = false
 
 func _ready() -> void:
-	size = get_sprite_size()
-	position -= size / 2
+	health = max_health
+
+	var sprite_size = get_sprite_size()
+	var parent_size = get_parent().size
+	size = sprite_size
+	position = (parent_size * 0.5) - (size * 0.5)
+	
+	# TODO: .25 kinda works but I can't see why it doesn't position based on half the sprite's size
+	position.y -= sprite_size.y * 0.25
+
+	sprite.centered = false
 
 	_setup_health_bar()
 

@@ -21,9 +21,15 @@ signal relic_added(relic: Relic)
 
 
 # PlayPanel signals
+signal enemy_area_setup()
+
+signal enemies_cleared()
 signal wave_start(wave: int)
+signal wave_end(wave: int)
+
 signal enemy_attack(damage: float)
 signal enemy_dead(payout: int)
+
 signal player_max_health(new_value: int)
 signal player_health_change(new_value: int)
 

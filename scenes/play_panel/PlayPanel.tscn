@@ -1,12 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://b653dafp8uotu"]
+[gd_scene load_steps=14 format=3 uid="uid://b653dafp8uotu"]
 
 [ext_resource type="Script" uid="uid://cmkv7da2ilckk" path="res://scenes/play_panel/PlayPanel.gd" id="1_jgck7"]
 [ext_resource type="PackedScene" uid="uid://dnvmslc0lunfw" path="res://scenes/packs/pack_opening/PackOpening.tscn" id="1_x324g"]
 [ext_resource type="Script" uid="uid://cksar47hwhptl" path="res://scenes/play_panel/PlayerArea.gd" id="3_gws28"]
 [ext_resource type="PackedScene" uid="uid://c8i30mnsc2nrm" path="res://Player.tscn" id="4_gcqk6"]
-[ext_resource type="Script" uid="uid://crwmecg6ap1w2" path="res://scenes/play_panel/EnemyArea.gd" id="4_mo54i"]
+[ext_resource type="Script" uid="uid://crwmecg6ap1w2" path="res://scenes/play_panel/enemy/EnemyArea.gd" id="4_mo54i"]
 [ext_resource type="Script" uid="uid://bbka3kooxxw1r" path="res://scenes/play_panel/PlayAreaGrid.gd" id="4_uajrv"]
 [ext_resource type="PackedScene" uid="uid://b0us44ov8t56n" path="res://scenes/play_panel/PlayerHealthBar.tscn" id="7_gcqk6"]
+[ext_resource type="Script" uid="uid://cvc7yxckv48q7" path="res://scenes/play_panel/controllers/WaveController.gd" id="8_d7kxu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fi6o"]
 bg_color = Color(1, 1, 1, 0)
@@ -86,7 +87,7 @@ grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="PlayAreaGrid" type="Sprite2D" parent="Panel/GridContainer"]
+[node name="PlayAreaGrid" type="Sprite2D" parent="Panel/GridContainer" groups=["AreaGrid"]]
 position = Vector2(0, 202)
 script = ExtResource("4_uajrv")
 
@@ -119,7 +120,7 @@ script = ExtResource("3_gws28")
 
 [node name="Player" parent="Panel/VBoxContainer/BattleAreaContainer/PlayerArea" instance=ExtResource("4_gcqk6")]
 
-[node name="EnemyArea" type="Control" parent="Panel/VBoxContainer/BattleAreaContainer"]
+[node name="EnemyArea" type="Control" parent="Panel/VBoxContainer/BattleAreaContainer" groups=["EnemyArea"]]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
@@ -140,3 +141,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="WaveController" type="Node" parent="."]
+script = ExtResource("8_d7kxu")

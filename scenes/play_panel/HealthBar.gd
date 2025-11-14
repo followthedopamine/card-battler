@@ -1,4 +1,4 @@
-extends ProgressBar
+class_name HealthBar extends ProgressBar
 
 func set_max_health(health: int, refill_health = true):
 	max_value = health

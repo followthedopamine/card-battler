@@ -7,8 +7,8 @@
 [sub_resource type="Resource" id="Resource_w782d"]
 script = ExtResource("3_wtk4w")
 target = 1
-enemy_target = 1
-damage = 35.0
+enemy_target = 2
+damage = 10.0
 metadata/_custom_type_script = "uid://fuokg41g7d8s"
 
 [node name="001Strike" type="Control"]

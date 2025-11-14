@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://l0noipjhw55u"]
+
+[ext_resource type="Script" uid="uid://d2xj3gwx8422e" path="res://scenes/play_panel/enemies/Enemy2.gd" id="1_7dr45"]
+[ext_resource type="Texture2D" uid="uid://fc4qmy08eldp" path="res://assets/background/guy1.png" id="2_7dr45"]
+[ext_resource type="PackedScene" uid="uid://vg0ltwj23njc" path="res://scenes/play_panel/HealthBar.tscn" id="4_cuy5x"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_76ifo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7dr45")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="Control" groups=["Enemy"]]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1.0
+offset_bottom = 1.0
+script = ExtResource("1_7dr45")
+damage = 2.0
+attack_speed = 3.0
+max_health = 30
+spawn_columns = Array[int]([1, 2, 3])
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_76ifo")
+
+[node name="HealthBar" parent="." instance=ExtResource("4_cuy5x")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
