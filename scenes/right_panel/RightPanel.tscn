@@ -2,13 +2,18 @@
 
 [ext_resource type="Script" uid="uid://c2jjuqmtswytd" path="res://scenes/right_panel/scripts/RightPanelTabs.gd" id="1_txi6o"]
 [ext_resource type="PackedScene" uid="uid://5uq7pgxmnqrh" path="res://scenes/right_panel/tabs/shop/Shop.tscn" id="2_sx3cv"]
+[ext_resource type="Texture2D" uid="uid://ct3ldblws35n6" path="res://assets/background/bg3.png" id="2_uy1pl"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ga76c"]
-bg_color = Color(0.18120003, 0.18120006, 0.18119991, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4n3ih"]
+content_margin_left = 12.0
+content_margin_top = 16.0
+content_margin_right = 12.0
+content_margin_bottom = 16.0
+texture = ExtResource("2_uy1pl")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_ig7tw"]
-
-[node name="RightPanelContainer" type="PanelContainer" node_paths=PackedStringArray("shop_button", "stats_button", "settings_button", "shop_tab", "stats_tab", "settings_tab")]
+[node name="RightPanelContainer" type="MarginContainer" node_paths=PackedStringArray("shop_button", "stats_button", "settings_button", "shop_tab", "stats_tab", "settings_tab")]
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
@@ -16,46 +21,51 @@ anchor_bottom = 1.0
 offset_left = -324.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ga76c")
 script = ExtResource("1_txi6o")
-shop_button = NodePath("TabsVBoxContainer/TabsContainer/ShopButton")
-stats_button = NodePath("TabsVBoxContainer/TabsContainer/StatsButton")
-settings_button = NodePath("TabsVBoxContainer/TabsContainer/SettingsButton")
-shop_tab = NodePath("TabsVBoxContainer/ShopVBoxContainer")
+shop_button = NodePath("TabsMarginContainer/TabsContainer/ShopButton")
+stats_button = NodePath("TabsMarginContainer/TabsContainer/AscensionButton")
+settings_button = NodePath("TabsMarginContainer/TabsContainer/SettingsButton")
+shop_tab = NodePath("ShopVBoxContainer")
 stats_tab = NodePath("TabsVBoxContainer/StatsVBoxContainer")
 settings_tab = NodePath("TabsVBoxContainer/SettingsVBoxContainer")
 
-[node name="TabsVBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
-
-[node name="TabsContainer" type="HBoxContainer" parent="TabsVBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="ShopButton" type="Button" parent="TabsVBoxContainer/TabsContainer"]
+[node name="TabsMarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
-toggle_mode = true
-button_pressed = true
-button_group = SubResource("ButtonGroup_ig7tw")
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 8
+
+[node name="TabsContainer" type="HBoxContainer" parent="TabsMarginContainer"]
+layout_mode = 2
+
+[node name="ShopButton" type="Button" parent="TabsMarginContainer/TabsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_4n3ih")
 text = "Shop"
 
-[node name="StatsButton" type="Button" parent="TabsVBoxContainer/TabsContainer"]
+[node name="AscensionButton" type="Button" parent="TabsMarginContainer/TabsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-toggle_mode = true
-button_group = SubResource("ButtonGroup_ig7tw")
-text = "Stats
-"
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_4n3ih")
+text = "Ascension"
 
-[node name="SettingsButton" type="Button" parent="TabsVBoxContainer/TabsContainer"]
+[node name="SettingsButton" type="Button" parent="TabsMarginContainer/TabsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-toggle_mode = true
-button_group = SubResource("ButtonGroup_ig7tw")
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_4n3ih")
 text = "Settings"
 
-[node name="ShopVBoxContainer" parent="TabsVBoxContainer" instance=ExtResource("2_sx3cv")]
+[node name="ShopVBoxContainer" parent="." instance=ExtResource("2_sx3cv")]
+layout_mode = 2
+
+[node name="TabsVBoxContainer" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 2
 
 [node name="StatsVBoxContainer" type="VBoxContainer" parent="TabsVBoxContainer"]

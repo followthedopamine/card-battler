@@ -1,22 +1,22 @@
 extends Sprite2D
 
-@export var vertical_lines = 15
-@export var speed = 24
+@export var vertical_lines = 17
+@export var speed = 0
 
 var horizontal_lines = 6
-
 var time_elapsed := 0.0
 
-@onready var parent: Control = get_node("..")
+var parent_size = Vector2.ZERO
+
+@onready var parent: Control = get_parent()
 
 func resize():
 	if is_instance_valid(parent):
 		set_region_rect(Rect2(parent.global_position, parent.size))
 		global_position = parent.global_position
 
-
-func _on_grid_container_resized():
-	resize()
+func get_lines():
+	return Vector2(vertical_lines, horizontal_lines)
 
 func _draw():
 	var line_top = region_rect.size.y * 0.5
@@ -47,11 +47,15 @@ func _draw():
 
 func _ready() -> void:
 	resize()
-	print(self.get_path())
-
 
 func _process(_delta: float) -> void:
 	time_elapsed += _delta
 
-	if (speed):
+	# Resize is handled here instead of with the signal as the signal seems 
+	# to miss some forms of resizing (eg. toggling full screen)
+	if parent.size != parent_size:
+		parent_size = parent.size
+		resize()
+		queue_redraw()
+	elif (speed):
 		queue_redraw()

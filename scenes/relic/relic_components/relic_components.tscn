@@ -18,6 +18,7 @@ label = NodePath("RichTextLabel")
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
 texture = ExtResource("1_kfsi6")
+expand_mode = 4
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 2

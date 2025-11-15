@@ -1,10 +1,34 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2fckbvtof2w3"]
+[gd_scene load_steps=11 format=3 uid="uid://d2fckbvtof2w3"]
 
 [ext_resource type="PackedScene" uid="uid://b653dafp8uotu" path="res://scenes/play_panel/PlayPanel.tscn" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://ddmjclkybk575" path="res://scenes/right_panel/RightPanel.tscn" id="1_ig7tw"]
-[ext_resource type="Script" uid="uid://dmlrayuv3piks" path="res://scenes/main.gd" id="1_sugp2"]
+[ext_resource type="Script" uid="uid://dmlrayuv3piks" path="res://scenes/Main.gd" id="1_sugp2"]
+[ext_resource type="Texture2D" uid="uid://dcyko20ma364k" path="res://assets/background/bg1_no_background.png" id="2_choun"]
 [ext_resource type="PackedScene" uid="uid://bjq04um7xfdx1" path="res://scenes/hand/Hand.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://vq84ampu1n1v" path="res://scenes/relic/relic_container.tscn" id="5_tbgi4"]
+
+[sub_resource type="Gradient" id="Gradient_trceg"]
+offsets = PackedFloat32Array(0, 0.26098192, 0.51937985, 0.81653744, 1)
+colors = PackedColorArray(0.5803922, 0.49411765, 0.72156864, 1, 0.5166072, 0.406724, 0.65208894, 1, 0.5759622, 0.48525774, 0.7159456, 1, 0.5176471, 0.40784314, 0.6509804, 1, 0.58118075, 0.49569485, 0.72190964, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yi37m"]
+gradient = SubResource("Gradient_trceg")
+fill_from = Vector2(0.24358974, 0)
+fill_to = Vector2(1, 0.7222222)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a8y0u"]
+texture = SubResource("GradientTexture2D_yi37m")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_85g3d"]
+content_margin_left = 77.0
+content_margin_top = 50.0
+content_margin_right = 49.0
+content_margin_bottom = 0.0
+texture = ExtResource("2_choun")
+texture_margin_left = 132.0
+texture_margin_top = 125.0
+texture_margin_right = 120.0
+texture_margin_bottom = 63.0
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -13,36 +37,52 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_sugp2")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="GradientBackgroundPanel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_a8y0u")
 
-[node name="GamePanelContainer" type="PanelContainer" parent="HBoxContainer"]
+[node name="MainHBoxContainer" type="HBoxContainer" parent="GradientBackgroundPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="GamePanelContainer" type="PanelContainer" parent="GradientBackgroundPanel/MainHBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_85g3d")
 
-[node name="GameVBoxContainer" type="VBoxContainer" parent="HBoxContainer/GamePanelContainer"]
+[node name="GameVBoxContainer" type="VBoxContainer" parent="GradientBackgroundPanel/MainHBoxContainer/GamePanelContainer"]
+show_behind_parent = true
+layout_mode = 2
+mouse_filter = 2
+
+[node name="PlayPanelContainer" parent="GradientBackgroundPanel/MainHBoxContainer/GamePanelContainer/GameVBoxContainer" instance=ExtResource("1_0xm2m")]
 layout_mode = 2
 
-[node name="PlayPanelContainer" parent="HBoxContainer/GamePanelContainer/GameVBoxContainer" instance=ExtResource("1_0xm2m")]
-layout_mode = 2
-
-[node name="CardPanelContainer" type="PanelContainer" parent="HBoxContainer/GamePanelContainer/GameVBoxContainer"]
+[node name="CardPanelContainer" type="PanelContainer" parent="GradientBackgroundPanel/MainHBoxContainer/GamePanelContainer/GameVBoxContainer"]
 custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 
-[node name="Hand" parent="HBoxContainer/GamePanelContainer/GameVBoxContainer/CardPanelContainer" instance=ExtResource("2_sugp2")]
+[node name="Hand" parent="GradientBackgroundPanel/MainHBoxContainer/GamePanelContainer/GameVBoxContainer/CardPanelContainer" instance=ExtResource("2_sugp2")]
 layout_mode = 2
 
-[node name="RightPanelContainer" parent="HBoxContainer" instance=ExtResource("1_ig7tw")]
-z_index = 1
+[node name="RightPanelContainer2" parent="GradientBackgroundPanel/MainHBoxContainer" instance=ExtResource("1_ig7tw")]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="RelicHBoxContainer" parent="." instance=ExtResource("5_tbgi4")]
 layout_mode = 0

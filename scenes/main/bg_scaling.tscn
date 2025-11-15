@@ -17,13 +17,13 @@
 offsets = PackedFloat32Array(0, 0.26098192, 0.51937985, 0.81653744, 1)
 colors = PackedColorArray(0.5803922, 0.49411765, 0.72156864, 1, 0.5166072, 0.406724, 0.65208894, 1, 0.5759622, 0.48525774, 0.7159456, 1, 0.5176471, 0.40784314, 0.6509804, 1, 0.58118075, 0.49569485, 0.72190964, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_yi37m"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ptj5m"]
 gradient = SubResource("Gradient_1pl5n")
 fill_from = Vector2(0.24358974, 0)
 fill_to = Vector2(1, 0.7222222)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mwp34"]
-texture = SubResource("GradientTexture2D_yi37m")
+texture = SubResource("GradientTexture2D_ptj5m")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1koi7"]
 texture = ExtResource("1_ltp6v")
@@ -147,41 +147,49 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_nsvoh")
 [node name="card_placeholders" type="Node" parent="."]
 
 [node name="PlaceholderCard2" type="Sprite2D" parent="card_placeholders"]
+visible = false
 position = Vector2(-138, 548)
 scale = Vector2(0.24, 0.23940237)
 texture = ExtResource("5_nq0mu")
 
 [node name="PlaceholderCard3" type="Sprite2D" parent="card_placeholders"]
+visible = false
 position = Vector2(-188.99997, 572.00006)
 scale = Vector2(0.24, 0.23940237)
 texture = ExtResource("5_nq0mu")
 
 [node name="PlaceholderCard6" type="Sprite2D" parent="card_placeholders"]
+visible = false
 position = Vector2(686.8, 687.49414)
 scale = Vector2(0.24, 0.23940237)
 texture = ExtResource("5_nq0mu")
 
 [node name="PlaceholderCard1" type="Sprite2D" parent="card_placeholders"]
+visible = false
 position = Vector2(155, 686)
 scale = Vector2(0.24, 0.24)
 texture = ExtResource("6_ptj5m")
 
 [node name="CardKnifeV2" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(288, 687.7124)
 scale = Vector2(0.24, 0.24)
 texture = ExtResource("7_f4fg4")
 
 [node name="CardShield" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(421, 687.71246)
 scale = Vector2(0.24, 0.24)
 texture = ExtResource("8_c4fme")
 
 [node name="CardEnergy" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(554.00006, 689.71747)
 scale = Vector2(0.24, 0.24)
 texture = ExtResource("9_r5kiy")
 
 [node name="HBoxContainer_main2" type="HBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -209,6 +217,7 @@ position = Vector2(505, 465.1583)
 texture = ExtResource("11_2mg74")
 
 [node name="Guy1" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(609, 472.17578)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("12_rhhs2")
