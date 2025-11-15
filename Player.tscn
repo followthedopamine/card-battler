@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8i30mnsc2nrm"]
+[gd_scene load_steps=7 format=3 uid="uid://c8i30mnsc2nrm"]
 
 [ext_resource type="Script" uid="uid://bubwwuv6nxkpf" path="res://Player.gd" id="1_kpjcp"]
 [ext_resource type="Texture2D" uid="uid://d00r8ttcrm6qt" path="res://assets/icon.svg" id="1_xhfnw"]
+[ext_resource type="Script" uid="uid://mjiv7q0gvno6" path="res://scenes/status/StatusHandler.gd" id="3_e80uo"]
+[ext_resource type="Script" uid="uid://d20if3istht6w" path="res://scenes/status/StatusBar.gd" id="4_cxr5p"]
+[ext_resource type="PackedScene" uid="uid://cp7g4rfx2pn4x" path="res://scenes/status/StatusIcon.tscn" id="5_cxr5p"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kpjcp"]
 animations = [{
@@ -14,9 +17,29 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="Node2D" groups=["Player"]]
+[node name="Player" type="Control" groups=["Player"]]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_kpjcp")
+max_health = 100.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_kpjcp")
+
+[node name="StatusBar" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_cxr5p")
+status_icon_scene = ExtResource("5_cxr5p")
+metadata/_custom_type_script = "uid://d20if3istht6w"
+
+[node name="StatusHandler" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -24.0
+offset_top = -22.0
+offset_right = 16.0
+offset_bottom = 18.0
+script = ExtResource("3_e80uo")
+metadata/_custom_type_script = "uid://mjiv7q0gvno6"

@@ -15,6 +15,7 @@ signal card_chosen(card: Card)
 
 # Status signals
 signal status_updated(status: Status, attached_node: Node)
+signal block_updated(blocking_entity: Node)
 
 # Relic signals
 signal relic_added(relic: Relic)
