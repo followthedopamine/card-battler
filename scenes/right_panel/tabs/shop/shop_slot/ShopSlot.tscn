@@ -4,9 +4,8 @@
 [ext_resource type="Resource" uid="uid://cpmmj5444k2ii" path="res://scenes/right_panel/tabs/shop/shop_slot/resources/ShopData.tres" id="2_teigl"]
 
 [node name="ShopSlot" type="MarginContainer" node_paths=PackedStringArray("buy_button", "slot_item")]
-custom_minimum_size = Vector2(140, 200)
-offset_right = 140.0
-offset_bottom = 200.0
+offset_right = 36.0
+offset_bottom = 129.0
 size_flags_horizontal = 6
 size_flags_vertical = 0
 script = ExtResource("1_hr8cm")
@@ -18,7 +17,8 @@ metadata/_custom_type_script = "uid://bxknk2n2fnfax"
 [node name="ShopSlotVBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="SlotItemControl" type="Control" parent="ShopSlotVBoxContainer"]
+[node name="SlotItemControl" type="MarginContainer" parent="ShopSlotVBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 3
 

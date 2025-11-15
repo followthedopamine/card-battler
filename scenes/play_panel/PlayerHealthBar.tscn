@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0us44ov8t56n"]
+
+[ext_resource type="PackedScene" uid="uid://vg0ltwj23njc" path="res://scenes/play_panel/HealthBar.tscn" id="1_73b5i"]
+[ext_resource type="Script" uid="uid://dis2iy16hkhey" path="res://scenes/play_panel/PlayerHealthBar.gd" id="1_g7rxj"]
+
+[node name="PlayerHealthBar" type="BoxContainer"]
+offset_right = 1.0
+offset_bottom = 1.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+script = ExtResource("1_g7rxj")
+
+[node name="HealthBar" parent="." instance=ExtResource("1_73b5i")]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
