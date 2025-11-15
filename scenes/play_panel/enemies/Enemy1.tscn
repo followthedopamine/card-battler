@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://df3fb05nmtmla" path="res://scenes/play_panel/enemies/Enemy1.gd" id="1_vnrdp"]
 [ext_resource type="Texture2D" uid="uid://d00r8ttcrm6qt" path="res://assets/icon.svg" id="2_athjy"]
 [ext_resource type="PackedScene" uid="uid://co2mq4qr6rara" path="res://scenes/status/StatusBar.tscn" id="2_g8cvr"]
-[ext_resource type="Texture2D" uid="uid://dd6k5ndxiqwyj" path="res://assets/background/guy2.png" id="3_g8cvr"]
+[ext_resource type="Texture2D" uid="uid://dd6k5ndxiqwyj" path="res://assets/enemies/guy2.png" id="3_g8cvr"]
 [ext_resource type="PackedScene" uid="uid://vg0ltwj23njc" path="res://scenes/play_panel/HealthBar.tscn" id="4_4s83s"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_76ifo"]

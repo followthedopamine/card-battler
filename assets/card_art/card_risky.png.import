@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd6k5ndxiqwyj"
-path="res://.godot/imported/guy2.png-7c45f9b7b02aeb8bc43d38ec19b92db5.ctex"
+uid="uid://xdquh0mss88a"
+path="res://.godot/imported/card_risky.png-f84f0b3fa9edc680ccb7e9a930724272.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background/guy2.png"
-dest_files=["res://.godot/imported/guy2.png-7c45f9b7b02aeb8bc43d38ec19b92db5.ctex"]
+source_file="res://assets/card_art/card_risky.png"
+dest_files=["res://.godot/imported/card_risky.png-f84f0b3fa9edc680ccb7e9a930724272.ctex"]
 
 [params]
 

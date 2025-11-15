@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwfkhd2nmqqw4"
-path="res://.godot/imported/holographic.png-6393756253216aad368cb93a2691d616.ctex"
+uid="uid://s8e5t3g55vyq"
+path="res://.godot/imported/card_heal.png-29b9f34edf0b872f394bf8bcd9058525.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background/holographic.png"
-dest_files=["res://.godot/imported/holographic.png-6393756253216aad368cb93a2691d616.ctex"]
+source_file="res://assets/card_art/card_heal.png"
+dest_files=["res://.godot/imported/card_heal.png-29b9f34edf0b872f394bf8bcd9058525.ctex"]
 
 [params]
 
