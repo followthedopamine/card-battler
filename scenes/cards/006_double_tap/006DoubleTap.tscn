@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxvbga236q1tu"]
+
+[ext_resource type="Script" uid="uid://c531eyaws05rr" path="res://scenes/card/Card.gd" id="1_e1rud"]
+
+[node name="006DoubleTap" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_e1rud")
+card_name = "Double Tap"
+tooltips = Array[String](["The next attack triggers twice"])
+metadata/_custom_type_script = "uid://c531eyaws05rr"

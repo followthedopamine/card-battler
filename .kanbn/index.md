@@ -9,13 +9,14 @@ completedColumns:
 
 ## Backlog
 
-- [potential-unwanted-behaviour-cards-can-be-shuffled-inside-the-pack](tasks/potential-unwanted-behaviour-cards-can-be-shuffled-inside-the-pack.md)
+- [display-tooltips-enlarged-cards-on-hover](tasks/display-tooltips-enlarged-cards-on-hover.md)
 
 ## Todo
 
-- [display-tooltips-enlarged-cards-on-hover](tasks/display-tooltips-enlarged-cards-on-hover.md)
 - [bug-sometimes-you-can-take-two-cards-from-a-pack](tasks/bug-sometimes-you-can-take-two-cards-from-a-pack.md)
 - [bug-tooltip-doesn-t-refresh-variables-instantly](tasks/bug-tooltip-doesn-t-refresh-variables-instantly.md)
+- [bug-you-can-add-more-cards-to-hand-than-max-hand-size](tasks/bug-you-can-add-more-cards-to-hand-than-max-hand-size.md)
+- [unfinished-status-effects-aren-t-removed-when-their-stacks-hit-0](tasks/unfinished-status-effects-aren-t-removed-when-their-stacks-hit-0.md)
 
 ## In Progress
 
@@ -23,6 +24,7 @@ completedColumns:
 
 ## Done
 
+- [potential-unwanted-behaviour-cards-can-be-shuffled-inside-the-pack](tasks/potential-unwanted-behaviour-cards-can-be-shuffled-inside-the-pack.md)
 - [bug-grid-lines-appear-over-background](tasks/bug-grid-lines-appear-over-background.md)
 - [bug-pack-screen-doesn-t-fit-window](tasks/bug-pack-screen-doesn-t-fit-window.md)
 - [bug-enemies-appear-on-top-of-pack-window](tasks/bug-enemies-appear-on-top-of-pack-window.md)

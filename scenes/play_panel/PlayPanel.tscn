@@ -119,6 +119,7 @@ mouse_filter = 2
 script = ExtResource("3_gws28")
 
 [node name="Player" parent="Panel/VBoxContainer/BattleAreaContainer/PlayerArea" instance=ExtResource("4_gcqk6")]
+layout_mode = 0
 
 [node name="EnemyArea" type="Control" parent="Panel/VBoxContainer/BattleAreaContainer" groups=["EnemyArea"]]
 layout_mode = 2

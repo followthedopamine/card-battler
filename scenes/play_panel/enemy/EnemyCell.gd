@@ -39,10 +39,16 @@ func process_card_effects(card: CardEffect):
 		if card.damage:
 			enemy_scene.take_damage(card.damage)
 			
-		if card.poison:
+		if card.burn:
 			var status: Status = Status.new()
 			status.effect = Status.Type.BURN
-			status.stacks = card.poison
+			status.stacks = card.burn
+			SignalBus.status_updated.emit(status, enemy_scene)
+			
+		if card.slow:
+			var status: Status = Status.new()
+			status.effect = Status.Type.SLOW
+			status.stacks = card.slow
 			SignalBus.status_updated.emit(status, enemy_scene)
 		
 
