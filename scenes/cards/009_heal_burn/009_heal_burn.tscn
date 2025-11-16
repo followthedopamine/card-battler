@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxm27rs2bjocj"]
+
+[ext_resource type="Script" uid="uid://c531eyaws05rr" path="res://scenes/card/Card.gd" id="1_ivvcq"]
+[ext_resource type="Texture2D" uid="uid://s8e5t3g55vyq" path="res://assets/background/card_art/card_heal.png" id="2_11yn4"]
+[ext_resource type="Script" uid="uid://fuokg41g7d8s" path="res://scenes/card/CardEffect.gd" id="3_id21h"]
+
+[sub_resource type="Resource" id="Resource_opmf2"]
+script = ExtResource("3_id21h")
+target = 2
+burn = 2
+heal = 10.0
+metadata/_custom_type_script = "uid://fuokg41g7d8s"
+
+[node name="009HealBurn" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ivvcq")
+card_name = "Heal burn"
+sprite_texture = ExtResource("2_11yn4")
+card_effect = SubResource("Resource_opmf2")
+metadata/_custom_type_script = "uid://c531eyaws05rr"

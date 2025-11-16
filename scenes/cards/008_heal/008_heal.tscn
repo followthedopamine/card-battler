@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://cof0e8y6csnqj"]
+
+[ext_resource type="Script" uid="uid://c531eyaws05rr" path="res://scenes/card/Card.gd" id="1_b6rto"]
+[ext_resource type="Texture2D" uid="uid://cl2wopsfyrecc" path="res://assets/background/card_art/card_poison.png" id="2_ihkii"]
+[ext_resource type="Script" uid="uid://fuokg41g7d8s" path="res://scenes/card/CardEffect.gd" id="3_6minq"]
+
+[sub_resource type="Resource" id="Resource_wqik0"]
+script = ExtResource("3_6minq")
+target = 2
+heal = 3.0
+metadata/_custom_type_script = "uid://fuokg41g7d8s"
+
+[node name="008Heal" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_b6rto")
+card_name = "Heal"
+sprite_texture = ExtResource("2_ihkii")
+card_effect = SubResource("Resource_wqik0")
+metadata/_custom_type_script = "uid://c531eyaws05rr"

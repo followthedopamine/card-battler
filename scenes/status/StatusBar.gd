@@ -22,6 +22,13 @@ func _on_block_updated(node: Node) -> void:
 		status.stacks = node.block
 		update_status_bar(status, true)
 		
+func _on_strength_updated(entity: Entity) -> void:
+	if entity == parent:
+		var status: Status = Status.new()
+		status.effect = Status.Type.STRENGTH
+		status.stacks = entity.strength
+		update_status_bar(status, true)
+		
 func _on_wave_end(_wave: int) -> void:
 	for child: StatusIcon in get_children():
 		child.queue_free()

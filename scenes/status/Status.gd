@@ -4,7 +4,8 @@ enum Type {
 	BURN,
 	SLOW,
 	BLOCK,
-	THORNS
+	THORNS,
+	STRENGTH
 }
 
 var effect: Type = Type.BURN

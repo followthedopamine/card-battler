@@ -5,6 +5,8 @@ class_name StatusIcon extends TextureRect
 @export var slow_texture: Texture
 @export var block_texture: Texture
 @export var thorns_texture: Texture
+@export var strength_texture: Texture
+
 
 var effect: Status.Type
 
@@ -28,3 +30,5 @@ func update_texture() -> void:
 			self.texture = block_texture
 		Status.Type.THORNS:
 			self.texture = thorns_texture
+		Status.Type.STRENGTH:
+			self.texture = strength_texture
