@@ -40,12 +40,12 @@ var damage_taken_health_bar_elapsed := 0.0
 @onready var attack_timer := Timer.new()
 
 func attack():
-	SignalBus.enemy_attack.emit(damage)
+	SignalBus.enemy_attack.emit(damage, self)
 	is_attacking = true
 
-func take_damage(damage_taken: float):
-	super(damage_taken)
-	health_bar.set_health(health)
+func take_damage(damage_taken: float, attacker: Entity = null):
+	super(damage_taken, attacker)
+	health_bar.set_health(int(health))
 	health_bar.visible = true
 
 	show_damage_taken_health_bar = true
@@ -85,7 +85,7 @@ func _process_attack_animation(delta: float):
 		attack_direction = -1
 
 func _setup_health_bar():
-	health_bar.set_max_health(max_health)
+	health_bar.set_max_health(int(max_health))
 
 	# Get the sprite sizes to base the healthbar's position off of
 	var sprite_size = get_sprite_size()
