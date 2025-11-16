@@ -6,7 +6,7 @@ class_name StatusIcon extends TextureRect
 @export var block_texture: Texture
 @export var thorns_texture: Texture
 @export var strength_texture: Texture
-
+@export var extra_attack_texture: Texture
 
 var effect: Status.Type
 
@@ -32,3 +32,5 @@ func update_texture() -> void:
 			self.texture = thorns_texture
 		Status.Type.STRENGTH:
 			self.texture = strength_texture
+		Status.Type.EXTRA_ATTACK:
+			self.texture = extra_attack_texture

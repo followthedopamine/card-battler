@@ -13,14 +13,14 @@ completedColumns:
 
 ## Todo
 
+- [bug-adding-cards-to-hand-changes-window-size](tasks/bug-adding-cards-to-hand-changes-window-size.md)
 - [bug-sometimes-you-can-take-two-cards-from-a-pack](tasks/bug-sometimes-you-can-take-two-cards-from-a-pack.md)
 - [bug-tooltip-doesn-t-refresh-variables-instantly](tasks/bug-tooltip-doesn-t-refresh-variables-instantly.md)
 - [bug-you-can-add-more-cards-to-hand-than-max-hand-size](tasks/bug-you-can-add-more-cards-to-hand-than-max-hand-size.md)
 - [unfinished-status-effects-aren-t-removed-when-their-stacks-hit-0](tasks/unfinished-status-effects-aren-t-removed-when-their-stacks-hit-0.md)
+- [load-cards-from-folders](tasks/load-cards-from-folders.md)
 
 ## In Progress
-
-- [bug-adding-cards-to-hand-changes-window-size](tasks/bug-adding-cards-to-hand-changes-window-size.md)
 
 ## Done
 
