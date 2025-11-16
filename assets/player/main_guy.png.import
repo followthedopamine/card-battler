@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkgw88ft0aii5"
-path="res://.godot/imported/card_shield.png-f633f1115995502052ff5d5a8100bd97.ctex"
+uid="uid://cksa12pa46ip5"
+path="res://.godot/imported/main_guy.png-01846402a1c13bfc651d54172940d0e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background/card_shield.png"
-dest_files=["res://.godot/imported/card_shield.png-f633f1115995502052ff5d5a8100bd97.ctex"]
+source_file="res://assets/player/main_guy.png"
+dest_files=["res://.godot/imported/main_guy.png-01846402a1c13bfc651d54172940d0e9.ctex"]
 
 [params]
 

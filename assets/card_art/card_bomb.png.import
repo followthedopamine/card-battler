@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7haxw000guk5"
-path="res://.godot/imported/guy.png-363faf6efef3ff51ec9b0cc349c58edd.ctex"
+uid="uid://bdkto36kl7g3h"
+path="res://.godot/imported/card_bomb.png-de03b6331361ebdec24f52381eae6dea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background/guy.png"
-dest_files=["res://.godot/imported/guy.png-363faf6efef3ff51ec9b0cc349c58edd.ctex"]
+source_file="res://assets/card_art/card_bomb.png"
+dest_files=["res://.godot/imported/card_bomb.png-de03b6331361ebdec24f52381eae6dea.ctex"]
 
 [params]
 

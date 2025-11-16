@@ -3,15 +3,24 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dfptd4ui1c711"
+<<<<<<< HEAD:assets/background/card_art/card_shield.png.import
 path="res://.godot/imported/card_shield.png-0b91955377cc59732b21427d32989d63.ctex"
+=======
+path="res://.godot/imported/card_shield.png-590d7b8ceabb277cfe69c73023a516cf.ctex"
+>>>>>>> 84d218cfb1fa0060ad7850d54c0c5b29355f533f:assets/card_art/card_shield.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<< HEAD:assets/background/card_art/card_shield.png.import
 source_file="res://assets/background/card_art/card_shield.png"
 dest_files=["res://.godot/imported/card_shield.png-0b91955377cc59732b21427d32989d63.ctex"]
+=======
+source_file="res://assets/card_art/card_shield.png"
+dest_files=["res://.godot/imported/card_shield.png-590d7b8ceabb277cfe69c73023a516cf.ctex"]
+>>>>>>> 84d218cfb1fa0060ad7850d54c0c5b29355f533f:assets/card_art/card_shield.png.import
 
 [params]
 

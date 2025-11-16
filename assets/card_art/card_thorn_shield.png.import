@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dr141utsmt4q0"
-path="res://.godot/imported/card_knife.png-69fed25b87bf1f489c56a7ca6d2949cc.ctex"
+uid="uid://lq2ss3eeuydv"
+path="res://.godot/imported/card_thorn_shield.png-643d74a464974a1c9b136d4fb2f6d384.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background/card_knife.png"
-dest_files=["res://.godot/imported/card_knife.png-69fed25b87bf1f489c56a7ca6d2949cc.ctex"]
+source_file="res://assets/card_art/card_thorn_shield.png"
+dest_files=["res://.godot/imported/card_thorn_shield.png-643d74a464974a1c9b136d4fb2f6d384.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pra656loq77s"
-path="res://.godot/imported/card_knifeV2.png-605ad68c97b5d281cc4306fac52cdc5c.ctex"
+uid="uid://cwqkjwtb0ie5j"
+path="res://.godot/imported/card_shield_bonk.png-17d82b21a671de40df52823c8d615bb6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background/card_knifeV2.png"
-dest_files=["res://.godot/imported/card_knifeV2.png-605ad68c97b5d281cc4306fac52cdc5c.ctex"]
+source_file="res://assets/card_art/card_shield_bonk.png"
+dest_files=["res://.godot/imported/card_shield_bonk.png-17d82b21a671de40df52823c8d615bb6.ctex"]
 
 [params]
 

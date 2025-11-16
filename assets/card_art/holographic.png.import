@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dwfkhd2nmqqw4"
-path="res://.godot/imported/holographic.png-6393756253216aad368cb93a2691d616.ctex"
+path="res://.godot/imported/holographic.png-88a78b1bcf8e3a9fb17c55e05fbde960.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background/holographic.png"
-dest_files=["res://.godot/imported/holographic.png-6393756253216aad368cb93a2691d616.ctex"]
+source_file="res://assets/card_art/holographic.png"
+dest_files=["res://.godot/imported/holographic.png-88a78b1bcf8e3a9fb17c55e05fbde960.ctex"]
 
 [params]
 

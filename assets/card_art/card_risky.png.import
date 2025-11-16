@@ -3,15 +3,24 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://xdquh0mss88a"
+<<<<<<< HEAD:assets/background/card_art/card_risky.png.import
 path="res://.godot/imported/card_risky.png-39001f0e9e8025711bba708118f73835.ctex"
+=======
+path="res://.godot/imported/card_risky.png-f84f0b3fa9edc680ccb7e9a930724272.ctex"
+>>>>>>> 84d218cfb1fa0060ad7850d54c0c5b29355f533f:assets/card_art/card_risky.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<< HEAD:assets/background/card_art/card_risky.png.import
 source_file="res://assets/background/card_art/card_risky.png"
 dest_files=["res://.godot/imported/card_risky.png-39001f0e9e8025711bba708118f73835.ctex"]
+=======
+source_file="res://assets/card_art/card_risky.png"
+dest_files=["res://.godot/imported/card_risky.png-f84f0b3fa9edc680ccb7e9a930724272.ctex"]
+>>>>>>> 84d218cfb1fa0060ad7850d54c0c5b29355f533f:assets/card_art/card_risky.png.import
 
 [params]
 

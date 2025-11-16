@@ -3,15 +3,24 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cl2wopsfyrecc"
+<<<<<<< HEAD:assets/background/card_art/card_poison.png.import
 path="res://.godot/imported/card_poison.png-74fd4e8a890ce9bb7ec27bce50106548.ctex"
+=======
+path="res://.godot/imported/card_poison.png-87f7e2f037741734d0ab6324b291e7c6.ctex"
+>>>>>>> 84d218cfb1fa0060ad7850d54c0c5b29355f533f:assets/card_art/card_poison.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<< HEAD:assets/background/card_art/card_poison.png.import
 source_file="res://assets/background/card_art/card_poison.png"
 dest_files=["res://.godot/imported/card_poison.png-74fd4e8a890ce9bb7ec27bce50106548.ctex"]
+=======
+source_file="res://assets/card_art/card_poison.png"
+dest_files=["res://.godot/imported/card_poison.png-87f7e2f037741734d0ab6324b291e7c6.ctex"]
+>>>>>>> 84d218cfb1fa0060ad7850d54c0c5b29355f533f:assets/card_art/card_poison.png.import
 
 [params]
 
