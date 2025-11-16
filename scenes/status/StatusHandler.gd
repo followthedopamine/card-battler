@@ -28,7 +28,6 @@ func _on_status_updated(status: Status, node: Node) -> void:
 		
 func _on_wave_end(_wave: int) -> void:
 	current_statuses = []
-	
 
 func _on_block_updated(node: Node) -> void:
 	if node == parent:
@@ -37,6 +36,15 @@ func _on_block_updated(node: Node) -> void:
 			status = Status.new()
 			status.effect = Status.Type.BLOCK
 			status.stacks = node.block
+			add_status(status)
+			
+func _on_strength_updated(entity: Entity) -> void:
+	if entity == parent:
+		var status = get_current_status(Status.Type.STRENGTH)
+		if status == null:
+			status = Status.new()
+			status.effect = Status.Type.STRENGTH
+			status.stacks = entity.strength
 			add_status(status)
 
 func _on_damage_taken(target: Entity, attacker: Entity) -> void:

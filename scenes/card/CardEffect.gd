@@ -15,6 +15,7 @@ enum GridTargetType { NONE, SINGLE, AOE, ALL }
 
 # PLAYER/ENEMY DAMAGE
 @export var damage: float
+@export var strength: int
 
 # PLAYER/ENEMY STATUSES
 @export var poison: int

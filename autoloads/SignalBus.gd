@@ -16,13 +16,13 @@ signal card_chosen(card: Card)
 # Status signals
 signal status_updated(status: Status, attached_node: Node)
 signal block_updated(blocking_entity: Node)
+signal strength_updated(strength_entity: Entity)
 
 # Relic signals
 signal relic_added(relic: Relic)
 
 # Entity signals
 signal damage_taken(target: Entity, attacker: Entity)
-
 
 # PlayPanel signals
 signal enemy_area_setup()

@@ -51,6 +51,23 @@ func _on_player_targeted(card_effect: CardEffect) -> void:
 		status.effect = Status.Type.THORNS
 		status.stacks = card_effect.thorns
 		SignalBus.status_updated.emit(status, self)
+		
+	if card_effect.heal:
+		heal(card_effect.heal)
+		SignalBus.player_health_change.emit(health)
+		
+	if card_effect.burn:
+		var status: Status = Status.new()
+		status.effect = Status.Type.BURN
+		status.stacks = card_effect.burn
+		SignalBus.status_updated.emit(status, self)
+		
+	if card_effect.strength:
+		strength += card_effect.strength
+		var status: Status = Status.new()
+		status.effect = Status.Type.STRENGTH
+		status.stacks = card_effect.strength
+		SignalBus.status_updated.emit(status, self)
 
 func _ready() -> void:
 	super()
