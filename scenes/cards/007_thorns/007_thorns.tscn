@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6c26ytvbnnff"]
+
+[ext_resource type="Script" uid="uid://c531eyaws05rr" path="res://scenes/card/Card.gd" id="1_e7auu"]
+[ext_resource type="Texture2D" uid="uid://dw63e7cneirlo" path="res://assets/background/card_art/card_bleed.png" id="2_yf3ov"]
+[ext_resource type="Script" uid="uid://fuokg41g7d8s" path="res://scenes/card/CardEffect.gd" id="3_3q3hg"]
+
+[sub_resource type="Resource" id="Resource_dhjsj"]
+script = ExtResource("3_3q3hg")
+target = 2
+thorns = 3
+shield = 3.0
+metadata/_custom_type_script = "uid://fuokg41g7d8s"
+
+[node name="007Thorns" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_e7auu")
+card_name = "Thorns"
+sprite_texture = ExtResource("2_yf3ov")
+card_effect = SubResource("Resource_dhjsj")
+metadata/_custom_type_script = "uid://c531eyaws05rr"

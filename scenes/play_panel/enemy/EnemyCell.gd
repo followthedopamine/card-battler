@@ -37,7 +37,7 @@ func spawn_enemy(enemy: Enemy):
 func process_card_effects(card: CardEffect):
 	if has_enemy && is_instance_valid(enemy_scene):
 		if card.damage:
-			enemy_scene.take_damage(card.damage)
+			enemy_scene.take_damage(card.damage, PlayerManager.player_node)
 			
 		if card.burn:
 			var status: Status = Status.new()

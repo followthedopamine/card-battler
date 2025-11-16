@@ -3,7 +3,8 @@ class_name Status extends Node
 enum Type {
 	BURN,
 	SLOW,
-	BLOCK
+	BLOCK,
+	THORNS
 }
 
 var effect: Type = Type.BURN

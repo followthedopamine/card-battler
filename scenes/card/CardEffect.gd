@@ -22,6 +22,7 @@ enum GridTargetType { NONE, SINGLE, AOE, ALL }
 @export var stun: int
 @export var slow: int
 @export var burn: int
+@export var thorns: int
 
 # PLAYER DEFENSIVE
 @export var shield: float

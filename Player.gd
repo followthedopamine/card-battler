@@ -35,8 +35,8 @@ func _process_attack_animation(delta: float):
 		sprite.offset.x = 0
 		attack_direction = 1
 
-func _on_enemy_attack(damage: float):
-	take_damage(damage)
+func _on_enemy_attack(damage: float, enemy: Enemy):
+	take_damage(damage, enemy)
 	SignalBus.player_health_change.emit(health)
 
 func _on_attack_card_played(_card: Resource):
@@ -45,6 +45,12 @@ func _on_attack_card_played(_card: Resource):
 func _on_player_targeted(card_effect: CardEffect) -> void:
 	if card_effect.shield:
 		block += card_effect.shield
+		
+	if card_effect.thorns:
+		var status: Status = Status.new()
+		status.effect = Status.Type.THORNS
+		status.stacks = card_effect.thorns
+		SignalBus.status_updated.emit(status, self)
 
 func _ready() -> void:
 	super()
@@ -53,6 +59,8 @@ func _ready() -> void:
 	SignalBus.enemy_attack.connect(_on_enemy_attack)
 	SignalBus.card_played_target_enemy.connect(_on_attack_card_played)
 	SignalBus.card_played_target_player.connect(_on_player_targeted)
+	
+	PlayerManager.player_node = self
 
 func _physics_process(delta: float) -> void:
 	if is_attacking:

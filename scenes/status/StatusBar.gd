@@ -9,6 +9,7 @@ func _ready() -> void:
 	# freeing them and instantiating them over and over
 	SignalBus.status_updated.connect(_on_status_updated)
 	SignalBus.block_updated.connect(_on_block_updated)
+	SignalBus.wave_end.connect(_on_wave_end)
 
 func _on_status_updated(status: Status, node: Node) -> void:
 	if node == parent:
@@ -20,6 +21,10 @@ func _on_block_updated(node: Node) -> void:
 		status.effect = Status.Type.BLOCK
 		status.stacks = node.block
 		update_status_bar(status, true)
+		
+func _on_wave_end(_wave: int) -> void:
+	for child: StatusIcon in get_children():
+		child.queue_free()
 
 func update_status_bar(status: Status, should_equal_stacks: bool = false):
 	if get_child_count() == 0:

@@ -16,7 +16,7 @@ func _on_wave_end(_wave: int) -> void:
 	if block > 0:
 		block = 0
 
-func take_damage(damage_taken: float):
+func take_damage(damage_taken: float, attacker: Entity = null):
 	if block > 0:
 		block -= damage_taken
 		if block < 0:
@@ -26,4 +26,6 @@ func take_damage(damage_taken: float):
 			damage_taken = 0
 		SignalBus.block_updated.emit(self)
 	health -= damage_taken
+	SignalBus.damage_taken.emit(self, attacker)
+
 	
