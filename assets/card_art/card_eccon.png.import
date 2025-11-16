@@ -2,25 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccl37521qhj6b"
-<<<<<<< HEAD:assets/background/card_art/card_eccon.png.import
-path="res://.godot/imported/card_eccon.png-1d6127177e93c1704923648e497d6f03.ctex"
-=======
+uid="uid://cbw0xdvvtucmr"
 path="res://.godot/imported/card_eccon.png-f8bd6d122481cafd4a710af07f78390e.ctex"
->>>>>>> 84d218cfb1fa0060ad7850d54c0c5b29355f533f:assets/card_art/card_eccon.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<< HEAD:assets/background/card_art/card_eccon.png.import
-source_file="res://assets/background/card_art/card_eccon.png"
-dest_files=["res://.godot/imported/card_eccon.png-1d6127177e93c1704923648e497d6f03.ctex"]
-=======
 source_file="res://assets/card_art/card_eccon.png"
 dest_files=["res://.godot/imported/card_eccon.png-f8bd6d122481cafd4a710af07f78390e.ctex"]
->>>>>>> 84d218cfb1fa0060ad7850d54c0c5b29355f533f:assets/card_art/card_eccon.png.import
 
 [params]
 

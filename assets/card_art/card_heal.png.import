@@ -2,25 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s8e5t3g55vyq"
-<<<<<<< HEAD:assets/background/card_art/card_heal.png.import
-path="res://.godot/imported/card_heal.png-18432514b0ebe2ddc788b90d6ee19616.ctex"
-=======
+uid="uid://cg7hxd7nfcfif"
 path="res://.godot/imported/card_heal.png-29b9f34edf0b872f394bf8bcd9058525.ctex"
->>>>>>> 84d218cfb1fa0060ad7850d54c0c5b29355f533f:assets/card_art/card_heal.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<< HEAD:assets/background/card_art/card_heal.png.import
-source_file="res://assets/background/card_art/card_heal.png"
-dest_files=["res://.godot/imported/card_heal.png-18432514b0ebe2ddc788b90d6ee19616.ctex"]
-=======
 source_file="res://assets/card_art/card_heal.png"
 dest_files=["res://.godot/imported/card_heal.png-29b9f34edf0b872f394bf8bcd9058525.ctex"]
->>>>>>> 84d218cfb1fa0060ad7850d54c0c5b29355f533f:assets/card_art/card_heal.png.import
 
 [params]
 

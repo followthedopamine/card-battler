@@ -2,25 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c63ufwxdijceb"
-<<<<<<< HEAD:assets/background/card_art/card_attack.png.import
-path="res://.godot/imported/card_attack.png-af82e607d2912c903e152dfb76860308.ctex"
-=======
+uid="uid://dgk06qk6b3hbx"
 path="res://.godot/imported/card_attack.png-4b556aca66a8a31f6042bdf78d5aac20.ctex"
->>>>>>> 84d218cfb1fa0060ad7850d54c0c5b29355f533f:assets/card_art/card_attack.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<< HEAD:assets/background/card_art/card_attack.png.import
-source_file="res://assets/background/card_art/card_attack.png"
-dest_files=["res://.godot/imported/card_attack.png-af82e607d2912c903e152dfb76860308.ctex"]
-=======
 source_file="res://assets/card_art/card_attack.png"
 dest_files=["res://.godot/imported/card_attack.png-4b556aca66a8a31f6042bdf78d5aac20.ctex"]
->>>>>>> 84d218cfb1fa0060ad7850d54c0c5b29355f533f:assets/card_art/card_attack.png.import
 
 [params]
 
