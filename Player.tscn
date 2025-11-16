@@ -5,12 +5,13 @@
 [ext_resource type="Script" uid="uid://mjiv7q0gvno6" path="res://scenes/status/StatusHandler.gd" id="3_e80uo"]
 [ext_resource type="Script" uid="uid://d20if3istht6w" path="res://scenes/status/StatusBar.gd" id="4_cxr5p"]
 [ext_resource type="PackedScene" uid="uid://cp7g4rfx2pn4x" path="res://scenes/status/StatusIcon.tscn" id="5_cxr5p"]
+[ext_resource type="Texture2D" uid="uid://cksa12pa46ip5" path="res://assets/background/main_guy.png" id="2_kpjcp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kpjcp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_xhfnw")
+"texture": ExtResource("2_kpjcp")
 }],
 "loop": true,
 "name": &"default",
@@ -24,8 +25,10 @@ script = ExtResource("1_kpjcp")
 max_health = 100.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -48)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_kpjcp")
+flip_h = true
 
 [node name="StatusBar" type="HBoxContainer" parent="."]
 layout_mode = 0
