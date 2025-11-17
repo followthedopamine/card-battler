@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://ua2ckgcdkf1d"]
+
+[ext_resource type="Script" uid="uid://c531eyaws05rr" path="res://scenes/card/Card.gd" id="1_5bp40"]
+[ext_resource type="Texture2D" uid="uid://b2y6rbbxqpf4y" path="res://assets/card_art/card_risky.png" id="2_vafn7"]
+[ext_resource type="Script" uid="uid://fuokg41g7d8s" path="res://scenes/card/CardEffect.gd" id="3_vafn7"]
+
+[sub_resource type="Resource" id="Resource_igw6y"]
+script = ExtResource("3_vafn7")
+target = 1
+enemy_target = 3
+slow = 1
+metadata/_custom_type_script = "uid://fuokg41g7d8s"
+
+[node name="005Slow" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5bp40")
+card_name = "Hack"
+sprite_texture = ExtResource("2_vafn7")
+tooltips = Array[String](["Apply %slow% stack of slow"])
+tags = Array[int]([3, 4])
+card_effect = SubResource("Resource_igw6y")
+metadata/_custom_type_script = "uid://c531eyaws05rr"

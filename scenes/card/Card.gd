@@ -2,6 +2,32 @@
 
 class_name Card extends CardController
 
+enum Rarity {
+	COMMON,
+	UNCOMMON,
+	RARE,
+}
+
+enum CardTag {
+	MELEE,
+	BLOCK,
+	BURN,
+	SLOW,
+	RANDOM,
+	THORNS,
+	STRENGTH,
+}
+
+var card_tag_tooltips: Dictionary[CardTag, String] = {
+	CardTag.MELEE: "Melee: Can only hit enemies in the closest row",
+	CardTag.BLOCK: "Block: Prevents damage",
+	CardTag.BURN: "Burn: Deals damage equal to number of burn every 1 second",
+	CardTag.SLOW: "Slow: Reduces the enemy attack speed by 0.5 seconds",
+	CardTag.RANDOM: "Random: Can hit any enemy",
+	CardTag.THORNS: "Thorns: Reflects some damage back at the enemy",
+	CardTag.STRENGTH: "Strength: Adds damage to your attacks"
+}
+
 signal completed(card: Card)
 
 const MINIMUM_SIZE: Vector2 = Vector2(142.0, 225.0)
@@ -10,9 +36,11 @@ const PIVOT_POINT: Vector2 = Vector2(73.0, 22.0)
 @export var card_name: String
 @export var sprite_texture: Texture2D
 @export var tooltips: Array[String] = []
+@export var tags: Array[CardTag] = []
 
 @export var price: int = 5
 @export var card_effect: CardEffect
+@export var rarity: Rarity = Rarity.COMMON
 
 @export_range(0.0, 5.0) var duration := 2.0
 var time_remaining := duration
@@ -37,7 +65,7 @@ func _ready() -> void:
 	timer.timeout.connect(_on_timer_timeout)
 	set_process_input(false)
 
-	change_colour(colour)
+	#change_colour(colour)
 
 	timer_label.text = "%.1f" % duration
 	card_components.sprite.texture = sprite_texture
@@ -48,6 +76,10 @@ func _ready() -> void:
 	
 	for tooltip_string: String in tooltips:
 		Tooltip.new(tooltip_string, self)
+		
+	for tag: CardTag in tags:
+		if card_tag_tooltips.has(tag):
+			Tooltip.new(card_tag_tooltips[tag], self)
 
 func _process(delta: float) -> void:
 	super(delta)
@@ -60,13 +92,13 @@ func _on_timer_timeout() -> void:
 	activate_card_effect()
 	deactivate()
 
-func set_colour(index: int):
-	colour = colours[index % colours.size()]
-	
-func change_colour(new_colour: Color) -> void:
-	var new_style: StyleBoxFlat = panel.get_theme_stylebox("panel").duplicate()
-	new_style.bg_color = new_colour
-	panel.add_theme_stylebox_override("panel", new_style)
+#func set_colour(index: int):
+	#colour = colours[index % colours.size()]
+	#
+#func change_colour(new_colour: Color) -> void:
+	#var new_style: StyleBoxFlat = panel.get_theme_stylebox("panel").duplicate()
+	#new_style.bg_color = new_colour
+	#panel.add_theme_stylebox_override("panel", new_style)
 	
 func activate_card_effect() -> void:
 	if is_instance_valid(card_effect):
@@ -77,8 +109,8 @@ func activate_card_effect() -> void:
 func activate():
 	timer.start(duration)
 
-	panel.position.y = -10
-	change_colour(DISABLED_COLOUR)
+	card_components.position.y = -10
+	#change_colour(DISABLED_COLOUR)
 	
 	time_remaining = duration
 
@@ -92,8 +124,8 @@ func activate():
 func deactivate():
 	timer.stop()
 
-	panel.position.y = 0
-	change_colour(colour)
+	card_components.position.y = 0
+	#change_colour(colour)
 	
 
 	timer_label.hide()

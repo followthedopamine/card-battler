@@ -15,10 +15,14 @@ signal card_chosen(card: Card)
 
 # Status signals
 signal status_updated(status: Status, attached_node: Node)
+signal block_updated(blocking_entity: Node)
+signal strength_updated(strength_entity: Entity)
 
 # Relic signals
 signal relic_added(relic: Relic)
 
+# Entity signals
+signal damage_taken(target: Entity, attacker: Entity)
 
 # PlayPanel signals
 signal enemy_area_setup()
@@ -27,7 +31,7 @@ signal enemies_cleared()
 signal wave_start(wave: int)
 signal wave_end(wave: int)
 
-signal enemy_attack(damage: float)
+signal enemy_attack(damage: float, enemy: Enemy)
 signal enemy_dead(payout: int)
 
 signal player_max_health(new_value: int)

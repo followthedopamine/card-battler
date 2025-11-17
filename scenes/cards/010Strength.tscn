@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dytvr5mvrg6eu"]
+
+[ext_resource type="Script" uid="uid://c531eyaws05rr" path="res://scenes/card/Card.gd" id="1_cmf8i"]
+[ext_resource type="Texture2D" uid="uid://b2y6rbbxqpf4y" path="res://assets/card_art/card_risky.png" id="2_6vskd"]
+[ext_resource type="Script" uid="uid://fuokg41g7d8s" path="res://scenes/card/CardEffect.gd" id="3_pgskp"]
+
+[sub_resource type="Resource" id="Resource_ludsc"]
+script = ExtResource("3_pgskp")
+target = 2
+strength = 1
+metadata/_custom_type_script = "uid://fuokg41g7d8s"
+
+[node name="010Strength" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_cmf8i")
+card_name = "Strength"
+sprite_texture = ExtResource("2_6vskd")
+tooltips = Array[String](["Adds %strength% stack of strength"])
+card_effect = SubResource("Resource_ludsc")
+rarity = 1
+metadata/_custom_type_script = "uid://c531eyaws05rr"

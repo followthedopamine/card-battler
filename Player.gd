@@ -1,8 +1,8 @@
-extends Node2D
+class_name Player extends Entity
 
-@export var max_health = 100
-
-var health = max_health
+#@export var max_health = 100
+#
+#var health = max_health
 
 # attack animation variables
 ## In px
@@ -35,18 +35,40 @@ func _process_attack_animation(delta: float):
 		sprite.offset.x = 0
 		attack_direction = 1
 
-func _on_enemy_attack(damage: float):
-	health -= damage
+func _on_enemy_attack(damage: float, enemy: Enemy):
+	take_damage(damage, enemy)
 	SignalBus.player_health_change.emit(health)
 
 func _on_attack_card_played(_card: Resource):
 	is_attacking = true
+	
+func _on_player_targeted(card_effect: CardEffect) -> void:
+	if card_effect.shield:
+		block += card_effect.shield
+		
+	if card_effect.thorns:
+		Status.new(Status.Type.THORNS, card_effect.thorns, self)
+		
+	if card_effect.heal:
+		heal(card_effect.heal)
+		SignalBus.player_health_change.emit(health)
+		
+	if card_effect.burn:
+		Status.new(Status.Type.BURN, card_effect.burn, self)
+		
+	if card_effect.strength:
+		strength += card_effect.strength
+		Status.new(Status.Type.STRENGTH, card_effect.strength, self)
 
 func _ready() -> void:
+	super()
 	SignalBus.player_max_health.emit(max_health)
 
 	SignalBus.enemy_attack.connect(_on_enemy_attack)
 	SignalBus.card_played_target_enemy.connect(_on_attack_card_played)
+	SignalBus.card_played_target_player.connect(_on_player_targeted)
+	
+	PlayerManager.player_node = self
 
 func _physics_process(delta: float) -> void:
 	if is_attacking:

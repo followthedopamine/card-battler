@@ -14,17 +14,20 @@ enum GridTargetType { NONE, SINGLE, AOE, ALL }
 @export var enemy_target_type: GridTargetType 
 
 # PLAYER/ENEMY DAMAGE
-@export var damage: float
+@export var damage: int
+@export var strength: int
 
 # PLAYER/ENEMY STATUSES
 @export var poison: int
 @export var bleed: int
 @export var stun: int
+@export var slow: int
 @export var burn: int
+@export var thorns: int
 
 # PLAYER DEFENSIVE
-@export var shield: float
-@export var heal: float
+@export var shield: int
+@export var heal: int
 
 ## ECONOMY 
 ## Coins given or taken on playing the card

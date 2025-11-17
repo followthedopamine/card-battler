@@ -9,20 +9,31 @@ completedColumns:
 
 ## Backlog
 
-- [potential-unwanted-behaviour-cards-can-be-shuffled-inside-the-pack](tasks/potential-unwanted-behaviour-cards-can-be-shuffled-inside-the-pack.md)
+- [display-tooltips-enlarged-cards-on-hover](tasks/display-tooltips-enlarged-cards-on-hover.md)
+- [squash-and-stretch-animations](tasks/squash-and-stretch-animations.md)
+- [background-particle-effects](tasks/background-particle-effects.md)
+- [sounds](tasks/sounds.md)
+- [music](tasks/music.md)
+- [a-way-to-display-packs](tasks/a-way-to-display-packs.md)
 
 ## Todo
 
-- [display-tooltips-enlarged-cards-on-hover](tasks/display-tooltips-enlarged-cards-on-hover.md)
-- [bug-sometimes-you-can-take-two-cards-from-a-pack](tasks/bug-sometimes-you-can-take-two-cards-from-a-pack.md)
-- [bug-tooltip-doesn-t-refresh-variables-instantly](tasks/bug-tooltip-doesn-t-refresh-variables-instantly.md)
+- [unfinished-status-effects-aren-t-removed-when-their-stacks-hit-0](tasks/unfinished-status-effects-aren-t-removed-when-their-stacks-hit-0.md)
+- [change-damage-shield-and-heal-to-ints](tasks/change-damage-shield-and-heal-to-ints.md)
 
 ## In Progress
 
-- [bug-adding-cards-to-hand-changes-window-size](tasks/bug-adding-cards-to-hand-changes-window-size.md)
-
 ## Done
 
+- [cards-need-tooltips-and-proper-art](tasks/cards-need-tooltips-and-proper-art.md)
+- [load-cards-from-folders](tasks/load-cards-from-folders.md)
+- [bug-you-can-add-more-cards-to-hand-than-max-hand-size](tasks/bug-you-can-add-more-cards-to-hand-than-max-hand-size.md)
+- [bug-tooltip-doesn-t-refresh-variables-instantly-this-is-no-longer-relevant-as-tooltips-only-show-base-value](tasks/bug-tooltip-doesn-t-refresh-variables-instantly-this-is-no-longer-relevant-as-tooltips-only-show-base-value.md)
+- [bug-money-tooltip-variable-is-broken](tasks/bug-money-tooltip-variable-is-broken.md)
+- [bug-shuffling-cards-in-pack-closes-pack-on-release](tasks/bug-shuffling-cards-in-pack-closes-pack-on-release.md)
+- [bug-you-can-drag-multiple-cards-from-a-pack-if-they-re-not-dragged-into-the-last-card-slot](tasks/bug-you-can-drag-multiple-cards-from-a-pack-if-they-re-not-dragged-into-the-last-card-slot.md)
+- [bug-adding-cards-to-hand-changes-window-size](tasks/bug-adding-cards-to-hand-changes-window-size.md)
+- [potential-unwanted-behaviour-cards-can-be-shuffled-inside-the-pack](tasks/potential-unwanted-behaviour-cards-can-be-shuffled-inside-the-pack.md)
 - [bug-grid-lines-appear-over-background](tasks/bug-grid-lines-appear-over-background.md)
 - [bug-pack-screen-doesn-t-fit-window](tasks/bug-pack-screen-doesn-t-fit-window.md)
 - [bug-enemies-appear-on-top-of-pack-window](tasks/bug-enemies-appear-on-top-of-pack-window.md)

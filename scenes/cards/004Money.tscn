@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuu18hb6meno8"]
+
+[ext_resource type="Script" uid="uid://c531eyaws05rr" path="res://scenes/card/Card.gd" id="1_qvvvn"]
+[ext_resource type="Texture2D" uid="uid://csunuu6wqq6ff" path="res://assets/card_art/card_eccon.png" id="2_qvvvn"]
+[ext_resource type="Script" uid="uid://fuokg41g7d8s" path="res://scenes/card/CardEffect.gd" id="3_rk4xt"]
+
+[sub_resource type="Resource" id="Resource_o8n32"]
+script = ExtResource("3_rk4xt")
+currency = 5
+metadata/_custom_type_script = "uid://fuokg41g7d8s"
+
+[node name="004Money" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_qvvvn")
+card_name = "Invest"
+sprite_texture = ExtResource("2_qvvvn")
+card_effect = SubResource("Resource_o8n32")
+metadata/_custom_type_script = "uid://c531eyaws05rr"
