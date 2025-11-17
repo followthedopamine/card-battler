@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://4ex7gtlfrwxg"]
+
+[ext_resource type="Script" uid="uid://bhf2cspdbatk5" path="res://scenes/cards/001_strike/001Strike.gd" id="1_o2y2q"]
+[ext_resource type="Texture2D" uid="uid://dgk06qk6b3hbx" path="res://assets/card_art/card_attack.png" id="2_wtk4w"]
+[ext_resource type="Script" uid="uid://fuokg41g7d8s" path="res://scenes/card/CardEffect.gd" id="3_wtk4w"]
+
+[sub_resource type="Resource" id="Resource_w782d"]
+script = ExtResource("3_wtk4w")
+target = 1
+enemy_target = 2
+enemy_target_type = 1
+damage = 10.0
+metadata/_custom_type_script = "uid://fuokg41g7d8s"
+
+[node name="001Strike" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_o2y2q")
+card_name = "Strike"
+sprite_texture = ExtResource("2_wtk4w")
+tooltips = Array[String](["This is tooltip 1", "This is tooltip 2", "This is a very long tooltip wow it's so long and hey look it's still a normal size hopefully", "This tooltip will go off the screen and idk how to fix that yet uh oh here it goes going off the screen oh no someone help please the tooltip is escaping"])
+card_effect = SubResource("Resource_w782d")

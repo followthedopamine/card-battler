@@ -4,14 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://ct3ldblws35n6" path="res://assets/background/bg3.png" id="2_aar1f"]
 [ext_resource type="Texture2D" uid="uid://bpradaiwqny8q" path="res://assets/background/bg4.png" id="3_5r7lj"]
 [ext_resource type="Texture2D" uid="uid://bo57h7esepw7d" path="res://assets/background/bg2.png" id="4_et12n"]
-[ext_resource type="Texture2D" uid="uid://fhngtspuqeg2" path="res://assets/background/placeholder_card.png" id="5_nq0mu"]
-[ext_resource type="Texture2D" uid="uid://fxf14mnngifc" path="res://assets/background/placeholder_card2.png" id="6_ptj5m"]
-[ext_resource type="Texture2D" uid="uid://pra656loq77s" path="res://assets/background/card_knifeV2.png" id="7_f4fg4"]
-[ext_resource type="Texture2D" uid="uid://bkgw88ft0aii5" path="res://assets/background/card_shield.png" id="8_c4fme"]
-[ext_resource type="Texture2D" uid="uid://dtjknx0fv2nkk" path="res://assets/background/card_energy.png" id="9_r5kiy"]
 [ext_resource type="Texture2D" uid="uid://baxex53ta0c41" path="res://assets/background/viewport.png" id="10_mg5ca"]
-[ext_resource type="Texture2D" uid="uid://7haxw000guk5" path="res://assets/background/guy.png" id="11_2mg74"]
-[ext_resource type="Texture2D" uid="uid://fc4qmy08eldp" path="res://assets/background/guy1.png" id="12_rhhs2"]
+[ext_resource type="Texture2D" uid="uid://7haxw000guk5" path="res://assets/enemies/guy.png" id="11_2mg74"]
+[ext_resource type="Texture2D" uid="uid://fc4qmy08eldp" path="res://assets/enemies/guy1.png" id="12_rhhs2"]
 
 [sub_resource type="Gradient" id="Gradient_1pl5n"]
 offsets = PackedFloat32Array(0, 0.26098192, 0.51937985, 0.81653744, 1)
@@ -50,6 +45,16 @@ texture_margin_left = 43.0
 texture_margin_top = 49.0
 texture_margin_right = 45.0
 texture_margin_bottom = 47.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5r7lj"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_et12n"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nq0mu"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hxgyi"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r808y"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pej6d"]
 texture = ExtResource("10_mg5ca")
@@ -150,43 +155,43 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_nsvoh")
 visible = false
 position = Vector2(-138, 548)
 scale = Vector2(0.24, 0.23940237)
-texture = ExtResource("5_nq0mu")
+texture = SubResource("CompressedTexture2D_5r7lj")
 
 [node name="PlaceholderCard3" type="Sprite2D" parent="card_placeholders"]
 visible = false
 position = Vector2(-188.99997, 572.00006)
 scale = Vector2(0.24, 0.23940237)
-texture = ExtResource("5_nq0mu")
+texture = SubResource("CompressedTexture2D_5r7lj")
 
 [node name="PlaceholderCard6" type="Sprite2D" parent="card_placeholders"]
 visible = false
 position = Vector2(686.8, 687.49414)
 scale = Vector2(0.24, 0.23940237)
-texture = ExtResource("5_nq0mu")
+texture = SubResource("CompressedTexture2D_5r7lj")
 
 [node name="PlaceholderCard1" type="Sprite2D" parent="card_placeholders"]
 visible = false
 position = Vector2(155, 686)
 scale = Vector2(0.24, 0.24)
-texture = ExtResource("6_ptj5m")
+texture = SubResource("CompressedTexture2D_et12n")
 
 [node name="CardKnifeV2" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(288, 687.7124)
 scale = Vector2(0.24, 0.24)
-texture = ExtResource("7_f4fg4")
+texture = SubResource("CompressedTexture2D_nq0mu")
 
 [node name="CardShield" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(421, 687.71246)
 scale = Vector2(0.24, 0.24)
-texture = ExtResource("8_c4fme")
+texture = SubResource("CompressedTexture2D_hxgyi")
 
 [node name="CardEnergy" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(554.00006, 689.71747)
 scale = Vector2(0.24, 0.24)
-texture = ExtResource("9_r5kiy")
+texture = SubResource("CompressedTexture2D_r808y")
 
 [node name="HBoxContainer_main2" type="HBoxContainer" parent="."]
 visible = false

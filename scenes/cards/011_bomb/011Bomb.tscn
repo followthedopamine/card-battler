@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmg3j56yx1orm"]
+
+[ext_resource type="Script" uid="uid://dnpmvfr7jl0ag" path="res://scenes/cards/011_bomb/001Bomb.gd" id="1_meqf8"]
+[ext_resource type="Texture2D" uid="uid://id2u8ojwoxh2" path="res://assets/card_art/card_bomb.png" id="2_x1s5x"]
+[ext_resource type="Script" uid="uid://fuokg41g7d8s" path="res://scenes/card/CardEffect.gd" id="3_lc4ho"]
+
+[sub_resource type="Resource" id="Resource_w782d"]
+script = ExtResource("3_lc4ho")
+target = 1
+enemy_target = 3
+enemy_target_type = 2
+damage = 5.0
+metadata/_custom_type_script = "uid://fuokg41g7d8s"
+
+[node name="011Bomb" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_meqf8")
+card_name = "Bomb"
+sprite_texture = ExtResource("2_x1s5x")
+tooltips = Array[String](["This is tooltip 1", "This is tooltip 2", "This is a very long tooltip wow it's so long and hey look it's still a normal size hopefully", "This tooltip will go off the screen and idk how to fix that yet uh oh here it goes going off the screen oh no someone help please the tooltip is escaping"])
+card_effect = SubResource("Resource_w782d")
