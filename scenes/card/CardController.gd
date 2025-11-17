@@ -28,6 +28,8 @@ var mouse_pos: Vector2
 var previous_mouse_pos: Vector2
 var smooth_velocity: Vector2
 
+var was_added_to_hand: bool = false
+
 func _ready() -> void:
 	SignalBus.card_controller_picked_up.connect(_on_card_controller_picked_up)
 	SignalBus.card_controller_hovered.connect(_on_card_controller_hovered)
@@ -58,6 +60,7 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 		switch_cards(data, self)
 	else:
 		# Need this check to prevent pack closing on shuffling hand with pack open
+		# This check is also blocking pack closing when new card is added to hand
 		if !get_parent() is Hand:
 			SignalBus.card_chosen.emit(self)
 
@@ -81,19 +84,20 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	dragging_node.position = -at_position
 	dragging_node.z_index = 100
 
-	# add a little shadow when card is picked up
-	var new_style = panel.get_theme_stylebox("panel").duplicate()
-	new_style.shadow_color.a = 0.3
-	new_style.shadow_size = 8
-	new_style.shadow_offset	= Vector2(3, 3)
-	
-	#This sucks but getting the panel after removing the script is really hard.
-	var dragging_panel: Panel = dragging_node.get_node("CardComponents/Panel")
-	dragging_panel.add_theme_stylebox_override("panel", new_style)
+	## add a little shadow when card is picked up
+	#var new_style = panel.get_theme_stylebox("panel").duplicate()
+	#new_style.shadow_color.a = 0.3
+	#new_style.shadow_size = 8
+	#new_style.shadow_offset	= Vector2(3, 3)
+	#
+	##This sucks but getting the panel after removing the script is really hard.
+	#var dragging_panel: Panel = dragging_node.get_node("CardComponents/Panel")
+	#dragging_panel.add_theme_stylebox_override("panel", new_style)
 
 	set_drag_preview(preview_parent)
 	set_process_input(true)
-	panel.hide()
+	#panel.hide()
+	card_components.visible = false
 	dragging = true
 	SignalBus.card_controller_picked_up.emit(self)
 	
@@ -114,16 +118,21 @@ func _input(event: InputEvent) -> void:
 		if PlayerManager.hand_size != PlayerManager.max_hand_size:
 				# This should ideally not reference hovered card parent and instead should be the hand
 				if !self.get_parent() is Hand:
-					self.reparent(hovered_card_controller.get_parent())
-		# if dragging left/right update the position in the parent
-		if dragging_node.global_position.x < global_position.x - threshold:
-			if self.get_index() > 0:
-				# Have to use get_parent() here instead of hbox because the parent
-				# of the card can change while dragging.
-				get_parent().move_child(self, self.get_index() - 1)
-		elif dragging_node.global_position.x > global_position.x + threshold:
-			if self.get_index() < get_parent().get_child_count() - 1:
-				get_parent().move_child(self, self.get_index() + 1)
+					# Only allow moving cards into hand
+					if hovered_card_controller.get_parent() is Hand:
+						self.reparent(hovered_card_controller.get_parent())
+						was_added_to_hand = true
+		# Allowing shuffling inside things other than the hand causes a pack closing bug
+		if self.get_parent() is Hand:
+			# if dragging left/right update the position in the parent
+			if dragging_node.global_position.x < global_position.x - threshold:
+				if self.get_index() > 0:
+					# Have to use get_parent() here instead of hbox because the parent
+					# of the card can change while dragging.
+					get_parent().move_child(self, self.get_index() - 1)
+			elif dragging_node.global_position.x > global_position.x + threshold:
+				if self.get_index() < get_parent().get_child_count() - 1:
+					get_parent().move_child(self, self.get_index() + 1)
 				
 	
 		
@@ -140,10 +149,16 @@ func _on_card_controller_hovered(card_controller: CardController) -> void:
 func end_drag() -> void:
 	held_card_controller = null
 	dragging = false
-	panel.show()
+	#panel.show()
+	card_components.visible = true
 	set_process_input(false)
 	update_mouse()
 	# Probably want to connect this deferred
+	# Without this cards can be dragged into the middle of hand
+	# and the pack won't know to close
+	if was_added_to_hand:
+		was_added_to_hand = false
+		SignalBus.card_chosen.emit(self)
 	SignalBus.card_controller_released.emit()
 	
 func update_mouse() -> void:

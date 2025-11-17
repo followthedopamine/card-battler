@@ -1,16 +1,18 @@
 class_name Hand extends HBoxContainer
 
 
-@export var card_data : CardData
+#@export var card_data : CardData
 
 var cards: Array[Card]
 
 func _ready() -> void:
 	#SignalBus.card_discarded.connect(_on_card_discarded)
 	
-	for i in range(PlayerManager.hand_size):
-		draw_random()
-
+	#for i in range(PlayerManager.hand_size):
+		#draw_random()
+	
+	var starter_card: Card = GameData.cards_common[0].duplicate()
+	draw(starter_card)
 	start_round()
 	
 func _can_drop_data(_at_position: Vector2, _data: Variant) -> bool:
@@ -43,16 +45,16 @@ func start_round():
 		if child is Card:
 			cards.append(child)
 
-	if (cards.size()):
+	if cards.size():
 		cards[0].activate()
 
-func draw_random() -> void:
-	var new_card = card_data.cards[randi() % card_data.cards.size()].instantiate()
-	new_card.set_colour(randi())
-
-	if not draw(new_card):
-		new_card.queue_free()
-
+#func draw_random() -> void:
+	#var new_card = card_data.cards[randi() % card_data.cards.size()].instantiate()
+	#new_card.set_colour(randi())
+#
+	#if not draw(new_card):
+		#new_card.queue_free()
+#
 func draw(card: Card) -> bool:
 	if cards.size() >= PlayerManager.max_hand_size:
 		return false

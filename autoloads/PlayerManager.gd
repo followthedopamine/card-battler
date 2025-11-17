@@ -1,6 +1,6 @@
 extends Node2D
 
-var currency: int = 100 :
+var currency: int = 20000 :
 	get:
 		return currency
 	set(value):

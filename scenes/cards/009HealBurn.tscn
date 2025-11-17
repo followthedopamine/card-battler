@@ -17,5 +17,7 @@ anchors_preset = 0
 script = ExtResource("1_ivvcq")
 card_name = "Heal burn"
 sprite_texture = ExtResource("2_11yn4")
+tooltips = Array[String](["Heals %heal% and adds %burn% stacks of burn"])
 card_effect = SubResource("Resource_opmf2")
+rarity = 1
 metadata/_custom_type_script = "uid://c531eyaws05rr"

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckg5vj2sml44r"]
+
+[ext_resource type="Script" uid="uid://c531eyaws05rr" path="res://scenes/card/Card.gd" id="1_0eysu"]
+[ext_resource type="Texture2D" uid="uid://dtjknx0fv2nkk" path="res://assets/background/card_energy.png" id="2_fcs8y"]
+[ext_resource type="Script" uid="uid://fuokg41g7d8s" path="res://scenes/card/CardEffect.gd" id="3_mrpdj"]
+
+[sub_resource type="Resource" id="Resource_87udk"]
+script = ExtResource("3_mrpdj")
+target = 1
+enemy_target = 1
+burn = 3
+metadata/_custom_type_script = "uid://fuokg41g7d8s"
+
+[node name="003Burn" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_0eysu")
+card_name = "Fiery Touch"
+sprite_texture = ExtResource("2_fcs8y")
+tooltips = Array[String](["Adds %burn% stacks of burn"])
+tags = Array[int]([2, 0])
+card_effect = SubResource("Resource_87udk")
+metadata/_custom_type_script = "uid://c531eyaws05rr"

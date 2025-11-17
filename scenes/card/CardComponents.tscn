@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://77pqf2vl82d2" path="res://scenes/card/CardComponents.gd" id="1_k6qmu"]
 [ext_resource type="Texture2D" uid="uid://bydjxdlit5oij" path="res://scenes/card/images/exchange_icon_placeholder.png" id="2_axisl"]
-[ext_resource type="Texture2D" uid="uid://c480utaticeyk" path="res://scenes/right_panel/tabs/shop/shop_slot/images/placeholder_card_1.png" id="2_g8rqm"]
+[ext_resource type="Texture2D" uid="uid://bfhw2nysx4i7p" path="res://assets/background/placeholder_card1.png" id="2_tf2r5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5xgwh"]
 content_margin_left = 0.0
@@ -18,67 +18,80 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 corner_detail = 5
 
-[node name="CardComponents" type="Control" node_paths=PackedStringArray("panel", "timer_label", "timer_spinner", "timer", "switch_interface", "name_label", "sprite")]
+[node name="CardComponents" type="Control" node_paths=PackedStringArray("timer_label", "timer_spinner", "timer", "switch_interface", "name_label", "sprite")]
+custom_minimum_size = Vector2(152, 225)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 mouse_filter = 1
 script = ExtResource("1_k6qmu")
-panel = NodePath("Panel")
-timer_label = NodePath("Panel/TimerLabel")
-timer_spinner = NodePath("Panel/Spinner")
+timer_label = NodePath("TimerLabel")
+timer_spinner = NodePath("Spinner")
 timer = NodePath("Timer")
 switch_interface = NodePath("SwitchInterface")
-name_label = NodePath("Panel/NameLabel")
-sprite = NodePath("Panel/CardSprite")
+name_label = NodePath("NameLabel")
+sprite = NodePath("CardSprite")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="CardSprite" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 152.0
 offset_bottom = 225.0
-mouse_filter = 2
-
-[node name="CardSprite" type="TextureRect" parent="Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_g8rqm")
+texture = ExtResource("2_tf2r5")
 expand_mode = 1
 
-[node name="TimerLabel" type="Label" parent="Panel"]
+[node name="TimerLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 65.0
-offset_top = 147.0
-offset_right = 105.0
-offset_bottom = 170.0
+offset_top = 101.0
+offset_right = 152.0
+offset_bottom = 124.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
 text = "1.2"
+horizontal_alignment = 1
 
-[node name="Spinner" type="Panel" parent="Panel"]
-layout_mode = 0
-offset_left = 57.0
-offset_top = 140.0
-offset_right = 97.0
-offset_bottom = 180.0
+[node name="Spinner" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -19.5
+offset_right = 20.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(20, 20)
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_5xgwh")
 
-[node name="NameLabel" type="Label" parent="Panel"]
+[node name="NameLabel" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 38.0
-offset_bottom = 61.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -76.0
+offset_top = -23.0
+offset_right = 76.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0.34826973, 0.18297675, 9.62615e-08, 1)
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
 text = "Test"
 horizontal_alignment = 1
+
+[node name="Panel" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 152.0
+offset_bottom = 225.0
+mouse_filter = 2
 
 [node name="Timer" type="Timer" parent="."]
 

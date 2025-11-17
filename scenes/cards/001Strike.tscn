@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://4ex7gtlfrwxg"]
+
+[ext_resource type="Script" uid="uid://c531eyaws05rr" path="res://scenes/card/Card.gd" id="1_kjdxr"]
+[ext_resource type="Texture2D" uid="uid://c63ufwxdijceb" path="res://assets/background/card_art/card_attack.png" id="2_ju32e"]
+[ext_resource type="Script" uid="uid://fuokg41g7d8s" path="res://scenes/card/CardEffect.gd" id="3_wtk4w"]
+
+[sub_resource type="Resource" id="Resource_ca5i4"]
+script = ExtResource("3_wtk4w")
+target = 1
+enemy_target = 1
+damage = 10.0
+metadata/_custom_type_script = "uid://fuokg41g7d8s"
+
+[node name="001Strike" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_kjdxr")
+card_name = "Strike"
+sprite_texture = ExtResource("2_ju32e")
+tooltips = Array[String](["Deals %damage% damage"])
+tags = Array[int]([0])
+card_effect = SubResource("Resource_ca5i4")
+metadata/_custom_type_script = "uid://c531eyaws05rr"
