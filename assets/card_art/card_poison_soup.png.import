@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvuytqgnw8r4o"
-path="res://.godot/imported/card_energy.png-8ff214daa5850b05460af995be4c79b9.ctex"
+uid="uid://d0dgrdsd1s4ej"
+path="res://.godot/imported/card_poison_soup.png-b6dde5058744b01a94311b2029d508d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/card_art/card_energy.png"
-dest_files=["res://.godot/imported/card_energy.png-8ff214daa5850b05460af995be4c79b9.ctex"]
+source_file="res://assets/card_art/card_poison_soup.png"
+dest_files=["res://.godot/imported/card_poison_soup.png-b6dde5058744b01a94311b2029d508d9.ctex"]
 
 [params]
 
