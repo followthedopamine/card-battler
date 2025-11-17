@@ -17,16 +17,12 @@ func _on_status_updated(status: Status, node: Node) -> void:
 
 func _on_block_updated(node: Node) -> void:
 	if node == parent:
-		var status: Status = Status.new()
-		status.effect = Status.Type.BLOCK
-		status.stacks = node.block
+		var status: Status = Status.new(Status.Type.BLOCK, node.block, node, false)
 		update_status_bar(status, true)
 		
 func _on_strength_updated(entity: Entity) -> void:
 	if entity == parent:
-		var status: Status = Status.new()
-		status.effect = Status.Type.STRENGTH
-		status.stacks = entity.strength
+		var status: Status = Status.new(Status.Type.STRENGTH, entity.strength, entity, false)
 		update_status_bar(status, true)
 		
 func _on_wave_end(_wave: int) -> void:

@@ -33,18 +33,14 @@ func _on_block_updated(node: Node) -> void:
 	if node == parent:
 		var status = get_current_status(Status.Type.BLOCK)
 		if status == null:
-			status = Status.new()
-			status.effect = Status.Type.BLOCK
-			status.stacks = node.block
+			status = Status.new(Status.Type.BLOCK, node.block, node, false)
 			add_status(status)
 			
 func _on_strength_updated(entity: Entity) -> void:
 	if entity == parent:
 		var status = get_current_status(Status.Type.STRENGTH)
 		if status == null:
-			status = Status.new()
-			status.effect = Status.Type.STRENGTH
-			status.stacks = entity.strength
+			status = Status.new(Status.Type.STRENGTH, entity.strength, entity, false)
 			add_status(status)
 
 func _on_damage_taken(target: Entity, attacker: Entity) -> void:
