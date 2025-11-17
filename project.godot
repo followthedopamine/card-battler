@@ -17,10 +17,10 @@ config/icon="res://assets/icon.svg"
 
 [autoload]
 
-GameData="*res://autoloads/GameData.gd"
 PlayerManager="*res://autoloads/PlayerManager.gd"
 SignalBus="*res://autoloads/SignalBus.gd"
 TooltipCanvas="*res://scenes/tooltip/TooltipCanvas.tscn"
+GameData="*res://autoloads/GameData.gd"
 
 [debug]
 
@@ -29,6 +29,7 @@ gdscript/warnings/unused_signal=0
 [display]
 
 window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
 
 [global_group]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bmg3j56yx1orm"]
 
-[ext_resource type="Script" uid="uid://dnpmvfr7jl0ag" path="res://scenes/cards/011_bomb/001Bomb.gd" id="1_meqf8"]
-[ext_resource type="Texture2D" uid="uid://id2u8ojwoxh2" path="res://assets/card_art/card_bomb.png" id="2_x1s5x"]
+[ext_resource type="Script" uid="uid://dnpmvfr7jl0ag" path="res://scenes/cards/001Bomb.gd" id="1_meqf8"]
+[ext_resource type="Texture2D" uid="uid://ddc40skadm634" path="res://assets/card_art/card_bomb.png" id="2_x1s5x"]
 [ext_resource type="Script" uid="uid://fuokg41g7d8s" path="res://scenes/card/CardEffect.gd" id="3_lc4ho"]
 
 [sub_resource type="Resource" id="Resource_w782d"]

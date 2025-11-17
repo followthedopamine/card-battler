@@ -21,7 +21,7 @@ func set_card_scene_arrays():
 			if !dir.current_is_dir() && file_name.get_extension() == "tscn":
 				var full_path = CARDS_FOLDER_PATH.path_join(file_name)
 				var packed_scene = load(full_path)
-				var instance: Card = packed_scene.instantiate()
+				var instance = packed_scene.instantiate()
 				if instance is Card:
 					match instance.rarity:
 						Card.Rarity.COMMON:
