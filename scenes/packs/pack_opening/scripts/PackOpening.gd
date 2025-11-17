@@ -2,8 +2,10 @@ extends Panel
 class_name PackOpening
 
 const CARD_SLOTS = 3
+const RARE_ODDS: float = 1.0/10.0
+const UNCOMMON_ODDS: float = 1.0/5.0
 
-@export var card_data: CardData
+#@export var card_data: CardData
 @export var card_scene: PackedScene
 
 @export var skip_button: Button
@@ -33,10 +35,12 @@ func reroll_cards() -> void:
 	for card: Node in card_area.get_children():
 		card.queue_free()
 	for i: int in range(CARD_SLOTS):
-		#var new_card: Placeholder = card_data.cards.pick_random().instantiate()
-		#var new_card: Card = card_scene.instantiate()
-		#new_card.set_colour(randi_range(0, new_card.colours.size()))
-		#card_area.add_child(new_card)
-		var new_card: Card = card_data.cards.pick_random().instantiate()
+		var rare_chance: float = randf()
+		var card_pool: Array[Card] = GameData.cards_common
+		if rare_chance < RARE_ODDS:
+			card_pool = GameData.cards_rare
+		elif rare_chance < UNCOMMON_ODDS:
+			card_pool = GameData.cards_uncommon
+		var new_card: Card = card_pool.pick_random().duplicate()
 		card_area.add_child(new_card)
 		

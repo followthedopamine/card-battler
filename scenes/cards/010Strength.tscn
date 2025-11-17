@@ -16,5 +16,7 @@ anchors_preset = 0
 script = ExtResource("1_cmf8i")
 card_name = "Strength"
 sprite_texture = ExtResource("2_raskn")
+tooltips = Array[String](["Adds %strength% stack of strength"])
 card_effect = SubResource("Resource_ludsc")
+rarity = 1
 metadata/_custom_type_script = "uid://c531eyaws05rr"

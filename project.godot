@@ -17,6 +17,7 @@ config/icon="res://assets/icon.svg"
 
 [autoload]
 
+GameData="*res://autoloads/GameData.gd"
 PlayerManager="*res://autoloads/PlayerManager.gd"
 SignalBus="*res://autoloads/SignalBus.gd"
 TooltipCanvas="*res://scenes/tooltip/TooltipCanvas.tscn"

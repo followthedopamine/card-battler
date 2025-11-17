@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dxvbga236q1tu"]
 
-[ext_resource type="Script" uid="uid://cv4eh0h87raps" path="res://scenes/cards/006_double_tap/006DoubleTap.gd" id="1_o53lm"]
+[ext_resource type="Script" uid="uid://cv4eh0h87raps" path="res://scenes/cards/006DoubleTap.gd" id="1_o53lm"]
 [ext_resource type="Texture2D" uid="uid://xdquh0mss88a" path="res://assets/background/card_art/card_risky.png" id="2_pfqpc"]
 [ext_resource type="Script" uid="uid://fuokg41g7d8s" path="res://scenes/card/CardEffect.gd" id="3_s8oiy"]
 
@@ -17,4 +17,5 @@ card_name = "Double Tap"
 sprite_texture = ExtResource("2_pfqpc")
 tooltips = Array[String](["The next attack triggers twice"])
 card_effect = SubResource("Resource_ex1uh")
+rarity = 2
 metadata/_custom_type_script = "uid://c531eyaws05rr"
