@@ -22,6 +22,8 @@ var y_position_percentage_offsets = [0.14, 0.32, 0.5, 0.7]
 
 var is_setup := false
 
+var animation_grid_offset := 0
+
 @onready var enemy_status_timer := Timer.new()
 @onready var grid: Sprite2D = get_tree().get_first_node_in_group("AreaGrid")
 
@@ -76,12 +78,6 @@ func _setup_cells():
 
 	_position_cells()
 
-func _position_cell(enemy_node: Control, grid_position: Vector2, h_offset: float, vertical_slice: float):
-	enemy_node.set_position(Vector2(
-		(h_offset + grid_position.y) * (vertical_slice + (vertical_slice * y_position_percentage_offsets[grid_position.x])),
-		size.y * y_position_percentage_offsets[grid_position.x])
-	)
-
 func _position_cells():
 	# Position grid cells to fit within the drawn grid
 	var grid_lines = grid.get_lines()
@@ -90,11 +86,11 @@ func _position_cells():
 	grid_lines.x = grid_lines.x / 2
 
 	var h_offset = odd_offset + left_most_col
-	var vertical_slice = size.x / grid_lines.x	
+	var vertical_slice = size.x / grid_lines.x
 
-	for child in get_children():
-		if (child.is_in_group("EnemyCell")):
-			_position_cell(child, child.get_grid_pos(), h_offset, vertical_slice)
+	for child: EnemyCell in get_children():
+		if (child is EnemyCell):
+			child.position_cell(h_offset, y_position_percentage_offsets[child.get_grid_pos().x], vertical_slice, animation_grid_offset)
 
 func _get_target(target: CardEffect.GridTarget):
 	var col_range: Array
@@ -127,7 +123,6 @@ func _get_aoe_targets(grid_target: EnemyCell):
 		for col in range(max(0, grid_target.grid_pos.y - 1), min(enemy_grid_cols, grid_target.grid_pos.y + 1)):
 			if enemy_cell_grid[row][col].get_has_enemy():
 				side_targets.push_back(enemy_cell_grid[row][col])
-	print("side_targets:", side_targets.map(func(target): return target.grid_pos))
 
 	return side_targets
 
@@ -163,9 +158,14 @@ func _on_card_played(card: CardEffect):
 func _on_resized():
 	_position_cells()
 
+func _on_animation_grid_offset(offset: int):
+	animation_grid_offset = offset
+
 func _ready() -> void:
 	self.connect("resized", _on_resized)
 	SignalBus.card_played_target_enemy.connect(_on_card_played)
+	SignalBus.card_played_target_enemy.connect(_on_card_played)
+	SignalBus.animation_grid_offset.connect(_on_animation_grid_offset)
 
 	# Gives the game time to process the enemy_scene's size
 	await get_tree().process_frame
