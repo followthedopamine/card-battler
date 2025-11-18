@@ -14,7 +14,7 @@ var enemy_grid_cols = 4
 ## this is backwards from normal so I can more easily find the front/back-most cells
 var enemy_target_dict: Array[Dictionary] = [{},{},{},{}]
 
-## A grid of enemy nodes that contain the enemy grid's state [row[col]]
+## A grid of enemy nodes that contain the enemy grid's state [row][col]
 var enemy_cell_grid: Array[Array] = []
 
 # Using hard coded values because maths is hard :)
@@ -96,8 +96,19 @@ func _position_cells():
 		if (child.is_in_group("EnemyCell")):
 			_position_cell(child, child.get_grid_pos(), h_offset, vertical_slice)
 
-func _get_front_back_target(back = false):
-	var col_range = range(enemy_grid_rows - 1, -1, -1) if back else range(0, enemy_grid_rows) 
+func _get_target(target: CardEffect.GridTarget):
+	var col_range: Array
+
+	match target:
+		CardEffect.GridTarget.FRONT:
+			col_range = range(0, enemy_grid_rows) 
+		CardEffect.GridTarget.BACK:
+			col_range = range(enemy_grid_rows - 1, -1, -1)
+		CardEffect.GridTarget.RANDOM:
+			col_range = range(0, enemy_grid_rows)
+			col_range.shuffle()
+		CardEffect.GridTarget.NONE:
+			return false
 	
 	for col in col_range:
 		var col_dict = enemy_target_dict[col]
@@ -109,20 +120,33 @@ func _get_front_back_target(back = false):
 	
 	return false
 
+func _get_aoe_targets(grid_target: EnemyCell):
+	var side_targets: Array[EnemyCell] = []
+
+	for row in range(max(0, grid_target.grid_pos.x - 1), min(enemy_grid_rows, grid_target.grid_pos.x + 1)):
+		for col in range(max(0, grid_target.grid_pos.y - 1), min(enemy_grid_cols, grid_target.grid_pos.y + 1)):
+			if enemy_cell_grid[row][col].get_has_enemy():
+				side_targets.push_back(enemy_cell_grid[row][col])
+	print("side_targets:", side_targets.map(func(target): return target.grid_pos))
+
+	return side_targets
+
+func _on_card_played(card: CardEffect):
+	var grid_target: EnemyCell = _get_target(card.enemy_target)
+
+	if (grid_target):
+		match card.enemy_target_type:
+			card.GridTargetType.SINGLE:
+				grid_target.process_card_effects(card)			
+			card.GridTargetType.AOE:
+				var aoe_targets = _get_aoe_targets(grid_target)
+				grid_target.process_card_effects(card)	
+				for target in aoe_targets:
+					target.process_card_effects(card)	
+
 func _on_resized():
 	_position_cells()
 
-func _on_card_played(card: CardEffect):
-	match card.enemy_target:
-		card.GridTarget.FRONT:
-			var target = _get_front_back_target()
-			if (target):
-				target.process_card_effects(card)
-		card.GridTarget.BACK:
-			var target = _get_front_back_target(true)
-			if (target):
-				target.process_card_effects(card)
-				
 func _ready() -> void:
 	self.connect("resized", _on_resized)
 	SignalBus.card_played_target_enemy.connect(_on_card_played)

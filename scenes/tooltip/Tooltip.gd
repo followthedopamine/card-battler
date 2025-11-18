@@ -40,6 +40,8 @@ func update_tooltip_variables(text_with_variables: String) -> String:
 		replaced_text += text_with_variables.substr(last_index, start - last_index)
 		if variable_string in node:
 			replaced_text += str(node.get(variable_string))
+		if variable_string in node.card_effect:
+			replaced_text += str(node.card_effect.get(variable_string))
 		else:
 			print("Tried to include a variable in tooltip that doesn't exist on node %s" % node)
 		last_index = end

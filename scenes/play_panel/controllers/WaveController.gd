@@ -87,6 +87,7 @@ func _on_enemy_area_setup():
 	_start_wave()
 
 func _on_enemies_cleared():
+	SignalBus.wave_end.emit(wave)
 	wave += 1
 	_start_wave()
 

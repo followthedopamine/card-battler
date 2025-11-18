@@ -37,19 +37,28 @@ func spawn_enemy(enemy: Enemy):
 func process_card_effects(card: CardEffect):
 	if has_enemy && is_instance_valid(enemy_scene):
 		if card.damage:
-			enemy_scene.take_damage(card.damage)
+			enemy_scene.take_damage(card.damage, PlayerManager.player_node)
+			handle_extra_player_attacks(card)
 			
-		if card.poison:
-			var status: Status = Status.new()
-			status.effect = Status.Type.BURN
-			status.stacks = card.poison
-			SignalBus.status_updated.emit(status, enemy_scene)
+		if card.burn:
+			Status.new(Status.Type.BURN, card.burn, enemy_scene)
+			
+		if card.slow:
+			Status.new(Status.Type.SLOW, card.slow, enemy_scene)
 		
 
 ## So the enemy can report that it has been removed/defeated/whatever
 func enemy_cleared():
 	has_enemy = false
 	parent.clear_enemy_from_grid(grid_pos)
+	
+func handle_extra_player_attacks(card: CardEffect) -> void:
+	var status: Status = Status.get_status(PlayerManager.player_node, Status.Type.EXTRA_ATTACK)
+	if status != null:
+		if status.stacks > 0:
+			Status.new(Status.Type.EXTRA_ATTACK, -1, PlayerManager.player_node)
+			process_card_effects(card)
+		
 
 func _ready() -> void:
 	self.mouse_filter = Control.MouseFilter.MOUSE_FILTER_IGNORE
