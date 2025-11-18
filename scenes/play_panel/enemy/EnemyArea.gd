@@ -131,7 +131,20 @@ func _get_aoe_targets(grid_target: EnemyCell):
 
 	return side_targets
 
+func _get_all_targets() -> Array[EnemyCell]:
+	var targets: Array[EnemyCell] = []
+	for row in enemy_grid_rows:
+		for col in enemy_grid_cols:
+			if enemy_cell_grid[row][col].get_has_enemy():
+				targets.push_back(enemy_cell_grid[row][col])
+	return targets
+
 func _on_card_played(card: CardEffect):
+	if card.enemy_target_type == card.GridTargetType.ALL:
+		for target in _get_all_targets():
+			target.process_card_effects(card)
+		return
+	
 	var grid_target: EnemyCell = _get_target(card.enemy_target)
 
 	if (grid_target):
@@ -140,9 +153,12 @@ func _on_card_played(card: CardEffect):
 				grid_target.process_card_effects(card)			
 			card.GridTargetType.AOE:
 				var aoe_targets = _get_aoe_targets(grid_target)
-				grid_target.process_card_effects(card)	
+				# This line causes aoe to hit the original target twice
+				# This is really hard to display on tooltips
+				#grid_target.process_card_effects(card)	
 				for target in aoe_targets:
-					target.process_card_effects(card)	
+					target.process_card_effects(card)
+			
 
 func _on_resized():
 	_position_cells()

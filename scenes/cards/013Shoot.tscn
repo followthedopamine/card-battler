@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bapfms1hgn23g"]
+
+[ext_resource type="Script" uid="uid://c531eyaws05rr" path="res://scenes/card/Card.gd" id="1_al3gq"]
+[ext_resource type="Texture2D" uid="uid://dfysqmn4o18hf" path="res://assets/card_art/card_bow_and_arrow.png" id="2_d4ysp"]
+[ext_resource type="Script" uid="uid://fuokg41g7d8s" path="res://scenes/card/CardEffect.gd" id="3_054fj"]
+
+[sub_resource type="Resource" id="Resource_l5thg"]
+script = ExtResource("3_054fj")
+target = 1
+enemy_target = 2
+enemy_target_type = 1
+damage = 8
+metadata/_custom_type_script = "uid://fuokg41g7d8s"
+
+[node name="013Shoot" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_al3gq")
+card_name = "Aw Shoot"
+sprite_texture = ExtResource("2_d4ysp")
+tooltips = Array[String](["Deals %damage% ranged damage."])
+tags = Array[int]([9])
+card_effect = SubResource("Resource_l5thg")
+metadata/_custom_type_script = "uid://c531eyaws05rr"

@@ -15,3 +15,5 @@ var max_hand_size := 5
 var shop_slots: int = 2
 
 var player_node: Player
+
+var last_card_activated: Card = null

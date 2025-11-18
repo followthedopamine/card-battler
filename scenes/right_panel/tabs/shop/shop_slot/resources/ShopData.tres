@@ -1,9 +1,8 @@
-[gd_resource type="Resource" script_class="ShopData" load_steps=7 format=3 uid="uid://cpmmj5444k2ii"]
+[gd_resource type="Resource" script_class="ShopData" load_steps=5 format=3 uid="uid://cpmmj5444k2ii"]
 
 [ext_resource type="Script" uid="uid://b53v2ikroxkgs" path="res://scenes/right_panel/tabs/shop/shop_slot/scripts/ShopData.gd" id="1_43vxk"]
 [ext_resource type="Script" uid="uid://dgaaqxo1s7olq" path="res://scenes/right_panel/tabs/shop/shop_slot/scripts/ShopItemData.gd" id="2_cbdoc"]
 [ext_resource type="PackedScene" uid="uid://b8lmu1lufvt4j" path="res://scenes/packs/Pack.tscn" id="3_bjqil"]
-[ext_resource type="PackedScene" uid="uid://d24frx2cu7k76" path="res://scenes/relics/money_relic/money_relic.tscn" id="4_t8mk2"]
 
 [sub_resource type="Resource" id="Resource_bjqil"]
 script = ExtResource("2_cbdoc")
@@ -11,12 +10,6 @@ item = ExtResource("3_bjqil")
 base_price = 20
 metadata/_custom_type_script = "uid://dgaaqxo1s7olq"
 
-[sub_resource type="Resource" id="Resource_1xqy4"]
-script = ExtResource("2_cbdoc")
-item = ExtResource("4_t8mk2")
-base_price = 40
-metadata/_custom_type_script = "uid://dgaaqxo1s7olq"
-
 [resource]
 script = ExtResource("1_43vxk")
-shop_items = Array[ExtResource("2_cbdoc")]([SubResource("Resource_bjqil"), SubResource("Resource_1xqy4")])
+shop_items = Array[ExtResource("2_cbdoc")]([SubResource("Resource_bjqil")])

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://77pqf2vl82d2" path="res://scenes/card/CardComponents.gd" id="1_k6qmu"]
 [ext_resource type="Texture2D" uid="uid://bydjxdlit5oij" path="res://scenes/card/images/exchange_icon_placeholder.png" id="2_axisl"]
-[ext_resource type="Texture2D" uid="uid://bfhw2nysx4i7p" path="res://assets/background/placeholder_card1.png" id="2_tf2r5"]
+[ext_resource type="Texture2D" uid="uid://b2y6rbbxqpf4y" path="res://assets/card_art/card_risky.png" id="2_tf2r5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5xgwh"]
 content_margin_left = 0.0

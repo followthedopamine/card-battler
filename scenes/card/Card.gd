@@ -16,16 +16,24 @@ enum CardTag {
 	RANDOM,
 	THORNS,
 	STRENGTH,
+	POISON,
+	AOE,
+	RANGED,
+	ALL,
 }
 
 var card_tag_tooltips: Dictionary[CardTag, String] = {
 	CardTag.MELEE: "Melee: Can only hit enemies in the closest row",
 	CardTag.BLOCK: "Block: Prevents damage",
-	CardTag.BURN: "Burn: Deals damage equal to number of burn every 1 second",
-	CardTag.SLOW: "Slow: Reduces the enemy attack speed by 0.5 seconds",
+	CardTag.BURN: "Burn: Deals damage equal to number of burn stacks every %s second" % StatusHandler.BURN_DURATION,
+	CardTag.SLOW: "Slow: Reduces the enemy attack speed by %s seconds" % StatusHandler.SLOW_ADDITION,
 	CardTag.RANDOM: "Random: Can hit any enemy",
 	CardTag.THORNS: "Thorns: Reflects some damage back at the enemy",
-	CardTag.STRENGTH: "Strength: Adds damage to your attacks"
+	CardTag.STRENGTH: "Strength: Adds damage to your attacks",
+	CardTag.POISON: "Poison: Deals damage equal to number of burn every %s second" % StatusHandler.POISON_DURATION,
+	CardTag.AOE: "AOE: Hits the target enemy and adjacent enemies",
+	CardTag.RANGED: "Ranged: Hits the enemies in the back row first",
+	CardTag.ALL: "All: This card targets every enemy at once",
 }
 
 signal completed(card: Card)
@@ -103,6 +111,7 @@ func _on_timer_timeout() -> void:
 func activate_card_effect() -> void:
 	if is_instance_valid(card_effect):
 		card_effect.run_effects()
+		PlayerManager.last_card_activated = self
 	else:
 		push_error("ERROR: This should not be reachable. In card_name:", card_name, " | ", name)
 

@@ -34,7 +34,7 @@ var damage_taken_health_bar_duration := 1
 var damage_taken_health_bar_elapsed := 0.0
 
 @onready var health_bar: HealthBar = $HealthBar
-@onready var sprite: AnimatedSprite2D  = $Sprite
+@onready var sprite: AnimatedSprite2D = $Sprite
 @onready var parent = get_parent()
 
 @onready var attack_timer := Timer.new()
@@ -106,6 +106,8 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	show_mouse_over_health_bar = false
+	
+
 
 func _ready() -> void:
 	super()
@@ -125,12 +127,15 @@ func _ready() -> void:
 
 	self.mouse_entered.connect(_on_mouse_entered)
 	self.mouse_exited.connect(_on_mouse_exited)
+	
+	
 
 	add_child(attack_timer)
 	attack_timer.wait_time = attack_speed
 	attack_timer.one_shot = false
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
 	attack_timer.start()
+	
 
 func _physics_process(delta: float) -> void:
 	if is_attacking:

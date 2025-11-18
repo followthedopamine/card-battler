@@ -45,6 +45,9 @@ func process_card_effects(card: CardEffect):
 			
 		if card.slow:
 			Status.new(Status.Type.SLOW, card.slow, enemy_scene)
+			
+		if card.poison:
+			Status.new(Status.Type.POISON, card.poison, enemy_scene)
 		
 
 ## So the enemy can report that it has been removed/defeated/whatever
@@ -58,7 +61,6 @@ func handle_extra_player_attacks(card: CardEffect) -> void:
 		if status.stacks > 0:
 			Status.new(Status.Type.EXTRA_ATTACK, -1, PlayerManager.player_node)
 			process_card_effects(card)
-		
 
 func _ready() -> void:
 	self.mouse_filter = Control.MouseFilter.MOUSE_FILTER_IGNORE

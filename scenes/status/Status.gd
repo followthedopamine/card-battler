@@ -6,7 +6,8 @@ enum Type {
 	BLOCK,
 	THORNS,
 	STRENGTH,
-	EXTRA_ATTACK
+	EXTRA_ATTACK,
+	POISON
 }
 
 var effect: Type = Type.BURN

@@ -32,7 +32,6 @@ anchors_preset = 0
 offset_right = 1.0
 offset_bottom = 1.0
 script = ExtResource("1_vnrdp")
-max_health = 20
 spawn_columns = Array[int]([0, 1, 2])
 metadata/_edit_use_anchors_ = true
 

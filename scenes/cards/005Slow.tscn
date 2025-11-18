@@ -8,6 +8,7 @@
 script = ExtResource("3_vafn7")
 target = 1
 enemy_target = 3
+enemy_target_type = 1
 slow = 1
 metadata/_custom_type_script = "uid://fuokg41g7d8s"
 
