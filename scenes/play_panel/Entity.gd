@@ -26,7 +26,7 @@ func take_damage(damage_taken: float, attacker: Entity = null) -> void:
 	if attacker != null:
 		damage_taken += attacker.strength
 	if block > 0:
-		block -= damage_taken
+		block -= int(damage_taken)
 		if block < 0:
 			damage_taken = abs(block)
 			block = 0

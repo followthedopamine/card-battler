@@ -164,7 +164,6 @@ func _on_animation_grid_offset(offset: int):
 func _ready() -> void:
 	self.connect("resized", _on_resized)
 	SignalBus.card_played_target_enemy.connect(_on_card_played)
-	SignalBus.card_played_target_enemy.connect(_on_card_played)
 	SignalBus.animation_grid_offset.connect(_on_animation_grid_offset)
 
 	# Gives the game time to process the enemy_scene's size
