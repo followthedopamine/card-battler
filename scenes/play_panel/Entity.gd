@@ -1,7 +1,7 @@
 class_name Entity extends Control
 
 @export var max_health: float
-@export var block: float:
+@export var block: int:
 	get: return block
 	set(value):
 		block = value

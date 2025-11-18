@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3xtuy5n874ea"]
+
+[ext_resource type="Script" uid="uid://c531eyaws05rr" path="res://scenes/card/Card.gd" id="1_qoh3e"]
+[ext_resource type="Texture2D" uid="uid://d0dgrdsd1s4ej" path="res://assets/card_art/card_poison_soup.png" id="2_eodoq"]
+[ext_resource type="Script" uid="uid://fuokg41g7d8s" path="res://scenes/card/CardEffect.gd" id="3_ix7hh"]
+
+[sub_resource type="Resource" id="Resource_774gm"]
+script = ExtResource("3_ix7hh")
+target = 1
+enemy_target = 3
+enemy_target_type = 3
+poison = 2
+metadata/_custom_type_script = "uid://fuokg41g7d8s"
+
+[node name="017soup" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_qoh3e")
+card_name = "SOUP!"
+sprite_texture = ExtResource("2_eodoq")
+tooltips = Array[String](["Applies %poison% stacks of poison to all enemies"])
+tags = Array[int]([7, 10])
+card_effect = SubResource("Resource_774gm")
+metadata/_custom_type_script = "uid://c531eyaws05rr"

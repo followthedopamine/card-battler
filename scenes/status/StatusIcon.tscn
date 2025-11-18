@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cp7g4rfx2pn4x"]
+[gd_scene load_steps=10 format=3 uid="uid://cp7g4rfx2pn4x"]
 
 [ext_resource type="Texture2D" uid="uid://bxgl2e0chtrcw" path="res://assets/icons/Burn.png" id="1_5s64q"]
 [ext_resource type="Script" uid="uid://cm173mr2lia7o" path="res://scenes/status/StatusIcon.gd" id="2_4ba4j"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bl327lcekhtwy" path="res://assets/icons/thorns.png" id="5_464dp"]
 [ext_resource type="Texture2D" uid="uid://dhl0u5cqeev5j" path="res://assets/icons/modify.png" id="6_er4ha"]
 [ext_resource type="Texture2D" uid="uid://d1qqv56ug7yq0" path="res://assets/icons/aoe.png" id="7_kf3og"]
+[ext_resource type="Texture2D" uid="uid://be4cau7uyoh6b" path="res://assets/icons/poison.png" id="8_emvi6"]
 
 [node name="StatusIconTextureRect" type="TextureRect" node_paths=PackedStringArray("label")]
 texture = ExtResource("1_5s64q")
@@ -20,6 +21,7 @@ block_texture = ExtResource("4_mjem0")
 thorns_texture = ExtResource("5_464dp")
 strength_texture = ExtResource("6_er4ha")
 extra_attack_texture = ExtResource("7_kf3og")
+poison_texture = ExtResource("8_emvi6")
 
 [node name="StatusLabel" type="RichTextLabel" parent="."]
 texture_filter = 1

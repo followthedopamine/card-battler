@@ -15,21 +15,25 @@ func _ready() -> void:
 	SignalBus.pack_opened.connect(_on_pack_opened)
 	SignalBus.card_chosen.connect(_on_card_chosen)
 	skip_button.pressed.connect(_on_skip_button_pressed)
-	visible = false
+	close_pack()
 	reroll_cards()
 	
 func _on_pack_opened() -> void:
 	open_pack()
 	
 func _on_card_chosen(_card: Card) -> void:
-	visible = false
+	close_pack()
 	
 func _on_skip_button_pressed() -> void:
-	visible = false
+	close_pack()
 
 func open_pack() -> void:
 	reroll_cards()
 	visible = true
+	
+func close_pack() -> void:
+	visible = false
+	SignalBus.pack_closed.emit()
 
 func reroll_cards() -> void:
 	for card: Node in card_area.get_children():
