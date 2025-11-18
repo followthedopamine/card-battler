@@ -31,6 +31,11 @@ signal enemies_cleared()
 signal wave_start(wave: int)
 signal wave_end(wave: int)
 
+## t = timer
+signal animation_wave_t(eased_t: float)
+signal animation_grid_offset(offset: int)
+signal animation_end()
+
 signal enemy_attack(damage: float, enemy: Enemy)
 signal enemy_dead(payout: int)
 

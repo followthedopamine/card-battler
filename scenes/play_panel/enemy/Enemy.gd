@@ -107,6 +107,13 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	show_mouse_over_health_bar = false
 
+func _on_animation_end():
+	add_child(attack_timer)
+	attack_timer.wait_time = attack_speed
+	attack_timer.one_shot = false
+	attack_timer.timeout.connect(_on_attack_timer_timeout)
+	attack_timer.start()
+
 func _ready() -> void:
 	super()
 	health = max_health
@@ -126,11 +133,8 @@ func _ready() -> void:
 	self.mouse_entered.connect(_on_mouse_entered)
 	self.mouse_exited.connect(_on_mouse_exited)
 
-	add_child(attack_timer)
-	attack_timer.wait_time = attack_speed
-	attack_timer.one_shot = false
-	attack_timer.timeout.connect(_on_attack_timer_timeout)
-	attack_timer.start()
+	SignalBus.animation_end.connect(_on_animation_end)
+
 
 func _physics_process(delta: float) -> void:
 	if is_attacking:
@@ -144,3 +148,4 @@ func _physics_process(delta: float) -> void:
 
 	if !show_mouse_over_health_bar && !show_damage_taken_health_bar:
 		health_bar.visible = false
+

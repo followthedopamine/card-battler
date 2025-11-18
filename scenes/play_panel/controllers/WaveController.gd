@@ -1,11 +1,21 @@
 class_name WaveController extends Node
 
 @export var wave = 1
+## How many grid columns the cells will slide in from on wave start
+@export var animation_grid_offset = 7
+## The duration of the animation in seconds
+@export var animation_duration := 1.0
+
 @export_dir var enemy_folder_path = "res://scenes/play_panel/enemies"
 
 var enemy_scene_array: Array[Enemy] = []
 
+# grid animation handling
+var time_elapsed := 0.0
+var moving := false
+
 @onready var enemy_area: EnemyArea = get_tree().get_first_node_in_group("EnemyArea")
+@onready var grid: Sprite2D = get_tree().get_first_node_in_group("AreaGrid")
 
 func get_wave():
 	return wave
@@ -13,6 +23,8 @@ func get_wave():
 func _start_wave():
 	_generate_wave()
 	SignalBus.wave_start.emit(wave)
+	moving = true
+	time_elapsed = 0.0
 
 
 func _generate_wave():
@@ -95,9 +107,22 @@ func _ready():
 	_get_enemy_scenes()
 	_sort_enemy_scenes_by_var("spawn_value")
 
+	SignalBus.animation_grid_offset.emit(animation_grid_offset)
+		
 	if enemy_area.get_is_setup():
 		_on_enemy_area_setup()
 	else:
 		SignalBus.enemy_area_setup.connect(_on_enemy_area_setup)
 	
 	SignalBus.enemies_cleared.connect(_on_enemies_cleared)
+
+func _process(delta: float) -> void:
+	if (moving):
+		time_elapsed += delta
+
+		if (time_elapsed > animation_duration):
+			moving = false
+			SignalBus.animation_end.emit()
+		
+		var eased_t = (0.5 - 0.5 * cos((time_elapsed / animation_duration) * PI))
+		SignalBus.animation_wave_t.emit(eased_t)
