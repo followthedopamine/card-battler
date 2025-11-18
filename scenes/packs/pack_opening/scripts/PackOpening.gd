@@ -42,5 +42,7 @@ func reroll_cards() -> void:
 		elif rare_chance < UNCOMMON_ODDS:
 			card_pool = GameData.cards_uncommon
 		var new_card: Card = card_pool.pick_random().duplicate()
+		new_card.mouse_filter = MouseFilter.MOUSE_FILTER_STOP
+		new_card.z_index = 10
 		card_area.add_child(new_card)
 		
