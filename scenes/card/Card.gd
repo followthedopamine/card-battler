@@ -25,17 +25,17 @@ enum CardTag {
 const INSTANT_SPEED: float = 0.1
 
 var card_tag_tooltips: Dictionary[CardTag, String] = {
-	CardTag.MELEE: "Melee: Can only hit enemies in the closest row",
-	CardTag.BLOCK: "Block: Prevents damage",
-	CardTag.BURN: "Burn: Deals damage equal to number of burn stacks every %s second" % StatusHandler.BURN_DURATION,
+	CardTag.MELEE: "Melee: Hits the closest enemies first",
+	CardTag.BLOCK: "Block: Prevents damage up to number of block stacks",
+	CardTag.BURN: "Burn: Deals damage equal to number of burn stacks every %s second" %  snapped(StatusHandler.BURN_DURATION, 1),
 	CardTag.SLOW: "Slow: Reduces the enemy attack speed by %s seconds" % StatusHandler.SLOW_ADDITION,
 	CardTag.RANDOM: "Random: Can hit any enemy",
-	CardTag.THORNS: "Thorns: Reflects some damage back at the enemy",
-	CardTag.STRENGTH: "Strength: Adds damage to your attacks",
-	CardTag.POISON: "Poison: Deals damage equal to number of burn every %s second" % StatusHandler.POISON_DURATION,
-	CardTag.AOE: "AOE: Hits the target enemy and adjacent enemies",
-	CardTag.RANGED: "Ranged: Hits the enemies in the back row first",
-	CardTag.ALL: "All: This card targets every enemy at once",
+	CardTag.THORNS: "Thorns: Reflects damage back at the enemy equal to the number of thorn stacks",
+	CardTag.STRENGTH: "Strength: Adds damage to your attacks equal to the number of strength stacks",
+	CardTag.POISON: "Poison: Deals damage equal to number of poison stacks every %s seconds" % snapped(StatusHandler.POISON_DURATION, 1),
+	CardTag.AOE: "AOE: Hits the target enemy and adjacent enemies in a 3x3 grid",
+	CardTag.RANGED: "Ranged: Hits the furthest enemies first",
+	CardTag.ALL: "All: Hits every enemy at once",
 }
 
 signal completed(card: Card)
