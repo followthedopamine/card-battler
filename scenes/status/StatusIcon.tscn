@@ -16,12 +16,13 @@ expand_mode = 2
 stretch_mode = 4
 script = ExtResource("2_4ba4j")
 label = NodePath("StatusLabel")
-slow_texture = ExtResource("3_4ba4j")
+slow_texture = ExtResource("7_kf3og")
 block_texture = ExtResource("4_mjem0")
 thorns_texture = ExtResource("5_464dp")
 strength_texture = ExtResource("6_er4ha")
 extra_attack_texture = ExtResource("7_kf3og")
 poison_texture = ExtResource("8_emvi6")
+fuse_texture = ExtResource("3_4ba4j")
 
 [node name="StatusLabel" type="RichTextLabel" parent="."]
 texture_filter = 1

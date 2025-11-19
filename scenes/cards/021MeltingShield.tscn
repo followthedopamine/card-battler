@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cixquvhc3rckp"]
+
+[ext_resource type="Script" uid="uid://rlgundc43aw8" path="res://scenes/cards/021MeltingShield.gd" id="1_swyjb"]
+[ext_resource type="Texture2D" uid="uid://ci6vxxeyk2toe" path="res://assets/card_art/card_melting_shield.png" id="2_dishs"]
+[ext_resource type="Script" uid="uid://fuokg41g7d8s" path="res://scenes/card/CardEffect.gd" id="3_ssi8b"]
+
+[sub_resource type="Resource" id="Resource_s2am4"]
+script = ExtResource("3_ssi8b")
+target = 1
+enemy_target_type = 3
+metadata/_custom_type_script = "uid://fuokg41g7d8s"
+
+[node name="021MeltingShield" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_swyjb")
+card_name = "Melting Shield"
+sprite_texture = ExtResource("2_dishs")
+tooltips = Array[String](["Blocks for the total stacks of poison on all enemies"])
+tags = Array[int]([1, 7])
+card_effect = SubResource("Resource_s2am4")
+metadata/_custom_type_script = "uid://c531eyaws05rr"

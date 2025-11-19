@@ -17,18 +17,33 @@ completedColumns:
 - [music](tasks/music.md)
 - [a-way-to-display-packs](tasks/a-way-to-display-packs.md)
 - [bug-the-regex-for-tooltips-could-be-better-for-multiple-variables](tasks/bug-the-regex-for-tooltips-could-be-better-for-multiple-variables.md)
+- [bug-if-you-have-0-stacks-of-thorns-it-deals-0-to-enemies-and-shows-hp](tasks/bug-if-you-have-0-stacks-of-thorns-it-deals-0-to-enemies-and-shows-hp.md)
 
 ## Todo
 
-- [card-block-for-the-total-amount-of-poison-on-enemies-melting-shield](tasks/card-block-for-the-total-amount-of-poison-on-enemies-melting-shield.md)
-- [card-deal-damage-equal-to-burn-on-you-and-your-target](tasks/card-deal-damage-equal-to-burn-on-you-and-your-target.md)
+- [card-deal-big-damage-a-random-card-is-disabled-for-10-seconds-chained](tasks/card-deal-big-damage-a-random-card-is-disabled-for-10-seconds-chained.md)
+- [card-ask-for-card-art-for-slow-card](tasks/card-ask-for-card-art-for-slow-card.md)
 
 ## In Progress
 
-- [card-deal-damage-if-enemy-poisoned-remove-1-stack-and-deal-extra-damage](tasks/card-deal-damage-if-enemy-poisoned-remove-1-stack-and-deal-extra-damage.md)
-
 ## Done
 
+- [card-after-you-play-3-cards-deal-30-damage-explosion](tasks/card-after-you-play-3-cards-deal-30-damage-explosion.md)
+- [card-add-3-gold-to-this-card-s-sell-value](tasks/card-add-3-gold-to-this-card-s-sell-value.md)
+- [card-deal-8-melee-damage-if-kills-adds-10-gold](tasks/card-deal-8-melee-damage-if-kills-adds-10-gold.md)
+- [card-deal-damage-equal-to-gold](tasks/card-deal-damage-equal-to-gold.md)
+- [card-add-20-block-your-next-card-takes-twice-as-long-frozen-shield](tasks/card-add-20-block-your-next-card-takes-twice-as-long-frozen-shield.md)
+- [card-play-a-random-rare-card-effect-instantly-question-mark](tasks/card-play-a-random-rare-card-effect-instantly-question-mark.md)
+- [card-give-next-card-1-poison-for-wave-poison-wave](tasks/card-give-next-card-1-poison-for-wave-poison-wave.md)
+- [card-burn-wave](tasks/card-burn-wave.md)
+- [card-slow-card-that-plays-your-next-card-instantly-snail](tasks/card-slow-card-that-plays-your-next-card-instantly-snail.md)
+- [card-change-art-on-cash](tasks/card-change-art-on-cash.md)
+- [card-change-art-on-heal-card-energy](tasks/card-change-art-on-heal-card-energy.md)
+- [card-change-art-on-burn-heal](tasks/card-change-art-on-burn-heal.md)
+- [card-apply-one-burn-randomly-but-it-s-really-fast-lighter](tasks/card-apply-one-burn-randomly-but-it-s-really-fast-lighter.md)
+- [card-deal-damage-equal-to-burn-on-you-and-your-target-made-a-different-card-since-burn-runs-out-too-quickly-for-this-to-do-anything](tasks/card-deal-damage-equal-to-burn-on-you-and-your-target-made-a-different-card-since-burn-runs-out-too-quickly-for-this-to-do-anything.md)
+- [card-block-for-the-total-amount-of-poison-on-enemies-melting-shield](tasks/card-block-for-the-total-amount-of-poison-on-enemies-melting-shield.md)
+- [card-deal-damage-if-enemy-poisoned-remove-1-stack-and-deal-extra-damage](tasks/card-deal-damage-if-enemy-poisoned-remove-1-stack-and-deal-extra-damage.md)
 - [card-remove-block-then-deal-damage-equal-to-block-bonk](tasks/card-remove-block-then-deal-damage-equal-to-block-bonk.md)
 - [card-slow-block-card-that-blocks-extra](tasks/card-slow-block-card-that-blocks-extra.md)
 - [card-poison-all-enemies-soup](tasks/card-poison-all-enemies-soup.md)

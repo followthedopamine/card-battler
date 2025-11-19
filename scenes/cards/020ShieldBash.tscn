@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cxy4icnk2gk4o"]
 
-[ext_resource type="Script" uid="uid://colkc10m2ccg6" path="res://scenes/cards/020_shield_bash.gd" id="1_8pjyn"]
+[ext_resource type="Script" uid="uid://colkc10m2ccg6" path="res://scenes/cards/020ShieldBash.gd" id="1_8pjyn"]
 [ext_resource type="Texture2D" uid="uid://dpo506lvbhl46" path="res://assets/card_art/card_shield_bonk.png" id="2_8pjyn"]
 [ext_resource type="Script" uid="uid://fuokg41g7d8s" path="res://scenes/card/CardEffect.gd" id="3_ohuvu"]
 

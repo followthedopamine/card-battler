@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://cl705t2jrdsh"]
+
+[ext_resource type="Script" uid="uid://b0ttibb5kic6d" path="res://scenes/cards/026QuestionMark.gd" id="1_uoj10"]
+[ext_resource type="Texture2D" uid="uid://tri3btg8slqs" path="res://assets/card_art/card_questionmark.png" id="2_npasu"]
+[ext_resource type="Script" uid="uid://fuokg41g7d8s" path="res://scenes/card/CardEffect.gd" id="3_7rs3o"]
+
+[sub_resource type="Resource" id="Resource_m8rmp"]
+script = ExtResource("3_7rs3o")
+metadata/_custom_type_script = "uid://fuokg41g7d8s"
+
+[node name="026QuestionMark" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_uoj10")
+card_name = "Mystery Box"
+sprite_texture = ExtResource("2_npasu")
+tooltips = Array[String](["Activates a random rare card effect"])
+card_effect = SubResource("Resource_m8rmp")
+metadata/_custom_type_script = "uid://c531eyaws05rr"

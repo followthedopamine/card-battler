@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://7w7cgbswlqg1"]
 
 [ext_resource type="Script" uid="uid://c531eyaws05rr" path="res://scenes/card/Card.gd" id="1_ivvcq"]
-[ext_resource type="Texture2D" uid="uid://dvaodkm8ffqhs" path="res://assets/card_art/card_heal.png" id="2_upb2v"]
+[ext_resource type="Texture2D" uid="uid://cm8m2rwrgrbdu" path="res://assets/card_art/card_medkit_fire.png" id="2_upb2v"]
 [ext_resource type="Script" uid="uid://fuokg41g7d8s" path="res://scenes/card/CardEffect.gd" id="3_id21h"]
 
 [sub_resource type="Resource" id="Resource_opmf2"]
@@ -15,7 +15,7 @@ metadata/_custom_type_script = "uid://fuokg41g7d8s"
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_ivvcq")
-card_name = "Heal burn"
+card_name = "Burn Heal"
 sprite_texture = ExtResource("2_upb2v")
 tooltips = Array[String](["Heals %heal% and adds %burn% stacks of burn"])
 card_effect = SubResource("Resource_opmf2")

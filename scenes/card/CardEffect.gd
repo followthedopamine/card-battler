@@ -34,13 +34,19 @@ enum GridTargetType { NONE, SINGLE, AOE, ALL }
 @export var currency: int
 
 @export var on_play_callables: Array[Callable] = []
+@export var on_play_enemy_callables: Array[Callable] = []
+@export var on_play_all_enemy_callables: Array[Callable] = []
+@export var on_kill_callables: Array[Callable] = []
+@export var on_next_wave_callable: Array[Callable] = []
 
 func add_on_play_callable(callable: Callable):
-	on_play_callables.push_front(callable)
+	if !callable in on_play_callables:
+		on_play_callables.push_front(callable)
 
 func run_on_play_callables():
 	for callable in on_play_callables:
-		callable.call()
+		if callable.get_object() != null:
+			callable.call()
 
 func modify_currency(coin_amount: int):
 	var modified_currency = floori(coin_amount * PlayerManager.currency_modifier)
@@ -54,6 +60,7 @@ func run_effects():
 			SignalBus.card_played_target_player.emit(self)
 		Target.SHOP:
 			SignalBus.card_played_target_shop.emit(self)
+	
 	
 	if (currency): 
 		modify_currency(currency)

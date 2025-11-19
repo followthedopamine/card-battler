@@ -22,6 +22,8 @@ enum CardTag {
 	ALL,
 }
 
+const INSTANT_SPEED: float = 0.1
+
 var card_tag_tooltips: Dictionary[CardTag, String] = {
 	CardTag.MELEE: "Melee: Can only hit enemies in the closest row",
 	CardTag.BLOCK: "Block: Prevents damage",
@@ -58,6 +60,7 @@ var activated := false
 
 const DISABLED_COLOUR: Color = Color(0.08, 0.08, 0.08, 1.0)
 
+
 const colours := [
 	Color(255, 0, 0),
 	Color(0, 255, 0),
@@ -66,7 +69,9 @@ const colours := [
 	Color(255, 255, 0),
 	Color(0, 255, 255)
 ]
-var colour: Color;
+var colour: Color
+
+var original_card_effect: CardEffect
 
 func _ready() -> void:
 	super()
@@ -88,6 +93,11 @@ func _ready() -> void:
 	for tag: CardTag in tags:
 		if card_tag_tooltips.has(tag):
 			Tooltip.new(card_tag_tooltips[tag], self)
+	
+	if card_effect != null:
+		# If we don't do a super thorough duplicate then the resource will never be
+		# unique
+		original_card_effect = card_effect.duplicate_deep(Resource.DeepDuplicateMode.DEEP_DUPLICATE_ALL)
 
 func _process(delta: float) -> void:
 	super(delta)
@@ -98,7 +108,11 @@ func _process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	activate_card_effect()
+	SignalBus.card_played.emit()
+	PlayerManager.last_card_activated = self
 	deactivate()
+	
+
 
 #func set_colour(index: int):
 	#colour = colours[index % colours.size()]
@@ -111,11 +125,15 @@ func _on_timer_timeout() -> void:
 func activate_card_effect() -> void:
 	if is_instance_valid(card_effect):
 		card_effect.run_effects()
-		PlayerManager.last_card_activated = self
+		
 	else:
 		push_error("ERROR: This should not be reachable. In card_name:", card_name, " | ", name)
 
+func start_card_effect() -> void:
+	pass
+
 func activate():
+	start_card_effect()
 	timer.start(duration)
 
 	card_components.position.y = -10
@@ -130,7 +148,7 @@ func activate():
 
 	activated = true
 
-func deactivate():
+func deactivate(should_emit_completed: bool = true):
 	timer.stop()
 
 	card_components.position.y = 0
