@@ -133,10 +133,41 @@ func _get_all_targets() -> Array[EnemyCell]:
 			if enemy_cell_grid[row][col].get_has_enemy():
 				targets.push_back(enemy_cell_grid[row][col])
 	return targets
+	
+func get_all_enemies() -> Array[Enemy]:
+	var targets: Array[EnemyCell] = _get_all_targets()
+	var all_enemies: Array[Enemy] = []
+	for cell: EnemyCell in targets:
+		if cell.has_enemy && is_instance_valid(cell.enemy_scene):
+			all_enemies.push_back(cell.enemy_scene)
+	return all_enemies
+	
+func process_all_enemy_callables(card: CardEffect, all_enemies: Array[Enemy]) -> void:
+	for callable: Callable in card.on_play_all_enemy_callables:
+		# Hopefully fixes a crash where the callable can sometimes be null?
+		if callable.get_object() == null:
+			print("ERROR: Callable was null and would have crashed here")
+			continue
+		callable.call(all_enemies)
+
+func _on_any_card_played() -> void:
+	if Status.has_status(PlayerManager.player_node, Status.Type.FUSE):
+		var status: Status = Status.get_status(PlayerManager.player_node, Status.Type.FUSE)
+		if status.stacks == 0:
+			var temp_card_effect: CardEffect = CardEffect.new()
+			temp_card_effect.damage = LightFuse.EXPLOSION_DAMAGE
+			var all_cells: Array[EnemyCell] = _get_all_targets()
+			for target in all_cells:
+				target.process_card_effects(temp_card_effect)
 
 func _on_card_played(card: CardEffect):
+	if card.on_play_all_enemy_callables.size():
+		var all_enemies: Array[Enemy] = get_all_enemies()
+		process_all_enemy_callables(card, all_enemies)
+	
 	if card.enemy_target_type == card.GridTargetType.ALL:
-		for target in _get_all_targets():
+		var all_cells: Array[EnemyCell] = _get_all_targets()
+		for target in all_cells:
 			target.process_card_effects(card)
 		return
 	
@@ -164,6 +195,7 @@ func _on_animation_grid_offset(offset: int):
 func _ready() -> void:
 	self.connect("resized", _on_resized)
 	SignalBus.card_played_target_enemy.connect(_on_card_played)
+	SignalBus.card_played.connect(_on_any_card_played)
 	SignalBus.animation_grid_offset.connect(_on_animation_grid_offset)
 
 	# Gives the game time to process the enemy_scene's size
@@ -172,3 +204,4 @@ func _ready() -> void:
 	
 	is_setup = true
 	SignalBus.enemy_area_setup.emit()
+	PlayerManager.enemy_area = self

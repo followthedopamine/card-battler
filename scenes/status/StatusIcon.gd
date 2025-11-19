@@ -8,6 +8,8 @@ class_name StatusIcon extends TextureRect
 @export var strength_texture: Texture
 @export var extra_attack_texture: Texture
 @export var poison_texture: Texture
+@export var fuse_texture: Texture
+
 
 var effect: Status.Type
 
@@ -37,3 +39,5 @@ func update_texture() -> void:
 			self.texture = extra_attack_texture
 		Status.Type.POISON:
 			self.texture = poison_texture
+		Status.Type.FUSE:
+			self.texture = fuse_texture

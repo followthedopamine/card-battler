@@ -6,7 +6,7 @@ class_name Hand extends HBoxContainer
 var cards: Array[Card]
 
 func _ready() -> void:
-	#SignalBus.card_discarded.connect(_on_card_discarded)
+	SignalBus.wave_end.connect(_on_wave_end)
 	
 	#for i in range(PlayerManager.hand_size):
 		#draw_random()
@@ -14,6 +14,7 @@ func _ready() -> void:
 	var starter_card: Card = GameData.cards_common[0].duplicate()
 	draw(starter_card)
 	start_round()
+	PlayerManager.hand_node = self
 	
 func _can_drop_data(_at_position: Vector2, _data: Variant) -> bool:
 	return !PlayerManager.hand_size == PlayerManager.max_hand_size
@@ -23,12 +24,21 @@ func _can_drop_data(_at_position: Vector2, _data: Variant) -> bool:
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	data.reparent(self)
 	SignalBus.card_chosen.emit(data)
+
+func _on_wave_end(_wave: int) -> void:
+	# This is for resetting stacking card effects on next wave
+	# Also has a bonus of starting the hand over from the leftmost card
+	for card: Card in cards:
+		if card.original_card_effect != null:
+			card.card_effect = card.original_card_effect.duplicate_deep(Resource.DeepDuplicateMode.DEEP_DUPLICATE_ALL)
+		card.deactivate(false)
+	start_round()
 	
 	
 func refresh_card_array() -> void:
 	cards = []
 	for child: Node in self.get_children():
-		if child.is_queued_for_deletion():
+		if !is_instance_valid(child) or child.is_queued_for_deletion():
 			continue
 		if child is Card:
 			if !child.completed.is_connected(on_card_completed):
@@ -40,11 +50,8 @@ func refresh_card_array() -> void:
 func start_round():
 	print("Starting round")
 
-	cards = []
-	for child in get_children():
-		if child is Card:
-			cards.append(child)
-
+	refresh_card_array()
+	print(cards)
 	if cards.size():
 		cards[0].activate()
 
@@ -71,6 +78,14 @@ func on_card_completed(card: Card):
 	# activate out of order.
 	refresh_card_array()
 	activate_next_card(card)
+	
+func get_next_card(current_card: Card) -> Card:
+	if cards.size() <= 1:
+		return null
+	var current_card_index = cards.find(current_card)
+	if current_card_index == cards.size() - 1:
+		current_card_index = -1
+	return cards[current_card_index + 1]
 	
 func activate_next_card(current_card: Card) -> void:
 	# If player can ever sell the last card in hand this will break

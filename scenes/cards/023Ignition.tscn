@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8s6jvdbtn6cx"]
+
+[ext_resource type="Script" uid="uid://c531eyaws05rr" path="res://scenes/card/Card.gd" id="1_hjexu"]
+[ext_resource type="Texture2D" uid="uid://mdtj111ef548" path="res://assets/card_art/card_lighter.png" id="2_438ro"]
+[ext_resource type="Script" uid="uid://fuokg41g7d8s" path="res://scenes/card/CardEffect.gd" id="3_v5m7k"]
+
+[sub_resource type="Resource" id="Resource_0iec2"]
+script = ExtResource("3_v5m7k")
+target = 1
+enemy_target = 3
+enemy_target_type = 1
+burn = 2
+metadata/_custom_type_script = "uid://fuokg41g7d8s"
+
+[node name="023Ignition" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_hjexu")
+card_name = "Ignition"
+sprite_texture = ExtResource("2_438ro")
+tooltips = Array[String](["Adds %burn% stacks of burn to a random enemy"])
+tags = Array[int]([2, 4])
+card_effect = SubResource("Resource_0iec2")
+duration = 0.5
+metadata/_custom_type_script = "uid://c531eyaws05rr"

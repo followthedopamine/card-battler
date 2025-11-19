@@ -11,9 +11,12 @@ var currency_modifier: float = 1.0
 		
 var hand_size := 3
 var max_hand_size := 5
+var hand_node: Hand
 
 var shop_slots: int = 2
 
 var player_node: Player
 
 var last_card_activated: Card = null
+
+var enemy_area: EnemyArea = null

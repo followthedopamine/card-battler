@@ -53,6 +53,7 @@ func spawn_enemy(enemy: Enemy):
 
 func process_card_effects(card: CardEffect):
 	if has_enemy && is_instance_valid(enemy_scene):
+		process_pre_enemy_callables(card)
 		if card.damage:
 			enemy_scene.take_damage(card.damage, PlayerManager.player_node)
 			handle_extra_player_attacks(card)
@@ -66,6 +67,14 @@ func process_card_effects(card: CardEffect):
 		if card.poison:
 			Status.new(Status.Type.POISON, card.poison, enemy_scene)
 		
+func process_pre_enemy_callables(card: CardEffect) -> void:
+	for callable: Callable in card.on_play_enemy_callables:
+		# Hopefully fixes a crash where the callable can sometimes be null?
+		if callable.get_object() == null:
+			print("ERROR: Callable was null and would have crashed here")
+			continue
+		callable.call(enemy_scene)
+		#print("Card damage: %s" % card.damage)
 
 ## So the enemy can report that it has been removed/defeated/whatever
 func enemy_cleared():

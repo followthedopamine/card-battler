@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://enljvpm5v050"]
+
+[ext_resource type="Script" uid="uid://dp6jyf41ek7yj" path="res://scenes/cards/027FrozenShield.gd" id="1_o7gpe"]
+[ext_resource type="Texture2D" uid="uid://c4rr710wg6ojm" path="res://assets/card_art/card_frozen_shield.png" id="2_370qq"]
+[ext_resource type="Script" uid="uid://fuokg41g7d8s" path="res://scenes/card/CardEffect.gd" id="3_uhmpi"]
+
+[sub_resource type="Resource" id="Resource_3vl8b"]
+script = ExtResource("3_uhmpi")
+target = 2
+shield = 20
+metadata/_custom_type_script = "uid://fuokg41g7d8s"
+
+[node name="027FrozenShield" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_o7gpe")
+card_name = "Frozen Shield"
+sprite_texture = ExtResource("2_370qq")
+tooltips = Array[String](["Adds %shield% block, multiplies the duration of your next card by %DURATION_MULTIPLIER%"])
+tags = Array[int]([1])
+card_effect = SubResource("Resource_3vl8b")
+metadata/_custom_type_script = "uid://c531eyaws05rr"

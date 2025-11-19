@@ -18,10 +18,9 @@ func _ready() -> void:
 	SignalBus.block_updated.connect(_on_block_updated)
 	SignalBus.damage_taken.connect(_on_damage_taken)
 	SignalBus.wave_end.connect(_on_wave_end)
-	
+	SignalBus.card_played.connect(_on_card_played)
 	self.add_child(burn_timer)
 	self.add_child(poison_timer)
-	
 	
 func _on_status_updated(status: Status, node: Node) -> void:
 	if node != parent:
@@ -35,9 +34,22 @@ func _on_status_updated(status: Status, node: Node) -> void:
 			burn_timer.start(BURN_DURATION)
 		if current_status.effect == Status.Type.POISON:
 			poison_timer.start(POISON_DURATION)
+	else:
+		if current_status.effect == Status.Type.FUSE:
+			return
 	current_status.stacks += status.stacks
 	if current_status.effect == Status.Type.SLOW:
 		add_slow()
+		
+func _on_card_played() -> void:
+	if !parent is Player:
+		return
+	var status: Status = get_current_status(Status.Type.FUSE)
+	if !status:
+		return
+	if status.stacks > 0:
+		status.stacks -= 1
+		SignalBus.status_refreshed.emit(status, PlayerManager.player_node)
 		
 func _on_wave_end(_wave: int) -> void:
 	for status: Status in current_statuses:

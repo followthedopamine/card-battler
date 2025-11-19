@@ -13,6 +13,7 @@ signal card_controller_released
 # Card signals
 signal card_discarded(card: Card)
 signal card_chosen(card: Card)
+signal card_played
 
 # Status signals
 signal status_updated(status: Status, attached_node: Node)

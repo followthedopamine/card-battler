@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://g6xwdrtexqsu"]
+
+[ext_resource type="Script" uid="uid://dn8e51u43oxur" path="res://scenes/cards/024CompanionSnail.gd" id="1_6xga4"]
+[ext_resource type="Texture2D" uid="uid://yhn4wvsav2dj" path="res://assets/card_art/card_snail.png" id="2_6xga4"]
+[ext_resource type="Script" uid="uid://fuokg41g7d8s" path="res://scenes/card/CardEffect.gd" id="3_p0i5w"]
+
+[sub_resource type="Resource" id="Resource_lbf5s"]
+script = ExtResource("3_p0i5w")
+target = 2
+metadata/_custom_type_script = "uid://fuokg41g7d8s"
+
+[node name="024CompanionSnail" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_6xga4")
+card_name = "Companion Snail"
+sprite_texture = ExtResource("2_6xga4")
+tooltips = Array[String](["Your next card activates instantly"])
+card_effect = SubResource("Resource_lbf5s")
+duration = 3.0
+metadata/_custom_type_script = "uid://c531eyaws05rr"

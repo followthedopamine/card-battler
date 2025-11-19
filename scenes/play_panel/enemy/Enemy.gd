@@ -63,8 +63,20 @@ func die():
 
 	if parent.has_method("enemy_cleared"):
 		parent.enemy_cleared()
-
+	
+	process_on_kill_callables()
+	
 	queue_free()
+	
+func process_on_kill_callables() -> void:
+	var last_card = PlayerManager.last_card_activated
+	if last_card == null:
+		return
+	var callables: Array[Callable] = last_card.card_effect.on_kill_callables
+	if !callables.size():
+		return
+	for callable: Callable in callables:
+		callable.call()
 
 func _process_attack_animation(delta: float):
 	# how much of the attack duration is processed in this instance of the function
@@ -150,4 +162,3 @@ func _physics_process(delta: float) -> void:
 
 	if !show_mouse_over_health_bar && !show_damage_taken_health_bar:
 		health_bar.visible = false
-

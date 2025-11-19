@@ -18,6 +18,6 @@ anchors_preset = 0
 script = ExtResource("1_kjdxr")
 card_name = "Strike"
 sprite_texture = ExtResource("2_ju32e")
-tooltips = Array[String](["Deals %damage% to an enemy"])
+tooltips = Array[String](["Deals %damage% damage to an enemy"])
 tags = Array[int]([0])
 card_effect = SubResource("Resource_w782d")

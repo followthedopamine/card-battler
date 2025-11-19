@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1j4rnynpjk4m"]
+
+[ext_resource type="Script" uid="uid://bchhwtpgnb6e4" path="res://scenes/cards/031LightFuse.gd" id="1_knysd"]
+[ext_resource type="Texture2D" uid="uid://dt4w33fqmf3h2" path="res://assets/card_art/card_explosion.png" id="2_kag57"]
+[ext_resource type="Script" uid="uid://fuokg41g7d8s" path="res://scenes/card/CardEffect.gd" id="3_kag57"]
+
+[sub_resource type="Resource" id="Resource_p07nl"]
+script = ExtResource("3_kag57")
+metadata/_custom_type_script = "uid://fuokg41g7d8s"
+
+[node name="031LightFuse" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_knysd")
+card_name = "Light Fuse"
+sprite_texture = ExtResource("2_kag57")
+tooltips = Array[String](["After playing %ADDITIONAL_CARDS_REQUIRED% more cards deal %EXPLOSION_DAMAGE% to all enemies"])
+tags = Array[int]([10])
+card_effect = SubResource("Resource_p07nl")
+metadata/_custom_type_script = "uid://c531eyaws05rr"

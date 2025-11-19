@@ -7,7 +7,8 @@ enum Type {
 	THORNS,
 	STRENGTH,
 	EXTRA_ATTACK,
-	POISON
+	POISON,
+	FUSE
 }
 
 var effect: Type = Type.BURN
@@ -27,4 +28,11 @@ static func get_status(entity: Entity, status_type: Status.Type) -> Status:
 			if status != null:
 				return status
 	return null
-	
+
+static func has_status(entity: Entity, status_type: Status.Type) -> bool:
+	for child in entity.get_children():
+		if child is StatusHandler:
+			var status: Status = child.get_current_status(status_type)
+			if status != null:
+				return true
+	return false

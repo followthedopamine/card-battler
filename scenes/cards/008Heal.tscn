@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cvcwlhnuli4cw"]
 
 [ext_resource type="Script" uid="uid://c531eyaws05rr" path="res://scenes/card/Card.gd" id="1_b6rto"]
-[ext_resource type="Texture2D" uid="uid://dvaodkm8ffqhs" path="res://assets/card_art/card_heal.png" id="2_2rpmp"]
+[ext_resource type="Texture2D" uid="uid://hsuxajtmvtft" path="res://assets/card_art/card_healcan.png" id="2_2rpmp"]
 [ext_resource type="Script" uid="uid://fuokg41g7d8s" path="res://scenes/card/CardEffect.gd" id="3_6minq"]
 
 [sub_resource type="Resource" id="Resource_wqik0"]
