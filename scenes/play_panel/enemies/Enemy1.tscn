@@ -36,7 +36,7 @@ spawn_columns = Array[int]([0, 1, 2])
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.15, 0.15)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_76ifo")
 animation = &"new_animation"
 centered = false
