@@ -21,10 +21,12 @@ completedColumns:
 
 ## Todo
 
-- [card-deal-big-damage-a-random-card-is-disabled-for-10-seconds-chained](tasks/card-deal-big-damage-a-random-card-is-disabled-for-10-seconds-chained.md)
 - [card-ask-for-card-art-for-slow-card](tasks/card-ask-for-card-art-for-slow-card.md)
+- [bug-playing-fuse-card-with-exactly-2-cards-will-double-play-fuse-when-stacks-reach-0](tasks/bug-playing-fuse-card-with-exactly-2-cards-will-double-play-fuse-when-stacks-reach-0.md)
 
 ## In Progress
+
+- [card-deal-big-damage-a-random-card-is-disabled-for-10-seconds-chained](tasks/card-deal-big-damage-a-random-card-is-disabled-for-10-seconds-chained.md)
 
 ## Done
 

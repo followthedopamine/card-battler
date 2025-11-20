@@ -1,15 +1,11 @@
 class_name Hand extends HBoxContainer
 
-
-#@export var card_data : CardData
-
 var cards: Array[Card]
 
 func _ready() -> void:
 	SignalBus.wave_end.connect(_on_wave_end)
-	
-	#for i in range(PlayerManager.hand_size):
-		#draw_random()
+	SignalBus.card_enabled.connect(_on_card_enabled)
+	SignalBus.card_chosen.connect(_on_card_chosen)
 	
 	var starter_card: Card = GameData.cards_common[0].duplicate()
 	draw(starter_card)
@@ -33,7 +29,21 @@ func _on_wave_end(_wave: int) -> void:
 			card.card_effect = card.original_card_effect.duplicate_deep(Resource.DeepDuplicateMode.DEEP_DUPLICATE_ALL)
 		card.deactivate(false)
 	start_round()
+
+func _on_card_enabled() -> void:
+	if get_active_card() == null:
+		start_round()
+		
+func _on_card_chosen(_card: Card) -> void:
+	if get_active_card() == null:
+		start_round()
 	
+func get_active_card() -> Card:
+	refresh_card_array()
+	for card: Card in cards:
+		if card.activated:
+			return card
+	return null
 	
 func refresh_card_array() -> void:
 	cards = []
@@ -51,16 +61,11 @@ func start_round():
 	print("Starting round")
 
 	refresh_card_array()
-	print(cards)
 	if cards.size():
-		cards[0].activate()
-
-#func draw_random() -> void:
-	#var new_card = card_data.cards[randi() % card_data.cards.size()].instantiate()
-	#new_card.set_colour(randi())
-#
-	#if not draw(new_card):
-		#new_card.queue_free()
+		if !cards[0].is_disabled:
+			cards[0].activate()
+		else:
+			activate_next_card(cards[0])
 #
 func draw(card: Card) -> bool:
 	if cards.size() >= PlayerManager.max_hand_size:
@@ -71,7 +76,6 @@ func draw(card: Card) -> bool:
 	add_child(card)
 	return true
 
-
 func on_card_completed(card: Card):
 	# Calling refresh card array here means we don't have to signal when
 	# we get a new card, and also fixes a bug where cards would sometimes
@@ -81,29 +85,35 @@ func on_card_completed(card: Card):
 	
 func get_next_card(current_card: Card) -> Card:
 	if cards.size() <= 1:
-		return null
+		return current_card
 	var current_card_index = cards.find(current_card)
 	if current_card_index == cards.size() - 1:
 		current_card_index = -1
 	return cards[current_card_index + 1]
 	
-func activate_next_card(current_card: Card) -> void:
-	# If player can ever sell the last card in hand this will break
-	# First handle case where only one card in hand
-	if cards.size() == 1:
-		current_card.activate()
-		return
-		
-	var i = cards.find(current_card)
+func get_next_playable_card(current_card: Card) -> Card:
+	var current_card_index = cards.find(current_card)
+	for i: int in range(1, cards.size() + 1):
+		var next_card_index = (i + current_card_index) % cards.size()
+		if cards[next_card_index].is_disabled:
+			continue
+		return cards[next_card_index]
+	return null
 
-	if i < cards.size() - 1:
-		# Check if next card is being dragged to prevent holding an activating card
-		if cards[i + 1].dragging:
-			if i < cards.size() - 2:
-				cards[i + 2].activate()
-			else:
-				start_round()
-		else:
-			cards[i + 1].activate()
-	else:
-		start_round()
+func get_all_playable_cards(extra_cards: Array[Card] = []) -> Array[Card]:
+	var playable_cards: Array[Card] = []
+	for card: Card in cards:
+		if card in extra_cards:
+			playable_cards.append(card)
+			continue
+		if card.is_disabled:
+			continue
+		playable_cards.append(card)
+	return playable_cards
+	
+func activate_next_card(current_card: Card) -> void:
+	refresh_card_array()
+	var next_playable_card: Card = get_next_playable_card(current_card)
+	if next_playable_card != null:
+		next_playable_card.activate()
+	

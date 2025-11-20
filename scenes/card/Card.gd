@@ -58,8 +58,10 @@ var time_remaining := duration
 # Draggable dependant on this existing
 var activated := false
 
-const DISABLED_COLOUR: Color = Color(0.08, 0.08, 0.08, 1.0)
+const DISABLED_COLOUR: Color = Color(0.176, 0.176, 0.176, 1.0)
 
+var is_disabled: bool = false
+var disabled_timer: Timer = Timer.new()
 
 const colours := [
 	Color(255, 0, 0),
@@ -75,6 +77,10 @@ var original_card_effect: CardEffect
 
 func _ready() -> void:
 	super()
+	self.add_child(disabled_timer)
+	disabled_timer.timeout.connect(disabled_timeout)
+	disabled_timer.one_shot = true
+	
 	timer.timeout.connect(_on_timer_timeout)
 	set_process_input(false)
 
@@ -112,25 +118,25 @@ func _on_timer_timeout() -> void:
 	PlayerManager.last_card_activated = self
 	deactivate()
 	
-
-
-#func set_colour(index: int):
-	#colour = colours[index % colours.size()]
-	#
-#func change_colour(new_colour: Color) -> void:
-	#var new_style: StyleBoxFlat = panel.get_theme_stylebox("panel").duplicate()
-	#new_style.bg_color = new_colour
-	#panel.add_theme_stylebox_override("panel", new_style)
-	
 func activate_card_effect() -> void:
 	if is_instance_valid(card_effect):
 		card_effect.run_effects()
-		
 	else:
 		push_error("ERROR: This should not be reachable. In card_name:", card_name, " | ", name)
 
 func start_card_effect() -> void:
 	pass
+	
+func disabled_timeout() -> void:
+	# Remember to check if we need to restart playing cards
+	is_disabled = false
+	card_components.modulate = Color(1.0, 1.0, 1.0, 1.0)
+	SignalBus.card_enabled.emit()
+	
+func disable_card(disabled_duration: float) -> void:
+	is_disabled = true
+	card_components.modulate = DISABLED_COLOUR
+	disabled_timer.start(disabled_duration)
 
 func activate():
 	start_card_effect()
