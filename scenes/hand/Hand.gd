@@ -27,7 +27,7 @@ func _on_wave_end(_wave: int) -> void:
 	for card: Card in cards:
 		if card.original_card_effect != null:
 			card.card_effect = card.original_card_effect.duplicate_deep(Resource.DeepDuplicateMode.DEEP_DUPLICATE_ALL)
-		card.deactivate(false)
+		card.deactivate()
 	start_round()
 
 func _on_card_enabled() -> void:

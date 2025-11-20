@@ -156,7 +156,7 @@ func activate():
 
 	activated = true
 
-func deactivate(should_emit_completed: bool = true):
+func deactivate():
 	timer.stop()
 
 	card_components.position.y = 0
