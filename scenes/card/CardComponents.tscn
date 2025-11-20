@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://8sxlwb30boph"]
+[gd_scene load_steps=6 format=3 uid="uid://8sxlwb30boph"]
 
 [ext_resource type="Script" uid="uid://77pqf2vl82d2" path="res://scenes/card/CardComponents.gd" id="1_k6qmu"]
 [ext_resource type="Texture2D" uid="uid://bydjxdlit5oij" path="res://scenes/card/images/exchange_icon_placeholder.png" id="2_axisl"]
 [ext_resource type="Texture2D" uid="uid://b2y6rbbxqpf4y" path="res://assets/card_art/card_risky.png" id="2_tf2r5"]
+[ext_resource type="Script" uid="uid://bh0tgx15xo557" path="res://classes/ControlHoverScale.gd" id="4_ms8y4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5xgwh"]
 content_margin_left = 0.0
@@ -35,8 +36,6 @@ sprite = NodePath("CardSprite")
 layout_mode = 0
 offset_right = 152.0
 offset_bottom = 225.0
-grow_horizontal = 2
-grow_vertical = 2
 texture = ExtResource("2_tf2r5")
 expand_mode = 1
 
@@ -103,4 +102,18 @@ offset_left = 42.0
 offset_top = -2.0
 offset_right = 106.0
 offset_bottom = 62.0
+mouse_filter = 2
 texture = ExtResource("2_axisl")
+
+[node name="ControlHoverScale" type="Control" parent="." node_paths=PackedStringArray("node_to_scale", "node_to_connect_mouse")]
+anchors_preset = 0
+offset_left = 76.0
+offset_top = 115.0
+offset_right = 116.0
+offset_bottom = 155.0
+mouse_filter = 2
+script = ExtResource("4_ms8y4")
+scale_amount = Vector2(1.12, 1.12)
+node_to_scale = NodePath("..")
+node_to_connect_mouse = NodePath("..")
+metadata/_custom_type_script = "uid://bh0tgx15xo557"
