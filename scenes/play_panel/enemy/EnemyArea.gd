@@ -146,7 +146,7 @@ func process_all_enemy_callables(card: CardEffect, all_enemies: Array[Enemy]) ->
 	for callable: Callable in card.on_play_all_enemy_callables:
 		# Hopefully fixes a crash where the callable can sometimes be null?
 		if callable.get_object() == null:
-			print("ERROR: Callable was null and would have crashed here")
+			print("ERROR (process_all_enemy_callables): '%s' Callable was null and would have crashed here" % callable.get_method())
 			continue
 		callable.call(all_enemies)
 
@@ -161,7 +161,9 @@ func _on_any_card_played() -> void:
 				target.process_card_effects(temp_card_effect)
 
 func _on_card_played(card: CardEffect):
+	print("card:", card.on_play_all_enemy_callables)
 	if card.on_play_all_enemy_callables.size():
+		print("on_play_all_enemy_callables:", card.on_play_all_enemy_callables)
 		var all_enemies: Array[Enemy] = get_all_enemies()
 		process_all_enemy_callables(card, all_enemies)
 	
@@ -183,6 +185,10 @@ func _on_card_played(card: CardEffect):
 				# This is really hard to display on tooltips
 				#grid_target.process_card_effects(card)	
 				for target in aoe_targets:
+					target.process_card_effects(card)
+			card.GridTargetType.ALL:
+				var all_cells: Array[EnemyCell] = _get_all_targets()
+				for target in all_cells:
 					target.process_card_effects(card)
 			
 

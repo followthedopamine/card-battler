@@ -75,6 +75,8 @@ var colour: Color
 
 var original_card_effect: CardEffect
 
+## NOTE: if extending this class in a child, make sure all code you wish to
+## repeat goes after the `super()` call.
 func _ready() -> void:
 	super()
 	self.add_child(disabled_timer)
