@@ -71,10 +71,9 @@ func process_pre_enemy_callables(card: CardEffect) -> void:
 	for callable: Callable in card.on_play_enemy_callables:
 		# Hopefully fixes a crash where the callable can sometimes be null?
 		if callable.get_object() == null:
-			print("ERROR: Callable was null and would have crashed here")
+			print("ERROR (process_pre_enemy_callables): '%s' Callable was null and would have crashed here" % callable.get_method())
 			continue
 		callable.call(enemy_scene)
-		#print("Card damage: %s" % card.damage)
 
 ## So the enemy can report that it has been removed/defeated/whatever
 func enemy_cleared():
