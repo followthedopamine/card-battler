@@ -11,6 +11,3 @@ offset_bottom = 225.0
 pivot_offset = Vector2(73, 22)
 mouse_filter = 1
 script = ExtResource("1_fa4yn")
-card_name = null
-price = null
-duration = null
