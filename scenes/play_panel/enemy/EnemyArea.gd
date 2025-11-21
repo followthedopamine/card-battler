@@ -78,7 +78,7 @@ func _setup_cells():
 
 	_position_cells()
 
-func _position_cells():
+func _position_cells(skip_animation = false):
 	# Position grid cells to fit within the drawn grid
 	var grid_lines = grid.get_lines()
 	var odd_offset = 0.0
@@ -90,7 +90,7 @@ func _position_cells():
 
 	for child: EnemyCell in get_children():
 		if (child is EnemyCell):
-			child.position_cell(h_offset, y_position_percentage_offsets[child.get_grid_pos().x], vertical_slice, animation_grid_offset)
+			child.position_cell(h_offset, y_position_percentage_offsets[child.get_grid_pos().x], vertical_slice, animation_grid_offset, skip_animation)
 
 func _get_target(target: CardEffect.GridTarget):
 	var col_range: Array
@@ -161,7 +161,6 @@ func _on_any_card_played() -> void:
 				target.process_card_effects(temp_card_effect)
 
 func _on_card_played(card: CardEffect):
-	print("card:", card.on_play_all_enemy_callables)
 	if card.on_play_all_enemy_callables.size():
 		print("on_play_all_enemy_callables:", card.on_play_all_enemy_callables)
 		var all_enemies: Array[Enemy] = get_all_enemies()
@@ -193,7 +192,7 @@ func _on_card_played(card: CardEffect):
 			
 
 func _on_resized():
-	_position_cells()
+	_position_cells(true)
 
 func _on_animation_grid_offset(offset: int):
 	animation_grid_offset = offset

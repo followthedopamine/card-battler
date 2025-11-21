@@ -12,7 +12,6 @@ var anim_start_x: float
 var anim_end_x: float
 
 var animating := false
-var animation_offset := 0.0
 
 ## Expected to be EnemyArea
 @onready var parent: EnemyArea = get_parent()
@@ -26,7 +25,10 @@ func get_grid_pos():
 func set_grid_pos(pos: Vector2):
 	grid_pos = pos
 
-func position_cell(h_offset: float, v_offset: float, vertical_slice: float, animation_grid_offset: int):
+func return_to_start_pos():
+	position.x = anim_start_x
+
+func position_cell(h_offset: float, v_offset: float, vertical_slice: float, animation_grid_offset: int, skip_animation = false):
 	var grid_position = get_grid_pos()
 	var vertical_slice_offset = vertical_slice + (vertical_slice * v_offset)
 	
@@ -34,7 +36,7 @@ func position_cell(h_offset: float, v_offset: float, vertical_slice: float, anim
 	anim_end_x = (h_offset + grid_position.y) * vertical_slice_offset
 
 	set_position(Vector2(
-		anim_start_x,
+		anim_end_x if skip_animation else anim_start_x,
 		parent.size.y * v_offset)
 	)
 
@@ -42,7 +44,6 @@ func spawn_enemy(enemy: Enemy):
 	for child in get_children():
 		if (child.is_in_group("Enemy")):
 			# Intentional debug message as there shouldn't be children here.
-			print("Unexpected enemy found at: " ,grid_pos , ":", child.name, ". Deleting Enemy node.")
 			remove_child(child)
 			child.queue_free()
 	
@@ -88,9 +89,11 @@ func handle_extra_player_attacks(card: CardEffect) -> void:
 			process_card_effects(card)
 		
 func _on_animation_wave_t(eased_t: float):
-	animation_offset = eased_t
 	position.x = lerp(anim_start_x, anim_end_x, eased_t)
 
 func _ready() -> void:
 	self.mouse_filter = Control.MouseFilter.MOUSE_FILTER_IGNORE
 	SignalBus.animation_wave_t.connect(_on_animation_wave_t)
+	# Positions the cell at the exact endpoint
+	# Because of rounding it can otherwise end up slightly off centre
+	SignalBus.animation_end.connect(func(): _on_animation_wave_t(1.0))
