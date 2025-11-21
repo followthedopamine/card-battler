@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://rmv71wh2a00f"]
+[gd_scene load_steps=9 format=3 uid="uid://rmv71wh2a00f"]
 
 [ext_resource type="Script" uid="uid://df3fb05nmtmla" path="res://scenes/play_panel/enemies/EnemyHealer.gd" id="1_wvoo1"]
 [ext_resource type="Texture2D" uid="uid://d00r8ttcrm6qt" path="res://assets/icon.svg" id="2_dyrx3"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://vg0ltwj23njc" path="res://scenes/play_panel/HealthBar.tscn" id="4_3hpfd"]
 [ext_resource type="PackedScene" uid="uid://co2mq4qr6rara" path="res://scenes/status/StatusBar.tscn" id="5_4rsqg"]
 [ext_resource type="Script" uid="uid://mjiv7q0gvno6" path="res://scenes/status/StatusHandler.gd" id="6_djo74"]
+[ext_resource type="PackedScene" uid="uid://cqhbamimh6d5s" path="res://scenes/play_panel/damage_particle/DamageParticleEmitter.tscn" id="7_dyrx3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_76ifo"]
 animations = [{
@@ -62,3 +63,7 @@ anchors_preset = 0
 script = ExtResource("6_djo74")
 status_bar = NodePath("../StatusBarHBoxContainer")
 metadata/_custom_type_script = "uid://mjiv7q0gvno6"
+
+[node name="DamageParticleEmitter" parent="." instance=ExtResource("7_dyrx3")]
+layout_mode = 0
+particle_lifetime = 0.8

@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccohaqaogermx"]
+
+[ext_resource type="FontFile" uid="uid://bkxalv1wd3tsm" path="res://assets/fonts/Vaticanus-G3yVG.ttf" id="1_36lt4"]
+[ext_resource type="Script" uid="uid://cneo5a17pik28" path="res://scenes/play_panel/damage_particle/DamageParticleViewport.gd" id="1_648ax"]
+
+[node name="SubViewport" type="SubViewport"]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(64, 64)
+render_target_update_mode = 4
+script = ExtResource("1_648ax")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_36lt4")
+theme_override_font_sizes/font_size = 18
+text = "
+"
+horizontal_alignment = 1
+vertical_alignment = 1

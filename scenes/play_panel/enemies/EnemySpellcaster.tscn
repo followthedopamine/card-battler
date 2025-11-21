@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2y7ddu6by2yk"]
+[gd_scene load_steps=8 format=3 uid="uid://d2y7ddu6by2yk"]
 
 [ext_resource type="Script" uid="uid://qhyp6ipkhagq" path="res://scenes/play_panel/enemies/EnemySpellcaster.gd" id="1_vwudx"]
 [ext_resource type="Texture2D" uid="uid://bkv8435g5r704" path="res://assets/enemies/spellcaster.png" id="2_vwudx"]
 [ext_resource type="PackedScene" uid="uid://vg0ltwj23njc" path="res://scenes/play_panel/HealthBar.tscn" id="3_vtmae"]
 [ext_resource type="PackedScene" uid="uid://co2mq4qr6rara" path="res://scenes/status/StatusBar.tscn" id="4_6bnnw"]
 [ext_resource type="Script" uid="uid://mjiv7q0gvno6" path="res://scenes/status/StatusHandler.gd" id="5_xbrel"]
+[ext_resource type="PackedScene" uid="uid://cqhbamimh6d5s" path="res://scenes/play_panel/damage_particle/DamageParticleEmitter.tscn" id="6_ae0x8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_76ifo"]
 animations = [{
@@ -51,3 +52,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_xbrel")
 metadata/_custom_type_script = "uid://mjiv7q0gvno6"
+
+[node name="DamageParticleEmitter" parent="." instance=ExtResource("6_ae0x8")]
+layout_mode = 0
+particle_lifetime = 0.8

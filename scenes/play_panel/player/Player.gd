@@ -16,6 +16,11 @@ var attack_elapsed := 0.0
 var attack_direction := 1
 
 @onready var sprite: AnimatedSprite2D  = $Sprite
+@onready var damage_particle_emitter: DamageParticleEmitter = $DamageParticleEmitter
+
+func get_sprite_size() -> Vector2:
+	var sprite_size = sprite.sprite_frames.get_frame_texture(sprite.animation, sprite.frame).get_size()
+	return Vector2(sprite_size.x * sprite.scale.x, sprite_size.y * sprite.scale.y)
 
 func _process_attack_animation(delta: float):
 	# how much of the attack duration is processed in this instance of the function
@@ -37,6 +42,8 @@ func _process_attack_animation(delta: float):
 
 func _on_enemy_attack(damage: float, enemy: Enemy):
 	take_damage(damage, enemy)
+	var damage_string := str(-damage).rstrip("0").rstrip(".")
+	damage_particle_emitter.emit_particle(damage_string, Color8(201, 0, 62, 220))
 	SignalBus.player_health_change.emit(health)
 
 func _on_attack_card_played(_card: Resource):
@@ -51,6 +58,7 @@ func _on_player_targeted(card_effect: CardEffect) -> void:
 		
 	if card_effect.heal:
 		heal(card_effect.heal)
+		damage_particle_emitter.emit_particle(str(card_effect.heal), Color8(97, 201, 0, 220))
 		SignalBus.player_health_change.emit(health)
 		
 	if card_effect.burn:
@@ -62,6 +70,11 @@ func _on_player_targeted(card_effect: CardEffect) -> void:
 
 func _ready() -> void:
 	super()
+
+	var sprite_size = get_sprite_size()
+	damage_particle_emitter.set_emission_box(get_sprite_size())
+	damage_particle_emitter.set_emission_offset(Vector2(0, -sprite_size.y * .5))
+
 	SignalBus.player_max_health.emit(max_health)
 
 	SignalBus.enemy_attack.connect(_on_enemy_attack)

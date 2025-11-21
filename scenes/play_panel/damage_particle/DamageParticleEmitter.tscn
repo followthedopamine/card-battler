@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqhbamimh6d5s"]
+
+[ext_resource type="Script" uid="uid://b27d5rfsai5t0" path="res://scenes/play_panel/damage_particle/DamageParticleEmitter.gd" id="1_c1d77"]
+
+[node name="DamageParticleEmitter" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_c1d77")

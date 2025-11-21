@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cre6jmok28ypx"]
+[gd_scene load_steps=8 format=3 uid="uid://cre6jmok28ypx"]
 
 [ext_resource type="Script" uid="uid://c1yllhoor51nr" path="res://scenes/play_panel/enemies/EnemyBard.gd" id="1_6akli"]
 [ext_resource type="Texture2D" uid="uid://c2nn2hpddhb1r" path="res://assets/enemies/bard.png" id="2_6akli"]
 [ext_resource type="PackedScene" uid="uid://vg0ltwj23njc" path="res://scenes/play_panel/HealthBar.tscn" id="3_abnru"]
 [ext_resource type="PackedScene" uid="uid://co2mq4qr6rara" path="res://scenes/status/StatusBar.tscn" id="4_fta06"]
 [ext_resource type="Script" uid="uid://mjiv7q0gvno6" path="res://scenes/status/StatusHandler.gd" id="5_r7ivx"]
+[ext_resource type="PackedScene" uid="uid://cqhbamimh6d5s" path="res://scenes/play_panel/damage_particle/DamageParticleEmitter.tscn" id="6_ncw4t"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_76ifo"]
 animations = [{
@@ -50,3 +51,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_r7ivx")
 metadata/_custom_type_script = "uid://mjiv7q0gvno6"
+
+[node name="DamageParticleEmitter" parent="." instance=ExtResource("6_ncw4t")]
+layout_mode = 0
+particle_lifetime = 0.8
