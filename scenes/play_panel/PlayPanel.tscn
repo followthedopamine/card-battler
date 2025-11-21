@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cmkv7da2ilckk" path="res://scenes/play_panel/PlayPanel.gd" id="1_jgck7"]
 [ext_resource type="PackedScene" uid="uid://dnvmslc0lunfw" path="res://scenes/packs/pack_opening/PackOpening.tscn" id="1_x324g"]
 [ext_resource type="Script" uid="uid://cksar47hwhptl" path="res://scenes/play_panel/PlayerArea.gd" id="3_gws28"]
-[ext_resource type="PackedScene" uid="uid://c8i30mnsc2nrm" path="res://Player.tscn" id="4_gcqk6"]
+[ext_resource type="PackedScene" uid="uid://c8i30mnsc2nrm" path="res://scenes/play_panel/player/Player.tscn" id="4_gcqk6"]
 [ext_resource type="Script" uid="uid://crwmecg6ap1w2" path="res://scenes/play_panel/enemy/EnemyArea.gd" id="4_mo54i"]
 [ext_resource type="Script" uid="uid://bbka3kooxxw1r" path="res://scenes/play_panel/PlayAreaGrid.gd" id="4_uajrv"]
 [ext_resource type="PackedScene" uid="uid://b0us44ov8t56n" path="res://scenes/play_panel/PlayerHealthBar.tscn" id="7_gcqk6"]
@@ -143,6 +143,6 @@ layout_mode = 2
 
 [node name="WaveController" type="Node" parent="."]
 script = ExtResource("8_d7kxu")
-wave = 40
+wave = 20
 animation_grid_offset = 10
 animation_duration = 2.0

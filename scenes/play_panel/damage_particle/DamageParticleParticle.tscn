@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3vgl4xvkig7t"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tdg3f"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_cxr5p"]
+offsets = PackedFloat32Array(0.037837837, 0.22162162, 0.75135136, 0.9567568)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tdg3f"]
+gradient = SubResource("Gradient_cxr5p")
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_dtqjt"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tdg3f"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+velocity_pivot = Vector3(90, 0, 0)
+direction = Vector3(0, -100, 0)
+spread = 0.0
+initial_velocity_min = 32.0
+initial_velocity_max = 32.0
+directional_velocity_min = 1.0
+directional_velocity_max = 1.0
+directional_velocity_curve = SubResource("CurveXYZTexture_dtqjt")
+gravity = Vector3(0, -16, 0)
+color_ramp = SubResource("GradientTexture1D_tdg3f")
+anim_speed_min = 15.42
+anim_speed_max = 15.42
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+material = SubResource("CanvasItemMaterial_tdg3f")
+emitting = false
+amount = 1
+lifetime = 0.01
+one_shot = true
+fract_delta = false
+process_material = SubResource("ParticleProcessMaterial_tdg3f")

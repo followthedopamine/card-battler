@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://l0noipjhw55u"]
+[gd_scene load_steps=8 format=3 uid="uid://l0noipjhw55u"]
 
 [ext_resource type="Script" uid="uid://d2xj3gwx8422e" path="res://scenes/play_panel/enemies/EnemyRogue.gd" id="1_p6br1"]
 [ext_resource type="Texture2D" uid="uid://fc4qmy08eldp" path="res://assets/enemies/guy1.png" id="2_snmxs"]
 [ext_resource type="PackedScene" uid="uid://vg0ltwj23njc" path="res://scenes/play_panel/HealthBar.tscn" id="3_kpd7p"]
 [ext_resource type="PackedScene" uid="uid://co2mq4qr6rara" path="res://scenes/status/StatusBar.tscn" id="4_gcdim"]
 [ext_resource type="Script" uid="uid://mjiv7q0gvno6" path="res://scenes/status/StatusHandler.gd" id="5_s1nx3"]
+[ext_resource type="PackedScene" uid="uid://cqhbamimh6d5s" path="res://scenes/play_panel/damage_particle/DamageParticleEmitter.tscn" id="6_snmxs"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_76ifo"]
 animations = [{
@@ -24,7 +25,7 @@ offset_right = 1.0
 offset_bottom = 1.0
 script = ExtResource("1_p6br1")
 damage = 2.0
-attack_speed = 3.0
+attack_speed = 1.8
 spawn_columns = Array[int]([1, 2, 3])
 max_health = 20.0
 metadata/_edit_use_anchors_ = true
@@ -53,3 +54,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_s1nx3")
 metadata/_custom_type_script = "uid://mjiv7q0gvno6"
+
+[node name="DamageParticleEmitter" parent="." instance=ExtResource("6_snmxs")]
+layout_mode = 0
+particle_lifetime = 0.8

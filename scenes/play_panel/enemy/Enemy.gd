@@ -9,7 +9,7 @@ class_name Enemy extends Entity
 @export var attack_speed: float = 1.5
 @export var spawn_columns: Array[int] = [0, 1, 2, 3]
 
-#health = float(max_health)
+@onready var damage_particle_emitter: DamageParticleEmitter = $DamageParticleEmitter
 
 # Statuses
 var poison = 0
@@ -37,7 +37,7 @@ var damage_taken_health_bar_elapsed := 0.0
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var parent = get_parent()
 
-@onready var attack_timer := Timer.new()
+@onready var action_timer := Timer.new()
 
 func attack():
 	SignalBus.enemy_attack.emit(damage, self)
@@ -50,6 +50,8 @@ func take_damage(damage_taken: float, attacker: Entity = null):
 
 	show_damage_taken_health_bar = true
 	damage_taken_health_bar_elapsed = 0.0
+
+	damage_particle_emitter.emit_particle(str(damage), Color8(201, 0, 62, 220))
 
 	if health <= 0:
 		die()
@@ -109,8 +111,10 @@ func _setup_health_bar():
 	# Set the position of the healthbar
 	health_bar.position.y -= health_bar.size.y * 1.5
 
-func _on_attack_timer_timeout():
+func _on_action_timer_timeout():
+	action_timer.wait_time = randf_range(attack_speed*.9, attack_speed*1.1)
 	attack()
+	action_timer.start()
 
 func _on_mouse_entered():
 	health_bar.visible = true
@@ -120,13 +124,12 @@ func _on_mouse_exited():
 	show_mouse_over_health_bar = false
 	
 
-
-func _on_animation_end():
-	add_child(attack_timer)
-	attack_timer.wait_time = attack_speed
-	attack_timer.one_shot = false
-	attack_timer.timeout.connect(_on_attack_timer_timeout)
-	attack_timer.start()
+func _on_wave_start_animation_end():
+	add_child(action_timer)
+	action_timer.wait_time = randf_range(attack_speed*.9, attack_speed*1.1)
+	action_timer.one_shot = true
+	action_timer.timeout.connect(_on_action_timer_timeout)
+	action_timer.start()
 
 func _ready() -> void:
 	super()
@@ -143,11 +146,13 @@ func _ready() -> void:
 	sprite.centered = false
 
 	_setup_health_bar()
+	damage_particle_emitter.set_emission_box(sprite_size)
+	damage_particle_emitter.set_emission_offset(Vector2(sprite_size.x * .5, 0))
 
 	self.mouse_entered.connect(_on_mouse_entered)
 	self.mouse_exited.connect(_on_mouse_exited)
 	
-	SignalBus.animation_end.connect(_on_animation_end)
+	SignalBus.animation_end.connect(_on_wave_start_animation_end)
 
 
 func _physics_process(delta: float) -> void:
