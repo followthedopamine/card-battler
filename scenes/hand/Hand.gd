@@ -14,7 +14,7 @@ func _ready() -> void:
 	
 func _can_drop_data(_at_position: Vector2, _data: Variant) -> bool:
 	return !PlayerManager.hand_size == PlayerManager.max_hand_size
-	
+
 # Hand needs drop data as well as Card since you want to be able to drop 
 # cards into an empty hand.
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
@@ -25,6 +25,10 @@ func _on_wave_end(_wave: int) -> void:
 	# This is for resetting stacking card effects on next wave
 	# Also has a bonus of starting the hand over from the leftmost card
 	for card: Card in cards:
+		if !is_instance_valid(card):
+			print("WARNING(_on_wave_end_): Card instance was invalid.")
+			continue
+			
 		if card.original_card_effect != null:
 			card.card_effect = card.original_card_effect.duplicate_deep(Resource.DeepDuplicateMode.DEEP_DUPLICATE_ALL)
 		card.deactivate()

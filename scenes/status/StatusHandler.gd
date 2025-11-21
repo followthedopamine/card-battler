@@ -25,19 +25,31 @@ func _ready() -> void:
 func _on_status_updated(status: Status, node: Node) -> void:
 	if node != parent:
 		return
+
 	var current_status = get_current_status(status.effect)
 	if current_status == null:
 		add_status(status)
 		return
-	if current_status.stacks == 0:
+		
+	# If the total stacks are being changed
+	if status.stacks:
+		if status.stacks && !current_status.stacks:
+			if current_status.effect == Status.Type.BURN:
+				burn_timer.start(BURN_DURATION)
+			if current_status.effect == Status.Type.POISON:
+				poison_timer.start(POISON_DURATION)
+			if current_status.effect == Status.Type.FUSE:
+				return
+
+		current_status.stacks += status.stacks
+
+	# If no stacks are being added and no current stacks then remove the timer
+	elif !current_status.stacks:
 		if current_status.effect == Status.Type.BURN:
-			burn_timer.start(BURN_DURATION)
+			burn_timer.stop()
 		if current_status.effect == Status.Type.POISON:
-			poison_timer.start(POISON_DURATION)
-	else:
-		if current_status.effect == Status.Type.FUSE:
-			return
-	current_status.stacks += status.stacks
+			burn_timer.stop()
+
 	if current_status.effect == Status.Type.SLOW:
 		add_slow()
 		

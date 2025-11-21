@@ -45,12 +45,13 @@ func update_status_bar(status: Status, should_equal_stacks: bool = false):
 					child.stacks = status.stacks
 				else:
 					child.stacks += status.stacks
+
 				if child.stacks <= 0:
 					child.visible = false
 				else:
 					child.visible = true
-				return
-	add_status_icon(status)
+	else:
+		add_status_icon(status)
 
 func add_status_icon(status: Status):
 	var icon: StatusIcon = status_icon_scene.instantiate()
