@@ -21,8 +21,8 @@ func get_wave():
 	return wave
 
 func _start_wave():
-	_generate_wave()
 	SignalBus.wave_start.emit(wave)
+	_generate_wave()
 	moving = true
 	time_elapsed = 0.0
 
@@ -49,6 +49,7 @@ func _generate_wave():
 			possible_enemies.remove_at(index)
 			continue
 		
+		spawn_cell.return_to_start_pos()
 		spawn_cell.spawn_enemy(enemy.duplicate())
 		wave_point_total += enemy.spawn_value
 
@@ -123,6 +124,6 @@ func _process(delta: float) -> void:
 		if (time_elapsed > animation_duration):
 			moving = false
 			SignalBus.animation_end.emit()
-		
-		var eased_t = (0.5 - 0.5 * cos((time_elapsed / animation_duration) * PI))
-		SignalBus.animation_wave_t.emit(eased_t)
+		else:
+			var eased_t = (0.5 - 0.5 * cos((time_elapsed / animation_duration) * PI))
+			SignalBus.animation_wave_t.emit(eased_t)

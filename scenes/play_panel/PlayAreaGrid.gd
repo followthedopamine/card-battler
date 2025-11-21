@@ -59,6 +59,10 @@ func _ready() -> void:
 	resize()
 	SignalBus.animation_grid_offset.connect(_on_animation_grid_offset)
 	SignalBus.animation_wave_t.connect(_on_animation_wave_t)
+	
+	# Returns the grid to it's expected starting position
+	# visually identical to the end position but scales consistently
+	SignalBus.animation_end.connect(func(): _on_animation_wave_t(0.0))
 
 func _process(_delta: float) -> void:
 	# Resize is handled here instead of with the signal as the signal seems 
