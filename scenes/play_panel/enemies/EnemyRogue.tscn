@@ -1,16 +1,16 @@
 [gd_scene load_steps=7 format=3 uid="uid://l0noipjhw55u"]
 
-[ext_resource type="Script" uid="uid://d2xj3gwx8422e" path="res://scenes/play_panel/enemies/Enemy2.gd" id="1_7dr45"]
-[ext_resource type="Texture2D" uid="uid://fc4qmy08eldp" path="res://assets/enemies/guy1.png" id="2_7dr45"]
-[ext_resource type="PackedScene" uid="uid://co2mq4qr6rara" path="res://scenes/status/StatusBar.tscn" id="4_cqjum"]
-[ext_resource type="PackedScene" uid="uid://vg0ltwj23njc" path="res://scenes/play_panel/HealthBar.tscn" id="4_cuy5x"]
-[ext_resource type="Script" uid="uid://mjiv7q0gvno6" path="res://scenes/status/StatusHandler.gd" id="5_5mt17"]
+[ext_resource type="Script" uid="uid://d2xj3gwx8422e" path="res://scenes/play_panel/enemies/EnemyRogue.gd" id="1_p6br1"]
+[ext_resource type="Texture2D" uid="uid://fc4qmy08eldp" path="res://assets/enemies/guy1.png" id="2_snmxs"]
+[ext_resource type="PackedScene" uid="uid://vg0ltwj23njc" path="res://scenes/play_panel/HealthBar.tscn" id="3_kpd7p"]
+[ext_resource type="PackedScene" uid="uid://co2mq4qr6rara" path="res://scenes/status/StatusBar.tscn" id="4_gcdim"]
+[ext_resource type="Script" uid="uid://mjiv7q0gvno6" path="res://scenes/status/StatusHandler.gd" id="5_s1nx3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_76ifo"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_7dr45")
+"texture": ExtResource("2_snmxs")
 }],
 "loop": true,
 "name": &"default",
@@ -22,18 +22,18 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1.0
 offset_bottom = 1.0
-script = ExtResource("1_7dr45")
+script = ExtResource("1_p6br1")
 damage = 2.0
 attack_speed = 3.0
 spawn_columns = Array[int]([1, 2, 3])
-max_health = 30
+max_health = 20.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_76ifo")
 
-[node name="HealthBar" parent="." instance=ExtResource("4_cuy5x")]
+[node name="HealthBar" parent="." instance=ExtResource("3_kpd7p")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -44,12 +44,12 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="StatusBarHBoxContainer" parent="." instance=ExtResource("4_cqjum")]
+[node name="StatusBarHBoxContainer" parent="." instance=ExtResource("4_gcdim")]
 layout_mode = 0
 
 [node name="StatusHandler" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("5_5mt17")
+script = ExtResource("5_s1nx3")
 metadata/_custom_type_script = "uid://mjiv7q0gvno6"

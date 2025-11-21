@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://cre6jmok28ypx"]
+
+[ext_resource type="Script" uid="uid://c1yllhoor51nr" path="res://scenes/play_panel/enemies/EnemyBard.gd" id="1_6akli"]
+[ext_resource type="Texture2D" uid="uid://c2nn2hpddhb1r" path="res://assets/enemies/bard.png" id="2_6akli"]
+[ext_resource type="PackedScene" uid="uid://vg0ltwj23njc" path="res://scenes/play_panel/HealthBar.tscn" id="3_abnru"]
+[ext_resource type="PackedScene" uid="uid://co2mq4qr6rara" path="res://scenes/status/StatusBar.tscn" id="4_fta06"]
+[ext_resource type="Script" uid="uid://mjiv7q0gvno6" path="res://scenes/status/StatusHandler.gd" id="5_r7ivx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_76ifo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6akli")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="Control" groups=["Enemy"]]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1.0
+offset_bottom = 1.0
+script = ExtResource("1_6akli")
+max_health = 30.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_76ifo")
+
+[node name="HealthBar" parent="." instance=ExtResource("3_abnru")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="StatusBarHBoxContainer" parent="." instance=ExtResource("4_fta06")]
+layout_mode = 0
+
+[node name="StatusHandler" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_r7ivx")
+metadata/_custom_type_script = "uid://mjiv7q0gvno6"
