@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://l0noipjhw55u"]
 
 [ext_resource type="Script" uid="uid://d2xj3gwx8422e" path="res://scenes/play_panel/enemies/EnemyRogue.gd" id="1_p6br1"]
-[ext_resource type="Texture2D" uid="uid://fc4qmy08eldp" path="res://assets/enemies/guy1.png" id="2_snmxs"]
+[ext_resource type="Texture2D" uid="uid://cnvkmr74sa52" path="res://assets/enemies/rouge.png" id="2_snmxs"]
 [ext_resource type="PackedScene" uid="uid://vg0ltwj23njc" path="res://scenes/play_panel/HealthBar.tscn" id="3_kpd7p"]
 [ext_resource type="PackedScene" uid="uid://co2mq4qr6rara" path="res://scenes/status/StatusBar.tscn" id="4_gcdim"]
 [ext_resource type="Script" uid="uid://mjiv7q0gvno6" path="res://scenes/status/StatusHandler.gd" id="5_s1nx3"]
