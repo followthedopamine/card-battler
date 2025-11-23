@@ -52,24 +52,32 @@ func spawn_enemy(enemy: Enemy):
 	add_child(enemy_scene)
 	parent.add_cell_to_target_grid(grid_pos)
 
-func process_card_effects(card: CardEffect):
+func process_action_effects(action: ActionEffect):
 	if has_enemy && is_instance_valid(enemy_scene):
-		process_pre_enemy_callables(card)
-		if card.damage:
-			enemy_scene.take_damage(card.damage, PlayerManager.player_node)
-			handle_extra_player_attacks(card)
+		process_pre_enemy_callables(action)
+
+		if action.heal:
+			enemy_scene.heal(action.heal)
+
+		if action.damage:
+			enemy_scene.take_damage(action.damage + action.strength, PlayerManager.player_node)
+			handle_extra_player_attacks(action)
+
+		if action.strength:
+			Status.new(Status.Type.STRENGTH, action.strength, enemy_scene)
+			enemy_scene.strength += action.strength
+
+		if action.burn:
+			Status.new(Status.Type.BURN, action.burn, enemy_scene)
 			
-		if card.burn:
-			Status.new(Status.Type.BURN, card.burn, enemy_scene)
+		if action.slow:
+			Status.new(Status.Type.SLOW, action.slow, enemy_scene)
 			
-		if card.slow:
-			Status.new(Status.Type.SLOW, card.slow, enemy_scene)
-			
-		if card.poison:
-			Status.new(Status.Type.POISON, card.poison, enemy_scene)
+		if action.poison:
+			Status.new(Status.Type.POISON, action.poison, enemy_scene)
 		
-func process_pre_enemy_callables(card: CardEffect) -> void:
-	for callable: Callable in card.on_play_enemy_callables:
+func process_pre_enemy_callables(action: ActionEffect) -> void:
+	for callable: Callable in action.on_play_enemy_callables:
 		# Hopefully fixes a crash where the callable can sometimes be null?
 		if callable.get_object() == null:
 			print("ERROR (process_pre_enemy_callables): '%s' Callable was null and would have crashed here" % callable.get_method())
@@ -83,10 +91,9 @@ func enemy_cleared():
 	
 func handle_extra_player_attacks(card: CardEffect) -> void:
 	var status: Status = Status.get_status(PlayerManager.player_node, Status.Type.EXTRA_ATTACK)
-	if status != null:
-		if status.stacks > 0:
-			Status.new(Status.Type.EXTRA_ATTACK, -1, PlayerManager.player_node)
-			process_card_effects(card)
+	if status != null && status.stacks > 0:
+		Status.new(Status.Type.EXTRA_ATTACK, -1, PlayerManager.player_node)
+		process_action_effects(card)
 		
 func _on_animation_wave_t(eased_t: float):
 	position.x = lerp(anim_start_x, anim_end_x, eased_t)

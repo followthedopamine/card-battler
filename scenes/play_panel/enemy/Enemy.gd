@@ -1,21 +1,19 @@
 class_name Enemy extends Entity
 
+@export var enemy_name = ""
+
 @export var spawn_value = 1
 
 ## What wave this enemy starts spawning on
 @export var first_available_wave = 1
 
 @export var damage: float = 0.5
+
 @export var attack_speed: float = 1.5
 @export var spawn_columns: Array[int] = [0, 1, 2, 3]
 
-@onready var damage_particle_emitter: DamageParticleEmitter = $DamageParticleEmitter
-
-# Statuses
-var poison = 0
-var bleed = 0
-var burning = 0
-#var block: float = 0.0
+var actions: Array[ActionEffect] = []
+var current_action = 0
 
 # attack animation variables
 ## In px
@@ -34,13 +32,12 @@ var damage_taken_health_bar_duration := 1
 var damage_taken_health_bar_elapsed := 0.0
 
 @onready var health_bar: HealthBar = $HealthBar
-@onready var sprite: AnimatedSprite2D = $Sprite
 @onready var parent = get_parent()
 
 @onready var action_timer := Timer.new()
 
-func attack():
-	SignalBus.enemy_attack.emit(damage, self)
+func deal_damage(dam: float):
+	SignalBus.enemy_attack.emit(dam, self)
 	is_attacking = true
 
 func take_damage(damage_taken: float, attacker: Entity = null):
@@ -51,10 +48,16 @@ func take_damage(damage_taken: float, attacker: Entity = null):
 	show_damage_taken_health_bar = true
 	damage_taken_health_bar_elapsed = 0.0
 
-	damage_particle_emitter.emit_particle(str(damage), Color8(201, 0, 62, 220))
-
 	if health <= 0:
 		die()
+
+func heal(healing_amount: float):
+	super(healing_amount)
+	health_bar.set_health(int(health))
+	health_bar.visible = true
+
+	show_damage_taken_health_bar = true
+	damage_taken_health_bar_elapsed = 0.0
 
 func get_sprite_size() -> Vector2:
 	var sprite_size = sprite.sprite_frames.get_frame_texture(sprite.animation, sprite.frame).get_size()
@@ -112,8 +115,20 @@ func _setup_health_bar():
 	health_bar.position.y -= health_bar.size.y * 1.5
 
 func _on_action_timer_timeout():
+	if !actions.size():
+		print("Enemy %s has no actions attached. It will not act." % enemy_name)
+		return
+		
+	var action := actions[current_action]
+	current_action = (current_action + 1) % actions.size()
+
+	if action.target == ActionEffect.Target.PLAYER:
+		deal_damage(action.damage)
+
+	if action.target == ActionEffect.Target.ENEMY:
+		SignalBus.enemy_targeted.emit(action)
+
 	action_timer.wait_time = randf_range(attack_speed*.9, attack_speed*1.1)
-	attack()
 	action_timer.start()
 
 func _on_mouse_entered():
@@ -133,6 +148,13 @@ func _on_wave_start_animation_end():
 
 func _ready() -> void:
 	super()
+
+	# Placeholder action
+	var action1 := ActionEffect.new()
+	action1.damage = damage
+	action1.target = ActionEffect.Target.PLAYER
+	actions = [action1]
+
 	health = max_health
 
 	var sprite_size = get_sprite_size()
