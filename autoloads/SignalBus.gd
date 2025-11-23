@@ -46,6 +46,9 @@ signal enemy_dead(payout: int)
 signal player_max_health(new_value: int)
 signal player_health_change(new_value: int)
 
-signal card_played_target_enemy(card_effect: Dictionary)
-signal card_played_target_player(card_effect: Dictionary)
-signal card_played_target_shop(card_effect: Dictionary)
+signal card_played_target_enemy(card_effect: CardEffect)
+signal card_played_target_player(card_effect: CardEffect)
+signal card_played_target_shop(card_effect: CardEffect)
+
+## equivalent of card_played_target_enemy without trigger `card_played` effects
+signal enemy_targeted(effect: Dictionary)
