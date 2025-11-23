@@ -13,7 +13,7 @@ signal card_controller_released
 # Card signals
 signal card_discarded(card: Card)
 signal card_chosen(card: Card)
-signal card_played
+signal card_played(card: Card)
 signal card_enabled
 
 # Status signals
@@ -46,6 +46,6 @@ signal enemy_dead(payout: int)
 signal player_max_health(new_value: int)
 signal player_health_change(new_value: int)
 
-signal card_played_target_enemy(card: Card)
+signal card_played_target_enemy(card_effect: Dictionary)
 signal card_played_target_player(card_effect: Dictionary)
 signal card_played_target_shop(card_effect: Dictionary)

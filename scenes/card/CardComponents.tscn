@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://8sxlwb30boph"]
+[gd_scene load_steps=10 format=3 uid="uid://8sxlwb30boph"]
 
 [ext_resource type="Script" uid="uid://77pqf2vl82d2" path="res://scenes/card/CardComponents.gd" id="1_k6qmu"]
 [ext_resource type="Texture2D" uid="uid://bydjxdlit5oij" path="res://scenes/card/images/exchange_icon_placeholder.png" id="2_axisl"]
 [ext_resource type="Texture2D" uid="uid://b2y6rbbxqpf4y" path="res://assets/card_art/card_risky.png" id="2_tf2r5"]
 [ext_resource type="Script" uid="uid://bh0tgx15xo557" path="res://classes/ControlHoverScale.gd" id="4_ms8y4"]
+[ext_resource type="Script" uid="uid://cxlgrsmae5xcv" path="res://scenes/card/CardAnimations.gd" id="5_0deyq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5xgwh"]
 content_margin_left = 0.0
@@ -19,10 +20,73 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 corner_detail = 5
 
-[node name="CardComponents" type="Control" node_paths=PackedStringArray("timer_label", "timer_spinner", "timer", "switch_interface", "name_label", "sprite")]
+[sub_resource type="Animation" id="Animation_k8r83"]
+resource_name = "play"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.025, 0.075, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.05235987755982989, -0.05235987755982989, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5ouhm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_olt7r"]
+_data = {
+&"RESET": SubResource("Animation_5ouhm"),
+&"play": SubResource("Animation_k8r83")
+}
+
+[node name="CardComponents" type="Control" node_paths=PackedStringArray("timer_label", "timer_spinner", "timer", "switch_interface", "name_label", "sprite", "timer_panel")]
 custom_minimum_size = Vector2(152, 225)
 layout_mode = 3
 anchors_preset = 0
+offset_right = 152.0
+offset_bottom = 225.0
+pivot_offset = Vector2(74, 135)
 mouse_filter = 1
 script = ExtResource("1_k6qmu")
 timer_label = NodePath("TimerLabel")
@@ -31,13 +95,24 @@ timer = NodePath("Timer")
 switch_interface = NodePath("SwitchInterface")
 name_label = NodePath("NameLabel")
 sprite = NodePath("CardSprite")
+timer_panel = NodePath("CardSprite/TimerPanel")
 
 [node name="CardSprite" type="TextureRect" parent="."]
+clip_children = 2
 layout_mode = 0
 offset_right = 152.0
 offset_bottom = 225.0
 texture = ExtResource("2_tf2r5")
 expand_mode = 1
+
+[node name="TimerPanel" type="Panel" parent="CardSprite"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1)
 
 [node name="TimerLabel" type="Label" parent="."]
 layout_mode = 0
@@ -75,8 +150,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -76.0
-offset_top = -23.0
+offset_top = -28.0
 offset_right = 76.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -117,3 +193,9 @@ scale_amount = Vector2(1.12, 1.12)
 node_to_scale = NodePath("..")
 node_to_connect_mouse = NodePath("..")
 metadata/_custom_type_script = "uid://bh0tgx15xo557"
+
+[node name="CardAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_olt7r")
+}
+script = ExtResource("5_0deyq")

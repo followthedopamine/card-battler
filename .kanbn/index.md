@@ -9,27 +9,51 @@ completedColumns:
 
 ## Backlog
 
-- [display-tooltips-enlarged-cards-on-hover](tasks/display-tooltips-enlarged-cards-on-hover.md)
-- [squash-and-stretch-animations](tasks/squash-and-stretch-animations.md)
-- [possibly-unwanted-fire-weapon-card-doesn-t-deal-damage-so-doesn-t-trigger-double-effect](tasks/possibly-unwanted-fire-weapon-card-doesn-t-deal-damage-so-doesn-t-trigger-double-effect.md)
-- [background-particle-effects](tasks/background-particle-effects.md)
-- [sounds](tasks/sounds.md)
-- [music](tasks/music.md)
-- [a-way-to-display-packs](tasks/a-way-to-display-packs.md)
 - [bug-the-regex-for-tooltips-could-be-better-for-multiple-variables](tasks/bug-the-regex-for-tooltips-could-be-better-for-multiple-variables.md)
 - [bug-if-you-have-0-stacks-of-thorns-it-deals-0-to-enemies-and-shows-hp](tasks/bug-if-you-have-0-stacks-of-thorns-it-deals-0-to-enemies-and-shows-hp.md)
+- [death-animation-for-enemies](tasks/death-animation-for-enemies.md)
+- [bug-poison-wave-doesn-t-work-on-ignition](tasks/bug-poison-wave-doesn-t-work-on-ignition.md)
+- [relics](tasks/relics.md)
+- [potions-cards-to-shop](tasks/potions-cards-to-shop.md)
+- [different-hit-animations-for-different-kinds-of-damage](tasks/different-hit-animations-for-different-kinds-of-damage.md)
 
 ## Todo
 
+- [card-on-play-visual-effect](tasks/card-on-play-visual-effect.md)
+- [card-overlay-timer](tasks/card-overlay-timer.md)
+- [attack-and-hit-animations-for-enemies](tasks/attack-and-hit-animations-for-enemies.md)
+- [glow-on-grid](tasks/glow-on-grid.md)
 - [card-ask-for-card-art-for-slow-card](tasks/card-ask-for-card-art-for-slow-card.md)
+- [wavies-currency-symbols](tasks/wavies-currency-symbols.md)
+- [background-particle-effects](tasks/background-particle-effects.md)
 - [bug-playing-fuse-card-with-exactly-2-cards-will-double-play-fuse-when-stacks-reach-0](tasks/bug-playing-fuse-card-with-exactly-2-cards-will-double-play-fuse-when-stacks-reach-0.md)
+- [vaporwaverise-the-play-area](tasks/vaporwaverise-the-play-area.md)
+- [bug-fuse-card-is-weird](tasks/bug-fuse-card-is-weird.md)
+- [sounds](tasks/sounds.md)
+- [bug-numbers-for-player-damage-are-incorrect](tasks/bug-numbers-for-player-damage-are-incorrect.md)
+- [bug-shield-icon-still-pops-up-sometimes-with-0-stacks-signal-race](tasks/bug-shield-icon-still-pops-up-sometimes-with-0-stacks-signal-race.md)
+- [pack-art](tasks/pack-art.md)
+- [better-tooltip-art](tasks/better-tooltip-art.md)
+- [tooltips-hover-effect-on-enemies](tasks/tooltips-hover-effect-on-enemies.md)
+- [bug-window-scaling-is-pretty-scuffed](tasks/bug-window-scaling-is-pretty-scuffed.md)
+- [speed-shader-for-wave-transition](tasks/speed-shader-for-wave-transition.md)
+- [bug-tooltips-don-t-really-appear-in-the-right-place](tasks/bug-tooltips-don-t-really-appear-in-the-right-place.md)
+- [bug-tooltip-will-appear-off-screen-on-right-side-only-relevant-if-we-add-relics-or-cards-to-shop](tasks/bug-tooltip-will-appear-off-screen-on-right-side-only-relevant-if-we-add-relics-or-cards-to-shop.md)
+- [collect-bounty-gains-0-wavies](tasks/collect-bounty-gains-0-wavies.md)
+- [wave-transition-text](tasks/wave-transition-text.md)
+- [different-coloured-texxt-for-different-types-of-damages](tasks/different-coloured-texxt-for-different-types-of-damages.md)
 
 ## In Progress
 
-- [card-deal-big-damage-a-random-card-is-disabled-for-10-seconds-chained](tasks/card-deal-big-damage-a-random-card-is-disabled-for-10-seconds-chained.md)
+- [bug-unchained-strike-tooltip-missing-the-word-seconds](tasks/bug-unchained-strike-tooltip-missing-the-word-seconds.md)
 
 ## Done
 
+- [display-tooltips-enlarged-cards-on-hover](tasks/display-tooltips-enlarged-cards-on-hover.md)
+- [squash-and-stretch-animations](tasks/squash-and-stretch-animations.md)
+- [music](tasks/music.md)
+- [possibly-unwanted-fire-weapon-card-doesn-t-deal-damage-so-doesn-t-trigger-double-effect](tasks/possibly-unwanted-fire-weapon-card-doesn-t-deal-damage-so-doesn-t-trigger-double-effect.md)
+- [card-deal-big-damage-a-random-card-is-disabled-for-10-seconds-chained](tasks/card-deal-big-damage-a-random-card-is-disabled-for-10-seconds-chained.md)
 - [card-after-you-play-3-cards-deal-30-damage-explosion](tasks/card-after-you-play-3-cards-deal-30-damage-explosion.md)
 - [card-add-3-gold-to-this-card-s-sell-value](tasks/card-add-3-gold-to-this-card-s-sell-value.md)
 - [card-deal-8-melee-damage-if-kills-adds-10-gold](tasks/card-deal-8-melee-damage-if-kills-adds-10-gold.md)
