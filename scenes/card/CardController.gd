@@ -12,6 +12,7 @@ var timer_label: Label
 var timer_spinner: Panel
 var timer: Timer
 var panel: Panel
+var timer_panel: Panel
 
 @onready var hbox: HBoxContainer = get_parent()
 
@@ -42,7 +43,7 @@ func _ready() -> void:
 	timer_spinner = card_components.timer_spinner
 	timer = card_components.timer
 	panel = card_components.panel
-	
+	timer_panel = card_components.timer_panel
 	
 
 func _process(delta) -> void:

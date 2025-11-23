@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8i30mnsc2nrm"]
+[gd_scene load_steps=22 format=3 uid="uid://c8i30mnsc2nrm"]
 
 [ext_resource type="Script" uid="uid://bubwwuv6nxkpf" path="res://scenes/play_panel/player/Player.gd" id="1_kpjcp"]
 [ext_resource type="Texture2D" uid="uid://cksa12pa46ip5" path="res://assets/player/main_guy.png" id="2_kpjcp"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" uid="uid://d20if3istht6w" path="res://scenes/status/StatusBar.gd" id="4_cxr5p"]
 [ext_resource type="PackedScene" uid="uid://cp7g4rfx2pn4x" path="res://scenes/status/StatusIcon.tscn" id="5_cxr5p"]
 [ext_resource type="PackedScene" uid="uid://cqhbamimh6d5s" path="res://scenes/play_panel/damage_particle/DamageParticleEmitter.tscn" id="6_tdg3f"]
+[ext_resource type="Script" uid="uid://ch2pxgdvjbcbt" path="res://scenes/play_panel/player/PlayerAnimationPlayer.gd" id="7_h52gd"]
+[ext_resource type="Texture2D" uid="uid://b4jl0ajaa3qek" path="res://assets/particles/puff.png" id="8_e4pbi"]
+[ext_resource type="Texture2D" uid="uid://dbl7lng10foe1" path="res://assets/particles/rectangle_particle.png" id="9_vts5b"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kpjcp"]
 animations = [{
@@ -17,6 +20,207 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_tg6nn"]
+resource_name = "hit"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(0.35355416, 0.35355416),
+"update": 0,
+"values": [Vector2(0.2, 0.3), Vector2(0.25, 0.25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0.15686275, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-8, -48), Vector2(0, -48)]
+}
+
+[sub_resource type="Animation" id="Animation_h52gd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.25, 0.25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -48)]
+}
+
+[sub_resource type="Animation" id="Animation_e4pbi"]
+resource_name = "attack"
+length = 0.2667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.26666668),
+"transitions": PackedFloat32Array(1, 0.25000027, 1),
+"update": 0,
+"values": [0.0, -0.2303834612632513, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.25, 0.25), Vector2(0.27, 0.23), Vector2(0.25, 0.25)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -48), Vector2(10, -48), Vector2(0, -48)]
+}
+
+[sub_resource type="Animation" id="Animation_vts5b"]
+resource_name = "wave_transition"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 1.6, 2),
+"transitions": PackedFloat32Array(0.40612617, 0.40612617, 3.2490087, 3.2490087),
+"update": 0,
+"values": [Vector2(0.25, 0.25), Vector2(0.27, 0.23), Vector2(0.27, 0.23), Vector2(0.25, 0.25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e4pbi"]
+_data = {
+&"RESET": SubResource("Animation_h52gd"),
+&"attack": SubResource("Animation_e4pbi"),
+&"hit": SubResource("Animation_tg6nn"),
+&"wave_transition": SubResource("Animation_vts5b")
+}
+
+[sub_resource type="Gradient" id="Gradient_vts5b"]
+offsets = PackedFloat32Array(0, 0.5188679, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.9955804, 0.99558026, 0.99558026, 0.4811321, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_r4cfe"]
+gradient = SubResource("Gradient_vts5b")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5jasm"]
+particle_flag_disable_z = true
+direction = Vector3(-1, -0.1, 0)
+spread = 7.222
+initial_velocity_max = 135.29
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = 101.64998
+gravity = Vector3(0, -20, 0)
+scale_min = 0.01
+scale_max = 0.02
+color = Color(0.1882353, 0.972549, 0.78431374, 1)
+color_ramp = SubResource("GradientTexture1D_r4cfe")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.079999976
+
+[sub_resource type="Gradient" id="Gradient_r4cfe"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5jasm"]
+gradient = SubResource("Gradient_r4cfe")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vi7rs"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 40.0
+initial_velocity_min = 111.759995
+initial_velocity_max = 111.759995
+scale_min = 0.14
+scale_max = 0.19999999
+color = Color(1, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_5jasm")
+hue_variation_min = -0.020000022
+hue_variation_max = 0.059999976
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.0
+turbulence_initial_displacement_min = 1.490116e-06
+turbulence_initial_displacement_max = 5.5000014
 
 [node name="Player" type="Control" groups=["Player"]]
 layout_mode = 3
@@ -49,3 +253,33 @@ metadata/_custom_type_script = "uid://mjiv7q0gvno6"
 
 [node name="DamageParticleEmitter" parent="." instance=ExtResource("6_tdg3f")]
 layout_mode = 0
+
+[node name="PlayerAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("smoke_particles", "blood_particles")]
+libraries = {
+&"": SubResource("AnimationLibrary_e4pbi")
+}
+script = ExtResource("7_h52gd")
+smoke_particles = NodePath("../Control/SmokeGPUParticles2D")
+blood_particles = NodePath("../Control/BloodGPUParticles2D2")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_top = -5.0
+offset_right = 40.0
+offset_bottom = 35.0
+
+[node name="SmokeGPUParticles2D" type="GPUParticles2D" parent="Control"]
+position = Vector2(-42, 7)
+amount = 50
+texture = ExtResource("8_e4pbi")
+process_material = SubResource("ParticleProcessMaterial_5jasm")
+
+[node name="BloodGPUParticles2D2" type="GPUParticles2D" parent="Control"]
+position = Vector2(3, -49)
+emitting = false
+amount = 5
+texture = ExtResource("9_vts5b")
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.86
+process_material = SubResource("ParticleProcessMaterial_vi7rs")

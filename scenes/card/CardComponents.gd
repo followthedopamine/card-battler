@@ -7,3 +7,4 @@ class_name CardComponents extends Control
 @export var switch_interface: TextureRect
 @export var name_label: Label
 @export var sprite: TextureRect
+@export var timer_panel: Panel

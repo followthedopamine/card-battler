@@ -143,6 +143,5 @@ layout_mode = 2
 
 [node name="WaveController" type="Node" parent="."]
 script = ExtResource("8_d7kxu")
-wave = 20
 animation_grid_offset = 10
 animation_duration = 2.0

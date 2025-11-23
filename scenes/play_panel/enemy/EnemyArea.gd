@@ -150,7 +150,7 @@ func process_all_enemy_callables(card: CardEffect, all_enemies: Array[Enemy]) ->
 			continue
 		callable.call(all_enemies)
 
-func _on_any_card_played() -> void:
+func _on_any_card_played(_card: Card) -> void:
 	if Status.has_status(PlayerManager.player_node, Status.Type.FUSE):
 		var status: Status = Status.get_status(PlayerManager.player_node, Status.Type.FUSE)
 		if status.stacks == 0:

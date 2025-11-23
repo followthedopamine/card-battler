@@ -53,7 +53,7 @@ func _on_status_updated(status: Status, node: Node) -> void:
 	if current_status.effect == Status.Type.SLOW:
 		add_slow()
 		
-func _on_card_played() -> void:
+func _on_card_played(card: Card) -> void:
 	if !parent is Player:
 		return
 	var status: Status = get_current_status(Status.Type.FUSE)

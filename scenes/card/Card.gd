@@ -113,11 +113,13 @@ func _process(delta: float) -> void:
 		time_remaining -= delta
 		timer_label.text = "%.1f" % time_remaining
 		timer_spinner.rotation += delta * 10
+		timer_panel.scale.x = 1 - (time_remaining / duration) 
 
 func _on_timer_timeout() -> void:
 	activate_card_effect()
-	SignalBus.card_played.emit()
+	SignalBus.card_played.emit(self)
 	PlayerManager.last_card_activated = self
+	timer_panel.scale.x = 0
 	deactivate()
 	
 func activate_card_effect() -> void:
