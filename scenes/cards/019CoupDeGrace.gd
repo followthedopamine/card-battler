@@ -2,7 +2,7 @@ extends Card
 
 const BIG_DAMAGE: int = 40
 
-var original_damage: int
+var original_damage: float
 
 func _ready() -> void:
 	card_effect.on_play_enemy_callables = [effect]

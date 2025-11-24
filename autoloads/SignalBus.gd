@@ -26,6 +26,7 @@ signal strength_updated(strength_entity: Entity)
 signal relic_added(relic: Relic)
 
 # Entity signals
+signal player_died
 signal damage_taken(target: Entity, attacker: Entity, damage: float)
 
 # PlayPanel signals

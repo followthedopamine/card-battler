@@ -5,9 +5,10 @@ extends Card
 
 func _ready() -> void:
 	super()
-	SignalBus.wave_end.connect(_on_wave_end)
+	#SignalBus.wave_end.connect(_on_wave_end)
 	
-func _on_wave_end(_wave: int) -> void:
+func _on_wave_end(wave: int) -> void:
+	super(wave)
 	card_effect.shield = original_shield
 
 func activate_card_effect() -> void:

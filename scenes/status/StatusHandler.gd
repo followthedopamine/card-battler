@@ -53,7 +53,7 @@ func _on_status_updated(status: Status, node: Node) -> void:
 	if current_status.effect == Status.Type.SLOW:
 		add_slow()
 		
-func _on_card_played() -> void:
+func _on_card_played(_card: Card) -> void:
 	if !parent is Player:
 		return
 	var status: Status = get_current_status(Status.Type.FUSE)
@@ -83,7 +83,7 @@ func _on_strength_updated(entity: Entity) -> void:
 			status = Status.new(Status.Type.STRENGTH, entity.strength, entity, false)
 			add_status(status)
 
-func _on_damage_taken(target: Entity, attacker: Entity) -> void:
+func _on_damage_taken(target: Entity, attacker: Entity, _damage: float) -> void:
 	if attacker == null:
 		return
 	

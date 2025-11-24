@@ -34,6 +34,7 @@ func _on_wave_end(_wave: int) -> void:
 			
 		if card.original_card_effect != null:
 			card.card_effect = card.original_card_effect.duplicate_deep(Resource.DeepDuplicateMode.DEEP_DUPLICATE_ALL)
+		card.completed.disconnect(on_card_completed)
 		card.deactivate()
 	start_round()
 
@@ -54,6 +55,7 @@ func get_active_card() -> Card:
 	
 func refresh_card_array() -> void:
 	cards = []
+	# Hacky fix for multiple timers starting at once
 	for child: Node in self.get_children():
 		if !is_instance_valid(child) or child.is_queued_for_deletion():
 			continue
@@ -63,6 +65,15 @@ func refresh_card_array() -> void:
 			cards.append(child)
 	
 	PlayerManager.hand_size = cards.size()
+	
+func deactivate_all_cards() -> void:
+	for child: Node in self.get_children():
+		if !is_instance_valid(child) or child.is_queued_for_deletion():
+			continue
+		if child is Card:
+			if child.activated:
+				child.completed.disconnect(on_card_completed)
+				child.deactivate()
 
 func start_round():
 	print("Starting round")
@@ -119,6 +130,7 @@ func get_all_playable_cards(extra_cards: Array[Card] = []) -> Array[Card]:
 	return playable_cards
 	
 func activate_next_card(current_card: Card) -> void:
+	deactivate_all_cards()
 	refresh_card_array()
 	var next_playable_card: Card = get_next_playable_card(current_card)
 	if next_playable_card != null:

@@ -5,4 +5,4 @@ func _ready() -> void:
 	super()
 	
 func effect(_target: Enemy) -> void:
-	self.card_effect.damage = PlayerManager.currency / 2
+	self.card_effect.damage = floor(float(PlayerManager.currency) / 2.0)
