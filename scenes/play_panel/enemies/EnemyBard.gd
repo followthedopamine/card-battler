@@ -1,7 +1,5 @@
 extends Enemy
 
-
-## If applicable
 @export var healing: float = 0.0
 @export var strength_buff: int = 0
 

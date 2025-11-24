@@ -1,6 +1,11 @@
 class_name WaveController extends Node
 
 @export var wave = 1
+## The value of the starting wave for enemy spawning calcs
+@export var current_wave_weight = 5
+## The value added by each wave for enemy spawning calcs
+@export var wave_increment = 1
+
 ## How many grid columns the cells will slide in from on wave start
 @export var animation_grid_offset = 7
 ## The duration of the animation in seconds
@@ -25,13 +30,14 @@ func _start_wave():
 	_generate_wave()
 	moving = true
 	time_elapsed = 0.0
+	current_wave_weight += wave_increment
 
 
 func _generate_wave():
 	var wave_point_total = 0
 	var possible_enemies := _get_possible_wave_enemies()
 
-	while wave_point_total < wave || possible_enemies.size():
+	while wave_point_total < current_wave_weight || possible_enemies.size():
 		if (!possible_enemies.size()):
 			break
 
@@ -39,7 +45,7 @@ func _generate_wave():
 		var enemy := possible_enemies[index]
 
 		# Remove the enemy if it's no longer a valid target
-		if enemy.spawn_value > wave - wave_point_total:
+		if enemy.spawn_value > current_wave_weight - wave_point_total:
 			possible_enemies.remove_at(index)
 			continue
 		
@@ -88,7 +94,7 @@ func _get_possible_wave_enemies() -> Array[Enemy]:
 	for enemy: Enemy in enemy_scene_array:
 		if enemy.first_available_wave > wave:
 			continue
-		if enemy.spawn_value <= wave:
+		if enemy.spawn_value <= current_wave_weight:
 			wave_enemy_array.push_back(enemy)
 		else:
 			break

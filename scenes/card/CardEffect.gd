@@ -1,9 +1,6 @@
 class_name CardEffect
 extends ActionEffect
 
-# PLAYER/ENEMY DEFENSIVE
-@export var shield: int
-
 ## ECONOMY 
 ## Coins given or taken on playing the card
 @export var currency: int

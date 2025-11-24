@@ -22,6 +22,7 @@ func set_card_scene_arrays():
 				var full_path = CARDS_FOLDER_PATH.path_join(file_name)
 				var packed_scene = load(full_path)
 				var instance: Card = packed_scene.instantiate()
+				
 				if instance is Card:
 					match instance.rarity:
 						Card.Rarity.COMMON:
