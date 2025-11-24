@@ -1,5 +1,7 @@
 class_name Hand extends HBoxContainer
 
+@export var starting_cards: Array[PackedScene] = []
+
 var cards: Array[Card]
 
 func _ready() -> void:
@@ -7,8 +9,9 @@ func _ready() -> void:
 	SignalBus.card_enabled.connect(_on_card_enabled)
 	SignalBus.card_chosen.connect(_on_card_chosen)
 	
-	var starter_card: Card = GameData.cards_common[0].duplicate()
-	draw(starter_card)
+	for card in starting_cards:
+		draw(card.instantiate())
+
 	start_round()
 	PlayerManager.hand_node = self
 	

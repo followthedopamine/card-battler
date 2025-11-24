@@ -42,23 +42,30 @@ func _on_enemy_attack(damage: float, enemy: Enemy):
 func _on_attack_card_played(_card: Resource):
 	is_attacking = true
 	
-func _on_player_targeted(card_effect: CardEffect) -> void:
-	if card_effect.shield:
-		block += card_effect.shield
+func _on_player_targeted(effect: ActionEffect, enemy: Enemy) -> void:
+	if effect.damage:
+		take_damage(effect.damage, enemy)
+		SignalBus.player_health_change.emit(health)
+
+	if effect.shield:
+		block += effect.shield
 		
-	if card_effect.thorns:
-		Status.new(Status.Type.THORNS, card_effect.thorns, self)
+	if effect.thorns:
+		Status.new(Status.Type.THORNS, effect.thorns, self)
 		
-	if card_effect.heal:
-		heal(card_effect.heal)
+	if effect.heal:
+		heal(effect.heal)
 		SignalBus.player_health_change.emit(health)
 		
-	if card_effect.burn:
-		Status.new(Status.Type.BURN, card_effect.burn, self)
-		
-	if card_effect.strength:
-		strength += card_effect.strength
-		Status.new(Status.Type.STRENGTH, card_effect.strength, self)
+	if effect.burn:
+		Status.new(Status.Type.BURN, effect.burn, self)
+
+	if effect.poison:
+		Status.new(Status.Type.POISON, effect.poison, self)
+
+	if effect.strength:
+		strength += effect.strength
+		Status.new(Status.Type.STRENGTH, effect.strength, self)
 
 func _ready() -> void:
 	super()
@@ -69,7 +76,7 @@ func _ready() -> void:
 
 	SignalBus.player_max_health.emit(max_health)
 
-	SignalBus.enemy_attack.connect(_on_enemy_attack)
+	SignalBus.player_targeted.connect(_on_player_targeted)
 	SignalBus.card_played_target_enemy.connect(_on_attack_card_played)
 	SignalBus.card_played_target_player.connect(_on_player_targeted)
 	

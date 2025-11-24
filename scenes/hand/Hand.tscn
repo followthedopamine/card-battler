@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjq04um7xfdx1"]
+[gd_scene load_steps=4 format=3 uid="uid://bjq04um7xfdx1"]
 
 [ext_resource type="Script" uid="uid://dj7rwicwlmnf7" path="res://scenes/hand/Hand.gd" id="1_ou7ip"]
+[ext_resource type="PackedScene" uid="uid://4ex7gtlfrwxg" path="res://scenes/cards/001Strike.tscn" id="2_8vxba"]
+[ext_resource type="PackedScene" uid="uid://camja8h6yw4db" path="res://scenes/cards/002Defend.tscn" id="3_ddy2k"]
 
 [node name="Hand" type="HBoxContainer"]
 size_flags_horizontal = 3
 script = ExtResource("1_ou7ip")
+starting_cards = [ExtResource("2_8vxba"), ExtResource("3_ddy2k")]
 metadata/_custom_type_script = "uid://dj7rwicwlmnf7"

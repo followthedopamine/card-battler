@@ -41,8 +41,10 @@ func take_damage(damage_taken: float, attacker: Entity = null) -> void:
 			damage_taken = 0
 		SignalBus.block_updated.emit(self)
 	health -= damage_taken
-	SignalBus.damage_taken.emit(self, attacker)
-	damage_particle_emitter.emit_particle(str(damage_taken), Color8(201, 0, 62, 220))
+	SignalBus.damage_taken.emit(self, attacker, damage_taken)
+
+	if damage_taken:
+		damage_particle_emitter.emit_particle(str(damage_taken), Color8(201, 0, 62, 220))
 
 func heal(healing: float) -> void:
 	if health < max_health:

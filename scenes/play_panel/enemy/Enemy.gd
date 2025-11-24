@@ -36,8 +36,8 @@ var damage_taken_health_bar_elapsed := 0.0
 
 @onready var action_timer := Timer.new()
 
-func deal_damage(dam: float):
-	SignalBus.enemy_attack.emit(dam, self)
+func deal_damage(action: ActionEffect):
+	SignalBus.player_targeted.emit(action, self)
 	is_attacking = true
 
 func take_damage(damage_taken: float, attacker: Entity = null):
@@ -123,10 +123,14 @@ func _on_action_timer_timeout():
 	current_action = (current_action + 1) % actions.size()
 
 	if action.target == ActionEffect.Target.PLAYER:
-		deal_damage(action.damage)
+		deal_damage(action)
 
 	if action.target == ActionEffect.Target.ENEMY:
-		SignalBus.enemy_targeted.emit(action)
+		if action.enemy_target == ActionEffect.GridTarget.SELF:
+			if parent.has_method("process_action_effects"):
+				parent.process_action_effects(action)
+		else:
+			SignalBus.enemy_targeted.emit(action)
 
 	action_timer.wait_time = randf_range(attack_speed*.9, attack_speed*1.1)
 	action_timer.start()
