@@ -83,7 +83,7 @@ func _on_strength_updated(entity: Entity) -> void:
 			status = Status.new(Status.Type.STRENGTH, entity.strength, entity, false)
 			add_status(status)
 
-func _on_damage_taken(target: Entity, attacker: Entity) -> void:
+func _on_damage_taken(target: Entity, attacker: Entity, _damage: float) -> void:
 	if attacker == null:
 		return
 	

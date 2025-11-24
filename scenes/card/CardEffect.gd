@@ -14,7 +14,7 @@ func run_effects():
 		Target.ENEMY:
 			SignalBus.card_played_target_enemy.emit(self)
 		Target.PLAYER:
-			SignalBus.card_played_target_player.emit(self)
+			SignalBus.card_played_target_player.emit(self, null)
 		Target.SHOP:
 			SignalBus.card_played_target_shop.emit(self)
 	
