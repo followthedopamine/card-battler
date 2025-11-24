@@ -12,8 +12,8 @@ func _ready() -> void:
 	SignalBus.animation_end.connect(_on_animation_end)
 	self.play("wave_transition")
 	
-func _on_damage_taken(target: Entity, _attacker: Entity) -> void:
-	if target == parent:
+func _on_damage_taken(target: Entity, _attacker: Entity, damage: float) -> void:
+	if damage && target == parent:
 		blood_particles.emitting = true
 		if !is_playing():
 			self.play("RESET")
