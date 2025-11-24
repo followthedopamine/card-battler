@@ -3,6 +3,7 @@ class_name CardController extends Control
 const ROTATION_AMOUNT: float = 1.0
 const MAX_ROTATION: float = 50.0
 
+const DISPLAY_SCRIPT: Script = preload("res://classes/CardDisplayCopy.gd")
 
 # If we don't hard code this path in we'll have to set it up for every new card
 var card_components_scene: PackedScene = preload("res://scenes/card/CardComponents.tscn")
@@ -14,7 +15,7 @@ var timer: Timer
 var panel: Panel
 var timer_panel: Panel
 
-@onready var hbox: HBoxContainer = get_parent()
+@onready var hbox: Control = get_parent()
 
 
 var dragging_node : CardController = null
@@ -73,14 +74,16 @@ func _can_drop_data(_at_position: Vector2, _data: Variant) -> bool:
 
 func _get_drag_data(at_position: Vector2) -> Variant:
 	# Prevent currently activated cards from being dragged
-	if self.activated:
-		return null
+	# Commented to out to allow active cards to be dragged
+	#if self.activated:
+		#return null
 	
 		
 	var preview_parent = Control.new()
 
 	dragging_node = self.duplicate()
-	dragging_node.set_script(null)
+	dragging_node.set_script(DISPLAY_SCRIPT)
+	dragging_node.call_deferred("init", self)
 	preview_parent.add_child(dragging_node)
 	dragging_node.position = -at_position
 	dragging_node.z_index = 100
@@ -172,9 +175,10 @@ func update_mouse() -> void:
 func handle_switch_interface() -> void:
 	if dragging:
 		return
-	if self.activated:
-		hide_switch_interface()
-		return
+	# Commented out to allow switching with active card
+	#if self.activated:
+		#hide_switch_interface()
+		#return
 	
 	if !self.get_global_rect().has_point(mouse_pos):
 		hide_switch_interface()

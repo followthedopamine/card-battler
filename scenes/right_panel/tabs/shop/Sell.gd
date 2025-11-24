@@ -14,6 +14,9 @@ func _can_drop_data(_at_position: Vector2, _data: Variant) -> bool:
 	
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	if "price" in data:
+		if "activated" in data:
+			if data.activated:
+				PlayerManager.hand_node.activate_next_card(data)
 		PlayerManager.currency += floori(data.price * SELL_MULTIPLIER)
 		data.queue_free()
 

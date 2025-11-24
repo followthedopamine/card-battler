@@ -51,4 +51,3 @@ func heal(healing: float) -> void:
 		health = max_health
 
 	damage_particle_emitter.emit_particle(str(health), Color8(97, 201, 0, 220))
-

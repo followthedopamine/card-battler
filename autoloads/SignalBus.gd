@@ -27,6 +27,7 @@ signal relic_added(relic: Relic)
 
 # Entity signals
 signal damage_taken(target: Entity, attacker: Entity)
+signal player_died
 
 # PlayPanel signals
 signal enemy_area_setup()

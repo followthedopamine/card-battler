@@ -36,6 +36,8 @@ func _process_attack_animation(delta: float):
 func _on_enemy_attack(damage: float, enemy: Enemy):
 	take_damage(damage, enemy)
 	SignalBus.player_health_change.emit(health)
+	if health <= 0:
+		SignalBus.player_died.emit()
 
 func _on_attack_card_played(_card: Resource):
 	is_attacking = true

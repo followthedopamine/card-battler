@@ -54,6 +54,7 @@ const PIVOT_POINT: Vector2 = Vector2(73.0, 22.0)
 
 @export_range(0.0, 5.0) var duration := 2.0
 var time_remaining := duration
+var original_duration: float = duration
 
 # Draggable dependant on this existing
 var activated := false
@@ -79,6 +80,7 @@ var original_card_effect: CardEffect
 ## repeat goes after the `super()` call.
 func _ready() -> void:
 	super()
+	SignalBus.wave_end.connect(_on_wave_end)
 	self.add_child(disabled_timer)
 	disabled_timer.timeout.connect(disabled_timeout)
 	disabled_timer.one_shot = true
@@ -121,6 +123,10 @@ func _on_timer_timeout() -> void:
 	PlayerManager.last_card_activated = self
 	timer_panel.scale.x = 0
 	deactivate()
+	
+func _on_wave_end(_wave: int) -> void:
+	duration = original_duration
+	card_effect = original_card_effect
 	
 func activate_card_effect() -> void:
 	if is_instance_valid(card_effect):
@@ -167,10 +173,12 @@ func deactivate():
 
 	timer_label.hide()
 	timer_spinner.hide()
+	timer_panel.scale = Vector2(0, 1)
 	# Card needs to be deactivated before the signal emits or when there is one
 	# card in hand it will lose the signal race to reactivate itself and mess
 	# with the visuals.
 	activated = false
+	duration = original_duration
 	completed.emit(self)
 
 ## An exposed version of the equivalent function from the attached card effect
