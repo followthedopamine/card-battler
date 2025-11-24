@@ -2,7 +2,7 @@ class_name ActionEffect
 extends Resource
 
 enum Target { NONE, ENEMY, PLAYER, SHOP }
-enum GridTarget { NONE, FRONT, BACK, RANDOM }
+enum GridTarget { NONE, FRONT, BACK, SELF, RANDOM }
 enum GridTargetType { NONE, SINGLE, AOE, ALL }
 
 # PRIMARY TARGET
@@ -17,6 +17,7 @@ enum GridTargetType { NONE, SINGLE, AOE, ALL }
 @export var damage: float
 @export var heal: float
 @export var strength: int
+@export var shield: int
 
 # PLAYER/ENEMY STATUSES
 @export var poison: int

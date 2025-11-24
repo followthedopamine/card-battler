@@ -26,7 +26,7 @@ signal strength_updated(strength_entity: Entity)
 signal relic_added(relic: Relic)
 
 # Entity signals
-signal damage_taken(target: Entity, attacker: Entity)
+signal damage_taken(target: Entity, attacker: Entity, damage: float)
 
 # PlayPanel signals
 signal enemy_area_setup()
@@ -51,4 +51,5 @@ signal card_played_target_player(card_effect: CardEffect)
 signal card_played_target_shop(card_effect: CardEffect)
 
 ## equivalent of card_played_target_enemy without trigger `card_played` effects
-signal enemy_targeted(effect: Dictionary)
+signal enemy_targeted(effect: ActionEffect)
+signal player_targeted(effect: ActionEffect, source: Enemy)
