@@ -51,11 +51,12 @@ metadata/_edit_use_anchors_ = true
 [node name="StatusBarHBoxContainer" parent="." instance=ExtResource("4_fta06")]
 layout_mode = 0
 
-[node name="StatusHandler" type="Control" parent="."]
+[node name="StatusHandler" type="Control" parent="." node_paths=PackedStringArray("status_bar")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_r7ivx")
+status_bar = NodePath("../StatusBarHBoxContainer")
 metadata/_custom_type_script = "uid://mjiv7q0gvno6"
 
 [node name="DamageParticleEmitter" parent="." instance=ExtResource("6_ncw4t")]

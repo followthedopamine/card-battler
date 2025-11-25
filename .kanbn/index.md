@@ -40,16 +40,11 @@ completedColumns:
 
 ## Todo
 
-- [bug-statuses-don-t-appear](tasks/bug-statuses-don-t-appear.md)
-- [bug-shield-icon-still-pops-up-sometimes-with-0-stacks](tasks/bug-shield-icon-still-pops-up-sometimes-with-0-stacks.md)
-- [bug-tooltips-don-t-appear-far-enough-right](tasks/bug-tooltips-don-t-appear-far-enough-right.md)
-- [bug-tooltip-will-appear-off-the-right-side-of-the-screen](tasks/bug-tooltip-will-appear-off-the-right-side-of-the-screen.md)
-- [bug-collect-bounty-gains-0-wavies](tasks/bug-collect-bounty-gains-0-wavies.md)
-- [bug-fuse-card](tasks/bug-fuse-card.md)
 - [music-and-sounds](tasks/music-and-sounds.md)
 - [attack-and-hit-animations-for-enemies](tasks/attack-and-hit-animations-for-enemies.md)
 - [tooltips-hover-effects-for-enemies](tasks/tooltips-hover-effects-for-enemies.md)
 - [5-10-relics](tasks/5-10-relics.md)
+- [bug-tooltip-will-appear-off-the-right-side-of-the-screen](tasks/bug-tooltip-will-appear-off-the-right-side-of-the-screen.md)
 - [volume-on-off-sliders](tasks/volume-on-off-sliders.md)
 - [make-the-lose-screen-look-good](tasks/make-the-lose-screen-look-good.md)
 - [bug-hover-effect-looks-kinda-bad-when-the-active-card-animation-ends-and-returns-to-normal-size](tasks/bug-hover-effect-looks-kinda-bad-when-the-active-card-animation-ends-and-returns-to-normal-size.md)
@@ -57,11 +52,22 @@ completedColumns:
 - [on-action-timer-timeout-unable-to-start-the-timer-because-it-s-not-inside-the-scene-tree](tasks/on-action-timer-timeout-unable-to-start-the-timer-because-it-s-not-inside-the-scene-tree.md)
 - [possibly-fixed-bug-moving-cards-while-in-hand-can-have-two-cards-timers-going-at-once](tasks/possibly-fixed-bug-moving-cards-while-in-hand-can-have-two-cards-timers-going-at-once.md)
 - [bug-poison-wave-says-stacks-of-burn](tasks/bug-poison-wave-says-stacks-of-burn.md)
+- [need-a-strength-icon](tasks/need-a-strength-icon.md)
+- [bug-when-healed-it-shows-total-health-instead-of-healed-amount](tasks/bug-when-healed-it-shows-total-health-instead-of-healed-amount.md)
+- [bug-enemy-bug-view-task-description](tasks/bug-enemy-bug-view-task-description.md)
+- [bug-any-card-with-a-random-target-is-now-broken-because-of-action-effects](tasks/bug-any-card-with-a-random-target-is-now-broken-because-of-action-effects.md)
+- [bug-player-doesn-t-die-anymore](tasks/bug-player-doesn-t-die-anymore.md)
 
 ## In Progress
 
 ## Done
 
+- [bug-fuse-card](tasks/bug-fuse-card.md)
+- [bug-collect-bounty-gains-0-wavies](tasks/bug-collect-bounty-gains-0-wavies.md)
+- [bug-tooltips-don-t-appear-far-enough-right](tasks/bug-tooltips-don-t-appear-far-enough-right.md)
+- [bug-shield-icon-still-pops-up-sometimes-with-0-stacks](tasks/bug-shield-icon-still-pops-up-sometimes-with-0-stacks.md)
+- [bug-statuses-don-t-appear](tasks/bug-statuses-don-t-appear.md)
+- [bug-ignition-is-fully-broken](tasks/bug-ignition-is-fully-broken.md)
 - [bug-frozen-shield-doubled-card-duration-doesn-t-reset](tasks/bug-frozen-shield-doubled-card-duration-doesn-t-reset.md)
 - [bug-companion-snail-timer-doesn-t-reset](tasks/bug-companion-snail-timer-doesn-t-reset.md)
 - [dragging-the-active-card](tasks/dragging-the-active-card.md)

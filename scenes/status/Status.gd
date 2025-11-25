@@ -36,3 +36,8 @@ static func has_status(entity: Entity, status_type: Status.Type) -> bool:
 			if status != null:
 				return true
 	return false
+	
+static func remove_status(entity: Entity, status_type: Status.Type) -> void:
+	for child in entity.get_children():
+		if child is StatusHandler:
+			child.remove_current_status(status_type)

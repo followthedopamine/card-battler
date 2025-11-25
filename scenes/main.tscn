@@ -139,6 +139,7 @@ volume_db = -10.0
 autoplay = true
 
 [node name="LosePanel" type="Panel" parent="." node_paths=PackedStringArray("wave_text", "retry_button")]
+visible = false
 z_index = 200
 layout_mode = 1
 anchors_preset = 15

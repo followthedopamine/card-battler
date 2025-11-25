@@ -1,6 +1,6 @@
 class_name Tooltip extends Node
 
-const LEFT_PADDING: float = 18.0
+const LEFT_PADDING: float = 10.0
 const BOTTOM_PADDING: float = 10.0
 
 const TOOLTIP_SCENE: PackedScene = preload("res://scenes/tooltip/Tooltip.tscn")
@@ -49,7 +49,7 @@ func update_tooltip_variables(text_with_variables: String) -> String:
 	return replaced_text
 	
 func position_tooltip() -> void:
-	var x = node.get_rect().size.x + node.global_position.x
+	var x = node.get_rect().size.x + node.global_position.x + LEFT_PADDING
 	var y = node.global_position.y
 
 	var viewport_rect: Rect2 = node.get_viewport().get_visible_rect()
