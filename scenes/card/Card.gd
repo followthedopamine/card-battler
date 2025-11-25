@@ -54,7 +54,7 @@ const PIVOT_POINT: Vector2 = Vector2(73.0, 22.0)
 
 @export_range(0.0, 5.0) var duration := 2.0
 var time_remaining := duration
-var original_duration: float = duration
+@onready var original_duration: float = duration
 
 # Draggable dependant on this existing
 var activated := false
@@ -108,7 +108,7 @@ func _ready() -> void:
 		# If we don't do a super thorough duplicate then the resource will never be
 		# unique
 		original_card_effect = card_effect.duplicate_deep(Resource.DeepDuplicateMode.DEEP_DUPLICATE_ALL)
-
+		
 func _process(delta: float) -> void:
 	super(delta)
 	if activated:

@@ -22,6 +22,8 @@ func _on_status_updated(status: Status, node: Node) -> void:
 
 func _on_block_updated(node: Node) -> void:
 	if node == parent:
+		if node.block == 0:
+			return
 		var status: Status = Status.new(Status.Type.BLOCK, node.block, node, false)
 		if status.stacks < 0:
 			status.stacks = 0
@@ -38,9 +40,11 @@ func _on_wave_end(_wave: int) -> void:
 		child.stacks = 0
 
 func update_status_bar(status: Status, should_equal_stacks: bool = false):
+	var status_found: bool = false
 	if get_child_count() > 0:
 		for child: StatusIcon in get_children():
 			if child.effect == status.effect:
+				status_found = true
 				if should_equal_stacks:
 					child.stacks = status.stacks
 				else:
@@ -50,7 +54,7 @@ func update_status_bar(status: Status, should_equal_stacks: bool = false):
 					child.visible = false
 				else:
 					child.visible = true
-	else:
+	if !status_found:
 		add_status_icon(status)
 
 func add_status_icon(status: Status):

@@ -40,7 +40,6 @@ func _on_status_updated(status: Status, node: Node) -> void:
 				poison_timer.start(POISON_DURATION)
 			if current_status.effect == Status.Type.FUSE:
 				return
-
 		current_status.stacks += status.stacks
 
 	# If no stacks are being added and no current stacks then remove the timer
@@ -66,11 +65,14 @@ func _on_card_played(_card: Card) -> void:
 func _on_wave_end(_wave: int) -> void:
 	for status: Status in current_statuses:
 		status.stacks = 0
-	
+		if status.effect == Status.Type.FUSE:
+			status.stacks = -1
 	#current_statuses = []
 
 func _on_block_updated(node: Node) -> void:
 	if node == parent:
+		if node.block == 0:
+			return
 		var status = get_current_status(Status.Type.BLOCK)
 		if status == null:
 			status = Status.new(Status.Type.BLOCK, node.block, node, false)
@@ -109,6 +111,17 @@ func get_current_status(status_type: Status.Type) -> Status:
 		if current_status.effect == status_type:
 			return current_status
 	return null
+	
+func remove_current_status(status_type: Status.Type) -> void:
+	var status_index: int
+	var count: int = 0
+	for current_status: Status in current_statuses:
+		count += 1
+		if current_status.effect == status_type:
+			status_index = count
+			break
+	if status_index != null:
+		current_statuses.remove_at(status_index)
 	
 func handle_thorns(target: Entity, attacker: Entity) -> void:
 	var thorns: Status = get_current_status(Status.Type.THORNS)
