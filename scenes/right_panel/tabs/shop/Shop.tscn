@@ -37,7 +37,6 @@ sell_panel = NodePath("ShopMarginContainer/SellPanel")
 
 [node name="ShopMarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_override_constants/margin_top = 68
 
 [node name="ShopVBoxContainer" type="VBoxContainer" parent="ShopMarginContainer"]
 layout_mode = 2

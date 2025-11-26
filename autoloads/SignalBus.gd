@@ -54,3 +54,7 @@ signal card_played_target_shop(card_effect: CardEffect)
 ## equivalent of card_played_target_enemy without trigger `card_played` effects
 signal enemy_targeted(effect: ActionEffect)
 signal player_targeted(effect: ActionEffect, source: Enemy)
+
+# Audio signals
+signal sfx_volume_changed(value: float)
+signal music_volume_changed(value: float)
