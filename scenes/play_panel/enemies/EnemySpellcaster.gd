@@ -8,6 +8,7 @@ func _ready() -> void:
 	super()
 
 	var attack := ActionEffect.new()
+	attack.type = ActionEffect.Type.ATTACK
 	attack.damage = damage
 	attack.target = ActionEffect.Target.PLAYER
 

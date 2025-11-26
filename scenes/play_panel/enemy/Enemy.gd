@@ -17,6 +17,8 @@ var current_action = 0
 var current_action_speed := 0.0
 var action_time_remaining := 0.0
 
+var intention: String = "Test" # For display purposes
+
 # attack animation variables
 ## In px
 var x_attack_offset := 60
@@ -74,6 +76,31 @@ func die():
 	process_on_kill_callables()
 	
 	queue_free()
+
+# From: https://www.reddit.com/r/godot/comments/10ikgma/comment/j5kpbry/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1
+func unique_array(arr: Array) -> Array:
+	var dict := {}
+	for a in arr:
+		dict[a] = 1
+	return dict.keys()
+	
+func set_tooltips():
+	intention = actions[current_action].get_intention_string()
+	Tooltip.new("This enemy intends to %intention%", self)
+	for action: ActionEffect in unique_array(actions):
+		match(action.type):
+			ActionEffect.Type.ATTACK:
+				Tooltip.new("Attack: Deals %damage%", self)
+			ActionEffect.Type.STRENGTH_BUFF:
+				Tooltip.new("Buff strength: Adds %strength_buff% strength", self)
+			ActionEffect.Type.STRENGTH_BUFF_ALL:
+				Tooltip.new("Buff all strength: Adds %strength_buff% strength to all allies", self)
+			ActionEffect.Type.HEAL_RANDOM:
+				Tooltip.new("Heal random: Heals a random ally for %healing%", self)
+			ActionEffect.Type.HEAL_ALL:
+				Tooltip.new("Heal all: Heals all allies for %healing%", self)
+			ActionEffect.Type.POISON_ATTACK:
+				Tooltip.new("Poison attack: Applies %poison% stacks of poison", self)
 	
 func process_on_kill_callables() -> void:
 	var last_card = PlayerManager.last_card_activated
@@ -120,10 +147,10 @@ func process_next_action():
 	if !actions.size():
 		print("Enemy %s has no actions attached. It will not act." % enemy_name)
 		return
-		
 	var action := actions[current_action]
 	current_action = (current_action + 1) % actions.size()
-
+	intention = actions[current_action].get_intention_string()
+	
 	if action.target == ActionEffect.Target.PLAYER:
 		deal_damage(action)
 
@@ -152,13 +179,11 @@ func _on_wave_start_animation_end():
 
 func _ready() -> void:
 	super()
-
 	# Placeholder action
 	var action1 := ActionEffect.new()
 	action1.damage = damage
 	action1.target = ActionEffect.Target.PLAYER
 	actions = [action1]
-
 	health = max_health
 
 	var sprite_size = get_sprite_size()

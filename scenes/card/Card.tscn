@@ -8,6 +8,5 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 142.0
 offset_bottom = 225.0
-pivot_offset = Vector2(73, 22)
 mouse_filter = 1
 script = ExtResource("1_fa4yn")

@@ -23,8 +23,9 @@ func _on_mouse_entered() -> void:
 
 	var new_rect = node_to_scale.get_rect()
 	var new_position: Vector2 = (original_rect.size - new_rect.size) / Vector2(2, 2)
+	#print((original_rect.size - new_rect.size) / Vector2(2, 2))
 
-	node_to_scale.position = new_position
+	node_to_scale.position = node_to_scale.position + new_position
 	
 func _on_mouse_exited() -> void:
 	node_to_scale.scale = original_scale

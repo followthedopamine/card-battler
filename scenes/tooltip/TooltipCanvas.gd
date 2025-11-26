@@ -15,16 +15,18 @@ func _on_card_controller_picked_up(_card_controller: CardController) -> void:
 func _on_card_controller_released() -> void:
 	show_tooltip_display()
 
-func display_tooltip(text: String) -> TooltipData:
+func display_tooltip(text: String, tooltip: Tooltip) -> TooltipData:
 	# VBox container will hold its size even after children are moved out of it
 	display.size.y = 0
 	if pool.get_child_count() == 0:
 		var new_tooltip: TooltipData = tooltip_scene.instantiate()
+		new_tooltip.tooltip = tooltip
 		new_tooltip.label.text = text
 		display.add_child(new_tooltip)
 		return new_tooltip
 	else:
 		var old_tooltip: TooltipData = pool.get_child(0)
+		old_tooltip.tooltip = tooltip
 		old_tooltip.label.text = text
 		old_tooltip.reparent(display)
 		return old_tooltip

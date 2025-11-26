@@ -153,7 +153,6 @@ func process_all_enemy_callables(card: ActionEffect, all_enemies: Array[Enemy]) 
 func _on_any_card_played(_card: Card) -> void:
 	if Status.has_status(PlayerManager.player_node, Status.Type.FUSE):
 		var status: Status = Status.get_status(PlayerManager.player_node, Status.Type.FUSE)
-		print(status.stacks)
 		if status.stacks == 0:
 			var temp_card_effect: CardEffect = CardEffect.new()
 			temp_card_effect.damage = LightFuse.EXPLOSION_DAMAGE
