@@ -1,6 +1,8 @@
 extends Enemy
 
-@export var strength_buff: int = 1
+@export var strength_buff: int = 3
+@export var slow_duration: int = 1
+@export var shield_amount: int = 3
 
 func _ready() -> void:
 	super()
@@ -10,13 +12,21 @@ func _ready() -> void:
 	attack.damage = damage
 	attack.target = ActionEffect.Target.PLAYER
 
-	var buff_self := ActionEffect.new()
-	buff_self.type = ActionEffect.Type.STRENGTH_BUFF
-	buff_self.strength = strength_buff
-	buff_self.target = ActionEffect.Target.ENEMY
-	buff_self.enemy_target = ActionEffect.GridTarget.SELF
+	var buff_random := ActionEffect.new()
+	buff_random.strength = strength_buff
+	buff_random.target = ActionEffect.Target.ENEMY
+	buff_random.enemy_target = ActionEffect.GridTarget.RANDOM
+	buff_random.enemy_target_type = ActionEffect.GridTargetType.AOE
 
-	actions = [attack, buff_self]
-	
-	set_tooltips()
-	
+	var shield_random := ActionEffect.new()
+	shield_random.shield = shield_amount
+	shield_random.target = ActionEffect.Target.ENEMY
+	shield_random.enemy_target = ActionEffect.GridTarget.RANDOM
+	shield_random.enemy_target_type = ActionEffect.GridTargetType.AOE
+
+	var slow_player := ActionEffect.new()
+	slow_player.slow = slow_duration
+	slow_player.target = ActionEffect.Target.PLAYER
+
+	actions = [attack, buff_random, shield_random, slow_player]
+	actions.shuffle()

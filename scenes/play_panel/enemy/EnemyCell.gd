@@ -63,6 +63,9 @@ func process_action_effects(action: ActionEffect):
 			enemy_scene.take_damage(action.damage + action.strength, PlayerManager.player_node)
 			handle_extra_player_attacks(action)
 
+		if action.shield:
+			enemy_scene.block += action.shield
+
 		if action.strength:
 			Status.new(Status.Type.STRENGTH, action.strength, enemy_scene)
 			enemy_scene.strength += action.strength
@@ -70,12 +73,12 @@ func process_action_effects(action: ActionEffect):
 		if action.burn:
 			Status.new(Status.Type.BURN, action.burn, enemy_scene)
 			
-		if action.slow:
-			Status.new(Status.Type.SLOW, action.slow, enemy_scene)
-			
 		if action.poison:
 			Status.new(Status.Type.POISON, action.poison, enemy_scene)
 		
+		if action.slow:
+			Status.new(Status.Type.SLOW, action.slow, enemy_scene)
+
 func process_pre_enemy_callables(action: ActionEffect) -> void:
 	for callable: Callable in action.on_play_enemy_callables:
 		# Hopefully fixes a crash where the callable can sometimes be null?

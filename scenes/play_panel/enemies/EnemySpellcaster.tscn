@@ -152,12 +152,11 @@ offset_right = 1.0
 offset_bottom = 1.0
 script = ExtResource("1_vwudx")
 enemy_name = "Technomancer"
-spawn_value = 10
-first_available_wave = 10
-damage = 0.0
-attack_speed = 3.0
-spawn_columns = Array[int]([3])
-max_health = 50.0
+spawn_value = 12
+first_available_wave = 18
+damage = 3.0
+spawn_columns = Array[int]([1, 2, 3])
+max_health = 35.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]

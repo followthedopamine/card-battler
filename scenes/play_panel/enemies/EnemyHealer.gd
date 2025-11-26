@@ -8,7 +8,7 @@ func _ready() -> void:
 	action1.type = ActionEffect.Type.HEAL_ALL
 	action1.heal = healing
 	action1.target = ActionEffect.Target.ENEMY
-	action1.enemy_target_type = ActionEffect.GridTargetType.ALL
+	action1.enemy_target_type = ActionEffect.GridTargetType.AOE
 
 	actions = [action1]
 	set_tooltips()
