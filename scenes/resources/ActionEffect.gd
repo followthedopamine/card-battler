@@ -4,6 +4,18 @@ extends Resource
 enum Target { NONE, ENEMY, PLAYER, SHOP }
 enum GridTarget { NONE, FRONT, BACK, SELF, RANDOM }
 enum GridTargetType { NONE, SINGLE, AOE, ALL }
+enum Type { ATTACK, STRENGTH_BUFF, HEAL_RANDOM, STRENGTH_BUFF_ALL, POISON_ATTACK, HEAL_ALL }
+
+const ACTION_TYPE_STRING: Dictionary[Type, String] = {
+	Type.ATTACK: "attack",
+	Type.STRENGTH_BUFF: "strength buff",
+	Type.STRENGTH_BUFF_ALL: "strength buff all",
+	Type.HEAL_RANDOM: "heal a random ally",
+	Type.HEAL_ALL: "heal all allies",
+	Type.POISON_ATTACK: "apply poison",
+}
+
+var type: Type
 
 # PRIMARY TARGET
 @export var target: Target = Target.NONE
@@ -51,3 +63,8 @@ func run_effects():
 
 	if (on_play_callables.size()): 
 		run_on_play_callables()
+		
+func get_intention_string() -> String:
+	if ACTION_TYPE_STRING.has(type):
+		return ACTION_TYPE_STRING[type]
+	return "null"
