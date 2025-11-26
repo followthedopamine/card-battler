@@ -115,7 +115,10 @@ func _ready():
 	_sort_enemy_scenes_by_var("spawn_value")
 
 	SignalBus.animation_grid_offset.emit(animation_grid_offset)
-		
+
+	if wave > 1:
+		current_wave_weight += (wave - 1) * wave_increment
+
 	if enemy_area.get_is_setup():
 		_on_enemy_area_setup()
 	else:

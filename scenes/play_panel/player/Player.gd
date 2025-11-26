@@ -66,6 +66,10 @@ func _on_player_targeted(effect: ActionEffect, enemy: Enemy) -> void:
 	if effect.strength:
 		strength += effect.strength
 		Status.new(Status.Type.STRENGTH, effect.strength, self)
+	
+	if effect.slow:
+		Status.new(Status.Type.SLOW, effect.slow, self)
+		is_slowed = !!effect.slow
 
 func _ready() -> void:
 	super()

@@ -7,6 +7,6 @@ func _ready() -> void:
 	var action1 := ActionEffect.new()
 	action1.heal = healing
 	action1.target = ActionEffect.Target.ENEMY
-	action1.enemy_target_type = ActionEffect.GridTargetType.ALL
+	action1.enemy_target_type = ActionEffect.GridTargetType.AOE
 
 	actions = [action1]

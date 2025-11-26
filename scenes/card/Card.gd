@@ -28,7 +28,7 @@ var card_tag_tooltips: Dictionary[CardTag, String] = {
 	CardTag.MELEE: "Melee: Hits the closest enemies first",
 	CardTag.BLOCK: "Block: Prevents damage up to number of block stacks",
 	CardTag.BURN: "Burn: Deals damage equal to number of burn stacks every %s second" %  snapped(StatusHandler.BURN_DURATION, 1),
-	CardTag.SLOW: "Slow: Reduces the enemy attack speed by %s seconds" % StatusHandler.SLOW_ADDITION,
+	CardTag.SLOW: "Slow: Halves the enemy attack speed for %s seconds" % snapped(StatusHandler.SLOW_DURATION, 1),
 	CardTag.RANDOM: "Random: Can hit any enemy",
 	CardTag.THORNS: "Thorns: Reflects damage back at the enemy equal to the number of thorn stacks",
 	CardTag.STRENGTH: "Strength: Adds damage to your attacks equal to the number of strength stacks",
@@ -76,6 +76,8 @@ var colour: Color
 
 var original_card_effect: CardEffect
 
+@onready var player: Player = get_tree().get_first_node_in_group("Player")
+
 ## NOTE: if extending this class in a child, make sure all code you wish to
 ## repeat goes after the `super()` call.
 func _ready() -> void:
@@ -85,7 +87,6 @@ func _ready() -> void:
 	disabled_timer.timeout.connect(disabled_timeout)
 	disabled_timer.one_shot = true
 	
-	timer.timeout.connect(_on_timer_timeout)
 	set_process_input(false)
 
 	#change_colour(colour)
@@ -111,11 +112,15 @@ func _ready() -> void:
 		
 func _process(delta: float) -> void:
 	super(delta)
+	
 	if activated:
-		time_remaining -= delta
+		time_remaining -=  delta * 0.5 if player.is_slowed else delta
 		timer_label.text = "%.1f" % time_remaining
 		timer_spinner.rotation += delta * 10
 		timer_panel.scale.x = 1 - (time_remaining / duration) 
+
+		if time_remaining <= 0:
+			_on_timer_timeout()
 
 func _on_timer_timeout() -> void:
 	activate_card_effect()
@@ -127,7 +132,8 @@ func _on_timer_timeout() -> void:
 func _on_wave_end(_wave: int) -> void:
 	duration = original_duration
 	card_effect = original_card_effect
-	
+	player.is_slowed = false
+
 func activate_card_effect() -> void:
 	if is_instance_valid(card_effect):
 		card_effect.run_effects()
@@ -150,7 +156,6 @@ func disable_card(disabled_duration: float) -> void:
 
 func activate():
 	start_card_effect()
-	timer.start(duration)
 
 	card_components.position.y = -10
 	#change_colour(DISABLED_COLOUR)
@@ -160,8 +165,6 @@ func activate():
 	timer_label.show()
 	timer_spinner.show()
 
-	
-
 	activated = true
 
 func deactivate():
@@ -170,7 +173,6 @@ func deactivate():
 	card_components.position.y = 0
 	#change_colour(colour)
 	
-
 	timer_label.hide()
 	timer_spinner.hide()
 	timer_panel.scale = Vector2(0, 1)

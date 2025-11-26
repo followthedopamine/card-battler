@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c5p2ikuq1red3"]
 
-[ext_resource type="Script" uid="uid://qhyp6ipkhagq" path="res://scenes/play_panel/enemies/EnemySpellcaster.gd" id="1_wuxb8"]
+[ext_resource type="Script" uid="uid://dvdbgskyn8dac" path="res://scenes/play_panel/enemies/EnemyBlob.gd" id="1_wuxb8"]
 [ext_resource type="Texture2D" uid="uid://dlu5xb0dpv871" path="res://assets/enemies/slime.png" id="2_wuxb8"]
 [ext_resource type="PackedScene" uid="uid://vg0ltwj23njc" path="res://scenes/play_panel/HealthBar.tscn" id="3_lojwc"]
 [ext_resource type="PackedScene" uid="uid://co2mq4qr6rara" path="res://scenes/status/StatusBar.tscn" id="4_1fnth"]
@@ -24,11 +24,9 @@ anchors_preset = 0
 offset_right = 1.0
 offset_bottom = 1.0
 script = ExtResource("1_wuxb8")
-enemy_name = "Technomancer"
 spawn_value = 3
-damage = 1.0
 attack_speed = 2.0
-spawn_columns = Array[int]([0])
+spawn_columns = Array[int]([0, 1])
 max_health = 12.0
 metadata/_edit_use_anchors_ = true
 

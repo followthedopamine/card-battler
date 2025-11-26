@@ -13,6 +13,8 @@ class_name Entity extends Control
 		strength = value
 		SignalBus.strength_updated.emit(self)
 
+var is_slowed := false
+
 @onready var health: float = max_health
 
 @onready var sprite: AnimatedSprite2D  = $Sprite
@@ -51,5 +53,4 @@ func heal(healing: float) -> void:
 		health += healing
 	if health > max_health:
 		health = max_health
-
-	damage_particle_emitter.emit_particle(str(health), Color8(97, 201, 0, 220))
+	damage_particle_emitter.emit_particle(str(healing), Color8(97, 201, 0, 220))

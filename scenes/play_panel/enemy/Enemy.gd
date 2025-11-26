@@ -9,11 +9,13 @@ class_name Enemy extends Entity
 
 @export var damage: float = 0.5
 
-@export var attack_speed: float = 1.5
+@export var action_speed: float = 1.5
 @export var spawn_columns: Array[int] = [0, 1, 2, 3]
 
 var actions: Array[ActionEffect] = []
 var current_action = 0
+var current_action_speed := 0.0
+var action_time_remaining := 0.0
 
 # attack animation variables
 ## In px
@@ -114,7 +116,7 @@ func _setup_health_bar():
 	# Set the position of the healthbar
 	health_bar.position.y -= health_bar.size.y * 1.5
 
-func _on_action_timer_timeout():
+func process_next_action():
 	if !actions.size():
 		print("Enemy %s has no actions attached. It will not act." % enemy_name)
 		return
@@ -132,8 +134,7 @@ func _on_action_timer_timeout():
 		else:
 			SignalBus.enemy_targeted.emit(action)
 
-	action_timer.wait_time = randf_range(attack_speed*.9, attack_speed*1.1)
-	action_timer.start()
+	start_next_action()
 
 func _on_mouse_entered():
 	health_bar.visible = true
@@ -142,13 +143,12 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	show_mouse_over_health_bar = false
 	
+func start_next_action():
+	current_action_speed = randf_range(action_speed*.9, action_speed*1.1)
+	action_time_remaining = current_action_speed
 
 func _on_wave_start_animation_end():
-	add_child(action_timer)
-	action_timer.wait_time = randf_range(attack_speed*.9, attack_speed*1.1)
-	action_timer.one_shot = true
-	action_timer.timeout.connect(_on_action_timer_timeout)
-	action_timer.start()
+	start_next_action()
 
 func _ready() -> void:
 	super()
@@ -180,7 +180,6 @@ func _ready() -> void:
 	
 	SignalBus.animation_end.connect(_on_wave_start_animation_end)
 
-
 func _physics_process(delta: float) -> void:
 	if is_attacking:
 		_process_attack_animation(delta)
@@ -193,3 +192,10 @@ func _physics_process(delta: float) -> void:
 
 	if !show_mouse_over_health_bar && !show_damage_taken_health_bar:
 		health_bar.visible = false
+	
+	if action_time_remaining:
+		var delta_timer = delta if !is_slowed else delta * 0.5
+		action_time_remaining -= delta_timer
+		
+		if action_time_remaining <= 0:
+			process_next_action()

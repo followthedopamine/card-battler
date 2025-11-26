@@ -27,10 +27,10 @@ script = ExtResource("1_6akli")
 healing = 10.0
 strength_buff = 1
 enemy_name = "Bard"
-spawn_value = 10
-first_available_wave = 20
-spawn_columns = Array[int]([3])
-max_health = 100.0
+spawn_value = 16
+first_available_wave = 30
+spawn_columns = Array[int]([2, 3])
+max_health = 60.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]

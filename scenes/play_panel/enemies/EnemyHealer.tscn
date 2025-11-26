@@ -27,15 +27,17 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Enemy" type="Control" groups=["Enemy"]]
+[node name="Enemy2" type="Control" groups=["Enemy"]]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1.0
 offset_bottom = 1.0
 script = ExtResource("1_wvoo1")
+healing = 4.0
 enemy_name = "Healer"
 spawn_value = 7
 first_available_wave = 5
+damage = 0.0
 spawn_columns = Array[int]([0, 1, 2])
 max_health = 10.0
 metadata/_edit_use_anchors_ = true
