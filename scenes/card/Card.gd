@@ -52,7 +52,13 @@ const PIVOT_POINT: Vector2 = Vector2(73.0, 22.0)
 @export var card_effect: CardEffect
 @export var rarity: Rarity = Rarity.COMMON
 
-@export_range(0.0, 5.0) var duration := 2.0
+@export_range(0.0, 5.0) var duration := 2.0:
+	get:
+		return duration
+	set(value):
+		if duration != value:
+			duration = value	
+			SignalBus.card_duration_changed.emit(self)
 var time_remaining := duration
 @onready var original_duration: float = duration
 
@@ -145,6 +151,9 @@ func start_card_effect() -> void:
 	
 func disabled_timeout() -> void:
 	# Remember to check if we need to restart playing cards
+	enable_card()
+	
+func enable_card() -> void:
 	is_disabled = false
 	card_components.modulate = Color(1.0, 1.0, 1.0, 1.0)
 	SignalBus.card_enabled.emit()
@@ -153,6 +162,8 @@ func disable_card(disabled_duration: float) -> void:
 	is_disabled = true
 	card_components.modulate = DISABLED_COLOUR
 	disabled_timer.start(disabled_duration)
+	if activated:
+		deactivate()
 
 func activate():
 	start_card_effect()

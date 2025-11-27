@@ -58,13 +58,16 @@ func _process(delta) -> void:
 		
 		
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
-	if !data.get_parent() is Hand:
-		switch_cards(data, self)
+	if is_instance_valid(data) and !data.is_queued_for_deletion():
+		if !data.get_parent() is Hand:
+			switch_cards(data, self)
+		else:
+			# Need this check to prevent pack closing on shuffling hand with pack open
+			# This check is also blocking pack closing when new card is added to hand
+			if !get_parent() is Hand:
+				SignalBus.card_chosen.emit(self)
 	else:
-		# Need this check to prevent pack closing on shuffling hand with pack open
-		# This check is also blocking pack closing when new card is added to hand
-		if !get_parent() is Hand:
-			SignalBus.card_chosen.emit(self)
+		SignalBus.card_controller_released.emit()
 
 func _can_drop_data(_at_position: Vector2, _data: Variant) -> bool:
 	if !self.get_parent() is Hand:
@@ -134,10 +137,11 @@ func _input(event: InputEvent) -> void:
 					# Have to use get_parent() here instead of hbox because the parent
 					# of the card can change while dragging.
 					get_parent().move_child(self, self.get_index() - 1)
+					SignalBus.card_controller_position_changed.emit()
 			elif dragging_node.global_position.x > global_position.x + threshold:
 				if self.get_index() < get_parent().get_child_count() - 1:
 					get_parent().move_child(self, self.get_index() + 1)
-				
+					SignalBus.card_controller_position_changed.emit()
 	
 		
 func _on_card_controller_picked_up(card_controller: CardController) -> void:
