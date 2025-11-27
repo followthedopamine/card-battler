@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b653dafp8uotu"]
+[gd_scene load_steps=15 format=3 uid="uid://b653dafp8uotu"]
 
 [ext_resource type="Script" uid="uid://cmkv7da2ilckk" path="res://scenes/play_panel/PlayPanel.gd" id="1_jgck7"]
 [ext_resource type="PackedScene" uid="uid://dnvmslc0lunfw" path="res://scenes/packs/pack_opening/PackOpening.tscn" id="1_x324g"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://crwmecg6ap1w2" path="res://scenes/play_panel/enemy/EnemyArea.gd" id="4_mo54i"]
 [ext_resource type="Script" uid="uid://bbka3kooxxw1r" path="res://scenes/play_panel/PlayAreaGrid.gd" id="4_uajrv"]
 [ext_resource type="PackedScene" uid="uid://b0us44ov8t56n" path="res://scenes/play_panel/PlayerHealthBar.tscn" id="7_gcqk6"]
+[ext_resource type="Script" uid="uid://cbjue7ee5fr67" path="res://scenes/play_panel/RelicRewards.gd" id="7_ujhpf"]
 [ext_resource type="Script" uid="uid://cvc7yxckv48q7" path="res://scenes/play_panel/controllers/WaveController.gd" id="8_d7kxu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fi6o"]
@@ -136,6 +137,35 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="RelicRewardPanel" type="Panel" parent="." node_paths=PackedStringArray("relic_container", "relic_skip_button", "relic")]
+layout_mode = 2
+script = ExtResource("7_ujhpf")
+relic_container = NodePath("RelicVBoxContainer/RelicContainer")
+relic_skip_button = NodePath("RelicVBoxContainer/RelicSkipButton")
+relic = NodePath("")
+
+[node name="RelicVBoxContainer" type="VBoxContainer" parent="RelicRewardPanel"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RelicContainer" type="MarginContainer" parent="RelicRewardPanel/RelicVBoxContainer"]
+layout_mode = 2
+
+[node name="RelicSkipButton" type="Button" parent="RelicRewardPanel/RelicVBoxContainer"]
+layout_mode = 2
+text = "Skip"
 
 [node name="PackOpeningPanelContainer" parent="." instance=ExtResource("1_x324g")]
 visible = false

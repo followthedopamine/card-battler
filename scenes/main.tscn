@@ -127,8 +127,9 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="RelicHBoxContainer" parent="." instance=ExtResource("5_tbgi4")]
+[node name="RelicVBoxContainer" parent="." instance=ExtResource("5_tbgi4")]
 layout_mode = 0
+offset_right = 30.0
 
 [node name="GlobalTimer" type="Timer" parent="." groups=["GlobalTimer"]]
 autostart = true
