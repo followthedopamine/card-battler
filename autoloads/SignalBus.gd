@@ -9,12 +9,14 @@ signal pack_closed
 signal card_controller_picked_up(card_controller: CardController)
 signal card_controller_hovered(card_controller: CardController)
 signal card_controller_released
+signal card_controller_position_changed
 
 # Card signals
 signal card_discarded(card: Card)
 signal card_chosen(card: Card)
 signal card_played(card: Card)
 signal card_enabled
+signal card_duration_changed(card: Card)
 
 # Status signals
 signal status_updated(status: Status, attached_node: Node)

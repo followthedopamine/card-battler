@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2vag73qlwq1l"]
+
+[ext_resource type="Script" uid="uid://g1cykq3s4gbl" path="res://scenes/relics/007BlockClock.gd" id="1_3xhbn"]
+[ext_resource type="Texture2D" uid="uid://cj5je0ibfkxh7" path="res://assets/icons/Bleed.png" id="2_f11vd"]
+
+[node name="007BlockClock" type="MarginContainer"]
+script = ExtResource("1_3xhbn")
+relic_sprite = ExtResource("2_f11vd")
+relic_name = "Block Clock"
+tooltips = Array[String](["Add %BLOCK_AMOUNT% block every time a card is played"])
+metadata/_custom_type_script = "uid://dcn785x8e1aj1"

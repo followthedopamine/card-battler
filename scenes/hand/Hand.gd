@@ -21,8 +21,11 @@ func _can_drop_data(_at_position: Vector2, _data: Variant) -> bool:
 # Hand needs drop data as well as Card since you want to be able to drop 
 # cards into an empty hand.
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
-	data.reparent(self)
-	SignalBus.card_chosen.emit(data)
+	if is_instance_valid(data) and !data.is_queued_for_deletion():
+		data.reparent(self)
+		SignalBus.card_chosen.emit(data)
+	else:
+		SignalBus.card_controller_released.emit()
 
 func _on_wave_end(_wave: int) -> void:
 	# This is for resetting stacking card effects on next wave

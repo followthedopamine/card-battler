@@ -36,21 +36,12 @@ theme_override_constants/separation = 20
 
 [node name="Card" parent="VBoxContainer/HBoxContainer" instance=ExtResource("3_hnckt")]
 layout_mode = 2
-card_name = ""
-price = 5
-duration = 2.0
 
 [node name="Card2" parent="VBoxContainer/HBoxContainer" instance=ExtResource("3_hnckt")]
 layout_mode = 2
-card_name = ""
-price = 5
-duration = 2.0
 
 [node name="Card3" parent="VBoxContainer/HBoxContainer" instance=ExtResource("3_hnckt")]
 layout_mode = 2
-card_name = ""
-price = 5
-duration = 2.0
 
 [node name="SkipButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2

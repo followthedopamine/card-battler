@@ -40,6 +40,11 @@ completedColumns:
 
 ## Todo
 
+- [relic-shop-prices-are-halved](tasks/relic-shop-prices-are-halved.md)
+- [relic-your-block-cards-heal-instead-of-blocking](tasks/relic-your-block-cards-heal-instead-of-blocking.md)
+- [relic-your-cards-take-1s-longer-to-play-and-trigger-a-random-card-effect-on-play](tasks/relic-your-cards-take-1s-longer-to-play-and-trigger-a-random-card-effect-on-play.md)
+- [relic-add-2-block-per-card-played](tasks/relic-add-2-block-per-card-played.md)
+- [relic-assemble-all-5-relics-of-exodia-and-win-the-game](tasks/relic-assemble-all-5-relics-of-exodia-and-win-the-game.md)
 - [5-10-relics](tasks/5-10-relics.md)
 - [bug-tooltip-will-appear-off-the-right-side-of-the-screen](tasks/bug-tooltip-will-appear-off-the-right-side-of-the-screen.md)
 - [make-the-lose-screen-look-good](tasks/make-the-lose-screen-look-good.md)
@@ -54,17 +59,30 @@ completedColumns:
 - [bug-any-card-with-a-random-target-is-now-broken-because-of-action-effects](tasks/bug-any-card-with-a-random-target-is-now-broken-because-of-action-effects.md)
 - [bug-player-doesn-t-die-anymore](tasks/bug-player-doesn-t-die-anymore.md)
 - [music-and-sounds](tasks/music-and-sounds.md)
+- [bug-aoe-cards-no-longer-work](tasks/bug-aoe-cards-no-longer-work.md)
+- [bug-strength-buff-doesn-t-work](tasks/bug-strength-buff-doesn-t-work.md)
+- [disabled-card-relic-should-play-the-animation-when-the-effect-triggers](tasks/disabled-card-relic-should-play-the-animation-when-the-effect-triggers.md)
+- [enemies-get-stuck-in-hit-animation-sometimes](tasks/enemies-get-stuck-in-hit-animation-sometimes.md)
 
 ## In Progress
 
 ## Done
 
+- [relic-at-the-start-of-a-new-wave-the-first-card-in-your-hand-is-played-instantly](tasks/relic-at-the-start-of-a-new-wave-the-first-card-in-your-hand-is-played-instantly.md)
+- [relic-when-you-add-block-deal-1-damage-to-all-enemies](tasks/relic-when-you-add-block-deal-1-damage-to-all-enemies.md)
+- [relic-cards-in-packs-are-completely-random](tasks/relic-cards-in-packs-are-completely-random.md)
 - [tooltips-hover-effects-for-enemies](tasks/tooltips-hover-effects-for-enemies.md)
+- [relic-the-first-card-in-your-hand-is-disabled-its-effect-has-a-50-chance-to-activate-every-time-a-card-is-played](tasks/relic-the-first-card-in-your-hand-is-disabled-its-effect-has-a-50-chance-to-activate-every-time-a-card-is-played.md)
+- [bug-tooltips-don-t-appear-far-enough-right](tasks/bug-tooltips-don-t-appear-far-enough-right.md)
+- [relic-1-strength-every-time-a-card-is-played](tasks/relic-1-strength-every-time-a-card-is-played.md)
+- [relic-card-duration-is-always-1-5-seconds](tasks/relic-card-duration-is-always-1-5-seconds.md)
+- [relic-if-you-have-5-cards-in-hand-the-5th-card-is-played-instantly](tasks/relic-if-you-have-5-cards-in-hand-the-5th-card-is-played-instantly.md)
+- [relic-for-the-next-5-waves-at-the-end-of-the-wave-your-cards-are-randomised-and-you-gain-100-wavies](tasks/relic-for-the-next-5-waves-at-the-end-of-the-wave-your-cards-are-randomised-and-you-gain-100-wavies.md)
+- [relic-rewards](tasks/relic-rewards.md)
 - [attack-and-hit-animations-for-enemies](tasks/attack-and-hit-animations-for-enemies.md)
 - [volume-on-off-sliders](tasks/volume-on-off-sliders.md)
 - [bug-fuse-card](tasks/bug-fuse-card.md)
 - [bug-collect-bounty-gains-0-wavies](tasks/bug-collect-bounty-gains-0-wavies.md)
-- [bug-tooltips-don-t-appear-far-enough-right](tasks/bug-tooltips-don-t-appear-far-enough-right.md)
 - [bug-shield-icon-still-pops-up-sometimes-with-0-stacks](tasks/bug-shield-icon-still-pops-up-sometimes-with-0-stacks.md)
 - [bug-statuses-don-t-appear](tasks/bug-statuses-don-t-appear.md)
 - [bug-ignition-is-fully-broken](tasks/bug-ignition-is-fully-broken.md)

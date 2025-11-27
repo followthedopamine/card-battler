@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://btpfahb741tok"]
+
+[ext_resource type="Script" uid="uid://bi0j1pcbc0wps" path="res://scenes/relics/001LotteryTicket.gd" id="1_vfedv"]
+[ext_resource type="Texture2D" uid="uid://fq2hvr681ovf" path="res://scenes/right_panel/tabs/shop/shop_slot/images/placeholder_card_4.png" id="2_vfedv"]
+
+[node name="001LotteryTicket" type="MarginContainer"]
+script = ExtResource("1_vfedv")
+relic_sprite = ExtResource("2_vfedv")
+relic_name = "Lottery Ticket"
+tooltips = Array[String](["For the next %WAVES% waves at the end of the wave your cards are randomised and you gain %CURRENCY_INCREASE% Wavies"])
+metadata/_custom_type_script = "uid://dcn785x8e1aj1"

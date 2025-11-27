@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpgjca8a4i3l"]
+
+[ext_resource type="Script" uid="uid://df5aei8h384l3" path="res://scenes/relics/003Unwavering.gd" id="1_0s52x"]
+[ext_resource type="Texture2D" uid="uid://d68dtnn7maij" path="res://scenes/right_panel/tabs/shop/shop_slot/images/placeholder_card_3.png" id="2_rma3d"]
+
+[node name="003Unwavering" type="MarginContainer"]
+script = ExtResource("1_0s52x")
+relic_sprite = ExtResource("2_rma3d")
+tooltips = Array[String](["Card duration is always %DURATION% seconds"])
+metadata/_custom_type_script = "uid://dcn785x8e1aj1"

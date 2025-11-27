@@ -4,7 +4,7 @@ extends Resource
 enum Target { NONE, ENEMY, PLAYER, SHOP }
 enum GridTarget { NONE, FRONT, BACK, SELF, RANDOM }
 enum GridTargetType { NONE, SINGLE, AOE, ALL }
-enum Type { ATTACK, STRENGTH_BUFF, HEAL_RANDOM, STRENGTH_BUFF_ALL, POISON_ATTACK, HEAL_ALL }
+enum Type { ATTACK, STRENGTH_BUFF, HEAL_RANDOM, STRENGTH_BUFF_ALL, POISON_ATTACK, HEAL_ALL, BLOCK }
 
 const ACTION_TYPE_STRING: Dictionary[Type, String] = {
 	Type.ATTACK: "attack",
@@ -13,6 +13,7 @@ const ACTION_TYPE_STRING: Dictionary[Type, String] = {
 	Type.HEAL_RANDOM: "heal a random ally",
 	Type.HEAL_ALL: "heal all allies",
 	Type.POISON_ATTACK: "apply poison",
+	Type.BLOCK: "add block"
 }
 
 var type: Type
