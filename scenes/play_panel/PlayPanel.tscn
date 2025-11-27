@@ -82,9 +82,10 @@ grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="PlayAreaGrid" type="Sprite2D" parent="Panel/GridContainer" groups=["AreaGrid"]]
+[node name="PlayAreaGrid" type="Sprite2D" parent="Panel/GridContainer" node_paths=PackedStringArray("battle_area") groups=["AreaGrid"]]
 position = Vector2(0, 202)
 script = ExtResource("4_uajrv")
+battle_area = NodePath("../../VBoxContainer/BattleAreaContainer")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
