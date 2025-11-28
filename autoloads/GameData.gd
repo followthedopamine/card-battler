@@ -60,3 +60,13 @@ func set_relic_scene_array():
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access enemy paths")
+
+func reset() -> void:
+	print("Resetting game data")
+	cards_common = []
+	cards_uncommon = []
+	cards_rare = []
+	cards_all = []
+	relics = []
+	set_card_scene_arrays()
+	set_relic_scene_array()

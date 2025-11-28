@@ -37,6 +37,7 @@ signal enemy_area_setup()
 signal enemies_cleared()
 signal wave_start(wave: int)
 signal wave_end(wave: int)
+signal wave_setup_phase
 
 ## t = timer
 signal animation_wave_t(eased_t: float)
@@ -60,3 +61,7 @@ signal player_targeted(effect: ActionEffect, source: Enemy)
 # Audio signals
 signal sfx_volume_changed(value: float)
 signal music_volume_changed(value: float)
+
+func reset() -> void:
+	print("Resetting")
+	

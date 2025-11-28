@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://do4vd76mw4v6p"]
+
+[ext_resource type="Script" uid="uid://bi57i7w2q2rh2" path="res://scenes/relics/010BlockToHeal.gd" id="1_8iqin"]
+[ext_resource type="Texture2D" uid="uid://b8mkhp8f65514" path="res://assets/icons/heal.png" id="2_8iqin"]
+
+[node name="010BlockToHeal" type="MarginContainer"]
+script = ExtResource("1_8iqin")
+relic_sprite = ExtResource("2_8iqin")
+relic_name = "Block To Heal"
+tooltips = Array[String](["Your block cards heal instead of blocking"])
+metadata/_custom_type_script = "uid://dcn785x8e1aj1"

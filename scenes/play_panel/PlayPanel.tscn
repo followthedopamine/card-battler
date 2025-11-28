@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b653dafp8uotu"]
+[gd_scene load_steps=16 format=3 uid="uid://b653dafp8uotu"]
 
 [ext_resource type="Script" uid="uid://cmkv7da2ilckk" path="res://scenes/play_panel/PlayPanel.gd" id="1_jgck7"]
 [ext_resource type="PackedScene" uid="uid://dnvmslc0lunfw" path="res://scenes/packs/pack_opening/PackOpening.tscn" id="1_x324g"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b0us44ov8t56n" path="res://scenes/play_panel/PlayerHealthBar.tscn" id="7_gcqk6"]
 [ext_resource type="Script" uid="uid://cbjue7ee5fr67" path="res://scenes/play_panel/RelicRewards.gd" id="7_ujhpf"]
 [ext_resource type="Script" uid="uid://cvc7yxckv48q7" path="res://scenes/play_panel/controllers/WaveController.gd" id="8_d7kxu"]
+[ext_resource type="Theme" uid="uid://du1q07vbcgp5p" path="res://assets/themes/button.tres" id="8_oo7ig"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fi6o"]
 bg_color = Color(1, 1, 1, 0)
@@ -139,12 +140,11 @@ grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="RelicRewardPanel" type="Panel" parent="." node_paths=PackedStringArray("relic_container", "relic_skip_button", "relic")]
+[node name="RelicRewardPanel" type="Panel" parent="." node_paths=PackedStringArray("relic_container", "relic_skip_button")]
 layout_mode = 2
 script = ExtResource("7_ujhpf")
 relic_container = NodePath("RelicVBoxContainer/RelicContainer")
 relic_skip_button = NodePath("RelicVBoxContainer/RelicSkipButton")
-relic = NodePath("")
 
 [node name="RelicVBoxContainer" type="VBoxContainer" parent="RelicRewardPanel"]
 custom_minimum_size = Vector2(100, 0)
@@ -165,8 +165,10 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="RelicSkipButton" type="Button" parent="RelicRewardPanel/RelicVBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-text = "Skip"
+theme = ExtResource("8_oo7ig")
+text = "SKIP"
 
 [node name="PackOpeningPanelContainer" parent="." instance=ExtResource("1_x324g")]
 visible = false

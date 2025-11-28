@@ -194,6 +194,7 @@ mouse_filter = 2
 particle_lifetime = 0.8
 
 [node name="EnemyAnimationPlayer" type="AnimationPlayer" parent="."]
+deterministic = true
 libraries = {
 &"": SubResource("AnimationLibrary_mr8l1")
 }
