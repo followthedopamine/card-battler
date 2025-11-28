@@ -80,7 +80,7 @@ _data = {
 &"play": SubResource("Animation_k8r83")
 }
 
-[node name="CardComponents" type="Control" node_paths=PackedStringArray("timer_label", "timer_spinner", "timer", "switch_interface", "name_label", "sprite", "timer_panel")]
+[node name="CardComponents" type="Control" node_paths=PackedStringArray("timer_label", "timer_spinner", "timer", "switch_interface", "name_label", "sprite", "timer_panel", "animation_player")]
 custom_minimum_size = Vector2(152, 225)
 layout_mode = 3
 anchors_preset = 0
@@ -96,6 +96,7 @@ switch_interface = NodePath("SwitchInterface")
 name_label = NodePath("NameLabel")
 sprite = NodePath("CardSprite")
 timer_panel = NodePath("CardSprite/TimerPanel")
+animation_player = NodePath("CardAnimationPlayer")
 
 [node name="CardSprite" type="TextureRect" parent="."]
 clip_children = 2
@@ -196,6 +197,7 @@ node_to_connect_mouse = NodePath("..")
 metadata/_custom_type_script = "uid://bh0tgx15xo557"
 
 [node name="CardAnimationPlayer" type="AnimationPlayer" parent="."]
+deterministic = true
 libraries = {
 &"": SubResource("AnimationLibrary_olt7r")
 }

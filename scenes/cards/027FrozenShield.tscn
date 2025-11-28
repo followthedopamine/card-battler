@@ -15,6 +15,7 @@ metadata/_custom_type_script = "uid://fuokg41g7d8s"
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_o7gpe")
+card_name = "Frozen Shield"
 sprite_texture = ExtResource("2_370qq")
 tooltips = Array[String](["Adds %shield% block and %slow% slow to the player"])
 card_effect = SubResource("Resource_370qq")

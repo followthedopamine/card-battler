@@ -21,9 +21,9 @@ var is_slowed := false
 @onready var damage_particle_emitter: DamageParticleEmitter = $DamageParticleEmitter
 
 func _ready() -> void:
-	SignalBus.wave_end.connect(_on_wave_end)
+	SignalBus.wave_setup_phase.connect(_on_wave_setup_phase)
 		
-func _on_wave_end(_wave: int) -> void:
+func _on_wave_setup_phase() -> void:
 	block = 0
 	strength = 0
 
@@ -47,6 +47,10 @@ func take_damage(damage_taken: float, attacker: Entity = null) -> void:
 
 	if damage_taken:
 		damage_particle_emitter.emit_particle(str(damage_taken), Color8(201, 0, 62, 220))
+		
+	if self is Player:
+		if health <= 0:
+			SignalBus.player_died.emit()
 
 func heal(healing: float) -> void:
 	if health < max_health:
@@ -54,3 +58,5 @@ func heal(healing: float) -> void:
 	if health > max_health:
 		health = max_health
 	damage_particle_emitter.emit_particle(str(healing), Color8(97, 201, 0, 220))
+	if self is Player:
+		SignalBus.player_health_change.emit(health)

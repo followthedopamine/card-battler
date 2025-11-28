@@ -107,8 +107,15 @@ func _on_enemy_area_setup():
 
 func _on_enemies_cleared():
 	SignalBus.wave_end.emit(wave)
+	wave_setup_timer()
 	wave += 1
 	_start_wave()
+	
+func wave_setup_timer() -> void:
+	get_tree().create_timer(0.1).timeout.connect(wave_setup_timeout)
+	
+func wave_setup_timeout() -> void:
+	SignalBus.wave_setup_phase.emit()
 
 func _ready():
 	_get_enemy_scenes()

@@ -39,7 +39,7 @@ func _on_wave_end(_wave: int) -> void:
 			card.card_effect = card.original_card_effect.duplicate_deep(Resource.DeepDuplicateMode.DEEP_DUPLICATE_ALL)
 		card.completed.disconnect(on_card_completed)
 		card.deactivate()
-	start_round()
+	call_deferred("start_round")
 
 func _on_card_enabled() -> void:
 	if get_active_card() == null:

@@ -11,7 +11,9 @@ func added_effect() -> void:
 	
 func card_played_effect(_card: Card) -> void:
 	if PlayerManager.hand_node.get_child_count():
-		if randf() >= 0.4:
+		# Little bit of fake RNG in the players favour
+		if randf() >= 0.45:
+			PlayerManager.hand_node.get_child(0).card_components.animation_player.play("play")
 			PlayerManager.hand_node.get_child(0).activate_card_effect()
 
 func disable_first_card() -> void:

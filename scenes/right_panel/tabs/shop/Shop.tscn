@@ -21,7 +21,7 @@ texture_margin_top = 49.0
 texture_margin_right = 45.0
 texture_margin_bottom = 47.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_40vqg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8145h"]
 bg_color = Color(0.09411765, 0.09411765, 0.09411765, 0.9411765)
 
 [node name="Shop" type="MarginContainer" node_paths=PackedStringArray("shop_slots", "shop_reroll_button", "shopping_area_vbox", "sell_panel")]
@@ -33,7 +33,7 @@ script = ExtResource("1_xx35e")
 shop_slots = [NodePath("ShopMarginContainer/ShopVBoxContainer/ShopBottomBackgroundPanel/ShoppingAreaPanelContainer/ShopItemsMarginContainer/ShopItemsHBoxContainer/ShopSlot"), NodePath("ShopMarginContainer/ShopVBoxContainer/ShopBottomBackgroundPanel/ShoppingAreaPanelContainer/ShopItemsMarginContainer/ShopItemsHBoxContainer/ShopSlot2")]
 shop_reroll_button = NodePath("ShopMarginContainer/ShopVBoxContainer/ShopBottomBackgroundPanel/ShoppingAreaPanelContainer/ShopRerollMarginContainer/ShopRerollButton")
 shopping_area_vbox = NodePath("ShopMarginContainer/ShopVBoxContainer/ShopBottomBackgroundPanel/ShoppingAreaPanelContainer")
-sell_panel = NodePath("ShopMarginContainer/SellPanel")
+sell_panel = NodePath("")
 
 [node name="ShopMarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -99,16 +99,18 @@ horizontal_alignment = 1
 script = ExtResource("4_xmkj5")
 
 [node name="SellPanel" type="Panel" parent="ShopMarginContainer" node_paths=PackedStringArray("price_label")]
-visible = false
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_40vqg")
+theme_override_styles/panel = SubResource("StyleBoxFlat_8145h")
 script = ExtResource("5_rsvis")
 price_label = NodePath("SellMarginContainer/SellVBoxContainer/PriceRichTextLabel")
 
 [node name="SellMarginContainer" type="MarginContainer" parent="ShopMarginContainer/SellPanel"]
-layout_mode = 0
-offset_right = 324.0
-offset_bottom = 648.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SellVBoxContainer" type="VBoxContainer" parent="ShopMarginContainer/SellPanel/SellMarginContainer"]
 layout_mode = 2

@@ -1,0 +1,21 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://deedi66t3muwt"]
+
+[ext_resource type="Texture2D" uid="uid://d00r8ttcrm6qt" path="res://assets/icon.svg" id="1_egje4"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_eup33"]
+color = Color(0.17968652, 0.053463183, 0.26987907, 1)
+thickness = 10
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_wd20b"]
+color = Color(0.33482036, 0.12718341, 0.48386818, 1)
+thickness = 10
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_6nudy"]
+color = Color(0.38039258, 0.2992877, 0.5373393, 1)
+thickness = 10
+
+[resource]
+HSlider/icons/grabber = ExtResource("1_egje4")
+HSlider/styles/grabber_area = SubResource("StyleBoxLine_eup33")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxLine_wd20b")
+HSlider/styles/slider = SubResource("StyleBoxLine_6nudy")

@@ -166,6 +166,7 @@ func disable_card(disabled_duration: float) -> void:
 		deactivate()
 
 func activate():
+	print(self)
 	start_card_effect()
 
 	card_components.position.y = -10

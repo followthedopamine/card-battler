@@ -25,6 +25,7 @@ func _on_relic_added(relic: Relic) -> void:
 		SignalBus.card_played.connect(_on_card_played)
 		SignalBus.card_chosen.connect(_on_card_chosen)
 		SignalBus.wave_start.connect(_on_wave_start)
+		SignalBus.wave_setup_phase.connect(_on_wave_setup_phase)
 		added_effect()
 		
 func _on_wave_end(wave: int) -> void:
@@ -39,6 +40,9 @@ func _on_card_chosen(card: Card) -> void:
 func _on_wave_start(wave: int) -> void:
 	wave_start_effect(wave)
 	
+func _on_wave_setup_phase() -> void:
+	wave_setup_effect()
+	
 func added_effect() -> void:
 	pass
 	
@@ -52,4 +56,7 @@ func card_chosen_effect(_card: Card) -> void:
 	pass
 	
 func wave_start_effect(_wave: int) -> void:
+	pass
+	
+func wave_setup_effect() -> void:
 	pass
