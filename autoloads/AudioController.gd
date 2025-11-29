@@ -130,22 +130,14 @@ func return_to_pool(player: AudioStreamPlayer2D) -> void:
 	sfx_pool.append(player)
 	
 func load_sound_dictionary() -> void:
-	var dir = DirAccess.open(AUDIO_FOLDER_PATH)
+	for path in FilePaths.AUDIO_PATHS:
+		var audio_stream: AudioStream = load(path)
 
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-
-		while file_name:
-			if !dir.current_is_dir() && file_name.get_extension() in VALID_AUDIO_EXTENSIONS:
-				var full_path = AUDIO_FOLDER_PATH.path_join(file_name)
-				var audio_stream: AudioStream = load(full_path)
-				if audio_stream:
-					sounds[file_name.get_basename()] = audio_stream
-
-			file_name = dir.get_next()
-	else:
-		print("An error occurred when trying to access audio paths")
+		if audio_stream:
+			var base_name = path.get_basename()
+			var slash_index = base_name.rfind("/")
+			var stream_name = base_name.substr(slash_index + 1) if slash_index != -1 else base_name
+			sounds[stream_name] = audio_stream
 	
 func get_player_from_pool() -> AudioStreamPlayer2D:
 	#for player: AudioStreamPlayer2D in sfx_pool:

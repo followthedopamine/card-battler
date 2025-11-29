@@ -2,10 +2,10 @@
 extends EditorPlugin
 
 const FOLDER_PATHS: Dictionary = {
-	"CARD_PATHS": "res://scenes/cards",
-	"RELIC_PATHS": "res://scenes/relics",
-	"ENEMY_PATHS": "res://scenes/play_panel/enemies",
-	"AUDIO_PATHS": "res://scenes/audio"
+	"CARD_PATHS": ["res://scenes/cards", ".tscn"],
+	"RELIC_PATHS": ["res://scenes/relics", ".tscn"],
+	"ENEMY_PATHS": ["res://scenes/play_panel/enemies", ".tscn"],
+	"AUDIO_PATHS": ["res://card-battler-private/sfx", ".wav"]
 }
 
 const OUTPUT_PATH := "res://autoloads/FilePaths.gd"
@@ -45,7 +45,7 @@ func _get_files_from_folder(path: String, file_type := ".tscn"):
 		dir.list_dir_begin()
 		var file = dir.get_next()
 		while file != "":
-			if file.ends_with(".tscn"):
+			if file.ends_with(file_type):
 				files.append("%s/" % path + file)
 			file = dir.get_next()
 		dir.list_dir_end()
@@ -56,13 +56,11 @@ func _setup_file_paths():
 	var text := "extends Node2D \n\n# AUTO-GENERATED. DO NOT EDIT.\n\n"
 
 	for key in FOLDER_PATHS:
-		var entries = _get_files_from_folder(FOLDER_PATHS[key])
-
-
+		var entries = _get_files_from_folder(FOLDER_PATHS[key][0], FOLDER_PATHS[key][1])
 		text += "const %s = [\n" % key
 
 		for path in entries:
-				text += "	\"%s\",\n" % path
+			text += "	\"%s\",\n" % path
 		text += "]\n\n"
 
 	# Save to file

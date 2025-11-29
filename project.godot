@@ -30,7 +30,7 @@ gdscript/warnings/unused_signal=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/file_extractor/plugin.cfg", "res://addons/fileextractor/plugin.cfg")
+enabled=PackedStringArray("res://addons/file_extractor/plugin.cfg")
 
 [global_group]
 
