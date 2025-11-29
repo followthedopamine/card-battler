@@ -59,4 +59,5 @@ func heal(healing: float) -> void:
 		health = max_health
 	damage_particle_emitter.emit_particle(str(healing), Color8(97, 201, 0, 220))
 	if self is Player:
+		#SignalBus.player_healed.emit()
 		SignalBus.player_health_change.emit(health)

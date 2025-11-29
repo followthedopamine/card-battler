@@ -13,11 +13,13 @@ func _ready() -> void:
 	retry_button.pressed.connect(_on_retry_button_pressed)
 
 func _on_retry_button_pressed() -> void:
+	SignalBus.button_pressed.emit()
 	get_tree().root.propagate_call("reset")
 	get_tree().change_scene_to_file(main)
 	
 func _on_player_died() -> void:
 	visible = true
+	SignalBus.lose.emit()
 	get_tree().paused = true
 	
 func _on_wave_end(wave: int) -> void:

@@ -13,6 +13,7 @@ func run_effects():
 	match target:
 		Target.ENEMY:
 			SignalBus.card_played_target_enemy.emit(self)
+			SignalBus.player_dealt_damage.emit()
 		Target.PLAYER:
 			SignalBus.card_played_target_player.emit(self, null)
 		Target.SHOP:
