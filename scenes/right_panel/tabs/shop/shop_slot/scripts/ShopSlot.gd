@@ -13,22 +13,21 @@ func _ready() -> void:
 	restock_item()
 
 func _on_buy_button_pressed() -> void:
-	buy_item()
-	destroy_item()
+	if buy_item():
+		destroy_item()
 
-func buy_item() -> void:
+func buy_item() -> bool:
 	if PlayerManager.currency < current_item_data.base_price:
-		return
+		return false
 
 	PlayerManager.currency -= current_item_data.base_price
 
 	if current_item is Relic:
 		buy_relic()
-		return
-
-	if current_item is Pack:
+	elif current_item is Pack:
 		buy_pack()
-		return
+	
+	return true
 	
 func buy_relic() -> void:
 	SignalBus.relic_added.emit(current_item)
