@@ -2,7 +2,7 @@ extends Node2D
 
 # Shop signals
 signal currency_changed
-signal pack_opened
+signal pack_opened(rarity: PackOpening.Rarity)
 signal pack_closed
 
 # Draggable signals

@@ -1,27 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://dm7jexr54pml4"]
+[gd_scene load_steps=5 format=3 uid="uid://dm7jexr54pml4"]
 
 [ext_resource type="Script" uid="uid://bxknk2n2fnfax" path="res://scenes/right_panel/tabs/shop/shop_slot/scripts/ShopSlot.gd" id="1_hr8cm"]
 [ext_resource type="Resource" uid="uid://cpmmj5444k2ii" path="res://scenes/right_panel/tabs/shop/shop_slot/resources/ShopData.tres" id="2_teigl"]
+[ext_resource type="FontFile" uid="uid://credfeuu46ysn" path="res://assets/fonts/Robot Heroes.ttf" id="3_e0xxm"]
+[ext_resource type="StyleBox" uid="uid://djklkbvf20h86" path="res://scenes/right_panel/tabs/shop/ShopLabel.tres" id="4_ilbjd"]
 
-[node name="ShopSlot" type="MarginContainer" node_paths=PackedStringArray("buy_button", "slot_item")]
-offset_right = 36.0
-offset_bottom = 129.0
-size_flags_horizontal = 6
-size_flags_vertical = 0
+[node name="ShopSlot" type="MarginContainer" node_paths=PackedStringArray("label", "slot_item")]
+custom_minimum_size = Vector2(0, 160)
+anchors_preset = -1
+anchor_right = 0.080000006
+anchor_bottom = 0.2658025
+offset_right = -0.16000366
+offset_bottom = -0.24002075
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_hr8cm")
 shop_data = ExtResource("2_teigl")
-buy_button = NodePath("ShopSlotVBoxContainer/ShopSlotBuyButton")
+label = NodePath("ShopSlotVBoxContainer/ShopSlotLabel")
 slot_item = NodePath("ShopSlotVBoxContainer/SlotItemControl")
 metadata/_custom_type_script = "uid://bxknk2n2fnfax"
+metadata/_edit_use_anchors_ = true
 
 [node name="ShopSlotVBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="ShopSlotLabel" type="Label" parent="ShopSlotVBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_e0xxm")
+theme_override_styles/normal = ExtResource("4_ilbjd")
+text = "TEST"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="SlotItemControl" type="MarginContainer" parent="ShopSlotVBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 3
-
-[node name="ShopSlotBuyButton" type="Button" parent="ShopSlotVBoxContainer"]
-layout_mode = 2
-text = "$20"
+size_flags_stretch_ratio = 5.0
