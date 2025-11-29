@@ -148,14 +148,13 @@ _data = {
 [node name="Enemy" type="Control" groups=["Enemy"]]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1.0
-offset_bottom = 1.0
 script = ExtResource("1_6akli")
 healing = 10.0
 strength_buff = 1
 enemy_name = "Bard"
 spawn_value = 16
 first_available_wave = 30
+wavies = 10
 spawn_columns = Array[int]([2, 3])
 max_health = 60.0
 metadata/_edit_use_anchors_ = true
