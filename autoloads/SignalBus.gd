@@ -32,7 +32,6 @@ signal player_died
 signal damage_taken(target: Entity, attacker: Entity, damage: float)
 
 # PlayPanel signals
-signal enemy_area_setup()
 
 signal enemies_cleared()
 signal wave_start(wave: int)
@@ -41,7 +40,6 @@ signal wave_setup_phase
 
 ## t = timer
 signal animation_wave_t(eased_t: float)
-signal animation_grid_offset(offset: int)
 signal animation_end()
 
 signal enemy_attack(damage: float, enemy: Enemy)
@@ -57,6 +55,10 @@ signal card_played_target_shop(card_effect: CardEffect)
 ## equivalent of card_played_target_enemy without trigger `card_played` effects
 signal enemy_targeted(effect: ActionEffect)
 signal player_targeted(effect: ActionEffect, source: Enemy)
+
+# wave controller signals
+signal wave_controller_enemy_area_loaded(area: EnemyArea)
+signal wave_controller_grid_loaded(grid: Sprite2D)
 
 # Audio signals
 signal sfx_volume_changed(value: float)

@@ -1,4 +1,4 @@
-class_name WaveController extends Node
+extends Node
 
 @export var wave = 1
 ## The value of the starting wave for enemy spawning calcs
@@ -7,9 +7,9 @@ class_name WaveController extends Node
 @export var wave_increment = 1
 
 ## How many grid columns the cells will slide in from on wave start
-@export var animation_grid_offset = 7
+@export var animation_grid_offset = 10
 ## The duration of the animation in seconds
-@export var animation_duration := 1.0
+@export var animation_duration := 2.0
 
 var enemy_scenes: Array[Enemy] = []
 
@@ -17,8 +17,10 @@ var enemy_scenes: Array[Enemy] = []
 var time_elapsed := 0.0
 var moving := false
 
-@onready var enemy_area: EnemyArea = get_tree().get_first_node_in_group("EnemyArea")
-@onready var grid: Sprite2D = get_tree().get_first_node_in_group("AreaGrid")
+var area_loaded := false
+var grid_loaded := false
+@onready var enemy_area: EnemyArea
+@onready var grid: Sprite2D
 
 func get_wave():
 	return wave
@@ -87,10 +89,6 @@ func _get_possible_wave_enemies() -> Array[Enemy]:
 	
 	return wave_enemy_array
 
-## Some of this file's functionality is reliant on the Enemy Area being setup.
-func _on_enemy_area_setup():
-	_start_wave()
-
 func _on_enemies_cleared():
 	SignalBus.wave_end.emit(wave)
 	wave_setup_timer()
@@ -103,19 +101,14 @@ func wave_setup_timer() -> void:
 func wave_setup_timeout() -> void:
 	SignalBus.wave_setup_phase.emit()
 
-func _ready():
+func setup_controller():
 	_get_enemy_scenes()
 	_sort_enemy_scenes_by_var("spawn_value")
-
-	SignalBus.animation_grid_offset.emit(animation_grid_offset)
 
 	if wave > 1:
 		current_wave_weight += (wave - 1) * wave_increment
 
-	if enemy_area.get_is_setup():
-		_on_enemy_area_setup()
-	else:
-		SignalBus.enemy_area_setup.connect(_on_enemy_area_setup)
+	_start_wave()
 	
 	SignalBus.enemies_cleared.connect(_on_enemies_cleared)
 
@@ -129,3 +122,20 @@ func _process(delta: float) -> void:
 		else:
 			var eased_t = (0.5 - 0.5 * cos((time_elapsed / animation_duration) * PI))
 			SignalBus.animation_wave_t.emit(eased_t)
+
+func on_enemy_area_loaded(area: EnemyArea):
+	enemy_area = area
+	area_loaded = true
+	if grid_loaded:
+		setup_controller()
+
+
+func on_grid_loaded(grid_node: Sprite2D):
+	grid = grid_node
+	grid_loaded = true
+	if area_loaded:
+		setup_controller()
+
+func _ready():
+	SignalBus.wave_controller_enemy_area_loaded.connect(on_enemy_area_loaded)
+	SignalBus.wave_controller_grid_loaded.connect(on_grid_loaded)

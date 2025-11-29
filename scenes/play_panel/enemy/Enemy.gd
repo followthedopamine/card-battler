@@ -7,9 +7,10 @@ class_name Enemy extends Entity
 ## What wave this enemy starts spawning on
 @export var first_available_wave = 1
 
-@export var damage: float = 0.5
+@export var damage := 0.5
+@export var wavies := 1
 
-@export var action_speed: float = 1.5
+@export var action_speed := 1.5
 @export var spawn_columns: Array[int] = [0, 1, 2, 3]
 
 var actions: Array[ActionEffect] = []
@@ -74,8 +75,8 @@ func die():
 		parent.enemy_cleared()
 	
 	process_on_kill_callables()
-	# TODO: Replace 5
-	SignalBus.enemy_dead.emit(5)
+	PlayerManager.currency += wavies
+	SignalBus.enemy_dead.emit(wavies)
 	queue_free()
 
 # From: https://www.reddit.com/r/godot/comments/10ikgma/comment/j5kpbry/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1
@@ -182,7 +183,7 @@ func _ready() -> void:
 	super()
 	# Placeholder action
 	var action1 := ActionEffect.new()
-	action1.damage = damage
+	action1.damage = 0.5
 	action1.target = ActionEffect.Target.PLAYER
 	actions = [action1]
 	health = max_health
