@@ -10,6 +10,7 @@ func _on_relic_added(relic: Relic) -> void:
 	# a measurable impact on performance.
 	#var relic_copy: Relic = relic.duplicate()
 	relic.reparent(self)
+	relic.relic_components.set_hover_scale(1.2)
 	# This seems like a weird place to call this but otherwise we run into the 
 	# duplication messing with the signal race.
 	#relic.added_effect()
