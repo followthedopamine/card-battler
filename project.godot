@@ -22,10 +22,15 @@ PlayerManager="*res://autoloads/PlayerManager.gd"
 TooltipCanvas="*res://scenes/tooltip/TooltipCanvas.tscn"
 GameData="*res://autoloads/GameData.gd"
 SoundController="*res://autoloads/AudioController.gd"
+FilePaths="*res://autoloads/FilePaths.gd"
 
 [debug]
 
 gdscript/warnings/unused_signal=0
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/file_extractor/plugin.cfg", "res://addons/fileextractor/plugin.cfg")
 
 [global_group]
 
