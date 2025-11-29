@@ -8,4 +8,4 @@ func _on_currency_changed() -> void:
 	update_currency_display()
 	
 func update_currency_display() -> void:
-	self.text = str(PlayerManager.currency)
+	self.text = "₩ " + str(PlayerManager.currency)

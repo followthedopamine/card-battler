@@ -21,6 +21,7 @@ func _on_wave_end(wave: int) -> void:
 		visible = true
 
 func _on_relic_skip_button_pressed() -> void:
+	SignalBus.button_pressed.emit()
 	visible = false
 	
 func _on_relic_container_gui_input(event: InputEvent) -> void:
@@ -29,6 +30,7 @@ func _on_relic_container_gui_input(event: InputEvent) -> void:
 		visible = false
 		
 func offer_relic() -> void:
+	SignalBus.relic_offered.emit()
 	# Don't duplicate since we don't want duplicate relics
 	if relic_container.get_child_count() > 0:
 		for child: Control in relic_container.get_children():

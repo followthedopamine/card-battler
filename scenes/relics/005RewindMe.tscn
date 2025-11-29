@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbr0si7a7yh3o"]
 
 [ext_resource type="Script" uid="uid://uac0t40e2cyh" path="res://scenes/relics/005RewindMe.gd" id="1_xu2et"]
-[ext_resource type="Texture2D" uid="uid://b4jl0ajaa3qek" path="res://assets/particles/puff.png" id="2_j00fw"]
+[ext_resource type="Texture2D" uid="uid://rprt8706o80l" path="res://assets/relics/vhs_tape.png" id="2_j00fw"]
 
 [node name="005RewindMe" type="MarginContainer"]
 script = ExtResource("1_xu2et")

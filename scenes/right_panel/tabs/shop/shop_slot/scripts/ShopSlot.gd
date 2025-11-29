@@ -3,26 +3,29 @@ class_name ShopSlot
 
 @export var shop_data: ShopData
 
-@export var buy_button: Button
+@export var label: Label
 @export var slot_item: Control
 
 @onready var current_item: Control
 @onready var current_item_data: ShopItemData
 
 func _ready() -> void:
-	buy_button.pressed.connect(_on_buy_button_pressed)
 	restock_item()
-	
+
 func _on_buy_button_pressed() -> void:
 	buy_item()
+	destroy_item()
 
 func buy_item() -> void:
 	if PlayerManager.currency < current_item_data.base_price:
 		return
+
 	PlayerManager.currency -= current_item_data.base_price
+
 	if current_item is Relic:
 		buy_relic()
 		return
+
 	if current_item is Pack:
 		buy_pack()
 		return
@@ -33,7 +36,7 @@ func buy_relic() -> void:
 	create_item()
 	
 func buy_pack() -> void:
-	SignalBus.pack_opened.emit()
+	SignalBus.pack_opened.emit(current_item.rarity)
 	restock_item()
 
 func restock_item() -> void:
@@ -51,13 +54,31 @@ func restock_item() -> void:
 	create_item()
 
 func destroy_item() -> void:
+	label.text = "SOLD"
 	if current_item != null:
 		current_item.queue_free()
+
+func pick_item():
+	var total_rarity: int = shop_data.shop_items.reduce(func(accum, item): return accum + item.rarity, 0)
+
+	var random_number := (randi() % total_rarity) + 1
+	var current_rarity_checked := 0
+
+	for item in shop_data.shop_items:
+		if random_number <= current_rarity_checked + item.rarity:
+			return item
+		current_rarity_checked += item.rarity
+	
+	return shop_data.shop_items[-1]
 	
 func create_item() -> void:
-	current_item_data = shop_data.shop_items.pick_random()
-	buy_button.text = str(current_item_data.base_price)
+	current_item_data = pick_item()
+	label.text = "₩ " + str(current_item_data.base_price)
+
 	var new_item_instance: Node = current_item_data.item.instantiate()
 	slot_item.add_child(new_item_instance)
 	current_item = new_item_instance
+
+	current_item.pressed.connect(_on_buy_button_pressed)
+
 	

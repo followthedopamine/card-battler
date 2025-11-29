@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://4nmhmcvfrdn3"]
+[gd_scene load_steps=5 format=3 uid="uid://4nmhmcvfrdn3"]
 
 [ext_resource type="Script" uid="uid://cgkyct6hbfte1" path="res://scenes/relic/relic_components/RelicComponents.gd" id="1_dffkk"]
 [ext_resource type="Texture2D" uid="uid://d68dtnn7maij" path="res://scenes/right_panel/tabs/shop/shop_slot/images/placeholder_card_3.png" id="1_kfsi6"]
 [ext_resource type="FontFile" uid="uid://bkxalv1wd3tsm" path="res://assets/fonts/Vaticanus-G3yVG.ttf" id="3_kx8cp"]
+[ext_resource type="Script" uid="uid://bh0tgx15xo557" path="res://classes/ControlHoverScale.gd" id="4_x704s"]
 
 [node name="RelicComponents" type="MarginContainer" node_paths=PackedStringArray("texture_rect", "label")]
 offset_right = 100.0
 offset_bottom = 100.0
 size_flags_vertical = 0
+mouse_default_cursor_shape = 2
 theme_override_constants/margin_left = 1
 theme_override_constants/margin_top = 1
 theme_override_constants/margin_right = 1
@@ -15,6 +17,13 @@ theme_override_constants/margin_bottom = 1
 script = ExtResource("1_dffkk")
 texture_rect = NodePath("TextureRect")
 label = NodePath("RichTextLabel")
+
+[node name="ControlHoverScale" type="Control" parent="." node_paths=PackedStringArray("node_to_scale", "node_to_connect_mouse")]
+layout_mode = 2
+script = ExtResource("4_x704s")
+scale_amount = Vector2(1.12, 1.12)
+node_to_scale = NodePath("../TextureRect")
+node_to_connect_mouse = NodePath("..")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2

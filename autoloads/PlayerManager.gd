@@ -23,6 +23,10 @@ var enemy_area: EnemyArea
 
 func _init() -> void:
 	initialise_vars()
+
+func _ready() -> void:
+	# Emitting here to tell the currency display to update itself to the initial value
+	SignalBus.currency_changed.emit()
 	
 func initialise_vars() -> void:
 	currency = 20000

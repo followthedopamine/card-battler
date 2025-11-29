@@ -47,6 +47,7 @@ func _on_player_targeted(effect: ActionEffect, enemy: Enemy) -> void:
 		SignalBus.player_health_change.emit(health)
 
 	if effect.shield:
+		SignalBus.player_added_block.emit()
 		block += effect.shield
 		
 	if effect.thorns:
@@ -55,6 +56,7 @@ func _on_player_targeted(effect: ActionEffect, enemy: Enemy) -> void:
 	if effect.heal:
 		heal(effect.heal)
 		SignalBus.player_health_change.emit(health)
+		SignalBus.player_healed.emit()
 		
 	if effect.burn:
 		Status.new(Status.Type.BURN, effect.burn, self)

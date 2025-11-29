@@ -74,7 +74,8 @@ func die():
 		parent.enemy_cleared()
 	
 	process_on_kill_callables()
-	
+	# TODO: Replace 5
+	SignalBus.enemy_dead.emit(5)
 	queue_free()
 
 # From: https://www.reddit.com/r/godot/comments/10ikgma/comment/j5kpbry/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1

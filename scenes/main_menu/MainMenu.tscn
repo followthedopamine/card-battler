@@ -149,6 +149,7 @@ alignment = 1
 
 [node name="StartButton" type="Button" parent="VBoxContainer3"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_colors/font_pressed_color = Color(0.6872149, 0.68721503, 0.6872149, 1)
 theme_override_colors/font_hover_color = Color(0.8862616, 0.8862614, 0.8862619, 1)
 theme_override_fonts/font = ExtResource("2_axelx")

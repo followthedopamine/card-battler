@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c251ki6n2vyjc"]
 
 [ext_resource type="Script" uid="uid://bpxch33nahmqc" path="res://scenes/relics/004HeavyCards.gd" id="1_bauy6"]
-[ext_resource type="Texture2D" uid="uid://beavgfruhs172" path="res://assets/enemies/nokia.png" id="2_kdtvb"]
+[ext_resource type="Texture2D" uid="uid://k3ilfup3s52t" path="res://assets/relics/floppy_disk.png" id="2_kdtvb"]
 
 [node name="004HeavyCards" type="MarginContainer"]
 script = ExtResource("1_bauy6")
