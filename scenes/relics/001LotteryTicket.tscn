@@ -7,5 +7,5 @@
 script = ExtResource("1_vfedv")
 relic_sprite = ExtResource("2_vfedv")
 relic_name = "Lottery Ticket"
-tooltips = Array[String](["For the next %WAVES% waves at the end of the wave your cards are randomised and you gain %CURRENCY_INCREASE% Wavies"])
+tooltips = Array[String](["For the next %WAVES% waves at the end of the wave your cards are randomised and you gain %CURRENCY_INCREASE% ₩avies"])
 metadata/_custom_type_script = "uid://dcn785x8e1aj1"
