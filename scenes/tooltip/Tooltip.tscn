@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bypicscav41ol"]
+[gd_scene load_steps=5 format=3 uid="uid://bypicscav41ol"]
 
 [ext_resource type="Script" uid="uid://drrng8se5ggs1" path="res://scenes/tooltip/TooltipData.gd" id="1_rcg70"]
+[ext_resource type="Texture2D" uid="uid://vwk0uq1mxj6h" path="res://assets/background/boarder.png" id="2_cumcl"]
+[ext_resource type="FontFile" uid="uid://bkxalv1wd3tsm" path="res://assets/fonts/Vaticanus-G3yVG.ttf" id="3_twgdb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_twgdb"]
+texture = ExtResource("2_cumcl")
+texture_margin_left = 12.0
+texture_margin_top = 28.0
+texture_margin_right = 12.0
+texture_margin_bottom = 28.0
 
 [node name="Tooltip" type="MarginContainer" node_paths=PackedStringArray("label", "container")]
 z_index = 100
@@ -12,16 +21,18 @@ container = NodePath("Panel/MarginContainer")
 
 [node name="Panel" type="PanelContainer" parent="."]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_twgdb")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 4
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel/MarginContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_twgdb")
+theme_override_font_sizes/normal_font_size = 24
 text = "dasfjukasdflklaksdlkfklaklsdfklaksdjflkajsdfklalksdfjlaksjdflkajsdflkasdjkfljasldkflkasdjkflkasjdflkjasdlkfjalksdfasdasdasdasdasdasd"
 fit_content = true

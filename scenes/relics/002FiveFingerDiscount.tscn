@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://ddx4221kxv1m5"]
 
 [ext_resource type="Script" uid="uid://dtxvc8whhygs0" path="res://scenes/relics/002FiveFingerDiscount.gd" id="1_m1gay"]
-[ext_resource type="Texture2D" uid="uid://cqmbngwmt7fyn" path="res://scenes/right_panel/tabs/shop/shop_slot/images/placeholder_card_2.png" id="2_wsdjs"]
+[ext_resource type="Texture2D" uid="uid://ryh1pof4cv4g" path="res://assets/relics/calculator_watch.png" id="2_m1gay"]
 
 [node name="002FiveFingerDiscount" type="MarginContainer"]
 script = ExtResource("1_m1gay")
-relic_sprite = ExtResource("2_wsdjs")
+relic_sprite = ExtResource("2_m1gay")
 relic_name = "Five Finger Discount"
 tooltips = Array[String](["If you have 5 cards in hand the 5th card is played instantly"])
 metadata/_custom_type_script = "uid://dcn785x8e1aj1"
