@@ -1,5 +1,7 @@
 extends AnimatedSprite2D
 
+@export var shop_reroll_button: Button
+
 var parent_size = Vector2.ZERO
 
 var blink_timer: Timer = Timer.new()
@@ -18,26 +20,42 @@ func blink():
 	animation = "blink"
 	play()
 
+func pack_eject():
+	# don't interrupt this animation with a blink
+	blink_timer.paused = true
+	animation = "pack_eject"
+	play()
+
 func _on_animation_finish():
-	if animation == "blink":
+	if animation == "pack_eject":
+		blink_timer.paused = false
+
+	if animation != "default":
 		animation = "default"
 		pause()
 
 func _on_blink_timer_timeout():
 	blink()
-	blink_timer.wait_time = randf_range(15, 40)
+	var blink_time = randf_range(8, 20)
+	blink_timer.wait_time = blink_time
 	blink_timer.start()
 
 func _ready() -> void:
 	call_deferred("resize")
 	animation_finished.connect(_on_animation_finish)
 
-	blink_timer.wait_time = randf_range(15, 40)
+	var blink_time = randf_range(8, 20)
+	blink_timer.wait_time = blink_time
 	blink_timer.one_shot = true
 	blink_timer.timeout.connect(_on_blink_timer_timeout)
 
 	add_child(blink_timer)
 	blink_timer.start()
+
+	shop_reroll_button.pressed.connect(_on_shop_reroll_button_pressed)
+
+func _on_shop_reroll_button_pressed() -> void:
+	pack_eject()
 
 func _process(_delta: float) -> void:
 	# Resize is handled here instead of with the signal as the signal seems
