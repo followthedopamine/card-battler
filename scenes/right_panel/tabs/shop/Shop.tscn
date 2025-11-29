@@ -1,12 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://5uq7pgxmnqrh"]
+[gd_scene load_steps=19 format=3 uid="uid://5uq7pgxmnqrh"]
 
 [ext_resource type="Script" uid="uid://dau1qjar800ji" path="res://scenes/right_panel/tabs/shop/scripts/Shop.gd" id="1_xx35e"]
 [ext_resource type="Texture2D" uid="uid://bpradaiwqny8q" path="res://assets/background/bg4.png" id="2_jgbw4"]
+[ext_resource type="Texture2D" uid="uid://doq0gxyh3jea7" path="res://assets/shopkeeper/shopkeeper_blink1.png" id="3_lw0iy"]
+[ext_resource type="Texture2D" uid="uid://b06oky52au41b" path="res://assets/shopkeeper/shopkeeper.png" id="3_qv4fl"]
 [ext_resource type="PackedScene" uid="uid://dm7jexr54pml4" path="res://scenes/right_panel/tabs/shop/shop_slot/ShopSlot.tscn" id="3_up7xk"]
 [ext_resource type="Texture2D" uid="uid://bo57h7esepw7d" path="res://assets/background/bg2.png" id="4_ebo5i"]
+[ext_resource type="Texture2D" uid="uid://c3o6ehv82u5kx" path="res://assets/shopkeeper/shopkeeper_table.png" id="4_tqxei"]
+[ext_resource type="Texture2D" uid="uid://bqci3pkst1ek1" path="res://assets/shopkeeper/shopkeeper_blink2.png" id="4_wdkam"]
 [ext_resource type="Script" uid="uid://cyaf1gwxm1g2p" path="res://scenes/right_panel/tabs/shop/scripts/CurrencyDisplay.gd" id="4_xmkj5"]
 [ext_resource type="Script" uid="uid://kcuevxah7vrq" path="res://scenes/right_panel/tabs/shop/Sell.gd" id="5_rsvis"]
 [ext_resource type="Theme" uid="uid://du1q07vbcgp5p" path="res://assets/themes/button.tres" id="5_t7qiw"]
+[ext_resource type="Script" uid="uid://dwu1ap13rb8je" path="res://scenes/right_panel/tabs/shop/Shopkeeper.gd" id="6_wdkam"]
 [ext_resource type="FontFile" uid="uid://jnit0owmw6ud" path="res://assets/fonts/RobotHeroesEdit.ttf" id="7_t7qiw"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t7qiw"]
@@ -15,6 +20,31 @@ texture_margin_left = 95.0
 texture_margin_top = 11.0
 texture_margin_right = 95.0
 texture_margin_bottom = 11.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qvadc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_lw0iy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wdkam")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lw0iy")
+}],
+"loop": false,
+"name": &"blink",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qv4fl")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qv4fl"]
 texture = ExtResource("4_ebo5i")
@@ -60,6 +90,39 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxTexture_t7qiw")
+
+[node name="ShopkeeperContainer" type="MarginContainer" parent="ShopMarginContainer/ShopVBoxContainer/ShopTopBackgroundPanel"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Shopkeeper" type="AnimatedSprite2D" parent="ShopMarginContainer/ShopVBoxContainer/ShopTopBackgroundPanel/ShopkeeperContainer"]
+position = Vector2(50, 50)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_qvadc")
+script = ExtResource("6_wdkam")
+
+[node name="TextureRect" type="TextureRect" parent="ShopMarginContainer/ShopVBoxContainer/ShopTopBackgroundPanel/ShopkeeperContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("3_qv4fl")
+expand_mode = 5
+stretch_mode = 6
+
+[node name="TextureRect2" type="TextureRect" parent="ShopMarginContainer/ShopVBoxContainer/ShopTopBackgroundPanel/ShopkeeperContainer"]
+layout_mode = 2
+texture = ExtResource("4_tqxei")
+expand_mode = 5
+stretch_mode = 6
 
 [node name="ShopBottomBackgroundPanel" type="PanelContainer" parent="ShopMarginContainer/ShopVBoxContainer"]
 layout_mode = 2
