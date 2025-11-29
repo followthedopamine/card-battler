@@ -11,9 +11,7 @@ class_name WaveController extends Node
 ## The duration of the animation in seconds
 @export var animation_duration := 1.0
 
-@export_dir var enemy_folder_path = "res://scenes/play_panel/enemies"
-
-var enemy_scene_array: Array[Enemy] = []
+var enemy_scenes: Array[Enemy] = []
 
 # grid animation handling
 var time_elapsed := 0.0
@@ -60,25 +58,13 @@ func _generate_wave():
 		wave_point_total += enemy.spawn_value
 
 func _get_enemy_scenes():
-	var dir = DirAccess.open(enemy_folder_path)
-
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-
-		while file_name:
-			if !dir.current_is_dir() && file_name.get_extension() == "tscn":
-				var full_path = enemy_folder_path.path_join(file_name)
-				var packed_scene = load(full_path)
-				if packed_scene:
-					enemy_scene_array.push_back(packed_scene.instantiate())
-
-			file_name = dir.get_next()
-	else:
-		print("An error occurred when trying to access enemy paths")
+	for path in FilePaths.ENEMY_PATHS:
+		var packed_scene = load(path)
+		if packed_scene:
+			enemy_scenes.push_back(packed_scene.instantiate())
 
 func _sort_enemy_scenes_by_var(variable: String, desc = false):
-	enemy_scene_array.sort_custom(func(a, b):
+	enemy_scenes.sort_custom(func(a, b):
 		if variable in a && variable in b:
 			if desc:
 				return a[variable] > b[variable] 
@@ -91,7 +77,7 @@ func _sort_enemy_scenes_by_var(variable: String, desc = false):
 func _get_possible_wave_enemies() -> Array[Enemy]:
 	var wave_enemy_array: Array[Enemy] = []
 
-	for enemy: Enemy in enemy_scene_array:
+	for enemy: Enemy in enemy_scenes:
 		if enemy.first_available_wave > wave:
 			continue
 		if enemy.spawn_value <= current_wave_weight:
