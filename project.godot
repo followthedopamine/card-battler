@@ -21,8 +21,10 @@ SignalBus="*res://autoloads/SignalBus.gd"
 PlayerManager="*res://autoloads/PlayerManager.gd"
 TooltipCanvas="*res://scenes/tooltip/TooltipCanvas.tscn"
 GameData="*res://autoloads/GameData.gd"
-AudioController="*res://autoloads/AudioController.gd"
+SoundController="*res://autoloads/AudioController.gd"
 FilePaths="*res://autoloads/FilePaths.gd"
+AudioController="*res://autoloads/AudioController.gd"
+WaveController="*res://autoloads/WaveController.gd"
 
 [debug]
 
