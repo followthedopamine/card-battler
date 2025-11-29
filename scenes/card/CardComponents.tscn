@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bydjxdlit5oij" path="res://scenes/card/images/exchange_icon_placeholder.png" id="2_axisl"]
 [ext_resource type="Texture2D" uid="uid://b2y6rbbxqpf4y" path="res://assets/card_art/card_risky.png" id="2_tf2r5"]
 [ext_resource type="Script" uid="uid://bh0tgx15xo557" path="res://classes/ControlHoverScale.gd" id="4_ms8y4"]
-[ext_resource type="Script" uid="uid://cxlgrsmae5xcv" path="res://scenes/card/CardAnimations.gd" id="5_0deyq"]
+[ext_resource type="Script" path="res://scenes/card/CardAnimations.gd" id="5_0deyq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5xgwh"]
 content_margin_left = 0.0
@@ -88,6 +88,7 @@ offset_right = 152.0
 offset_bottom = 225.0
 pivot_offset = Vector2(74, 135)
 mouse_filter = 1
+mouse_default_cursor_shape = 2
 script = ExtResource("1_k6qmu")
 timer_label = NodePath("TimerLabel")
 timer_spinner = NodePath("Spinner")

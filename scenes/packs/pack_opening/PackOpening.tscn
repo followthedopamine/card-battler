@@ -49,5 +49,6 @@ custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+mouse_default_cursor_shape = 2
 theme = ExtResource("3_4y0pc")
 text = "SKIP"
