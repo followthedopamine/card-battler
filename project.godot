@@ -11,16 +11,17 @@ config_version=5
 [application]
 
 config/name="Card Battler"
-run/main_scene="uid://d2fckbvtof2w3"
+run/main_scene="uid://8m53vy6rjiwb"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://assets/icon.svg"
 
 [autoload]
 
-PlayerManager="*res://autoloads/PlayerManager.gd"
 SignalBus="*res://autoloads/SignalBus.gd"
+PlayerManager="*res://autoloads/PlayerManager.gd"
 TooltipCanvas="*res://scenes/tooltip/TooltipCanvas.tscn"
 GameData="*res://autoloads/GameData.gd"
+SoundController="*res://autoloads/AudioController.gd"
 
 [debug]
 

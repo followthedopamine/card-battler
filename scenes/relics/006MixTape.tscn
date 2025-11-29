@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxyhqmmtvomhr"]
+
+[ext_resource type="Script" uid="uid://bo2ltxmkarbgc" path="res://scenes/relics/006MixTape.gd" id="1_t2g7v"]
+[ext_resource type="Texture2D" uid="uid://dhl0u5cqeev5j" path="res://assets/icons/modify.png" id="2_t2g7v"]
+
+[node name="006MixTape" type="MarginContainer"]
+script = ExtResource("1_t2g7v")
+relic_sprite = ExtResource("2_t2g7v")
+tooltips = Array[String](["Cards in packs are completely random"])
+metadata/_custom_type_script = "uid://dcn785x8e1aj1"

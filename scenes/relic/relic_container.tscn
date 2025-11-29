@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://deg2x7ib23u0u" path="res://scenes/relic/RelicDisplay.gd" id="1_4kypy"]
 
-[node name="RelicHBoxContainer" type="HBoxContainer"]
+[node name="RelicVBoxContainer" type="VBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
 offset_bottom = 648.0
 size_flags_vertical = 0
 mouse_filter = 2

@@ -92,18 +92,18 @@ func _position_cells(skip_animation = false):
 		if (child is EnemyCell):
 			child.position_cell(h_offset, y_position_percentage_offsets[child.get_grid_pos().x], vertical_slice, animation_grid_offset, skip_animation)
 
-func _get_target(target: CardEffect.GridTarget):
+func _get_target(target: ActionEffect.GridTarget):
 	var col_range: Array
 
 	match target:
-		CardEffect.GridTarget.FRONT:
+		ActionEffect.GridTarget.FRONT:
 			col_range = range(0, enemy_grid_rows) 
-		CardEffect.GridTarget.BACK:
+		ActionEffect.GridTarget.BACK:
 			col_range = range(enemy_grid_rows - 1, -1, -1)
-		CardEffect.GridTarget.RANDOM:
+		ActionEffect.GridTarget.RANDOM:
 			col_range = range(0, enemy_grid_rows)
 			col_range.shuffle()
-		CardEffect.GridTarget.NONE:
+		ActionEffect.GridTarget.NONE:
 			return false
 	
 	for col in col_range:
@@ -142,7 +142,7 @@ func get_all_enemies() -> Array[Enemy]:
 			all_enemies.push_back(cell.enemy_scene)
 	return all_enemies
 	
-func process_all_enemy_callables(card: CardEffect, all_enemies: Array[Enemy]) -> void:
+func process_all_enemy_callables(card: ActionEffect, all_enemies: Array[Enemy]) -> void:
 	for callable: Callable in card.on_play_all_enemy_callables:
 		# Hopefully fixes a crash where the callable can sometimes be null?
 		if callable.get_object() == null:
@@ -157,38 +157,32 @@ func _on_any_card_played(_card: Card) -> void:
 			var temp_card_effect: CardEffect = CardEffect.new()
 			temp_card_effect.damage = LightFuse.EXPLOSION_DAMAGE
 			var all_cells: Array[EnemyCell] = _get_all_targets()
-			for target in all_cells:
-				target.process_card_effects(temp_card_effect)
 
-func _on_card_played(card: CardEffect):
-	if card.on_play_all_enemy_callables.size():
-		print("on_play_all_enemy_callables:", card.on_play_all_enemy_callables)
+			for target in all_cells:
+				target.process_action_effects(temp_card_effect)
+			status.stacks = -1
+			
+
+func _on_enemy_targeted(action: ActionEffect):
+	if action.on_play_all_enemy_callables.size():
 		var all_enemies: Array[Enemy] = get_all_enemies()
-		process_all_enemy_callables(card, all_enemies)
+		process_all_enemy_callables(action, all_enemies)
 	
-	if card.enemy_target_type == card.GridTargetType.ALL:
+	# GridTargetType.ALL can skip checking for a grid_target
+	if action.enemy_target_type == action.GridTargetType.ALL:
 		var all_cells: Array[EnemyCell] = _get_all_targets()
 		for target in all_cells:
-			target.process_card_effects(card)
-		return
-	
-	var grid_target: EnemyCell = _get_target(card.enemy_target)
-
-	if (grid_target):
-		match card.enemy_target_type:
-			card.GridTargetType.SINGLE:
-				grid_target.process_card_effects(card)			
-			card.GridTargetType.AOE:
-				var aoe_targets = _get_aoe_targets(grid_target)
-				# This line causes aoe to hit the original target twice
-				# This is really hard to display on tooltips
-				#grid_target.process_card_effects(card)	
-				for target in aoe_targets:
-					target.process_card_effects(card)
-			card.GridTargetType.ALL:
-				var all_cells: Array[EnemyCell] = _get_all_targets()
-				for target in all_cells:
-					target.process_card_effects(card)
+			target.process_action_effects(action)
+	else:
+		var grid_target = _get_target(action.enemy_target)
+		if (grid_target):
+			match action.enemy_target_type:
+				action.GridTargetType.SINGLE:
+					grid_target.process_action_effects(action)			
+				action.GridTargetType.AOE:
+					var aoe_targets = _get_aoe_targets(grid_target)
+					for target in aoe_targets:
+						target.process_action_effects(action)
 			
 
 func _on_resized():
@@ -199,7 +193,10 @@ func _on_animation_grid_offset(offset: int):
 
 func _ready() -> void:
 	self.connect("resized", _on_resized)
-	SignalBus.card_played_target_enemy.connect(_on_card_played)
+	## non-card effects that target enemies
+	SignalBus.enemy_targeted.connect(_on_enemy_targeted)
+
+	SignalBus.card_played_target_enemy.connect(_on_enemy_targeted)
 	SignalBus.card_played.connect(_on_any_card_played)
 	SignalBus.animation_grid_offset.connect(_on_animation_grid_offset)
 

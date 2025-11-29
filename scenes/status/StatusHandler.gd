@@ -2,7 +2,7 @@ class_name StatusHandler extends Control
 
 const BURN_DURATION: float = 0.5
 const POISON_DURATION: float = 2.0
-const SLOW_ADDITION: float = 1.0
+const SLOW_DURATION: float = 1.0
 
 @export var status_bar: StatusBar
 
@@ -12,6 +12,7 @@ var current_statuses: Array[Status]
 
 var burn_timer: Timer = Timer.new()
 var poison_timer: Timer = Timer.new()
+var slow_timer: Timer = Timer.new()
 
 func _ready() -> void:
 	SignalBus.status_updated.connect(_on_status_updated)
@@ -21,6 +22,7 @@ func _ready() -> void:
 	SignalBus.card_played.connect(_on_card_played)
 	self.add_child(burn_timer)
 	self.add_child(poison_timer)
+	self.add_child(slow_timer)
 	
 func _on_status_updated(status: Status, node: Node) -> void:
 	if node != parent:
@@ -38,9 +40,10 @@ func _on_status_updated(status: Status, node: Node) -> void:
 				burn_timer.start(BURN_DURATION)
 			if current_status.effect == Status.Type.POISON:
 				poison_timer.start(POISON_DURATION)
+			if current_status.effect == Status.Type.SLOW:
+				slow_timer.start(SLOW_DURATION)
 			if current_status.effect == Status.Type.FUSE:
 				return
-
 		current_status.stacks += status.stacks
 
 	# If no stacks are being added and no current stacks then remove the timer
@@ -49,11 +52,10 @@ func _on_status_updated(status: Status, node: Node) -> void:
 			burn_timer.stop()
 		if current_status.effect == Status.Type.POISON:
 			burn_timer.stop()
-
-	if current_status.effect == Status.Type.SLOW:
-		add_slow()
+		if current_status.effect == Status.Type.SLOW:
+			slow_timer.stop()
 		
-func _on_card_played(card: Card) -> void:
+func _on_card_played(_card: Card) -> void:
 	if !parent is Player:
 		return
 	var status: Status = get_current_status(Status.Type.FUSE)
@@ -66,11 +68,14 @@ func _on_card_played(card: Card) -> void:
 func _on_wave_end(_wave: int) -> void:
 	for status: Status in current_statuses:
 		status.stacks = 0
-	
+		if status.effect == Status.Type.FUSE:
+			status.stacks = -1
 	#current_statuses = []
 
 func _on_block_updated(node: Node) -> void:
 	if node == parent:
+		if node.block == 0:
+			return
 		var status = get_current_status(Status.Type.BLOCK)
 		if status == null:
 			status = Status.new(Status.Type.BLOCK, node.block, node, false)
@@ -83,7 +88,7 @@ func _on_strength_updated(entity: Entity) -> void:
 			status = Status.new(Status.Type.STRENGTH, entity.strength, entity, false)
 			add_status(status)
 
-func _on_damage_taken(target: Entity, attacker: Entity) -> void:
+func _on_damage_taken(target: Entity, attacker: Entity, _damage: float) -> void:
 	if attacker == null:
 		return
 	
@@ -104,11 +109,32 @@ func _on_poison_timer_timeout() -> void:
 		if parent is Entity:
 			parent.take_damage(poison.stacks)
 
+func _on_slow_timer_timeout() -> void:
+	var slow = get_current_status(Status.Type.SLOW)
+	if slow != null:
+		if parent is Entity:
+			if slow.stacks > 0:
+				slow.stacks -= 1
+				SignalBus.status_refreshed.emit(slow, parent)
+				if slow.stacks == 0:
+					parent.is_slowed = false
+
 func get_current_status(status_type: Status.Type) -> Status:
 	for current_status: Status in current_statuses:
 		if current_status.effect == status_type:
 			return current_status
 	return null
+	
+func remove_current_status(status_type: Status.Type) -> void:
+	var status_index: int
+	var count: int = 0
+	for current_status: Status in current_statuses:
+		count += 1
+		if current_status.effect == status_type:
+			status_index = count
+			break
+	if status_index != null:
+		current_statuses.remove_at(status_index)
 	
 func handle_thorns(target: Entity, attacker: Entity) -> void:
 	var thorns: Status = get_current_status(Status.Type.THORNS)
@@ -125,21 +151,18 @@ func start_burn() -> void:
 func start_poison() -> void:
 	poison_timer.start(POISON_DURATION)
 	poison_timer.timeout.connect(_on_poison_timer_timeout)
-	
-func add_slow() -> void:
-	if parent is Enemy:
-		parent.attack_timer.wait_time += SLOW_ADDITION
+
+func start_slow() -> void:
+	slow_timer.start(SLOW_DURATION)
+	slow_timer.timeout.connect(_on_slow_timer_timeout)
 	
 func add_status(status: Status) -> void:
 	if status.effect == Status.Type.BURN:
 		start_burn()
-		
-	if status.effect == Status.Type.SLOW:
-		add_slow()
-		
+
 	if status.effect == Status.Type.POISON:
 		start_poison()
-	
-	
 		
+	if status.effect == Status.Type.SLOW:
+		start_slow()	
 	current_statuses.append(status)

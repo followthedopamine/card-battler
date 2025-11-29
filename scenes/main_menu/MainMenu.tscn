@@ -1,0 +1,161 @@
+[gd_scene load_steps=11 format=3 uid="uid://8m53vy6rjiwb"]
+
+[ext_resource type="Script" uid="uid://b74s6to1uceuu" path="res://scenes/main_menu/MainMenuGrid.gd" id="1_i26rj"]
+[ext_resource type="FontFile" uid="uid://credfeuu46ysn" path="res://assets/fonts/Robot Heroes.ttf" id="2_axelx"]
+[ext_resource type="StyleBox" uid="uid://wosehb3fc5xw" path="res://scenes/main_menu/MainMenuButtonNormal.tres" id="3_xr86y"]
+[ext_resource type="StyleBox" uid="uid://fvtxa3safj1y" path="res://scenes/main_menu/MainMenuButtonHover.tres" id="4_qmweu"]
+[ext_resource type="Script" uid="uid://40r1wect1qhb" path="res://scenes/main_menu/StartButton.gd" id="5_f1mbi"]
+[ext_resource type="PackedScene" uid="uid://d2fckbvtof2w3" path="res://scenes/main.tscn" id="6_oitky"]
+
+[sub_resource type="Gradient" id="Gradient_1tnxq"]
+offsets = PackedFloat32Array(0, 0.4642857, 1)
+colors = PackedColorArray(0.99215686, 0, 0.99215686, 1, 0.5071492, 0.0019904952, 0.74356455, 1, 1.3957917e-06, 0, 0.59520364, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_isws5"]
+gradient = SubResource("Gradient_1tnxq")
+fill = 1
+fill_from = Vector2(0.5, 1)
+
+[sub_resource type="Gradient" id="Gradient_ticrg"]
+colors = PackedColorArray(0.07043622, 0.16818157, 0.9399386, 1, 0.0743236, 0.12107704, 0.26831037, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_axelx"]
+gradient = SubResource("Gradient_ticrg")
+fill = 1
+fill_from = Vector2(0.48125, 0.521875)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Top" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_isws5")
+
+[node name="Bottom" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_axelx")
+
+[node name="MainMenuGrid" type="Sprite2D" parent="VBoxContainer" node_paths=PackedStringArray("area_parent")]
+script = ExtResource("1_i26rj")
+vertical_lines = 25
+horizontal_lines = 40
+area_parent = NodePath("../Bottom")
+speed = 30
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -243.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label3" type="Label" parent="VBoxContainer2/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -71.5
+offset_right = 360.0
+offset_bottom = 79.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.8509804, 0.45882353, 1, 1)
+theme_override_fonts/font = ExtResource("2_axelx")
+theme_override_font_sizes/font_size = 150
+text = "SCINAMI"
+
+[node name="Label2" type="Label" parent="VBoxContainer2/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -353.0
+offset_top = -73.5
+offset_right = 357.0
+offset_bottom = 77.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.8156863, 1, 1)
+theme_override_fonts/font = ExtResource("2_axelx")
+theme_override_font_sizes/font_size = 150
+text = "SCINAMI"
+
+[node name="Label" type="Label" parent="VBoxContainer2/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -355.0
+offset_top = -75.5
+offset_right = 355.0
+offset_bottom = 75.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.94509804, 0.95686275, 0.96862745, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("2_axelx")
+theme_override_font_sizes/font_size = 150
+text = "SCINAMI"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -222.5
+offset_top = 85.0
+offset_right = 222.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+alignment = 1
+
+[node name="StartButton" type="Button" parent="VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0.6872149, 0.68721503, 0.6872149, 1)
+theme_override_colors/font_hover_color = Color(0.8862616, 0.8862614, 0.8862619, 1)
+theme_override_fonts/font = ExtResource("2_axelx")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("3_xr86y")
+theme_override_styles/pressed = ExtResource("4_qmweu")
+theme_override_styles/hover = ExtResource("4_qmweu")
+text = "CLICK HERE TO START"
+script = ExtResource("5_f1mbi")
+game_scene = ExtResource("6_oitky")

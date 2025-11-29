@@ -9,7 +9,8 @@ func _ready() -> void:
 	# freeing them and instantiating them over and over
 	SignalBus.status_updated.connect(_on_status_updated)
 	SignalBus.block_updated.connect(_on_block_updated)
-	SignalBus.wave_end.connect(_on_wave_end)
+	SignalBus.block_updated.connect(_on_strength_updated)
+	SignalBus.wave_setup_phase.connect(_on_wave_setup_phase)
 	SignalBus.status_refreshed.connect(_on_status_refreshed)
 	
 func _on_status_refreshed(status: Status, node: Node) -> void:
@@ -22,25 +23,29 @@ func _on_status_updated(status: Status, node: Node) -> void:
 
 func _on_block_updated(node: Node) -> void:
 	if node == parent:
-		var status: Status = Status.new(Status.Type.BLOCK, node.block, node, false)
+		#if node.block == 0:
+			#return
+		var status: Status = Status.new(Status.Type.BLOCK, node.block, node, true)
 		if status.stacks < 0:
 			status.stacks = 0
 		update_status_bar(status, true)
 		
 func _on_strength_updated(entity: Entity) -> void:
 	if entity == parent:
-		var status: Status = Status.new(Status.Type.STRENGTH, entity.strength, entity, false)
+		var status: Status = Status.new(Status.Type.STRENGTH, entity.strength, entity, true)
 		update_status_bar(status, true)
 		
-func _on_wave_end(_wave: int) -> void:
+func _on_wave_setup_phase() -> void:
 	for child: StatusIcon in get_children():
 		child.visible = false
 		child.stacks = 0
 
 func update_status_bar(status: Status, should_equal_stacks: bool = false):
+	var status_found: bool = false
 	if get_child_count() > 0:
 		for child: StatusIcon in get_children():
 			if child.effect == status.effect:
+				status_found = true
 				if should_equal_stacks:
 					child.stacks = status.stacks
 				else:
@@ -50,7 +55,7 @@ func update_status_bar(status: Status, should_equal_stacks: bool = false):
 					child.visible = false
 				else:
 					child.visible = true
-	else:
+	if !status_found:
 		add_status_icon(status)
 
 func add_status_icon(status: Status):

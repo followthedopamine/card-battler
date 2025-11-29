@@ -1,5 +1,7 @@
 class_name Hand extends HBoxContainer
 
+@export var starting_cards: Array[PackedScene] = []
+
 var cards: Array[Card]
 
 func _ready() -> void:
@@ -7,8 +9,9 @@ func _ready() -> void:
 	SignalBus.card_enabled.connect(_on_card_enabled)
 	SignalBus.card_chosen.connect(_on_card_chosen)
 	
-	var starter_card: Card = GameData.cards_common[0].duplicate()
-	draw(starter_card)
+	for card in starting_cards:
+		draw(card.instantiate())
+
 	start_round()
 	PlayerManager.hand_node = self
 	
@@ -18,8 +21,11 @@ func _can_drop_data(_at_position: Vector2, _data: Variant) -> bool:
 # Hand needs drop data as well as Card since you want to be able to drop 
 # cards into an empty hand.
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
-	data.reparent(self)
-	SignalBus.card_chosen.emit(data)
+	if is_instance_valid(data) and !data.is_queued_for_deletion():
+		data.reparent(self)
+		SignalBus.card_chosen.emit(data)
+	else:
+		SignalBus.card_controller_released.emit()
 
 func _on_wave_end(_wave: int) -> void:
 	# This is for resetting stacking card effects on next wave
@@ -31,8 +37,9 @@ func _on_wave_end(_wave: int) -> void:
 			
 		if card.original_card_effect != null:
 			card.card_effect = card.original_card_effect.duplicate_deep(Resource.DeepDuplicateMode.DEEP_DUPLICATE_ALL)
+		card.completed.disconnect(on_card_completed)
 		card.deactivate()
-	start_round()
+	call_deferred("start_round")
 
 func _on_card_enabled() -> void:
 	if get_active_card() == null:
@@ -51,6 +58,7 @@ func get_active_card() -> Card:
 	
 func refresh_card_array() -> void:
 	cards = []
+	# Hacky fix for multiple timers starting at once
 	for child: Node in self.get_children():
 		if !is_instance_valid(child) or child.is_queued_for_deletion():
 			continue
@@ -60,6 +68,15 @@ func refresh_card_array() -> void:
 			cards.append(child)
 	
 	PlayerManager.hand_size = cards.size()
+	
+func deactivate_all_cards() -> void:
+	for child: Node in self.get_children():
+		if !is_instance_valid(child) or child.is_queued_for_deletion():
+			continue
+		if child is Card:
+			if child.activated:
+				child.completed.disconnect(on_card_completed)
+				child.deactivate()
 
 func start_round():
 	print("Starting round")
@@ -116,6 +133,7 @@ func get_all_playable_cards(extra_cards: Array[Card] = []) -> Array[Card]:
 	return playable_cards
 	
 func activate_next_card(current_card: Card) -> void:
+	deactivate_all_cards()
 	refresh_card_array()
 	var next_playable_card: Card = get_next_playable_card(current_card)
 	if next_playable_card != null:

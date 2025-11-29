@@ -3,6 +3,7 @@ class_name CardController extends Control
 const ROTATION_AMOUNT: float = 1.0
 const MAX_ROTATION: float = 50.0
 
+const DISPLAY_SCRIPT: Script = preload("res://classes/CardDisplayCopy.gd")
 
 # If we don't hard code this path in we'll have to set it up for every new card
 var card_components_scene: PackedScene = preload("res://scenes/card/CardComponents.tscn")
@@ -14,7 +15,7 @@ var timer: Timer
 var panel: Panel
 var timer_panel: Panel
 
-@onready var hbox: HBoxContainer = get_parent()
+@onready var hbox: Control = get_parent()
 
 
 var dragging_node : CardController = null
@@ -57,13 +58,16 @@ func _process(delta) -> void:
 		
 		
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
-	if !data.get_parent() is Hand:
-		switch_cards(data, self)
+	if is_instance_valid(data) and !data.is_queued_for_deletion():
+		if !data.get_parent() is Hand:
+			switch_cards(data, self)
+		else:
+			# Need this check to prevent pack closing on shuffling hand with pack open
+			# This check is also blocking pack closing when new card is added to hand
+			if !get_parent() is Hand:
+				SignalBus.card_chosen.emit(self)
 	else:
-		# Need this check to prevent pack closing on shuffling hand with pack open
-		# This check is also blocking pack closing when new card is added to hand
-		if !get_parent() is Hand:
-			SignalBus.card_chosen.emit(self)
+		SignalBus.card_controller_released.emit()
 
 func _can_drop_data(_at_position: Vector2, _data: Variant) -> bool:
 	if !self.get_parent() is Hand:
@@ -73,14 +77,16 @@ func _can_drop_data(_at_position: Vector2, _data: Variant) -> bool:
 
 func _get_drag_data(at_position: Vector2) -> Variant:
 	# Prevent currently activated cards from being dragged
-	if self.activated:
-		return null
+	# Commented to out to allow active cards to be dragged
+	#if self.activated:
+		#return null
 	
 		
 	var preview_parent = Control.new()
 
 	dragging_node = self.duplicate()
-	dragging_node.set_script(null)
+	dragging_node.set_script(DISPLAY_SCRIPT)
+	dragging_node.call_deferred("init", self)
 	preview_parent.add_child(dragging_node)
 	dragging_node.position = -at_position
 	dragging_node.z_index = 100
@@ -131,10 +137,11 @@ func _input(event: InputEvent) -> void:
 					# Have to use get_parent() here instead of hbox because the parent
 					# of the card can change while dragging.
 					get_parent().move_child(self, self.get_index() - 1)
+					SignalBus.card_controller_position_changed.emit()
 			elif dragging_node.global_position.x > global_position.x + threshold:
 				if self.get_index() < get_parent().get_child_count() - 1:
 					get_parent().move_child(self, self.get_index() + 1)
-				
+					SignalBus.card_controller_position_changed.emit()
 	
 		
 func _on_card_controller_picked_up(card_controller: CardController) -> void:
@@ -172,9 +179,10 @@ func update_mouse() -> void:
 func handle_switch_interface() -> void:
 	if dragging:
 		return
-	if self.activated:
-		hide_switch_interface()
-		return
+	# Commented out to allow switching with active card
+	#if self.activated:
+		#hide_switch_interface()
+		#return
 	
 	if !self.get_global_rect().has_point(mouse_pos):
 		hide_switch_interface()

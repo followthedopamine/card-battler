@@ -11,9 +11,12 @@ const UNCOMMON_ODDS: float = 1.0/5.0
 @export var skip_button: Button
 @export var card_area: HBoxContainer
 
+var cards_are_random: bool = false
+
 func _ready() -> void:
 	SignalBus.pack_opened.connect(_on_pack_opened)
 	SignalBus.card_chosen.connect(_on_card_chosen)
+	SignalBus.relic_added.connect(_on_relic_added)
 	skip_button.pressed.connect(_on_skip_button_pressed)
 	close_pack()
 	reroll_cards()
@@ -26,6 +29,10 @@ func _on_card_chosen(_card: Card) -> void:
 	
 func _on_skip_button_pressed() -> void:
 	close_pack()
+	
+func _on_relic_added(relic: Relic) -> void:
+	if "ALL_CARDS_ARE_RANDOM" in relic:
+		cards_are_random = true
 
 func open_pack() -> void:
 	reroll_cards()
@@ -45,6 +52,8 @@ func reroll_cards() -> void:
 			card_pool = GameData.cards_rare
 		elif rare_chance < UNCOMMON_ODDS:
 			card_pool = GameData.cards_uncommon
+		if cards_are_random:
+			card_pool = GameData.cards_all
 		var new_card: Card = card_pool.pick_random().duplicate()
 		new_card.mouse_filter = MouseFilter.MOUSE_FILTER_STOP
 		new_card.z_index = 10

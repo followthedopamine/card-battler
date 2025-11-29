@@ -20,33 +20,6 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 corner_detail = 5
 
-[sub_resource type="Animation" id="Animation_k8r83"]
-resource_name = "play"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.025, 0.075, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.05235987755982989, -0.05235987755982989, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_5ouhm"]
 length = 0.001
 tracks/0/type = "value"
@@ -74,13 +47,40 @@ tracks/1/keys = {
 "values": [Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_k8r83"]
+resource_name = "play"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.025, 0.075, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.05235987755982989, -0.05235987755982989, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_olt7r"]
 _data = {
 &"RESET": SubResource("Animation_5ouhm"),
 &"play": SubResource("Animation_k8r83")
 }
 
-[node name="CardComponents" type="Control" node_paths=PackedStringArray("timer_label", "timer_spinner", "timer", "switch_interface", "name_label", "sprite", "timer_panel")]
+[node name="CardComponents" type="Control" node_paths=PackedStringArray("timer_label", "timer_spinner", "timer", "switch_interface", "name_label", "sprite", "timer_panel", "animation_player")]
 custom_minimum_size = Vector2(152, 225)
 layout_mode = 3
 anchors_preset = 0
@@ -96,6 +96,7 @@ switch_interface = NodePath("SwitchInterface")
 name_label = NodePath("NameLabel")
 sprite = NodePath("CardSprite")
 timer_panel = NodePath("CardSprite/TimerPanel")
+animation_player = NodePath("CardAnimationPlayer")
 
 [node name="CardSprite" type="TextureRect" parent="."]
 clip_children = 2
@@ -113,6 +114,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1e-05, 1)
+mouse_filter = 2
 
 [node name="TimerLabel" type="Label" parent="."]
 layout_mode = 0
@@ -195,6 +197,7 @@ node_to_connect_mouse = NodePath("..")
 metadata/_custom_type_script = "uid://bh0tgx15xo557"
 
 [node name="CardAnimationPlayer" type="AnimationPlayer" parent="."]
+deterministic = true
 libraries = {
 &"": SubResource("AnimationLibrary_olt7r")
 }

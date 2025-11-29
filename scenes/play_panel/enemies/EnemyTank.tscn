@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://bhw1bhpnb51nc"]
+
+[ext_resource type="Script" uid="uid://3nm0o4ibmbfu" path="res://scenes/play_panel/enemies/EnemyTank.gd" id="1_ynt7l"]
+[ext_resource type="Texture2D" uid="uid://dk3hyuij4grmi" path="res://assets/enemies/tank.png" id="2_ynt7l"]
+[ext_resource type="PackedScene" uid="uid://vg0ltwj23njc" path="res://scenes/play_panel/HealthBar.tscn" id="3_k8dgj"]
+[ext_resource type="PackedScene" uid="uid://co2mq4qr6rara" path="res://scenes/status/StatusBar.tscn" id="4_585c7"]
+[ext_resource type="Script" uid="uid://mjiv7q0gvno6" path="res://scenes/status/StatusHandler.gd" id="5_pdrwp"]
+[ext_resource type="PackedScene" uid="uid://cqhbamimh6d5s" path="res://scenes/play_panel/damage_particle/DamageParticleEmitter.tscn" id="6_o1s6x"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_76ifo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ynt7l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="Control" groups=["Enemy"]]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1.0
+offset_bottom = 1.0
+script = ExtResource("1_ynt7l")
+enemy_name = "SpiderTank"
+spawn_value = 10
+first_available_wave = 10
+damage = 2.0
+attack_speed = 5.0
+spawn_columns = Array[int]([0])
+max_health = 70.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_76ifo")
+
+[node name="HealthBar" parent="." instance=ExtResource("3_k8dgj")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="StatusBarHBoxContainer" parent="." instance=ExtResource("4_585c7")]
+layout_mode = 0
+
+[node name="StatusHandler" type="Control" parent="." node_paths=PackedStringArray("status_bar")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_pdrwp")
+status_bar = NodePath("../StatusBarHBoxContainer")
+metadata/_custom_type_script = "uid://mjiv7q0gvno6"
+
+[node name="DamageParticleEmitter" parent="." instance=ExtResource("6_o1s6x")]
+layout_mode = 0
+particle_lifetime = 0.8

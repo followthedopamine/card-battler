@@ -1,4 +1,4 @@
-class_name RelicDisplay extends HBoxContainer
+class_name RelicDisplay extends VBoxContainer
 
 func _ready() -> void:
 	SignalBus.relic_added.connect(_on_relic_added)

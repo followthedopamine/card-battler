@@ -28,7 +28,7 @@ var card_tag_tooltips: Dictionary[CardTag, String] = {
 	CardTag.MELEE: "Melee: Hits the closest enemies first",
 	CardTag.BLOCK: "Block: Prevents damage up to number of block stacks",
 	CardTag.BURN: "Burn: Deals damage equal to number of burn stacks every %s second" %  snapped(StatusHandler.BURN_DURATION, 1),
-	CardTag.SLOW: "Slow: Reduces the enemy attack speed by %s seconds" % StatusHandler.SLOW_ADDITION,
+	CardTag.SLOW: "Slow: Halves the enemy attack speed for %s seconds" % snapped(StatusHandler.SLOW_DURATION, 1),
 	CardTag.RANDOM: "Random: Can hit any enemy",
 	CardTag.THORNS: "Thorns: Reflects damage back at the enemy equal to the number of thorn stacks",
 	CardTag.STRENGTH: "Strength: Adds damage to your attacks equal to the number of strength stacks",
@@ -52,8 +52,15 @@ const PIVOT_POINT: Vector2 = Vector2(73.0, 22.0)
 @export var card_effect: CardEffect
 @export var rarity: Rarity = Rarity.COMMON
 
-@export_range(0.0, 5.0) var duration := 2.0
+@export_range(0.0, 5.0) var duration := 2.0:
+	get:
+		return duration
+	set(value):
+		if duration != value:
+			duration = value	
+			SignalBus.card_duration_changed.emit(self)
 var time_remaining := duration
+@onready var original_duration: float = duration
 
 # Draggable dependant on this existing
 var activated := false
@@ -75,15 +82,17 @@ var colour: Color
 
 var original_card_effect: CardEffect
 
+@onready var player: Player = get_tree().get_first_node_in_group("Player")
+
 ## NOTE: if extending this class in a child, make sure all code you wish to
 ## repeat goes after the `super()` call.
 func _ready() -> void:
 	super()
+	SignalBus.wave_end.connect(_on_wave_end)
 	self.add_child(disabled_timer)
 	disabled_timer.timeout.connect(disabled_timeout)
 	disabled_timer.one_shot = true
 	
-	timer.timeout.connect(_on_timer_timeout)
 	set_process_input(false)
 
 	#change_colour(colour)
@@ -106,14 +115,18 @@ func _ready() -> void:
 		# If we don't do a super thorough duplicate then the resource will never be
 		# unique
 		original_card_effect = card_effect.duplicate_deep(Resource.DeepDuplicateMode.DEEP_DUPLICATE_ALL)
-
+		
 func _process(delta: float) -> void:
 	super(delta)
+	
 	if activated:
-		time_remaining -= delta
+		time_remaining -=  delta * 0.5 if player.is_slowed else delta
 		timer_label.text = "%.1f" % time_remaining
 		timer_spinner.rotation += delta * 10
 		timer_panel.scale.x = 1 - (time_remaining / duration) 
+
+		if time_remaining <= 0:
+			_on_timer_timeout()
 
 func _on_timer_timeout() -> void:
 	activate_card_effect()
@@ -122,6 +135,11 @@ func _on_timer_timeout() -> void:
 	timer_panel.scale.x = 0
 	deactivate()
 	
+func _on_wave_end(_wave: int) -> void:
+	duration = original_duration
+	card_effect = original_card_effect
+	player.is_slowed = false
+
 func activate_card_effect() -> void:
 	if is_instance_valid(card_effect):
 		card_effect.run_effects()
@@ -133,6 +151,9 @@ func start_card_effect() -> void:
 	
 func disabled_timeout() -> void:
 	# Remember to check if we need to restart playing cards
+	enable_card()
+	
+func enable_card() -> void:
 	is_disabled = false
 	card_components.modulate = Color(1.0, 1.0, 1.0, 1.0)
 	SignalBus.card_enabled.emit()
@@ -141,10 +162,12 @@ func disable_card(disabled_duration: float) -> void:
 	is_disabled = true
 	card_components.modulate = DISABLED_COLOUR
 	disabled_timer.start(disabled_duration)
+	if activated:
+		deactivate()
 
 func activate():
+	print(self)
 	start_card_effect()
-	timer.start(duration)
 
 	card_components.position.y = -10
 	#change_colour(DISABLED_COLOUR)
@@ -154,8 +177,6 @@ func activate():
 	timer_label.show()
 	timer_spinner.show()
 
-	
-
 	activated = true
 
 func deactivate():
@@ -164,13 +185,14 @@ func deactivate():
 	card_components.position.y = 0
 	#change_colour(colour)
 	
-
 	timer_label.hide()
 	timer_spinner.hide()
+	timer_panel.scale = Vector2(0, 1)
 	# Card needs to be deactivated before the signal emits or when there is one
 	# card in hand it will lose the signal race to reactivate itself and mess
 	# with the visuals.
 	activated = false
+	duration = original_duration
 	completed.emit(self)
 
 ## An exposed version of the equivalent function from the attached card effect

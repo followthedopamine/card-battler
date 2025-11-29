@@ -8,3 +8,4 @@ class_name CardComponents extends Control
 @export var name_label: Label
 @export var sprite: TextureRect
 @export var timer_panel: Panel
+@export var animation_player: AnimationPlayer

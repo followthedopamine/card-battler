@@ -1,6 +1,7 @@
 extends Sprite2D
 
 @export var vertical_lines = 17
+@export var battle_area: HBoxContainer
 
 var horizontal_lines = 6
 
@@ -10,7 +11,6 @@ var draw_offset := 0.0
 var animation_grid_offset := 0
 
 @onready var parent: Control = get_parent()
-@onready var battle_area: HBoxContainer = $"../../VBoxContainer/BattleAreaContainer"
 
 func resize():
 	if is_instance_valid(parent):

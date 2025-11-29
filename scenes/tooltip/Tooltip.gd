@@ -1,6 +1,6 @@
 class_name Tooltip extends Node
 
-const LEFT_PADDING: float = 18.0
+const LEFT_PADDING: float = 10.0
 const BOTTOM_PADDING: float = 10.0
 
 const TOOLTIP_SCENE: PackedScene = preload("res://scenes/tooltip/Tooltip.tscn")
@@ -9,6 +9,8 @@ var text: String
 var node: Node
 var tooltip: TooltipData
 
+var should_display: bool = false
+
 func _init(tooltip_text: String, attached_node: Control) -> void:
 	text = tooltip_text
 	node = attached_node
@@ -16,17 +18,20 @@ func _init(tooltip_text: String, attached_node: Control) -> void:
 	node.mouse_exited.connect(_on_mouse_exited)
 	
 func _on_mouse_enter() -> void:
-	var updated_text = update_tooltip_variables(text)
-	tooltip = TooltipCanvas.display_tooltip(updated_text)
-	position_tooltip()
+	update_text()
 	
 func _on_mouse_exited() -> void:
 	TooltipCanvas.hide_tooltip(tooltip)
 	
-func update_tooltip_variables(text_with_variables: String) -> String:
+func update_text() -> void:
+	var updated_text = update_tooltip_variables()
+	tooltip = TooltipCanvas.display_tooltip(updated_text, self)
+	position_tooltip()
+	
+func update_tooltip_variables() -> String:
 	var re = RegEx.new()
 	re.compile("%([^%]+)%")
-	var matches = re.search_all(text_with_variables)
+	var matches = re.search_all(text)
 	if matches.size() == 0:
 		return text
 	var last_index = 0
@@ -37,19 +42,20 @@ func update_tooltip_variables(text_with_variables: String) -> String:
 		var variable_string = variable.get_string()
 		variable_string = variable_string.lstrip('%')
 		variable_string = variable_string.rstrip('%')
-		replaced_text += text_with_variables.substr(last_index, start - last_index)
+		replaced_text += text.substr(last_index, start - last_index)
 		if variable_string in node:
 			replaced_text += str(node.get(variable_string))
-		if variable_string in node.card_effect:
-			replaced_text += str(node.card_effect.get(variable_string))
-		else:
-			print("Tried to include a variable in tooltip that doesn't exist on node %s" % node)
+		if "card_effect" in node:
+			if variable_string in node.card_effect:
+				replaced_text += str(node.card_effect.get(variable_string))
+		#else:
+			#print("Tried to include a variable in tooltip that doesn't exist on node %s" % node)
 		last_index = end
-	replaced_text += text_with_variables.substr(last_index, text_with_variables.length() - last_index)
+	replaced_text += text.substr(last_index, text.length() - last_index)
 	return replaced_text
 	
 func position_tooltip() -> void:
-	var x = node.get_rect().size.x + node.global_position.x
+	var x = node.get_rect().size.x + node.global_position.x + LEFT_PADDING
 	var y = node.global_position.y
 
 	var viewport_rect: Rect2 = node.get_viewport().get_visible_rect()
