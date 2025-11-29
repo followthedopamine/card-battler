@@ -102,7 +102,7 @@ func _on_wave_end(_wave: int) -> void:
 func _on_enemy_dead(_payout: int) -> void:
 	play_sound_random(MONEY_SOUNDS)
 	
-func _on_pack_opened() -> void:
+func _on_pack_opened(_rarity) -> void:
 	play_sound(PACK_OPENED_SFX, 0.1)
 	
 func _on_lose() -> void:

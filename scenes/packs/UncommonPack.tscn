@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8lmu1lufvt4j"]
+[gd_scene load_steps=4 format=3 uid="uid://dlnkfjygot6b2"]
 
-[ext_resource type="Texture2D" uid="uid://cwj5nvkwe3ypi" path="res://assets/shop/card_pack.png" id="1_icj7n"]
-[ext_resource type="Script" uid="uid://b038b25jswgru" path="res://scenes/packs/scripts/Pack.gd" id="2_co50a"]
-[ext_resource type="Script" uid="uid://bh0tgx15xo557" path="res://classes/ControlHoverScale.gd" id="3_l7t7l"]
+[ext_resource type="Script" uid="uid://b038b25jswgru" path="res://scenes/packs/scripts/Pack.gd" id="1_fn5ep"]
+[ext_resource type="Texture2D" uid="uid://dhk4d20y26yj1" path="res://assets/shop/card_pack_unc.png" id="2_fn5ep"]
+[ext_resource type="Script" uid="uid://bh0tgx15xo557" path="res://classes/ControlHoverScale.gd" id="3_jm71c"]
 
 [node name="Pack" type="TextureButton"]
 size_flags_horizontal = 3
@@ -11,7 +11,8 @@ size_flags_stretch_ratio = 5.0
 mouse_default_cursor_shape = 2
 ignore_texture_size = true
 stretch_mode = 5
-script = ExtResource("2_co50a")
+script = ExtResource("1_fn5ep")
+rarity = 1
 
 [node name="PackTexture" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(70, 100)
@@ -23,14 +24,14 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource("1_icj7n")
+texture = ExtResource("2_fn5ep")
 expand_mode = 3
 stretch_mode = 5
 
 [node name="ControlHoverScale" type="Control" parent="." node_paths=PackedStringArray("node_to_scale", "node_to_connect_mouse")]
 anchors_preset = 0
 mouse_filter = 2
-script = ExtResource("3_l7t7l")
+script = ExtResource("3_jm71c")
 scale_amount = Vector2(1.12, 1.12)
 node_to_scale = NodePath("../PackTexture")
 node_to_connect_mouse = NodePath("../PackTexture")
