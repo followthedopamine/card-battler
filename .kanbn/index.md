@@ -21,7 +21,6 @@ completedColumns:
 - [collect-bounty-gains-0-wavies](tasks/collect-bounty-gains-0-wavies.md)
 - [bug-tooltip-will-appear-off-screen-on-right-side-only-relevant-if-we-add-relics-or-cards-to-shop](tasks/bug-tooltip-will-appear-off-screen-on-right-side-only-relevant-if-we-add-relics-or-cards-to-shop.md)
 - [bug-tooltips-don-t-really-appear-in-the-right-place](tasks/bug-tooltips-don-t-really-appear-in-the-right-place.md)
-- [bug-tooltip-will-appear-off-the-right-side-of-the-screen](tasks/bug-tooltip-will-appear-off-the-right-side-of-the-screen.md)
 - [speed-shader-for-wave-transition](tasks/speed-shader-for-wave-transition.md)
 - [bug-window-scaling-is-pretty-scuffed](tasks/bug-window-scaling-is-pretty-scuffed.md)
 - [card-ask-for-card-art-for-slow-card](tasks/card-ask-for-card-art-for-slow-card.md)
@@ -35,19 +34,19 @@ completedColumns:
 
 ## Todo
 
-- [bug-the-card-duration-resets-on-play-for-the-1s-random-relic](tasks/bug-the-card-duration-resets-on-play-for-the-1s-random-relic.md)
-- [bug-sounds-cannot-be-fully-muted](tasks/bug-sounds-cannot-be-fully-muted.md)
-- [bug-idk-if-mystery-box-still-works](tasks/bug-idk-if-mystery-box-still-works.md)
-- [bug-melting-shield-is-an-attack](tasks/bug-melting-shield-is-an-attack.md)
-- [bug-sliders-reset-on-loss-restart](tasks/bug-sliders-reset-on-loss-restart.md)
 - [double-tap-should-probably-just-duplicate-the-next-card-whether-or-not-it-s-an-attack](tasks/double-tap-should-probably-just-duplicate-the-next-card-whether-or-not-it-s-an-attack.md)
-- [bug-one-of-the-relics-isn-t-working](tasks/bug-one-of-the-relics-isn-t-working.md)
-- [wavies-currency-symbols](tasks/wavies-currency-symbols.md)
 
 ## In Progress
 
 ## Done
 
+- [wavies-currency-symbols](tasks/wavies-currency-symbols.md)
+- [bug-one-of-the-relics-isn-t-working](tasks/bug-one-of-the-relics-isn-t-working.md)
+- [bug-idk-if-mystery-box-still-works](tasks/bug-idk-if-mystery-box-still-works.md)
+- [bug-the-card-duration-resets-on-play-for-the-1s-random-relic](tasks/bug-the-card-duration-resets-on-play-for-the-1s-random-relic.md)
+- [bug-sliders-reset-on-loss-restart](tasks/bug-sliders-reset-on-loss-restart.md)
+- [bug-melting-shield-is-an-attack](tasks/bug-melting-shield-is-an-attack.md)
+- [bug-sounds-cannot-be-fully-muted](tasks/bug-sounds-cannot-be-fully-muted.md)
 - [bug-unchained-strike-tooltip-missing-the-word-seconds](tasks/bug-unchained-strike-tooltip-missing-the-word-seconds.md)
 - [music-and-sounds](tasks/music-and-sounds.md)
 - [when-you-don-t-have-cards-it-s-really-quiet](tasks/when-you-don-t-have-cards-it-s-really-quiet.md)

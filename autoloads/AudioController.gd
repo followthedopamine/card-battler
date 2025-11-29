@@ -19,7 +19,7 @@ const CARD_DROPPED_SFX: String = "Menu Close"
 const VALID_AUDIO_EXTENSIONS: Array[String] = ["wav"]
 
 const MAX_VOLUME_DB: float = 6
-const MIN_VOLUME_DB: float = -32
+const MIN_VOLUME_DB: float = -31
 
 const MAX_SOUNDS: int = 10
 
@@ -122,9 +122,17 @@ func _on_card_sold() -> void:
 	
 func _on_sfx_volume_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(sfx_bus_index, value)
+	if value < MIN_VOLUME_DB:
+		AudioServer.set_bus_mute(sfx_bus_index, true)
+	else:
+		AudioServer.set_bus_mute(sfx_bus_index, false)
 	
 func _on_music_volume_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(music_bus_index, value)
+	if value < MIN_VOLUME_DB:
+		AudioServer.set_bus_mute(music_bus_index, true)
+	else:
+		AudioServer.set_bus_mute(music_bus_index, false)
 	
 func return_to_pool(player: AudioStreamPlayer2D) -> void:
 	sfx_pool.append(player)

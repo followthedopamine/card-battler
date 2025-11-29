@@ -61,6 +61,7 @@ func run_effects():
 			SignalBus.card_played_target_enemy.emit(self)
 		Target.PLAYER:
 			SignalBus.card_played_target_player.emit(self)
+			
 
 	if (on_play_callables.size()): 
 		run_on_play_callables()

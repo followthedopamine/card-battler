@@ -16,6 +16,8 @@ func run_effects():
 			SignalBus.player_dealt_damage.emit()
 		Target.PLAYER:
 			SignalBus.card_played_target_player.emit(self, null)
+			if on_play_all_enemy_callables.size():
+				SignalBus.card_played_target_enemy.emit(self)
 		Target.SHOP:
 			SignalBus.card_played_target_shop.emit(self)
 	
