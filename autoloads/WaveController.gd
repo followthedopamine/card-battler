@@ -112,6 +112,19 @@ func setup_controller():
 	
 	SignalBus.enemies_cleared.connect(_on_enemies_cleared)
 
+
+func initialise_vars() -> void:
+	time_elapsed = 0.0
+	moving = false
+	area_loaded = false
+	grid_loaded = false
+	enemy_area = null
+	grid = null
+
+func reset() -> void:
+	print("Resetting WaveController")
+	initialise_vars()
+	
 func _process(delta: float) -> void:
 	if (moving):
 		time_elapsed += delta
@@ -123,19 +136,19 @@ func _process(delta: float) -> void:
 			var eased_t = (0.5 - 0.5 * cos((time_elapsed / animation_duration) * PI))
 			SignalBus.animation_wave_t.emit(eased_t)
 
-func on_enemy_area_loaded(area: EnemyArea):
+func _on_enemy_area_loaded(area: EnemyArea):
 	enemy_area = area
 	area_loaded = true
 	if grid_loaded:
 		setup_controller()
 
 
-func on_grid_loaded(grid_node: Sprite2D):
+func _on_grid_loaded(grid_node: Sprite2D):
 	grid = grid_node
 	grid_loaded = true
 	if area_loaded:
 		setup_controller()
 
 func _ready():
-	SignalBus.wave_controller_enemy_area_loaded.connect(on_enemy_area_loaded)
-	SignalBus.wave_controller_grid_loaded.connect(on_grid_loaded)
+	SignalBus.wave_controller_enemy_area_loaded.connect(_on_enemy_area_loaded)
+	SignalBus.wave_controller_grid_loaded.connect(_on_grid_loaded)
