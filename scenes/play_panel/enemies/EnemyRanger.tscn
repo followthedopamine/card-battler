@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://b6kxvqvkfjohw"]
 
-[ext_resource type="Script" uid="uid://cgs1wx3ilgold" path="res://scenes/play_panel/enemies/EnemyRanger.gd.gd" id="1_onnhp"]
+[ext_resource type="Script" uid="uid://cgs1wx3ilgold" path="res://scenes/play_panel/enemies/EnemyRanger.gd" id="1_onnhp"]
 [ext_resource type="Texture2D" uid="uid://b6o2syw7dos8v" path="res://assets/enemies/ranger.png" id="2_onnhp"]
 [ext_resource type="PackedScene" uid="uid://vg0ltwj23njc" path="res://scenes/play_panel/HealthBar.tscn" id="3_k0nif"]
 [ext_resource type="PackedScene" uid="uid://co2mq4qr6rara" path="res://scenes/status/StatusBar.tscn" id="4_6ylh6"]
@@ -155,6 +155,7 @@ strength_buff = 3
 enemy_name = "Ranger"
 spawn_value = 9
 first_available_wave = 8
+wavies = 5
 spawn_columns = Array[int]([3])
 max_health = 10.0
 metadata/_edit_use_anchors_ = true
