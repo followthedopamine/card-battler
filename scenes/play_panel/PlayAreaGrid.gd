@@ -8,7 +8,6 @@ var horizontal_lines = 6
 var parent_size = Vector2.ZERO
 
 var draw_offset := 0.0
-var animation_grid_offset := 0
 
 @onready var parent: Control = get_parent()
 
@@ -21,13 +20,10 @@ func get_lines():
 	return Vector2(vertical_lines, horizontal_lines)
 
 func _on_animation_wave_t(eased_t: float):
-	var vertical_slice = (region_rect.size.x / vertical_lines) * animation_grid_offset
+	var vertical_slice = (region_rect.size.x / vertical_lines) * WaveController.animation_grid_offset
 	
 	draw_offset = lerp(Vector2.ZERO, Vector2(vertical_slice, 0), eased_t).x
 	queue_redraw()
-
-func _on_animation_grid_offset(grid_offset: int):
-	animation_grid_offset = grid_offset
 
 func _draw():
 	var line_top = region_rect.size.y - battle_area.size.y
@@ -57,12 +53,13 @@ func _draw():
 
 func _ready() -> void:
 	resize()
-	SignalBus.animation_grid_offset.connect(_on_animation_grid_offset)
 	SignalBus.animation_wave_t.connect(_on_animation_wave_t)
 	
 	# Returns the grid to it's expected starting position
 	# visually identical to the end position but scales consistently
 	SignalBus.animation_end.connect(func(): _on_animation_wave_t(0.0))
+	SignalBus.wave_controller_grid_loaded.emit(self)
+
 
 func _process(_delta: float) -> void:
 	# Resize is handled here instead of with the signal as the signal seems 

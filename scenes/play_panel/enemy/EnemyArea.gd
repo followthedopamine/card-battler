@@ -22,8 +22,6 @@ var y_position_percentage_offsets = [0.14, 0.32, 0.5, 0.7]
 
 var is_setup := false
 
-var animation_grid_offset := 0
-
 @onready var enemy_status_timer := Timer.new()
 @onready var grid: Sprite2D = get_tree().get_first_node_in_group("AreaGrid")
 
@@ -84,13 +82,12 @@ func _position_cells(skip_animation = false):
 	var odd_offset = 0.0
 
 	grid_lines.x = grid_lines.x / 2
-
 	var h_offset = odd_offset + left_most_col
 	var vertical_slice = size.x / grid_lines.x
 
 	for child: EnemyCell in get_children():
 		if (child is EnemyCell):
-			child.position_cell(h_offset, y_position_percentage_offsets[child.get_grid_pos().x], vertical_slice, animation_grid_offset, skip_animation)
+			child.position_cell(h_offset, y_position_percentage_offsets[child.get_grid_pos().x], vertical_slice, WaveController.animation_grid_offset, skip_animation)
 
 func _get_target(target: ActionEffect.GridTarget):
 	var col_range: Array
@@ -188,9 +185,6 @@ func _on_enemy_targeted(action: ActionEffect):
 func _on_resized():
 	_position_cells(true)
 
-func _on_animation_grid_offset(offset: int):
-	animation_grid_offset = offset
-
 func _ready() -> void:
 	self.connect("resized", _on_resized)
 	## non-card effects that target enemies
@@ -198,12 +192,11 @@ func _ready() -> void:
 
 	SignalBus.card_played_target_enemy.connect(_on_enemy_targeted)
 	SignalBus.card_played.connect(_on_any_card_played)
-	SignalBus.animation_grid_offset.connect(_on_animation_grid_offset)
 
 	# Gives the game time to process the enemy_scene's size
 	await get_tree().process_frame
 	_setup_cells()
 	
 	is_setup = true
-	SignalBus.enemy_area_setup.emit()
+	SignalBus.wave_controller_enemy_area_loaded.emit(self)
 	PlayerManager.enemy_area = self
