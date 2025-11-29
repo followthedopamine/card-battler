@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b653dafp8uotu"]
+[gd_scene load_steps=15 format=3 uid="uid://b653dafp8uotu"]
 
 [ext_resource type="Script" uid="uid://cmkv7da2ilckk" path="res://scenes/play_panel/PlayPanel.gd" id="1_jgck7"]
 [ext_resource type="PackedScene" uid="uid://dnvmslc0lunfw" path="res://scenes/packs/pack_opening/PackOpening.tscn" id="1_x324g"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://bbka3kooxxw1r" path="res://scenes/play_panel/PlayAreaGrid.gd" id="4_uajrv"]
 [ext_resource type="PackedScene" uid="uid://b0us44ov8t56n" path="res://scenes/play_panel/PlayerHealthBar.tscn" id="7_gcqk6"]
 [ext_resource type="Script" uid="uid://cbjue7ee5fr67" path="res://scenes/play_panel/RelicRewards.gd" id="7_ujhpf"]
-[ext_resource type="Script" uid="uid://cvc7yxckv48q7" path="res://scenes/play_panel/controllers/WaveController.gd" id="8_d7kxu"]
 [ext_resource type="Theme" uid="uid://du1q07vbcgp5p" path="res://assets/themes/button.tres" id="8_oo7ig"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fi6o"]
@@ -173,8 +172,3 @@ text = "SKIP"
 [node name="PackOpeningPanelContainer" parent="." instance=ExtResource("1_x324g")]
 visible = false
 layout_mode = 2
-
-[node name="WaveController" type="Node" parent="."]
-script = ExtResource("8_d7kxu")
-animation_grid_offset = 10
-animation_duration = 2.0
