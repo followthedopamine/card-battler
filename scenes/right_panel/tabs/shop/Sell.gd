@@ -18,6 +18,7 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 			if data.activated:
 				PlayerManager.hand_node.activate_next_card(data)
 		PlayerManager.currency += floori(data.price * SELL_MULTIPLIER)
+		SignalBus.card_sold.emit()
 		data.queue_free()
 
 func _on_card_controller_picked_up(card_controller: CardController):

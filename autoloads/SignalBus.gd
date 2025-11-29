@@ -61,6 +61,13 @@ signal player_targeted(effect: ActionEffect, source: Enemy)
 # Audio signals
 signal sfx_volume_changed(value: float)
 signal music_volume_changed(value: float)
+signal button_pressed
+signal player_dealt_damage
+signal player_healed
+signal player_added_block
+signal relic_offered
+signal lose
+signal card_sold
 
 func reset() -> void:
 	print("Resetting")

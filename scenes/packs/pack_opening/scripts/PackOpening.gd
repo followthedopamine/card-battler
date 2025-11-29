@@ -28,6 +28,7 @@ func _on_card_chosen(_card: Card) -> void:
 	close_pack()
 	
 func _on_skip_button_pressed() -> void:
+	SignalBus.button_pressed.emit()
 	close_pack()
 	
 func _on_relic_added(relic: Relic) -> void:
