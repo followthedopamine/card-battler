@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bx6wgrouswwdk"]
 
 [ext_resource type="Script" uid="uid://brst2f0xpem8e" path="res://scenes/relics/011RandomEffect.gd" id="1_635la"]
-[ext_resource type="Texture2D" uid="uid://d2lvemisnk0kp" path="res://assets/icons/risky.png" id="2_kfc1j"]
+[ext_resource type="Texture2D" uid="uid://d2oq81ldtawlw" path="res://assets/relics/rubixcube.png" id="2_kfc1j"]
 
 [node name="011RandomEffect" type="MarginContainer"]
 script = ExtResource("1_635la")

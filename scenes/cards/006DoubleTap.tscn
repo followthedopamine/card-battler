@@ -9,9 +9,8 @@ script = ExtResource("3_s8oiy")
 target = 1
 metadata/_custom_type_script = "uid://fuokg41g7d8s"
 
-[node name="006DoubleTap" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="006DoubleTap" type="MarginContainer"]
+mouse_filter = 0
 script = ExtResource("1_o53lm")
 card_name = "Double Tap"
 sprite_texture = ExtResource("2_rikoh")

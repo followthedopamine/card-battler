@@ -12,9 +12,8 @@ enemy_target_type = 1
 burn = 2
 metadata/_custom_type_script = "uid://fuokg41g7d8s"
 
-[node name="023Ignition" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="023Ignition" type="MarginContainer"]
+mouse_filter = 0
 script = ExtResource("1_hjexu")
 card_name = "Ignition"
 sprite_texture = ExtResource("2_438ro")

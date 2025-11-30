@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://do4vd76mw4v6p"]
 
 [ext_resource type="Script" uid="uid://bi57i7w2q2rh2" path="res://scenes/relics/010BlockToHeal.gd" id="1_8iqin"]
-[ext_resource type="Texture2D" uid="uid://b8mkhp8f65514" path="res://assets/icons/heal.png" id="2_8iqin"]
+[ext_resource type="Texture2D" uid="uid://cw1blw6fde7w2" path="res://assets/relics/ecg.png" id="2_8iqin"]
 
 [node name="010BlockToHeal" type="MarginContainer"]
 script = ExtResource("1_8iqin")

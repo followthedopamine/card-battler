@@ -10,14 +10,14 @@ target = 2
 shield = 20
 metadata/_custom_type_script = "uid://fuokg41g7d8s"
 
-[node name="018SnailGuard" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="018SnailGuard" type="MarginContainer"]
+mouse_filter = 0
 script = ExtResource("1_uhggc")
 card_name = "Snail Guard"
 sprite_texture = ExtResource("2_6q6nj")
 tooltips = Array[String](["Adds %shield% block"])
 tags = Array[int]([1])
 card_effect = SubResource("Resource_w1xcl")
+rarity = 1
 duration = 4.0
 metadata/_custom_type_script = "uid://c531eyaws05rr"

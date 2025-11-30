@@ -1,8 +1,8 @@
 extends Node
 
-@export var wave = 1
+@export var starting_wave := 1
 ## The value of the starting wave for enemy spawning calcs
-@export var current_wave_weight = 5
+@export var starting_wave_weight = 5
 ## The value added by each wave for enemy spawning calcs
 @export var wave_increment = 1
 
@@ -10,6 +10,9 @@ extends Node
 @export var animation_grid_offset = 10
 ## The duration of the animation in seconds
 @export var animation_duration := 2.0
+
+var current_wave := starting_wave
+var current_wave_weight := 5
 
 var enemy_scenes: Array[Enemy] = []
 
@@ -23,10 +26,10 @@ var grid_loaded := false
 @onready var grid: Sprite2D
 
 func get_wave():
-	return wave
+	return current_wave
 
 func _start_wave():
-	SignalBus.wave_start.emit(wave)
+	SignalBus.wave_start.emit(current_wave)
 	_generate_wave()
 	moving = true
 	time_elapsed = 0.0
@@ -48,13 +51,13 @@ func _generate_wave():
 		if enemy.spawn_value > current_wave_weight - wave_point_total:
 			possible_enemies.remove_at(index)
 			continue
-		
+
 		var spawn_cell = enemy_area.get_random_available_cell(enemy.spawn_columns)
 
 		if !spawn_cell:
 			possible_enemies.remove_at(index)
 			continue
-		
+
 		spawn_cell.return_to_start_pos()
 		spawn_cell.spawn_enemy(enemy.duplicate())
 		wave_point_total += enemy.spawn_value
@@ -80,19 +83,19 @@ func _get_possible_wave_enemies() -> Array[Enemy]:
 	var wave_enemy_array: Array[Enemy] = []
 
 	for enemy: Enemy in enemy_scenes:
-		if enemy.first_available_wave > wave:
+		if enemy.first_available_wave > current_wave:
 			continue
 		if enemy.spawn_value <= current_wave_weight:
 			wave_enemy_array.push_back(enemy)
 		else:
 			break
-	
+
 	return wave_enemy_array
 
 func _on_enemies_cleared():
-	SignalBus.wave_end.emit(wave)
+	SignalBus.wave_end.emit(current_wave)
 	wave_setup_timer()
-	wave += 1
+	current_wave += 1
 	_start_wave()
 	
 func wave_setup_timer() -> void:
@@ -105,15 +108,17 @@ func setup_controller():
 	_get_enemy_scenes()
 	_sort_enemy_scenes_by_var("spawn_value")
 
-	if wave > 1:
-		current_wave_weight += (wave - 1) * wave_increment
+	if current_wave > 1:
+		current_wave_weight += (current_wave - 1) * wave_increment
 
 	_start_wave()
-	
+
 	SignalBus.enemies_cleared.connect(_on_enemies_cleared)
 
 
 func initialise_vars() -> void:
+	current_wave = starting_wave
+	current_wave_weight = starting_wave_weight
 	time_elapsed = 0.0
 	moving = false
 	area_loaded = false
@@ -124,7 +129,7 @@ func initialise_vars() -> void:
 func reset() -> void:
 	print("Resetting WaveController")
 	initialise_vars()
-	
+
 func _process(delta: float) -> void:
 	if (moving):
 		time_elapsed += delta

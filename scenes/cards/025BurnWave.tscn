@@ -9,13 +9,13 @@ script = ExtResource("3_k34su")
 burn = 2
 metadata/_custom_type_script = "uid://fuokg41g7d8s"
 
-[node name="025BurnWave" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="025BurnWave" type="MarginContainer"]
+mouse_filter = 0
 script = ExtResource("1_w6fbn")
 card_name = "Burn Wave"
 sprite_texture = ExtResource("2_w6fbn")
 tooltips = Array[String](["Adds %burn% stacks of burn to your next card"])
 tags = Array[int]([2])
 card_effect = SubResource("Resource_03fju")
+rarity = 1
 metadata/_custom_type_script = "uid://c531eyaws05rr"

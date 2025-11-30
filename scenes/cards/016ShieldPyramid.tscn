@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://lxyvynedxqyq"]
 
-[ext_resource type="Script" path="res://scenes/cards/016ShieldPyramid.gd" id="1_a1a77"]
+[ext_resource type="Script" uid="uid://cte6w8yi0kvuo" path="res://scenes/cards/016ShieldPyramid.gd" id="1_a1a77"]
 [ext_resource type="Texture2D" uid="uid://djhykqgl66fsq" path="res://assets/card_art/card_shield_pyramid.png" id="2_a1a77"]
 [ext_resource type="Script" uid="uid://fuokg41g7d8s" path="res://scenes/card/CardEffect.gd" id="3_it4a2"]
 
@@ -10,13 +10,13 @@ target = 2
 shield = 3
 metadata/_custom_type_script = "uid://fuokg41g7d8s"
 
-[node name="016ShieldPyramid" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="016ShieldPyramid" type="MarginContainer"]
+mouse_filter = 0
 script = ExtResource("1_a1a77")
 card_name = "Pyramid of Shields"
 sprite_texture = ExtResource("2_a1a77")
 tooltips = Array[String](["Add %shield% Block. Increases by %increase_amount% each time this is played until the end of wave"])
 tags = Array[int]([1])
 card_effect = SubResource("Resource_1dyra")
+rarity = 2
 metadata/_custom_type_script = "uid://c531eyaws05rr"

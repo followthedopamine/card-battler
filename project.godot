@@ -30,6 +30,10 @@ WaveController="*res://autoloads/WaveController.gd"
 
 gdscript/warnings/unused_signal=0
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/file_extractor/plugin.cfg")

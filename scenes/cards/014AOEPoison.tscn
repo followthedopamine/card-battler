@@ -12,14 +12,14 @@ enemy_target_type = 2
 poison = 2
 metadata/_custom_type_script = "uid://fuokg41g7d8s"
 
-[node name="014aoePoison" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="014aoePoison" type="MarginContainer"]
+mouse_filter = 0
 script = ExtResource("1_cr1kv")
 card_name = "Noxious Fumes"
 sprite_texture = ExtResource("2_2cich")
 tooltips = Array[String](["Applies %poison% stacks of poison in an AOE"])
 tags = Array[int]([7, 8])
 card_effect = SubResource("Resource_a8cuo")
+rarity = 1
 duration = 1.0
 metadata/_custom_type_script = "uid://c531eyaws05rr"

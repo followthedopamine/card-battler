@@ -11,13 +11,13 @@ enemy_target = 1
 enemy_target_type = 1
 metadata/_custom_type_script = "uid://fuokg41g7d8s"
 
-[node name="028MoneyEqualsPower" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="028MoneyEqualsPower" type="MarginContainer"]
+mouse_filter = 0
 script = ExtResource("1_06loi")
 card_name = "Golden Katana"
 sprite_texture = ExtResource("2_06loi")
 tooltips = Array[String](["Deals damage equal to half your gold."])
 tags = Array[int]([0])
 card_effect = SubResource("Resource_wjkfy")
+rarity = 2
 metadata/_custom_type_script = "uid://c531eyaws05rr"

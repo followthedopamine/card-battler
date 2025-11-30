@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://5uq7pgxmnqrh"]
+[gd_scene load_steps=24 format=3 uid="uid://5uq7pgxmnqrh"]
 
 [ext_resource type="Script" uid="uid://dau1qjar800ji" path="res://scenes/right_panel/tabs/shop/scripts/Shop.gd" id="1_xx35e"]
 [ext_resource type="Texture2D" uid="uid://bpradaiwqny8q" path="res://assets/background/bg4.png" id="2_jgbw4"]
@@ -9,10 +9,15 @@
 [ext_resource type="Texture2D" uid="uid://c3o6ehv82u5kx" path="res://assets/shopkeeper/shopkeeper_table.png" id="4_tqxei"]
 [ext_resource type="Texture2D" uid="uid://bqci3pkst1ek1" path="res://assets/shopkeeper/shopkeeper_blink2.png" id="4_wdkam"]
 [ext_resource type="Script" uid="uid://cyaf1gwxm1g2p" path="res://scenes/right_panel/tabs/shop/scripts/CurrencyDisplay.gd" id="4_xmkj5"]
+[ext_resource type="Texture2D" uid="uid://c2tf1340uxe7y" path="res://assets/shopkeeper/shopkeeper_cardeject_1.png" id="5_77ncd"]
 [ext_resource type="Script" uid="uid://kcuevxah7vrq" path="res://scenes/right_panel/tabs/shop/Sell.gd" id="5_rsvis"]
 [ext_resource type="Theme" uid="uid://du1q07vbcgp5p" path="res://assets/themes/button.tres" id="5_t7qiw"]
+[ext_resource type="Texture2D" uid="uid://dugxcqr534mo0" path="res://assets/shopkeeper/shopkeeper_cardeject_2.png" id="6_qlopl"]
 [ext_resource type="Script" uid="uid://dwu1ap13rb8je" path="res://scenes/right_panel/tabs/shop/Shopkeeper.gd" id="6_wdkam"]
+[ext_resource type="Texture2D" uid="uid://bk2vt52ht7q20" path="res://assets/shopkeeper/shopkeeper_cardeject_3.png" id="7_m68iw"]
 [ext_resource type="FontFile" uid="uid://jnit0owmw6ud" path="res://assets/fonts/RobotHeroesEdit.ttf" id="7_t7qiw"]
+[ext_resource type="Texture2D" uid="uid://cvjbgr4bg2ral" path="res://assets/shopkeeper/shopkeeper_cardeject_4.png" id="8_pwone"]
+[ext_resource type="Texture2D" uid="uid://7w4n74cxbuky" path="res://assets/shopkeeper/shopkeeper_cardeject_5.png" id="9_72cbu"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t7qiw"]
 texture = ExtResource("2_jgbw4")
@@ -44,6 +49,41 @@ animations = [{
 "loop": false,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_77ncd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qlopl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_m68iw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_pwone")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_72cbu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_77ncd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qlopl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_m68iw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_pwone")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_72cbu")
+}],
+"loop": false,
+"name": &"pack_eject",
+"speed": 12.0
 }]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qv4fl"]
@@ -105,11 +145,13 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="Shopkeeper" type="AnimatedSprite2D" parent="ShopMarginContainer/ShopVBoxContainer/ShopTopBackgroundPanel/ShopkeeperContainer"]
-position = Vector2(50, 50)
+[node name="Shopkeeper" type="AnimatedSprite2D" parent="ShopMarginContainer/ShopVBoxContainer/ShopTopBackgroundPanel/ShopkeeperContainer" node_paths=PackedStringArray("shop_reroll_button")]
+position = Vector2(165, 164)
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_qvadc")
+animation = &"pack_eject"
 script = ExtResource("6_wdkam")
+shop_reroll_button = NodePath("../../../ShopBottomBackgroundPanel/MarginContainer/ShoppingAreaPanelContainer/Control/ShopRerollButton")
 
 [node name="TextureRect" type="TextureRect" parent="ShopMarginContainer/ShopVBoxContainer/ShopTopBackgroundPanel/ShopkeeperContainer"]
 visible = false
@@ -210,6 +252,7 @@ alignment = 1
 [node name="SellRichTextLabel" type="RichTextLabel" parent="ShopMarginContainer/SellPanel/SellMarginContainer/SellVBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("7_t7qiw")
 theme_override_font_sizes/normal_font_size = 60
 text = "Sell"
 fit_content = true
@@ -218,7 +261,8 @@ horizontal_alignment = 1
 [node name="PriceRichTextLabel" type="RichTextLabel" parent="ShopMarginContainer/SellPanel/SellMarginContainer/SellVBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("7_t7qiw")
 theme_override_font_sizes/normal_font_size = 40
-text = "$0"
+text = "₩ 0"
 fit_content = true
 horizontal_alignment = 1

@@ -1,4 +1,4 @@
-class_name CardComponents extends Control
+class_name CardComponents extends Container
 
 @export var panel: Panel
 @export var timer_label: Label

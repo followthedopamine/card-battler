@@ -12,9 +12,8 @@ enemy_target_type = 1
 slow = 1
 metadata/_custom_type_script = "uid://fuokg41g7d8s"
 
-[node name="005Slow" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="005Slow" type="MarginContainer"]
+mouse_filter = 0
 script = ExtResource("1_5bp40")
 card_name = "Hack"
 sprite_texture = ExtResource("2_vafn7")

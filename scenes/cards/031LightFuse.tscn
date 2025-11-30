@@ -8,13 +8,13 @@
 script = ExtResource("3_kag57")
 metadata/_custom_type_script = "uid://fuokg41g7d8s"
 
-[node name="031LightFuse" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="031LightFuse" type="MarginContainer"]
+mouse_filter = 0
 script = ExtResource("1_knysd")
 card_name = "Light Fuse"
 sprite_texture = ExtResource("2_kag57")
 tooltips = Array[String](["After playing %ADDITIONAL_CARDS_REQUIRED% more cards deal %EXPLOSION_DAMAGE% to all enemies"])
 tags = Array[int]([10])
 card_effect = SubResource("Resource_p07nl")
+rarity = 2
 metadata/_custom_type_script = "uid://c531eyaws05rr"

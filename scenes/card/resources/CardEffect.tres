@@ -4,4 +4,8 @@
 
 [resource]
 script = ExtResource("1_ltshm")
+target = 1
+enemy_target = 1
+enemy_target_type = 1
+damage = 10.0
 metadata/_custom_type_script = "uid://fuokg41g7d8s"

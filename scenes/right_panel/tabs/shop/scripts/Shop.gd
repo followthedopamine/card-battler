@@ -16,3 +16,4 @@ func _on_shop_reroll_button_pressed() -> void:
 		PlayerManager.currency -= REROLL_PRICE
 		for shop_slot: ShopSlot in shop_slots:
 			shop_slot.restock_item()
+		SignalBus.shop_rerolled.emit()

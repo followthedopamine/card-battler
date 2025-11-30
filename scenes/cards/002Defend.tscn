@@ -10,9 +10,8 @@ target = 2
 shield = 5
 metadata/_custom_type_script = "uid://fuokg41g7d8s"
 
-[node name="002Defend" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="002Defend" type="MarginContainer"]
+mouse_filter = 0
 script = ExtResource("1_1cftx")
 card_name = "Defend"
 sprite_texture = ExtResource("2_fy77k")
