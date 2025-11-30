@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cqhbamimh6d5s" path="res://scenes/play_panel/buff_particle/BuffParticleEmitter.tscn" id="6_tdg3f"]
 [ext_resource type="PackedScene" uid="uid://cfaoke5uaogle" path="res://scenes/play_panel/damage_particle/DamageParticleEmitter.tscn" id="6_vts5b"]
 [ext_resource type="Script" uid="uid://ch2pxgdvjbcbt" path="res://scenes/play_panel/player/PlayerAnimationPlayer.gd" id="7_h52gd"]
-[ext_resource type="PackedScene" uid="uid://d3vgl4xvkig7t" path="res://scenes/play_panel/buff_particle/BuffParticleParticle.tscn" id="8_5jasm"]
+[ext_resource type="PackedScene" uid="uid://d3vgl4xvkig7t" path="res://scenes/play_panel/damage_particle/DamageParticleParticle.tscn" id="8_5jasm"]
 [ext_resource type="Texture2D" uid="uid://b4jl0ajaa3qek" path="res://assets/particles/puff.png" id="8_e4pbi"]
 [ext_resource type="Texture2D" uid="uid://dbl7lng10foe1" path="res://assets/particles/rectangle_particle.png" id="9_vts5b"]
 

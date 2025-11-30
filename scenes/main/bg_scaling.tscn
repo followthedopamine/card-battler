@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bpradaiwqny8q" path="res://assets/background/bg4.png" id="3_5r7lj"]
 [ext_resource type="Texture2D" uid="uid://bo57h7esepw7d" path="res://assets/background/bg2.png" id="4_et12n"]
 [ext_resource type="Texture2D" uid="uid://baxex53ta0c41" path="res://assets/background/viewport.png" id="10_mg5ca"]
-[ext_resource type="Texture2D" uid="uid://7haxw000guk5" path="res://assets/enemies/guy.png" id="11_2mg74"]
-[ext_resource type="Texture2D" uid="uid://fc4qmy08eldp" path="res://assets/enemies/guy1.png" id="12_rhhs2"]
+[ext_resource type="Texture2D" path="res://assets/enemies/guy.png" id="11_2mg74"]
+[ext_resource type="Texture2D" path="res://assets/enemies/guy1.png" id="12_rhhs2"]
 
 [sub_resource type="Gradient" id="Gradient_1pl5n"]
 offsets = PackedFloat32Array(0, 0.26098192, 0.51937985, 0.81653744, 1)
