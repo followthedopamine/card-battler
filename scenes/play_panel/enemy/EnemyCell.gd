@@ -65,10 +65,12 @@ func process_action_effects(action: ActionEffect):
 
 		if action.shield:
 			enemy_scene.block += action.shield
+			enemy_scene.buff_particle_emitter.emit_particle()
 
 		if action.strength:
 			Status.new(Status.Type.STRENGTH, action.strength, enemy_scene)
 			enemy_scene.strength += action.strength
+			enemy_scene.buff_particle_emitter.emit_particle()
 
 		if action.burn:
 			Status.new(Status.Type.BURN, action.burn, enemy_scene)

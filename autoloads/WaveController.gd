@@ -113,7 +113,8 @@ func setup_controller():
 
 	_start_wave()
 
-	SignalBus.enemies_cleared.connect(_on_enemies_cleared)
+	if !SignalBus.enemies_cleared.is_connected(_on_enemies_cleared):
+		SignalBus.enemies_cleared.connect(_on_enemies_cleared)
 
 
 func initialise_vars() -> void:

@@ -7,6 +7,7 @@ extends AnimationPlayer
 
 func _ready() -> void:
 	SignalBus.damage_taken.connect(_on_damage_taken)
+	SignalBus.buffed.connect(_on_buffed)
 	SignalBus.card_played_target_enemy.connect(_on_card_played_target_enemy)
 	SignalBus.wave_end.connect(_on_wave_end)
 	SignalBus.animation_end.connect(_on_animation_end)
@@ -18,6 +19,12 @@ func _on_damage_taken(target: Entity, _attacker: Entity, damage: float) -> void:
 		if !is_playing():
 			self.play("RESET")
 			self.play("hit")
+
+func _on_buffed(target: Entity) -> void:
+	if target == parent:
+		if is_playing():
+			return
+		play("buff", 0.1)
 
 func _on_card_played_target_enemy(_card: CardEffect) -> void:
 	self.play("RESET")

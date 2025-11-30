@@ -49,10 +49,14 @@ func _on_player_targeted(effect: ActionEffect, enemy: Enemy) -> void:
 	if effect.shield:
 		SignalBus.player_added_block.emit()
 		block += effect.shield
-		
+		is_buffing()
+		buff_particle_emitter.emit_particle()
+
 	if effect.thorns:
 		Status.new(Status.Type.THORNS, effect.thorns, self)
-		
+		is_buffing()
+		buff_particle_emitter.emit_particle()
+	
 	if effect.heal:
 		heal(effect.heal)
 		SignalBus.player_health_change.emit(health)
@@ -67,7 +71,9 @@ func _on_player_targeted(effect: ActionEffect, enemy: Enemy) -> void:
 	if effect.strength:
 		strength += effect.strength
 		Status.new(Status.Type.STRENGTH, effect.strength, self)
-	
+		is_buffing()
+		buff_particle_emitter.emit_particle()
+
 	if effect.slow:
 		Status.new(Status.Type.SLOW, effect.slow, self)
 		is_slowed = !!effect.slow
@@ -76,8 +82,10 @@ func _ready() -> void:
 	super()
 
 	var sprite_size = get_sprite_size()
-	damage_particle_emitter.set_emission_box(get_sprite_size())
-	damage_particle_emitter.set_emission_offset(Vector2(0, -sprite_size.y * .5))
+	damage_particle_emitter.set_emission_box(sprite_size)
+	damage_particle_emitter.set_emission_offset(Vector2(0, 0))
+	buff_particle_emitter.set_emission_box(sprite_size)
+	buff_particle_emitter.set_emission_offset(Vector2(0, 0))
 
 	SignalBus.player_max_health.emit(max_health)
 

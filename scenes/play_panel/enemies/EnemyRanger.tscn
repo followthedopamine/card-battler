@@ -1,12 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6kxvqvkfjohw"]
+[gd_scene load_steps=11 format=3 uid="uid://b6kxvqvkfjohw"]
 
 [ext_resource type="Script" uid="uid://cgs1wx3ilgold" path="res://scenes/play_panel/enemies/EnemyRanger.gd" id="1_onnhp"]
 [ext_resource type="Texture2D" uid="uid://b6o2syw7dos8v" path="res://assets/enemies/ranger.png" id="2_onnhp"]
 [ext_resource type="PackedScene" uid="uid://vg0ltwj23njc" path="res://scenes/play_panel/HealthBar.tscn" id="3_k0nif"]
 [ext_resource type="PackedScene" uid="uid://co2mq4qr6rara" path="res://scenes/status/StatusBar.tscn" id="4_6ylh6"]
 [ext_resource type="Script" uid="uid://mjiv7q0gvno6" path="res://scenes/status/StatusHandler.gd" id="5_sd200"]
-[ext_resource type="PackedScene" uid="uid://cqhbamimh6d5s" path="res://scenes/play_panel/damage_particle/DamageParticleEmitter.tscn" id="6_7ril7"]
-[ext_resource type="Script" uid="uid://blp0ien6xn5a0" path="res://scenes/play_panel/enemies/EnemyAnimationPlayer.gd" id="7_l0hld"]
+[ext_resource type="PackedScene" uid="uid://cfaoke5uaogle" path="res://scenes/play_panel/damage_particle/DamageParticleEmitter.tscn" id="6_7ril7"]
+[ext_resource type="PackedScene" uid="uid://cqhbamimh6d5s" path="res://scenes/play_panel/buff_particle/BuffParticleEmitter.tscn" id="8_tlhnc"]
+[ext_resource type="PackedScene" uid="uid://d3vgl4xvkig7t" path="res://scenes/play_panel/buff_particle/BuffParticleParticle.tscn" id="9_iahsd"]
+[ext_resource type="PackedScene" uid="uid://bb1xh26f0t1k" path="res://scenes/play_panel/enemy/EnemyAnimationPlayer.tscn" id="9_tlhnc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_76ifo"]
 animations = [{
@@ -18,132 +20,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="Animation" id="Animation_lexr1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.5, 0.5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_lojwc"]
-resource_name = "attack"
-length = 0.15
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-0.17453292519943295, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.55, 0.55), Vector2(0.5, 0.5)]
-}
-
-[sub_resource type="Animation" id="Animation_1fnth"]
-resource_name = "hit"
-length = 0.15
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.5, 0.5), Vector2(0.45, 0.55)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.15),
-"transitions": PackedFloat32Array(1, 0.3186402),
-"update": 0,
-"values": [Vector2(10, 0), Vector2(0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_mr8l1"]
-_data = {
-&"RESET": SubResource("Animation_lexr1"),
-&"attack": SubResource("Animation_lojwc"),
-&"hit": SubResource("Animation_1fnth")
-}
 
 [node name="Enemy" type="Control" groups=["Enemy"]]
 layout_mode = 3
@@ -190,9 +66,9 @@ metadata/_custom_type_script = "uid://mjiv7q0gvno6"
 layout_mode = 0
 particle_lifetime = 0.8
 
-[node name="EnemyAnimationPlayer" type="AnimationPlayer" parent="."]
-deterministic = true
-libraries = {
-&"": SubResource("AnimationLibrary_mr8l1")
-}
-script = ExtResource("7_l0hld")
+[node name="BuffParticleEmitter" parent="." instance=ExtResource("8_tlhnc")]
+layout_mode = 0
+particle_lifetime = 0.8
+particle_scene = ExtResource("9_iahsd")
+
+[node name="EnemyAnimationPlayer" parent="." instance=ExtResource("9_tlhnc")]

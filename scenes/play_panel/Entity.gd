@@ -19,6 +19,7 @@ var is_slowed := false
 
 @onready var sprite: AnimatedSprite2D  = $Sprite
 @onready var damage_particle_emitter: DamageParticleEmitter = $DamageParticleEmitter
+@onready var buff_particle_emitter: BuffParticleEmitter = $BuffParticleEmitter
 
 func _ready() -> void:
 	SignalBus.wave_setup_phase.connect(_on_wave_setup_phase)
@@ -61,3 +62,6 @@ func heal(healing: float) -> void:
 	if self is Player:
 		#SignalBus.player_healed.emit()
 		SignalBus.player_health_change.emit(health)
+
+func is_buffing() -> void:
+	SignalBus.buffed.emit(self)

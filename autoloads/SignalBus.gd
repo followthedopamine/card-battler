@@ -31,6 +31,7 @@ signal relic_added(relic: Relic)
 # Entity signals
 signal player_died
 signal damage_taken(target: Entity, attacker: Entity, damage: float)
+signal buffed(target: Entity)
 
 # PlayPanel signals
 

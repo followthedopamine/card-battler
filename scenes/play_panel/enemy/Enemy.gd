@@ -157,6 +157,7 @@ func process_next_action():
 		deal_damage(action)
 
 	if action.target == ActionEffect.Target.ENEMY:
+		is_buffing()
 		if action.enemy_target == ActionEffect.GridTarget.SELF:
 			if parent.has_method("process_action_effects"):
 				parent.process_action_effects(action)
@@ -201,6 +202,8 @@ func _ready() -> void:
 	_setup_health_bar()
 	damage_particle_emitter.set_emission_box(sprite_size)
 	damage_particle_emitter.set_emission_offset(Vector2(sprite_size.x * .5, 0))
+	buff_particle_emitter.set_emission_box(sprite_size)
+	buff_particle_emitter.set_emission_offset(Vector2(sprite_size.x * .5, sprite_size.y))
 
 	self.mouse_entered.connect(_on_mouse_entered)
 	self.mouse_exited.connect(_on_mouse_exited)
