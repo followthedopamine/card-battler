@@ -137,7 +137,6 @@ func _on_timer_timeout() -> void:
 	
 func _on_wave_end(_wave: int) -> void:
 	duration = original_duration
-	card_effect = original_card_effect
 	player.is_slowed = false
 
 func activate_card_effect() -> void:

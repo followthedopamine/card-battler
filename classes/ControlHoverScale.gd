@@ -7,6 +7,7 @@ class_name ControlHoverScale extends Control
 
 @onready var original_position: Vector2 = node_to_scale.position
 @onready var original_scale: Vector2 = node_to_scale.scale
+@onready var original_z_index: int = node_to_scale.z_index
 
 func _ready() -> void:
 	if node_to_connect_mouse == null:
@@ -16,6 +17,7 @@ func _ready() -> void:
 	node_to_connect_mouse.mouse_exited.connect(_on_mouse_exited)
 
 func _on_mouse_entered() -> void:
+	node_to_scale.z_index = 1000
 	original_position = node_to_scale.position
 	var original_rect = node_to_scale.get_rect()
 
@@ -30,3 +32,4 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	node_to_scale.scale = original_scale
 	node_to_scale.position = original_position
+	node_to_scale.z_index = original_z_index

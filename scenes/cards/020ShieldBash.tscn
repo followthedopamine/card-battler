@@ -12,13 +12,13 @@ enemy_target_type = 1
 shield = 5
 metadata/_custom_type_script = "uid://fuokg41g7d8s"
 
-[node name="020ShieldBash" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="020ShieldBash" type="MarginContainer"]
+mouse_filter = 0
 script = ExtResource("1_8pjyn")
 card_name = "Shield Bash"
 sprite_texture = ExtResource("2_8pjyn")
 tooltips = Array[String](["Deals damage equal to your block, removes %shield% block"])
 tags = Array[int]([1, 0])
 card_effect = SubResource("Resource_jshir")
+rarity = 1
 metadata/_custom_type_script = "uid://c531eyaws05rr"

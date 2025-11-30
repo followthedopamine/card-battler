@@ -12,13 +12,13 @@ enemy_target_type = 3
 poison = 2
 metadata/_custom_type_script = "uid://fuokg41g7d8s"
 
-[node name="017soup" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="017soup" type="MarginContainer"]
+mouse_filter = 0
 script = ExtResource("1_qoh3e")
 card_name = "SOUP!"
 sprite_texture = ExtResource("2_eodoq")
 tooltips = Array[String](["Applies %poison% stacks of poison to all enemies"])
 tags = Array[int]([7, 10])
 card_effect = SubResource("Resource_774gm")
+rarity = 2
 metadata/_custom_type_script = "uid://c531eyaws05rr"

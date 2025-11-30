@@ -29,7 +29,7 @@ func _ready() -> void:
 	SignalBus.currency_changed.emit()
 	
 func initialise_vars() -> void:
-	currency = 15
+	currency = 18
 	currency_modifier = 1.0
 	hand_size = 3
 	max_hand_size = 5

@@ -5,7 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://camja8h6yw4db" path="res://scenes/cards/002Defend.tscn" id="3_ddy2k"]
 
 [node name="Hand" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_ou7ip")
-starting_cards = [ExtResource("2_8vxba"), ExtResource("3_ddy2k")]
+starting_cards = Array[PackedScene]([ExtResource("2_8vxba"), ExtResource("3_ddy2k")])
 metadata/_custom_type_script = "uid://dj7rwicwlmnf7"

@@ -46,4 +46,3 @@ func reset() -> void:
 	relics = []
 	set_card_scene_arrays()
 	set_relic_scene_array()
-

@@ -8,12 +8,12 @@
 script = ExtResource("3_5uc5g")
 metadata/_custom_type_script = "uid://fuokg41g7d8s"
 
-[node name="030GoldBar" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="030GoldBar" type="MarginContainer"]
+mouse_filter = 0
 script = ExtResource("1_h7o4g")
 card_name = "Gold Bar"
 sprite_texture = ExtResource("2_h7o4g")
 tooltips = Array[String](["Add %GOLD_INCREASE% to this card's sell value"])
 card_effect = SubResource("Resource_roblf")
+rarity = 1
 metadata/_custom_type_script = "uid://c531eyaws05rr"

@@ -27,7 +27,7 @@ func _on_card_controller_picked_up(card_controller: CardController):
 	if !card_controller.get_parent() is Hand:
 		return
 	if "price" in card_controller:
-		price_label.text = "$%s" % floori(card_controller.price * SELL_MULTIPLIER)
+		price_label.text = "₩ %s" % floori(card_controller.price * SELL_MULTIPLIER)
 		visible = true
 	
 func _on_draggable_released() -> void:

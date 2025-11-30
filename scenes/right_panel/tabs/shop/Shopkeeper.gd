@@ -52,7 +52,7 @@ func _ready() -> void:
 	add_child(blink_timer)
 	blink_timer.start()
 
-	shop_reroll_button.pressed.connect(_on_shop_reroll_button_pressed)
+	SignalBus.shop_rerolled.connect(_on_shop_reroll_button_pressed)
 
 func _on_shop_reroll_button_pressed() -> void:
 	pack_eject()

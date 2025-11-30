@@ -2,11 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c531eyaws05rr" path="res://scenes/card/Card.gd" id="1_fa4yn"]
 
-[node name="Card" type="Control"]
-custom_minimum_size = Vector2(142, 225)
-layout_mode = 3
-anchors_preset = 0
-offset_right = 142.0
-offset_bottom = 225.0
-mouse_filter = 1
+[node name="Card" type="MarginContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_fa4yn")
+metadata/_custom_type_script = "uid://c531eyaws05rr"

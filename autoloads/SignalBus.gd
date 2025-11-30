@@ -4,6 +4,7 @@ extends Node2D
 signal currency_changed
 signal pack_opened(rarity: PackOpening.Rarity)
 signal pack_closed
+signal shop_rerolled
 
 # Draggable signals
 signal card_controller_picked_up(card_controller: CardController)

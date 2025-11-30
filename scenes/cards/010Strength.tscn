@@ -10,9 +10,8 @@ target = 2
 strength = 1
 metadata/_custom_type_script = "uid://fuokg41g7d8s"
 
-[node name="010Strength" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="010Strength" type="MarginContainer"]
+mouse_filter = 0
 script = ExtResource("1_cmf8i")
 card_name = "Strength"
 sprite_texture = ExtResource("2_6vskd")

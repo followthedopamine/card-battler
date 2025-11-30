@@ -10,13 +10,13 @@ target = 2
 enemy_target_type = 3
 metadata/_custom_type_script = "uid://fuokg41g7d8s"
 
-[node name="021MeltingShield" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="021MeltingShield" type="MarginContainer"]
+mouse_filter = 0
 script = ExtResource("1_swyjb")
 card_name = "Melting Shield"
 sprite_texture = ExtResource("2_dishs")
 tooltips = Array[String](["Blocks for the total stacks of poison on all enemies"])
 tags = Array[int]([1, 7])
 card_effect = SubResource("Resource_s2am4")
+rarity = 1
 metadata/_custom_type_script = "uid://c531eyaws05rr"

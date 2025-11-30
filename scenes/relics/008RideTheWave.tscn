@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://c22lna1d8nylh"]
 
 [ext_resource type="Script" uid="uid://choy2rawpsheb" path="res://scenes/relics/008RideTheWave.gd" id="1_4441k"]
-[ext_resource type="Texture2D" uid="uid://bv4r7kqmpflq6" path="res://assets/icons/economy.png" id="2_s3wxu"]
+[ext_resource type="Texture2D" uid="uid://cofatm3ycobb4" path="res://assets/relics/surfboard.png" id="2_4441k"]
 
 [node name="008RideTheWave" type="MarginContainer"]
 script = ExtResource("1_4441k")
-relic_sprite = ExtResource("2_s3wxu")
+relic_sprite = ExtResource("2_4441k")
 relic_name = "Ride The Wave"
 tooltips = Array[String](["At the start of a new wave the first card in your hand is played instantly"])
 metadata/_custom_type_script = "uid://dcn785x8e1aj1"

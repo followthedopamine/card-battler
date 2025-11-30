@@ -12,9 +12,8 @@ enemy_target_type = 2
 damage = 5
 metadata/_custom_type_script = "uid://fuokg41g7d8s"
 
-[node name="011Bomb" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="011Bomb" type="MarginContainer"]
+mouse_filter = 0
 script = ExtResource("1_4jdbx")
 card_name = "Bomb"
 sprite_texture = ExtResource("2_x1s5x")

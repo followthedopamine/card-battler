@@ -117,12 +117,17 @@ mouse_filter = 2
 
 [node name="PlayPanelContainer" parent="GradientBackgroundPanel/MainHBoxContainer/GamePanelContainer/GameMarginContainer/GameVBoxContainer" instance=ExtResource("1_0xm2m")]
 layout_mode = 2
+size_flags_stretch_ratio = 1.66
 
 [node name="CardPanelContainer" type="PanelContainer" parent="GradientBackgroundPanel/MainHBoxContainer/GamePanelContainer/GameMarginContainer/GameVBoxContainer"]
-custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="Hand" parent="GradientBackgroundPanel/MainHBoxContainer/GamePanelContainer/GameMarginContainer/GameVBoxContainer/CardPanelContainer" instance=ExtResource("2_sugp2")]
+[node name="MarginContainer" type="MarginContainer" parent="GradientBackgroundPanel/MainHBoxContainer/GamePanelContainer/GameMarginContainer/GameVBoxContainer/CardPanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+
+[node name="Hand" parent="GradientBackgroundPanel/MainHBoxContainer/GamePanelContainer/GameMarginContainer/GameVBoxContainer/CardPanelContainer/MarginContainer" instance=ExtResource("2_sugp2")]
 layout_mode = 2
 
 [node name="RightPanelContainer2" parent="GradientBackgroundPanel/MainHBoxContainer" instance=ExtResource("1_ig7tw")]

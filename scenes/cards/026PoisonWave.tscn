@@ -9,13 +9,13 @@ script = ExtResource("3_d8ea7")
 poison = 1
 metadata/_custom_type_script = "uid://fuokg41g7d8s"
 
-[node name="026PoisonWave" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="026PoisonWave" type="MarginContainer"]
+mouse_filter = 0
 script = ExtResource("1_cfpfw")
 card_name = "Poison Wave"
 sprite_texture = ExtResource("2_bd1ri")
 tooltips = Array[String](["Adds %poison% stacks of poison to your next card"])
 tags = Array[int]([7])
 card_effect = SubResource("Resource_sj0bj")
+rarity = 1
 metadata/_custom_type_script = "uid://c531eyaws05rr"

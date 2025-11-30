@@ -55,15 +55,13 @@ func _on_status_updated(status: Status, node: Node) -> void:
 		if current_status.effect == Status.Type.SLOW:
 			slow_timer.stop()
 		
-func _on_card_played(_card: Card) -> void:
-	if !parent is Player:
-		return
-	var status: Status = get_current_status(Status.Type.FUSE)
-	if !status:
-		return
-	if status.stacks > 0:
-		status.stacks -= 1
-		SignalBus.status_refreshed.emit(status, PlayerManager.player_node)
+func _on_card_played(card: Card) -> void:
+	handle_fuse()
+	var status: Status = Status.get_status(PlayerManager.player_node, Status.Type.EXTRA_ATTACK)
+	if status != null && status.stacks > 0:
+		Status.new(Status.Type.EXTRA_ATTACK, -1, PlayerManager.player_node)
+		# Currently this will use all the extra stacks at once
+		card.activate_card_effect()
 		
 func _on_wave_end(_wave: int) -> void:
 	for status: Status in current_statuses:
@@ -118,6 +116,16 @@ func _on_slow_timer_timeout() -> void:
 				SignalBus.status_refreshed.emit(slow, parent)
 				if slow.stacks == 0:
 					parent.is_slowed = false
+					
+func handle_fuse() -> void:
+	if !parent is Player:
+		return
+	var status: Status = get_current_status(Status.Type.FUSE)
+	if !status:
+		return
+	if status.stacks > 0:
+		status.stacks -= 1
+		SignalBus.status_refreshed.emit(status, PlayerManager.player_node)
 
 func get_current_status(status_type: Status.Type) -> Status:
 	for current_status: Status in current_statuses:
