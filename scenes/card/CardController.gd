@@ -1,4 +1,4 @@
-class_name CardController extends Control
+class_name CardController extends MarginContainer
 
 const ROTATION_AMOUNT: float = 1.0
 const MAX_ROTATION: float = 50.0
@@ -33,6 +33,7 @@ var smooth_velocity: Vector2
 var was_added_to_hand: bool = false
 
 func _ready() -> void:
+	
 	SignalBus.card_controller_picked_up.connect(_on_card_controller_picked_up)
 	SignalBus.card_controller_hovered.connect(_on_card_controller_hovered)
 	mouse_entered.connect(_on_mouse_entered)

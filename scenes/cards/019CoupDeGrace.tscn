@@ -12,13 +12,13 @@ enemy_target_type = 1
 damage = 8
 metadata/_custom_type_script = "uid://fuokg41g7d8s"
 
-[node name="019CoupDeGrace" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="019CoupDeGrace" type="MarginContainer"]
+mouse_filter = 0
 script = ExtResource("1_4u87r")
 card_name = "Coup De Grace"
 sprite_texture = ExtResource("2_4u87r")
 tooltips = Array[String](["Deals %damage% damage. If your target is poisoned deal %BIG_DAMAGE% damage instead"])
 tags = Array[int]([0, 7])
 card_effect = SubResource("Resource_4u87r")
+rarity = 2
 metadata/_custom_type_script = "uid://c531eyaws05rr"

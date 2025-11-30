@@ -61,7 +61,7 @@ func process_action_effects(action: ActionEffect):
 
 		if action.damage:
 			enemy_scene.take_damage(action.damage + action.strength, PlayerManager.player_node)
-			handle_extra_player_attacks(action)
+			#handle_extra_player_attacks(action)
 
 		if action.shield:
 			enemy_scene.block += action.shield

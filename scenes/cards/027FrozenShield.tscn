@@ -11,9 +11,8 @@ shield = 20
 slow = 2
 metadata/_custom_type_script = "uid://fuokg41g7d8s"
 
-[node name="027FrozenShield" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="027FrozenShield" type="MarginContainer"]
+mouse_filter = 0
 script = ExtResource("1_o7gpe")
 card_name = "Frozen Shield"
 sprite_texture = ExtResource("2_370qq")

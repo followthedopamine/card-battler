@@ -7,13 +7,12 @@
 [sub_resource type="Resource" id="Resource_opmf2"]
 script = ExtResource("3_id21h")
 target = 2
-burn = 2
 heal = 10.0
+burn = 2
 metadata/_custom_type_script = "uid://fuokg41g7d8s"
 
-[node name="009HealBurn" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="009HealBurn" type="MarginContainer"]
+mouse_filter = 0
 script = ExtResource("1_ivvcq")
 card_name = "Burn Heal"
 sprite_texture = ExtResource("2_upb2v")
