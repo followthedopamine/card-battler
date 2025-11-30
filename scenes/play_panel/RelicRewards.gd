@@ -2,6 +2,7 @@ extends Panel
 
 @export var relic_container: MarginContainer
 @export var relic_skip_button: Button
+@export var relic_name_label: Label
 
 @export var relic: Relic
 
@@ -37,4 +38,5 @@ func offer_relic() -> void:
 			child.queue_free()
 	var random_relic: Relic = GameData.relics.pop_at(randi_range(0, GameData.relics.size() - 1))
 	relic = random_relic
+	relic_name_label.text = relic.relic_name
 	relic_container.add_child(random_relic)

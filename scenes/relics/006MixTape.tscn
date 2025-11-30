@@ -6,5 +6,6 @@
 [node name="006MixTape" type="MarginContainer"]
 script = ExtResource("1_t2g7v")
 relic_sprite = ExtResource("2_t2g7v")
+relic_name = "Mixtape"
 tooltips = Array[String](["Cards in packs are completely random"])
 metadata/_custom_type_script = "uid://dcn785x8e1aj1"

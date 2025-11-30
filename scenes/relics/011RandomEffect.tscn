@@ -6,6 +6,6 @@
 [node name="011RandomEffect" type="MarginContainer"]
 script = ExtResource("1_635la")
 relic_sprite = ExtResource("2_kfc1j")
-relic_name = "Random effect"
+relic_name = "Randomiser"
 tooltips = Array[String](["Your cards take 1s longer to play and trigger a random card effect on play"])
 metadata/_custom_type_script = "uid://dcn785x8e1aj1"

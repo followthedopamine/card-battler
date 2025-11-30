@@ -6,5 +6,6 @@
 [node name="003Unwavering" type="MarginContainer"]
 script = ExtResource("1_0s52x")
 relic_sprite = ExtResource("2_rma3d")
+relic_name = "Unwavering"
 tooltips = Array[String](["Card duration is always %DURATION% seconds"])
 metadata/_custom_type_script = "uid://dcn785x8e1aj1"

@@ -6,5 +6,6 @@
 [node name="005RewindMe" type="MarginContainer"]
 script = ExtResource("1_xu2et")
 relic_sprite = ExtResource("2_j00fw")
+relic_name = "Rewind Me"
 tooltips = Array[String](["The first card in your hand is disabled, its effect has a 50% chance to activate every time a card is played"])
 metadata/_custom_type_script = "uid://dcn785x8e1aj1"

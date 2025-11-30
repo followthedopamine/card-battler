@@ -6,5 +6,6 @@
 [node name="004HeavyCards" type="MarginContainer"]
 script = ExtResource("1_bauy6")
 relic_sprite = ExtResource("2_kdtvb")
+relic_name = "Heavy Cards"
 tooltips = Array[String](["+1 strength every time a card is played"])
 metadata/_custom_type_script = "uid://dcn785x8e1aj1"

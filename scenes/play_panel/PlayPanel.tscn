@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b653dafp8uotu"]
+[gd_scene load_steps=17 format=3 uid="uid://b653dafp8uotu"]
 
 [ext_resource type="Script" uid="uid://cmkv7da2ilckk" path="res://scenes/play_panel/PlayPanel.gd" id="1_jgck7"]
 [ext_resource type="PackedScene" uid="uid://dnvmslc0lunfw" path="res://scenes/packs/pack_opening/PackOpening.tscn" id="1_x324g"]
@@ -8,7 +8,9 @@
 [ext_resource type="Script" uid="uid://bbka3kooxxw1r" path="res://scenes/play_panel/PlayAreaGrid.gd" id="4_uajrv"]
 [ext_resource type="PackedScene" uid="uid://b0us44ov8t56n" path="res://scenes/play_panel/PlayerHealthBar.tscn" id="7_gcqk6"]
 [ext_resource type="Script" uid="uid://cbjue7ee5fr67" path="res://scenes/play_panel/RelicRewards.gd" id="7_ujhpf"]
+[ext_resource type="FontFile" uid="uid://credfeuu46ysn" path="res://assets/fonts/Robot Heroes.ttf" id="8_5fgo3"]
 [ext_resource type="Theme" uid="uid://du1q07vbcgp5p" path="res://assets/themes/button.tres" id="8_oo7ig"]
+[ext_resource type="FontFile" uid="uid://bkxalv1wd3tsm" path="res://assets/fonts/Vaticanus-G3yVG.ttf" id="9_5fgo3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fi6o"]
 bg_color = Color(1, 1, 1, 0)
@@ -139,26 +141,92 @@ grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="RelicRewardPanel" type="Panel" parent="." node_paths=PackedStringArray("relic_container", "relic_skip_button")]
+[node name="RelicRewardPanel" type="Panel" parent="." node_paths=PackedStringArray("relic_container", "relic_skip_button", "relic_name_label")]
 layout_mode = 2
 script = ExtResource("7_ujhpf")
 relic_container = NodePath("RelicVBoxContainer/RelicContainer")
 relic_skip_button = NodePath("RelicVBoxContainer/RelicSkipButton")
+relic_name_label = NodePath("RelicVBoxContainer/RelicNameLabel")
 
 [node name="RelicVBoxContainer" type="VBoxContainer" parent="RelicRewardPanel"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.63900006
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchor_bottom = 0.63900006
+offset_left = -60.0
+offset_top = -58.156036
+offset_right = 60.0
+offset_bottom = 72.84396
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="RelicFoundLabel" type="Control" parent="RelicRewardPanel/RelicVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label3" type="Label" parent="RelicRewardPanel/RelicVBoxContainer/RelicFoundLabel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.54200006
+anchor_right = 0.54200006
+offset_left = -355.04
+offset_top = -47.5
+offset_right = 354.96
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.8509804, 0.45882353, 1, 1)
+theme_override_fonts/font = ExtResource("8_5fgo3")
+theme_override_font_sizes/font_size = 50
+text = "Relic found"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="RelicRewardPanel/RelicVBoxContainer/RelicFoundLabel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -353.0
+offset_top = -49.5
+offset_right = 357.0
+offset_bottom = 1.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.8156863, 1, 1)
+theme_override_fonts/font = ExtResource("8_5fgo3")
+theme_override_font_sizes/font_size = 50
+text = "Relic found"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="RelicRewardPanel/RelicVBoxContainer/RelicFoundLabel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = -0.010000001
+anchor_right = 0.5
+anchor_bottom = -0.010000001
+offset_left = -355.0
+offset_top = -51.02
+offset_right = 355.0
+offset_bottom = -0.01999998
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.94509804, 0.95686275, 0.96862745, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("8_5fgo3")
+theme_override_font_sizes/font_size = 50
+text = "Relic found"
+horizontal_alignment = 1
+
+[node name="RelicNameLabel" type="Label" parent="RelicRewardPanel/RelicVBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_5fgo3")
+theme_override_font_sizes/font_size = 24
+text = "Real Relic"
+horizontal_alignment = 1
 
 [node name="RelicContainer" type="MarginContainer" parent="RelicRewardPanel/RelicVBoxContainer"]
 layout_mode = 2
