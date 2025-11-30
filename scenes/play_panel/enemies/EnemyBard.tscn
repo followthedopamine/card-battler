@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://mjiv7q0gvno6" path="res://scenes/status/StatusHandler.gd" id="5_r7ivx"]
 [ext_resource type="PackedScene" uid="uid://cfaoke5uaogle" path="res://scenes/play_panel/damage_particle/DamageParticleEmitter.tscn" id="6_ncw4t"]
 [ext_resource type="PackedScene" uid="uid://cqhbamimh6d5s" path="res://scenes/play_panel/buff_particle/BuffParticleEmitter.tscn" id="8_r7ivx"]
-[ext_resource type="PackedScene" uid="uid://d3vgl4xvkig7t" path="res://scenes/play_panel/buff_particle/BuffParticleParticle.tscn" id="9_0l3pk"]
+[ext_resource type="PackedScene" uid="uid://d3vgl4xvkig7t" path="res://scenes/play_panel/damage_particle/DamageParticleParticle.tscn" id="9_0l3pk"]
 [ext_resource type="PackedScene" uid="uid://bb1xh26f0t1k" path="res://scenes/play_panel/enemy/EnemyAnimationPlayer.tscn" id="9_r7ivx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_76ifo"]

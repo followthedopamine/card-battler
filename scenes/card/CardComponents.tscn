@@ -119,6 +119,7 @@ theme_override_fonts/font = ExtResource("3_k8r83")
 theme_override_font_sizes/font_size = 20
 text = "Test"
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="Spinner" type="Panel" parent="CardSprite"]
 layout_mode = 1

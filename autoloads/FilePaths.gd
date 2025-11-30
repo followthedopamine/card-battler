@@ -3,11 +3,11 @@ extends Node2D
 # AUTO-GENERATED. DO NOT EDIT.
 
 const CARD_PATHS = [
+	"res://scenes/cards/005Slow.tscn",
 	"res://scenes/cards/001Strike.tscn",
 	"res://scenes/cards/002Defend.tscn",
 	"res://scenes/cards/003Burn.tscn",
 	"res://scenes/cards/004Money.tscn",
-	"res://scenes/cards/005Slow.tscn",
 	"res://scenes/cards/006DoubleTap.tscn",
 	"res://scenes/cards/007Thorns.tscn",
 	"res://scenes/cards/008Heal.tscn",
@@ -40,15 +40,15 @@ const CARD_PATHS = [
 
 const RELIC_PATHS = [
 	"res://scenes/relics/001LotteryTicket.tscn",
-	"res://scenes/relics/002FiveFingerDiscount.tscn",
 	"res://scenes/relics/003Unwavering.tscn",
 	"res://scenes/relics/004HeavyCards.tscn",
 	"res://scenes/relics/005RewindMe.tscn",
 	"res://scenes/relics/006MixTape.tscn",
-	"res://scenes/relics/007BlockClock.tscn",
+	"res://scenes/relics/002FiveFingerDiscount.tscn",
 	"res://scenes/relics/008RideTheWave.tscn",
 	"res://scenes/relics/010BlockToHeal.tscn",
 	"res://scenes/relics/011RandomEffect.tscn",
+	"res://scenes/relics/007BlockClock.tscn",
 ]
 
 const ENEMY_PATHS = [
@@ -62,36 +62,5 @@ const ENEMY_PATHS = [
 ]
 
 const AUDIO_PATHS = [
-	"res://card-battler-private/sfx/Abilities and Power-ups Blink 002.wav",
-	"res://card-battler-private/sfx/Abilities and Power-ups Multiplication 006.wav",
-	"res://card-battler-private/sfx/Analyzing B.wav",
-	"res://card-battler-private/sfx/Armor Reactive Camo 003.wav",
-	"res://card-battler-private/sfx/Bike Chain Loop A.wav",
-	"res://card-battler-private/sfx/Clicking Mechanism Small F.wav",
-	"res://card-battler-private/sfx/Cyberspace 008.wav",
-	"res://card-battler-private/sfx/Cyberspace 010.wav",
-	"res://card-battler-private/sfx/Cyberspace 011.wav",
-	"res://card-battler-private/sfx/Device Beacon 007.wav",
-	"res://card-battler-private/sfx/Found A.wav",
-	"res://card-battler-private/sfx/Free Spin Trigger.wav",
-	"res://card-battler-private/sfx/Gas Click A.wav",
-	"res://card-battler-private/sfx/Healed A.wav",
-	"res://card-battler-private/sfx/Jingles Majestic Clavichord 004.wav",
-	"res://card-battler-private/sfx/Menu Close.wav",
-	"res://card-battler-private/sfx/Menu Open.wav",
-	"res://card-battler-private/sfx/Movement and Actions Jump 006.wav",
-	"res://card-battler-private/sfx/Needs Bathroom A.wav",
-	"res://card-battler-private/sfx/Purged B.wav",
-	"res://card-battler-private/sfx/Ratchet Short G.wav",
-	"res://card-battler-private/sfx/Targeted B.wav",
-	"res://card-battler-private/sfx/UI Melodic Click 002.wav",
-	"res://card-battler-private/sfx/Un Stuck A.wav",
-	"res://card-battler-private/sfx/Vehicle ER-Unit 001 L to R.wav",
-	"res://card-battler-private/sfx/Vehicle VI-Series 001 L to R.wav",
-	"res://card-battler-private/sfx/Weapon Obliterator 001.wav",
-	"res://card-battler-private/sfx/Weapon Obliterator 007.wav",
-	"res://card-battler-private/sfx/Weapon Pulse Gun 001.wav",
-	"res://card-battler-private/sfx/World Money Earned 001.wav",
-	"res://card-battler-private/sfx/World Money Earned 002.wav",
 ]
 

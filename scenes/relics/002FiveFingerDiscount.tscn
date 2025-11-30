@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ddx4221kxv1m5"]
 
 [ext_resource type="Script" uid="uid://dtxvc8whhygs0" path="res://scenes/relics/002FiveFingerDiscount.gd" id="1_m1gay"]
-[ext_resource type="Texture2D" uid="uid://ryh1pof4cv4g" path="res://assets/relics/calculator_watch.png" id="2_m1gay"]
+[ext_resource type="Texture2D" uid="uid://cf41yheifp1ax" path="res://assets/relics/stickyhand.png" id="2_m1gay"]
 
 [node name="002FiveFingerDiscount" type="MarginContainer"]
 script = ExtResource("1_m1gay")

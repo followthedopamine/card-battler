@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://drrng8se5ggs1" path="res://scenes/tooltip/TooltipData.gd" id="1_rcg70"]
 [ext_resource type="Texture2D" uid="uid://vwk0uq1mxj6h" path="res://assets/background/boarder.png" id="2_cumcl"]
-[ext_resource type="FontFile" uid="uid://bkxalv1wd3tsm" path="res://assets/fonts/Vaticanus-G3yVG.ttf" id="3_twgdb"]
+[ext_resource type="FontFile" uid="uid://b8bqvylntux7h" path="res://assets/fonts/Vaticarsoul.ttf" id="3_twgdb"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_twgdb"]
 texture = ExtResource("2_cumcl")

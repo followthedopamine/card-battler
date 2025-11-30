@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cfaoke5uaogle" path="res://scenes/play_panel/damage_particle/DamageParticleEmitter.tscn" id="6_snmxs"]
 [ext_resource type="PackedScene" uid="uid://cqhbamimh6d5s" path="res://scenes/play_panel/buff_particle/BuffParticleEmitter.tscn" id="8_s1nx3"]
 [ext_resource type="PackedScene" uid="uid://bb1xh26f0t1k" path="res://scenes/play_panel/enemy/EnemyAnimationPlayer.tscn" id="9_s1nx3"]
-[ext_resource type="PackedScene" uid="uid://d3vgl4xvkig7t" path="res://scenes/play_panel/buff_particle/BuffParticleParticle.tscn" id="9_y3sv8"]
+[ext_resource type="PackedScene" uid="uid://d3vgl4xvkig7t" path="res://scenes/play_panel/damage_particle/DamageParticleParticle.tscn" id="9_y3sv8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_76ifo"]
 animations = [{
