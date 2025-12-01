@@ -89,7 +89,7 @@ func _position_cells(skip_animation = false):
 		if (child is EnemyCell):
 			child.position_cell(h_offset, y_position_percentage_offsets[child.get_grid_pos().x], vertical_slice, WaveController.animation_grid_offset, skip_animation)
 
-func _get_target(target: ActionEffect.GridTarget):
+func _get_target(target: ActionEffect.GridTarget, forced_rows: Array[int] = [], allow_empty = false):
 	var col_range: Array
 
 	match target:
@@ -100,16 +100,25 @@ func _get_target(target: ActionEffect.GridTarget):
 		ActionEffect.GridTarget.RANDOM:
 			col_range = range(0, enemy_grid_rows)
 			col_range.shuffle()
+		ActionEffect.GridTarget.CENTRE:
+			col_range = range(1, enemy_grid_rows - 1)
+			col_range.shuffle()
 		ActionEffect.GridTarget.NONE:
 			return false
 	
 	for col in col_range:
 		var col_dict = enemy_target_dict[col]
-		if col_dict.is_empty():
+		if !allow_empty && col_dict.is_empty():
 			continue
+		
+		var rand_row := 0
+		if forced_rows.size():
+			rand_row = forced_rows.pick_random()
+		else:
+			var rand_int = randi() % col_dict.size()
+			rand_row = col_dict.keys()[rand_int]
 
-		var rand_row = randi() % col_dict.size()
-		return enemy_cell_grid[col_dict.keys()[rand_row]][col]
+		return enemy_cell_grid[rand_row][col]
 	
 	return false
 
@@ -153,9 +162,11 @@ func _on_any_card_played(_card: Card) -> void:
 		if status.stacks == 0:
 			var temp_card_effect: CardEffect = CardEffect.new()
 			temp_card_effect.damage = LightFuse.EXPLOSION_DAMAGE
-			var all_cells: Array[EnemyCell] = _get_all_targets()
+			
+			var grid_target = _get_target(ActionEffect.GridTarget.CENTRE, [1, 2], true)
+			var cells: Array[EnemyCell] = _get_aoe_targets(grid_target)
 
-			for target in all_cells:
+			for target in cells:
 				target.process_action_effects(temp_card_effect)
 			status.stacks = -1
 			

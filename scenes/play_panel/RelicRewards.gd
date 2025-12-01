@@ -6,7 +6,7 @@ extends Panel
 
 @export var relic: Relic
 
-const REWARD_WAVES: Array[int] = [5,15,30,50,75,105,140,180,225,275,330,400]
+const REWARD_WAVES: Array[int] = [5,20,50,100,200,300,400]
 
 func _ready() -> void:
 	SignalBus.wave_end.connect(_on_wave_end)

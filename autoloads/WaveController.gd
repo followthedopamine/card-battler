@@ -14,6 +14,12 @@ extends Node
 var current_wave := starting_wave
 var current_wave_weight := 5
 
+## scaling difficulty handling
+var wave_difficulty_interval = 50
+var wave_difficulty_wave_weight_offset := 10
+var wave_difficulty_current_health_bonus := 0
+var wave_difficulty_health_bonus_increase := 5
+
 var enemy_scenes: Array[Enemy] = []
 
 # grid animation handling
@@ -22,6 +28,7 @@ var moving := false
 
 var area_loaded := false
 var grid_loaded := false
+
 @onready var enemy_area: EnemyArea
 @onready var grid: Sprite2D
 
@@ -39,6 +46,10 @@ func _start_wave():
 func _generate_wave():
 	var wave_point_total = 0
 	var possible_enemies := _get_possible_wave_enemies()
+
+	if current_wave % wave_difficulty_interval == 0:
+		wave_difficulty_current_health_bonus += wave_difficulty_health_bonus_increase
+		current_wave_weight -= wave_difficulty_wave_weight_offset
 
 	while wave_point_total < current_wave_weight || possible_enemies.size():
 		if (!possible_enemies.size()):
@@ -59,7 +70,11 @@ func _generate_wave():
 			continue
 
 		spawn_cell.return_to_start_pos()
-		spawn_cell.spawn_enemy(enemy.duplicate())
+
+		var new_enemy = enemy.duplicate()
+		new_enemy.max_health += wave_difficulty_current_health_bonus
+
+		spawn_cell.spawn_enemy(new_enemy)
 		wave_point_total += enemy.spawn_value
 
 func _get_enemy_scenes():
@@ -110,6 +125,9 @@ func setup_controller():
 
 	if current_wave > 1:
 		current_wave_weight += (current_wave - 1) * wave_increment
+		var total_difficulty_increases = floor(float(current_wave)/wave_difficulty_interval)
+		wave_difficulty_current_health_bonus +=wave_difficulty_health_bonus_increase * total_difficulty_increases
+		current_wave_weight -= wave_difficulty_wave_weight_offset * total_difficulty_increases
 
 	_start_wave()
 

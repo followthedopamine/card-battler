@@ -6,7 +6,7 @@ enum Rarity { COMMON, UNCOMMON, RARE }
 const CARD_SLOTS = 3
 
 ## Odds are in order: Common, Uncommon, Rare
-const COMMON_PACK_ODDS = [1, 1.0/5.0, 1.0/20.0]
+const COMMON_PACK_ODDS = [1, 1.0/5.0, 1.0/50.0]
 const UNCOMMON_PACK_ODDS = [0, 1, 1.0/4.0]
 const RARE_PACK_ODDS = [0, 0, 1]
 
