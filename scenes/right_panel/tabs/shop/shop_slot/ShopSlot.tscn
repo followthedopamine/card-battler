@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bxknk2n2fnfax" path="res://scenes/right_panel/tabs/shop/shop_slot/scripts/ShopSlot.gd" id="1_hr8cm"]
 [ext_resource type="Resource" uid="uid://cpmmj5444k2ii" path="res://scenes/right_panel/tabs/shop/shop_slot/resources/ShopData.tres" id="2_teigl"]
-[ext_resource type="FontFile" uid="uid://credfeuu46ysn" path="res://assets/fonts/Robot Heroes.ttf" id="3_e0xxm"]
+[ext_resource type="FontFile" uid="uid://jnit0owmw6ud" path="res://assets/fonts/RobotHeroesEdit.ttf" id="3_ilbjd"]
 [ext_resource type="StyleBox" uid="uid://djklkbvf20h86" path="res://scenes/right_panel/tabs/shop/ShopLabel.tres" id="4_ilbjd"]
 
 [node name="ShopSlot" type="MarginContainer" node_paths=PackedStringArray("label", "slot_item")]
@@ -31,7 +31,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_e0xxm")
+theme_override_fonts/font = ExtResource("3_ilbjd")
 theme_override_styles/normal = ExtResource("4_ilbjd")
 text = "TEST"
 horizontal_alignment = 1
