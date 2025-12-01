@@ -1,7 +1,7 @@
 extends Relic
 
 const WAVES: int = 5
-const CURRENCY_INCREASE: int = 100
+const CURRENCY_MULT: int = 2
 
 var remaining_waves: int = WAVES
 
@@ -12,7 +12,7 @@ func wave_end_effect(_wave: int) -> void:
 	if remaining_waves >= 1:
 		remaining_waves -= 1
 		relic_components.label.text = str(remaining_waves)
-		PlayerManager.currency += CURRENCY_INCREASE
+		PlayerManager.currency += WaveController.current_wave * CURRENCY_MULT
 		call_deferred("randomise_hand")
 	
 func randomise_hand() -> void:
