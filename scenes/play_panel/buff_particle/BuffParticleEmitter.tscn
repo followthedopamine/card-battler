@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqhbamimh6d5s"]
+[gd_scene load_steps=3 format=3 uid="uid://cqhbamimh6d5s"]
 
 [ext_resource type="Script" uid="uid://cknm11t4liiu6" path="res://scenes/play_panel/buff_particle/BuffParticleEmitter.gd" id="1_fp06v"]
+[ext_resource type="PackedScene" uid="uid://d3vgl4xvkig7t" path="res://scenes/play_panel/buff_particle/BuffParticleParticle.tscn" id="2_pebod"]
 
 [node name="BuffParticleEmitter" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_fp06v")
+particle_scene = ExtResource("2_pebod")
