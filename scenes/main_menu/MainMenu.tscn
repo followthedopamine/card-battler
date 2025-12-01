@@ -6,8 +6,8 @@
 [ext_resource type="StyleBox" uid="uid://fvtxa3safj1y" path="res://scenes/main_menu/MainMenuButtonHover.tres" id="4_qmweu"]
 [ext_resource type="Script" uid="uid://40r1wect1qhb" path="res://scenes/main_menu/StartButton.gd" id="5_f1mbi"]
 [ext_resource type="PackedScene" uid="uid://d2fckbvtof2w3" path="res://scenes/main.tscn" id="6_oitky"]
-[ext_resource type="PackedScene" path="res://scenes/main_menu/HowToPlay.tscn" id="7_arvcj"]
-[ext_resource type="PackedScene" path="res://scenes/main_menu/Credits.tscn" id="7_wckin"]
+[ext_resource type="PackedScene" uid="uid://wk3oi73oaacg" path="res://scenes/main_menu/HowToPlay.tscn" id="7_arvcj"]
+[ext_resource type="PackedScene" uid="uid://dianlvb1bqnpe" path="res://scenes/main_menu/Credits.tscn" id="7_wckin"]
 
 [sub_resource type="Gradient" id="Gradient_1tnxq"]
 offsets = PackedFloat32Array(0, 0.4642857, 1)
