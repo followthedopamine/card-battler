@@ -1,4 +1,4 @@
-class_name RelicComponents extends MarginContainer
+class_name RelicComponents extends Control
 
 @export var texture_rect: TextureRect
 @export var label: RichTextLabel

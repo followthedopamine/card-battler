@@ -57,7 +57,8 @@ const PIVOT_POINT: Vector2 = Vector2(73.0, 22.0)
 		return duration
 	set(value):
 		if duration != value:
-			duration = value	
+			duration = value
+			duration_changed()
 			SignalBus.card_duration_changed.emit(self)
 var time_remaining := duration
 @onready var original_duration: float = duration
@@ -89,6 +90,7 @@ var original_card_effect: CardEffect
 func _ready() -> void:
 	super()
 	SignalBus.wave_end.connect(_on_wave_end)
+	SignalBus.card_added_to_pack.connect(_on_card_added_to_pack)
 	self.add_child(disabled_timer)
 	disabled_timer.timeout.connect(disabled_timeout)
 	disabled_timer.one_shot = true
@@ -96,7 +98,6 @@ func _ready() -> void:
 	set_process_input(false)
 
 	#change_colour(colour)
-
 	timer_label.text = "%.1f" % duration
 	card_components.sprite.texture = sprite_texture
 	card_components.name_label.text = card_name
@@ -127,6 +128,13 @@ func _process(delta: float) -> void:
 
 		if time_remaining <= 0:
 			_on_timer_timeout()
+			
+func _on_card_added_to_pack(card: Card) -> void:
+	# This really doesn't need to be called on every card at once but
+	# it's the last day of the jam
+	if card != self:
+		return
+	duration_changed()
 
 func _on_timer_timeout() -> void:
 	activate_card_effect()
@@ -138,6 +146,10 @@ func _on_timer_timeout() -> void:
 func _on_wave_end(_wave: int) -> void:
 	duration = original_duration
 	player.is_slowed = false
+	
+func duration_changed() -> void:
+	if timer_label:
+		timer_label.text = "%.1f" % duration
 
 func activate_card_effect() -> void:
 	if is_instance_valid(card_effect):
@@ -172,8 +184,8 @@ func activate():
 	
 	time_remaining = duration
 
-	timer_label.show()
-	timer_spinner.show()
+	#timer_label.show()
+	#timer_spinner.show()
 
 	activated = true
 
@@ -183,8 +195,9 @@ func deactivate():
 	card_components.position.y = 0
 	#change_colour(colour)
 	
-	timer_label.hide()
-	timer_spinner.hide()
+	#timer_label.hide()
+	#timer_spinner.hide()
+	timer_label.text = "%.1f" % duration
 	timer_panel.scale = Vector2(0, 1)
 	# Card needs to be deactivated before the signal emits or when there is one
 	# card in hand it will lose the signal race to reactivate itself and mess

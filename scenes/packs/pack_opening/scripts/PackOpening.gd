@@ -44,6 +44,7 @@ func _on_relic_added(relic: Relic) -> void:
 
 func open_pack(rarity: Rarity) -> void:
 	reroll_cards(rarity)
+	
 	visible = true
 	
 func close_pack() -> void:
@@ -73,4 +74,4 @@ func reroll_cards(rarity: Rarity) -> void:
 		new_card.mouse_filter = MouseFilter.MOUSE_FILTER_STOP
 		new_card.z_index = 10
 		card_area.add_child(new_card)
-		
+		SignalBus.card_added_to_pack.emit(new_card)
