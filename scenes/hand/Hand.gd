@@ -45,7 +45,9 @@ func _on_card_enabled() -> void:
 	if get_active_card() == null:
 		start_round()
 		
-func _on_card_chosen(_card: Card) -> void:
+func _on_card_chosen(card: Card) -> void:
+	card.card_effect = card.original_card_effect.duplicate_deep(Resource.DeepDuplicateMode.DEEP_DUPLICATE_ALL)
+
 	if get_active_card() == null:
 		start_round()
 	

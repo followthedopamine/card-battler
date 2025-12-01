@@ -26,6 +26,7 @@ const CARD_PATHS = [
 	"res://scenes/cards/016ShieldPyramid.tscn",
 	"res://scenes/cards/031LightFuse.tscn",
 	"res://scenes/cards/029TaxCollector.tscn",
+	"res://scenes/cards/033PyramidOfKnifes.tscn",
 	"res://scenes/cards/017SOUP.tscn",
 	"res://scenes/cards/030GoldBar.tscn",
 	"res://scenes/cards/022BurnForBurn.tscn",
