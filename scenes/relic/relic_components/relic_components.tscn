@@ -1,19 +1,17 @@
 [gd_scene load_steps=5 format=3 uid="uid://4nmhmcvfrdn3"]
 
 [ext_resource type="Script" uid="uid://cgkyct6hbfte1" path="res://scenes/relic/relic_components/RelicComponents.gd" id="1_dffkk"]
-[ext_resource type="Texture2D" uid="uid://d68dtnn7maij" path="res://scenes/right_panel/tabs/shop/shop_slot/images/placeholder_card_3.png" id="1_kfsi6"]
 [ext_resource type="FontFile" uid="uid://bkxalv1wd3tsm" path="res://assets/fonts/Vaticanus-G3yVG.ttf" id="3_kx8cp"]
+[ext_resource type="Texture2D" uid="uid://cf41yheifp1ax" path="res://assets/relics/stickyhand.png" id="3_x704s"]
 [ext_resource type="Script" uid="uid://bh0tgx15xo557" path="res://classes/ControlHoverScale.gd" id="4_x704s"]
 
 [node name="RelicComponents" type="MarginContainer" node_paths=PackedStringArray("texture_rect", "label")]
-offset_right = 100.0
-offset_bottom = 100.0
-size_flags_vertical = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_default_cursor_shape = 2
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
 script = ExtResource("1_dffkk")
 texture_rect = NodePath("TextureRect")
 label = NodePath("RichTextLabel")
@@ -23,18 +21,19 @@ layout_mode = 2
 script = ExtResource("4_x704s")
 scale_amount = Vector2(1.12, 1.12)
 node_to_scale = NodePath("../TextureRect")
-node_to_connect_mouse = NodePath("..")
+node_to_connect_mouse = NodePath("")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
-texture = ExtResource("1_kfsi6")
-expand_mode = 4
+texture = ExtResource("3_x704s")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 1
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = ExtResource("3_kx8cp")
 theme_override_font_sizes/normal_font_size = 20
 text = "5"

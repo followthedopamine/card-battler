@@ -2,6 +2,18 @@ extends Node
 
 const AMBIENT_LOOP: String = "res://card-battler-private/sfx/Cyberspace 011.wav"
 
+
+
+
+const MAIN_MENU_MUSIC: AudioStream = preload("res://assets/audio/synth_loop.wav")
+
+const MUSIC_TRACKS: Array[AudioStream] = [
+	preload("res://card-battler-private/music/Electronic Vol2 Raise Your Weapon Main.wav"),
+	preload("res://card-battler-private/music/Electronic Vol10 Moon Eyes Main.wav"),
+	preload("res://card-battler-private/music/maximum_overdrive.mp3"),
+	preload("res://card-battler-private/music/Retroracing Nightlife.mp3"),
+]
+
 const BUTTON_PRESSED_SFX: String = "UI Melodic Click 002"
 const RELIC_PRESSED_SFX: String = "Targeted B"
 const DAMAGE_SOUNDS: Array[String] = ["Weapon Obliterator 001", "Weapon Obliterator 007", "Weapon Pulse Gun 001"]
@@ -35,8 +47,16 @@ var sounds: Dictionary[String, AudioStream]
 var sfx_pool: Array[AudioStreamPlayer2D]
 var loops: Array[AudioStreamPlayer]
 
+var music_player: AudioStreamPlayer
+var music_tracks: Array[AudioStream] = []
+var music_counter: int = 0
+
+var in_main_menu: bool = true
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	
+	SignalBus.game_started.connect(_on_game_started)
 	
 	SignalBus.sfx_volume_changed.connect(_on_sfx_volume_changed)
 	SignalBus.music_volume_changed.connect(_on_music_volume_changed)
@@ -72,8 +92,27 @@ func _ready() -> void:
 		self.add_child(player)
 		sfx_pool.append(player)
 	
-		
+	music_tracks = MUSIC_TRACKS.duplicate()
+	music_tracks.shuffle()
+	
+	music_player = AudioStreamPlayer.new()
+	music_player.stream = MAIN_MENU_MUSIC
+	music_player.bus = MUSIC_BUS_NAME
+	music_player.volume_db = -10.0
+	music_player.finished.connect(_on_music_finished)
+	self.add_child(music_player)
+	music_player.play()
 	load_sound_dictionary()
+	
+func _on_game_started() -> void:
+	in_main_menu = false
+	play_next_song()
+	
+func _on_music_finished() -> void:
+	if in_main_menu:
+		music_player.play()
+		return
+	play_next_song()
 	
 func _on_loop_finished(player: AudioStreamPlayer) -> void:
 	player.play()
@@ -133,6 +172,11 @@ func _on_music_volume_changed(value: float) -> void:
 		AudioServer.set_bus_mute(music_bus_index, true)
 	else:
 		AudioServer.set_bus_mute(music_bus_index, false)
+		
+func play_next_song() -> void:
+	music_counter += 1
+	music_player.stream = music_tracks[music_counter % music_tracks.size()]
+	music_player.play()
 	
 func return_to_pool(player: AudioStreamPlayer2D) -> void:
 	sfx_pool.append(player)

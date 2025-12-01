@@ -3,6 +3,7 @@ extends Node2D
 # Shop signals
 signal currency_changed
 signal pack_opened(rarity: PackOpening.Rarity)
+signal card_added_to_pack(card: Card)
 signal pack_closed
 signal shop_rerolled
 
@@ -72,6 +73,7 @@ signal player_added_block
 signal relic_offered
 signal lose
 signal card_sold
+signal game_started
 
 func reset() -> void:
 	print("Resetting")

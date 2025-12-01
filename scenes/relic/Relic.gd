@@ -14,6 +14,7 @@ func _ready() -> void:
 	relic_components = RELIC_COMPONENTS_SCENE.instantiate()
 	relic_components.label.text = ""
 	relic_components.texture_rect.texture = relic_sprite
+	size = Vector2(100,100)
 	self.add_child(relic_components)
 	for tooltip_string: String in tooltips:
 		Tooltip.new(tooltip_string, self)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d2fckbvtof2w3"]
+[gd_scene load_steps=18 format=3 uid="uid://d2fckbvtof2w3"]
 
 [ext_resource type="PackedScene" uid="uid://b653dafp8uotu" path="res://scenes/play_panel/PlayPanel.tscn" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://ddmjclkybk575" path="res://scenes/right_panel/RightPanel.tscn" id="1_ig7tw"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://bw3g18tnkxeyn" path="res://scenes/WaveCounterLabel.gd" id="4_tipki"]
 [ext_resource type="Texture2D" uid="uid://baxex53ta0c41" path="res://assets/background/viewport.png" id="5_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://vq84ampu1n1v" path="res://scenes/relic/relic_container.tscn" id="5_tbgi4"]
-[ext_resource type="AudioStream" uid="uid://c5v12te1qc10u" path="res://assets/audio/synth_loop.wav" id="9_85g3d"]
 [ext_resource type="Script" uid="uid://c7enlndh3k42h" path="res://scenes/lose/Lose.gd" id="11_ya4ey"]
 [ext_resource type="FontFile" uid="uid://credfeuu46ysn" path="res://assets/fonts/Robot Heroes.ttf" id="12_jkv2x"]
 [ext_resource type="Theme" uid="uid://du1q07vbcgp5p" path="res://assets/themes/button.tres" id="16_jbj1t"]
@@ -140,13 +139,6 @@ offset_right = 30.0
 
 [node name="GlobalTimer" type="Timer" parent="." groups=["GlobalTimer"]]
 autostart = true
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-process_mode = 3
-stream = ExtResource("9_85g3d")
-volume_db = -10.0
-autoplay = true
-bus = &"Music"
 
 [node name="LosePanel" type="Panel" parent="." node_paths=PackedStringArray("wave_text", "retry_button")]
 process_mode = 3
