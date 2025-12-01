@@ -5,4 +5,4 @@ func activate_card_effect() -> void:
 	super()
 
 func add_shield() -> void:
-	PlayerManager.player_node.block += card_effect.shield
+	PlayerManager.player_node.block += card_effect.shield + PlayerManager.player_node.strength

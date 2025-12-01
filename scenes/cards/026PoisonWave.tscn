@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtk31fqbaab8r"]
+[gd_scene load_steps=5 format=3 uid="uid://cqqegbkj7aswy"]
 
-[ext_resource type="Script" uid="uid://b6by5e7a22gfi" path="res://scenes/cards/026PoisonWave.gd" id="1_cfpfw"]
+[ext_resource type="Script" path="res://scenes/cards/026PoisonWave.gd" id="1_cfpfw"]
 [ext_resource type="Texture2D" uid="uid://cc6ahs2jfm3xt" path="res://assets/card_art/card_poison_wave.png" id="2_bd1ri"]
 [ext_resource type="Script" uid="uid://fuokg41g7d8s" path="res://scenes/card/CardEffect.gd" id="3_d8ea7"]
 
@@ -18,4 +18,5 @@ tooltips = Array[String](["Adds %poison% stacks of poison to your next card"])
 tags = Array[int]([7])
 card_effect = SubResource("Resource_sj0bj")
 rarity = 1
+duration = 1.5
 metadata/_custom_type_script = "uid://c531eyaws05rr"

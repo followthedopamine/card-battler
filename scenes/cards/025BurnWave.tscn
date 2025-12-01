@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://ck5tkxwk7wuxc"]
+[gd_scene load_steps=5 format=3 uid="uid://5gw4i43ee58k"]
 
-[ext_resource type="Script" uid="uid://dtkn2lxuw1s2j" path="res://scenes/cards/025BurnWave.gd" id="1_w6fbn"]
+[ext_resource type="Script" path="res://scenes/cards/025BurnWave.gd" id="1_w6fbn"]
 [ext_resource type="Texture2D" uid="uid://cd67sdydbb0ml" path="res://assets/card_art/card_burn_wave.png" id="2_w6fbn"]
 [ext_resource type="Script" uid="uid://fuokg41g7d8s" path="res://scenes/card/CardEffect.gd" id="3_k34su"]
 
@@ -18,4 +18,5 @@ tooltips = Array[String](["Adds %burn% stacks of burn to your next card"])
 tags = Array[int]([2])
 card_effect = SubResource("Resource_03fju")
 rarity = 1
+duration = 1.5
 metadata/_custom_type_script = "uid://c531eyaws05rr"
