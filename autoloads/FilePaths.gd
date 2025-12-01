@@ -57,6 +57,7 @@ const ENEMY_PATHS = [
 	"res://scenes/play_panel/enemies/EnemyRogue.tscn",
 	"res://scenes/play_panel/enemies/EnemyRanger.tscn",
 	"res://scenes/play_panel/enemies/EnemySpellcaster.tscn",
+	"res://scenes/play_panel/enemies/EnemyPhone.tscn",
 	"res://scenes/play_panel/enemies/EnemyBard.tscn",
 	"res://scenes/play_panel/enemies/EnemyBlob.tscn",
 	"res://scenes/play_panel/enemies/EnemyTank.tscn",

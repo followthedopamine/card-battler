@@ -55,8 +55,15 @@ func _generate_wave():
 		if (!possible_enemies.size()):
 			break
 
-		var index = randi() % possible_enemies.size()
-		var enemy := possible_enemies[index]
+		var enemy: Enemy
+		var index: int
+
+		if current_wave == 200:
+			index = -1
+			enemy = possible_enemies[index]
+		else:
+			index = randi() % possible_enemies.size()
+			enemy = possible_enemies[index]
 
 		# Remove the enemy if it's no longer a valid target
 		if enemy.spawn_value > current_wave_weight - wave_point_total:
