@@ -18,7 +18,7 @@ var current_wave_weight := 5
 var wave_difficulty_interval = 50
 var wave_difficulty_wave_weight_offset := 10
 var wave_difficulty_current_health_bonus := 0
-var wave_difficulty_health_bonus_increase := 5
+var wave_difficulty_health_bonus_increase := 3
 
 var enemy_scenes: Array[Enemy] = []
 

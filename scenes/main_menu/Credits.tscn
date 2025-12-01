@@ -241,7 +241,8 @@ Ovani Sound - Sound effects​
 Followthedopamine
 Umbles
 NoPayneNoGame
-"
+
+Jordan Aitken"
 script = ExtResource("3_x8m1r")
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer2"]
