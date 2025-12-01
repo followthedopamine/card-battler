@@ -20,5 +20,5 @@ sprite_texture = ExtResource("2_wn3fq")
 tooltips = Array[String](["Deals %damage% damage. If your target is poisoned deal %BIG_DAMAGE% damage instead"])
 tags = Array[int]([0, 7])
 card_effect = SubResource("Resource_4u87r")
-rarity = 2
+rarity = 1
 metadata/_custom_type_script = "uid://c531eyaws05rr"
