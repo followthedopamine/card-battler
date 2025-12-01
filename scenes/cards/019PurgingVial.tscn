@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgdfjqk1ejyoe"]
+
+[ext_resource type="Script" uid="uid://cs28hf3ckscq2" path="res://scenes/cards/019PurgingVial.gd" id="1_5w6o0"]
+[ext_resource type="Texture2D" uid="uid://ddiw4qp25gc2y" path="res://assets/card_art/card_poison.png" id="2_wn3fq"]
+[ext_resource type="Script" uid="uid://fuokg41g7d8s" path="res://scenes/card/CardEffect.gd" id="3_08yv3"]
+
+[sub_resource type="Resource" id="Resource_4u87r"]
+script = ExtResource("3_08yv3")
+target = 1
+enemy_target = 1
+enemy_target_type = 1
+damage = 8
+metadata/_custom_type_script = "uid://fuokg41g7d8s"
+
+[node name="019PurgingVial" type="MarginContainer"]
+mouse_filter = 0
+script = ExtResource("1_5w6o0")
+card_name = "Purging Vial"
+sprite_texture = ExtResource("2_wn3fq")
+tooltips = Array[String](["Deals %damage% damage. If your target is poisoned deal %BIG_DAMAGE% damage instead"])
+tags = Array[int]([0, 7])
+card_effect = SubResource("Resource_4u87r")
+rarity = 2
+metadata/_custom_type_script = "uid://c531eyaws05rr"
