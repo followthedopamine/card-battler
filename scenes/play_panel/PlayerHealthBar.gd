@@ -6,6 +6,10 @@ extends Control
 func _on_health_change(health: int):
 	heath_bar.set_health(health)
 
+func _on_max_health_change(health: int):
+	heath_bar.set_max_health(health, false)
+
 func _ready() -> void:
 	heath_bar.set_max_health(player.max_health)
 	SignalBus.player_health_change.connect(_on_health_change)
+	SignalBus.player_max_health.connect(_on_max_health_change)

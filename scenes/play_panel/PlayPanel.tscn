@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b653dafp8uotu"]
+[gd_scene load_steps=17 format=3 uid="uid://b653dafp8uotu"]
 
 [ext_resource type="Script" uid="uid://cmkv7da2ilckk" path="res://scenes/play_panel/PlayPanel.gd" id="1_jgck7"]
 [ext_resource type="PackedScene" uid="uid://dnvmslc0lunfw" path="res://scenes/packs/pack_opening/PackOpening.tscn" id="1_x324g"]
@@ -11,8 +11,6 @@
 [ext_resource type="FontFile" uid="uid://credfeuu46ysn" path="res://assets/fonts/Robot Heroes.ttf" id="8_5fgo3"]
 [ext_resource type="Theme" uid="uid://du1q07vbcgp5p" path="res://assets/themes/button.tres" id="8_oo7ig"]
 [ext_resource type="FontFile" uid="uid://bkxalv1wd3tsm" path="res://assets/fonts/Vaticanus-G3yVG.ttf" id="9_5fgo3"]
-[ext_resource type="PackedScene" uid="uid://ddx4221kxv1m5" path="res://scenes/relics/002FiveFingerDiscount.tscn" id="10_euqa0"]
-[ext_resource type="PackedScene" uid="uid://4nmhmcvfrdn3" path="res://scenes/relic/relic_components/relic_components.tscn" id="10_hf8vv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fi6o"]
 bg_color = Color(1, 1, 1, 0)
@@ -240,12 +238,6 @@ layout_mode = 2
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 4
-
-[node name="002FiveFingerDiscount" parent="RelicRewardPanel/VBoxContainer/RelicVBoxContainer/RelicContainer" instance=ExtResource("10_euqa0")]
-layout_mode = 2
-
-[node name="RelicComponents" parent="RelicRewardPanel/VBoxContainer/RelicVBoxContainer/RelicContainer/002FiveFingerDiscount" instance=ExtResource("10_hf8vv")]
-layout_mode = 2
 
 [node name="RelicSkipButton" type="Button" parent="RelicRewardPanel/VBoxContainer/RelicVBoxContainer"]
 custom_minimum_size = Vector2(120, 0)

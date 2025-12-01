@@ -14,7 +14,7 @@ func _ready() -> void:
 	var shield := ActionEffect.new()
 	shield.type = ActionEffect.Type.BLOCK_BUFF
 	shield.shield = shield_amount
-	shield.shield = strength_amount
+	shield.strength = strength_amount
 	shield.target = ActionEffect.Target.ENEMY
 	shield.enemy_target = ActionEffect.GridTarget.SELF
 

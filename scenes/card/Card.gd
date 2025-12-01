@@ -42,7 +42,7 @@ var card_tag_tooltips: Dictionary[CardTag, String] = {
 
 signal completed(card: Card)
 
-const MINIMUM_SIZE: Vector2 = Vector2(142.0, 225.0)
+const MINIMUM_SIZE: Vector2 = Vector2(140.0, 208.0)
 const PIVOT_POINT: Vector2 = Vector2(73.0, 22.0)
 
 @export var card_name: String
