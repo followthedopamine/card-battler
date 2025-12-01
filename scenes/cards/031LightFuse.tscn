@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1j4rnynpjk4m"]
+[gd_scene load_steps=5 format=3 uid="uid://fybide2trvb2"]
 
 [ext_resource type="Script" uid="uid://bchhwtpgnb6e4" path="res://scenes/cards/031LightFuse.gd" id="1_knysd"]
 [ext_resource type="Texture2D" uid="uid://dt4w33fqmf3h2" path="res://assets/card_art/card_explosion.png" id="2_kag57"]
@@ -13,8 +13,8 @@ mouse_filter = 0
 script = ExtResource("1_knysd")
 card_name = "Light Fuse"
 sprite_texture = ExtResource("2_kag57")
-tooltips = Array[String](["After playing %ADDITIONAL_CARDS_REQUIRED% more cards deal %EXPLOSION_DAMAGE% to all enemies"])
-tags = Array[int]([10])
+tooltips = Array[String](["After playing %ADDITIONAL_CARDS_REQUIRED% more cards deal %EXPLOSION_DAMAGE% to enemies in a 3x3."])
+tags = Array[int]([11, 8])
 card_effect = SubResource("Resource_p07nl")
 rarity = 2
 metadata/_custom_type_script = "uid://c531eyaws05rr"

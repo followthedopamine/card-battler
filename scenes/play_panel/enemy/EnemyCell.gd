@@ -80,6 +80,7 @@ func process_action_effects(action: ActionEffect):
 		
 		if action.slow:
 			Status.new(Status.Type.SLOW, action.slow, enemy_scene)
+			enemy_scene.is_slowed = true
 
 func process_pre_enemy_callables(action: ActionEffect) -> void:
 	for callable: Callable in action.on_play_enemy_callables:

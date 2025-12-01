@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://2lo62hvjv2ql"]
+
+[ext_resource type="Script" uid="uid://dltlpodrhgafc" path="res://scenes/cards/033PyramidOfKnives.gd" id="1_c17fs"]
+[ext_resource type="Texture2D" uid="uid://bgrq5474t0mjj" path="res://assets/card_art/card_pyramid_of_knives.png" id="2_2glpj"]
+[ext_resource type="Script" uid="uid://fuokg41g7d8s" path="res://scenes/card/CardEffect.gd" id="3_tmrw1"]
+
+[sub_resource type="Resource" id="Resource_2glpj"]
+script = ExtResource("3_tmrw1")
+target = 1
+enemy_target = 5
+enemy_target_type = 1
+damage = 4.0
+metadata/_custom_type_script = "uid://fuokg41g7d8s"
+
+[node name="033KnifePyramid" type="MarginContainer"]
+mouse_filter = 0
+script = ExtResource("1_c17fs")
+card_name = "Pyramid Of Knives"
+sprite_texture = ExtResource("2_2glpj")
+tooltips = Array[String](["Deal %damage% damage. Increases by %increase_amount% each time this is played until the end of wave"])
+tags = Array[int]([4])
+card_effect = SubResource("Resource_2glpj")
+duration = 1.5
+metadata/_custom_type_script = "uid://c531eyaws05rr"

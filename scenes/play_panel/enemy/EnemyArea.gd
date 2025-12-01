@@ -89,7 +89,7 @@ func _position_cells(skip_animation = false):
 		if (child is EnemyCell):
 			child.position_cell(h_offset, y_position_percentage_offsets[child.get_grid_pos().x], vertical_slice, WaveController.animation_grid_offset, skip_animation)
 
-func _get_target(target: ActionEffect.GridTarget):
+func _get_target(target: ActionEffect.GridTarget, forced_rows: Array[int] = [], allow_empty = false):
 	var col_range: Array
 
 	match target:
@@ -100,24 +100,33 @@ func _get_target(target: ActionEffect.GridTarget):
 		ActionEffect.GridTarget.RANDOM:
 			col_range = range(0, enemy_grid_rows)
 			col_range.shuffle()
+		ActionEffect.GridTarget.CENTRE:
+			col_range = range(1, enemy_grid_rows - 1)
+			col_range.shuffle()
 		ActionEffect.GridTarget.NONE:
 			return false
 	
 	for col in col_range:
 		var col_dict = enemy_target_dict[col]
-		if col_dict.is_empty():
+		if !allow_empty && col_dict.is_empty():
 			continue
+		
+		var rand_row := 0
+		if forced_rows.size():
+			rand_row = forced_rows.pick_random()
+		else:
+			var rand_int = randi() % col_dict.size()
+			rand_row = col_dict.keys()[rand_int]
 
-		var rand_row = randi() % col_dict.size()
-		return enemy_cell_grid[col_dict.keys()[rand_row]][col]
+		return enemy_cell_grid[rand_row][col]
 	
 	return false
 
 func _get_aoe_targets(grid_target: EnemyCell):
 	var side_targets: Array[EnemyCell] = []
 
-	for row in range(max(0, grid_target.grid_pos.x - 1), min(enemy_grid_rows, grid_target.grid_pos.x + 1)):
-		for col in range(max(0, grid_target.grid_pos.y - 1), min(enemy_grid_cols, grid_target.grid_pos.y + 1)):
+	for row in range(max(0, grid_target.grid_pos.x - 1), min(enemy_grid_rows, grid_target.grid_pos.x + 2)):
+		for col in range(max(0, grid_target.grid_pos.y - 1), min(enemy_grid_cols, grid_target.grid_pos.y + 2)):
 			if enemy_cell_grid[row][col].get_has_enemy():
 				side_targets.push_back(enemy_cell_grid[row][col])
 
@@ -153,9 +162,11 @@ func _on_any_card_played(_card: Card) -> void:
 		if status.stacks == 0:
 			var temp_card_effect: CardEffect = CardEffect.new()
 			temp_card_effect.damage = LightFuse.EXPLOSION_DAMAGE
-			var all_cells: Array[EnemyCell] = _get_all_targets()
+			
+			var grid_target = _get_target(ActionEffect.GridTarget.CENTRE, [1, 2], true)
+			var cells: Array[EnemyCell] = _get_aoe_targets(grid_target)
 
-			for target in all_cells:
+			for target in cells:
 				target.process_action_effects(temp_card_effect)
 			status.stacks = -1
 			

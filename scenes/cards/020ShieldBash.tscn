@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxy4icnk2gk4o"]
+[gd_scene load_steps=5 format=3 uid="uid://b41mnhqxyxg7p"]
 
 [ext_resource type="Script" uid="uid://colkc10m2ccg6" path="res://scenes/cards/020ShieldBash.gd" id="1_8pjyn"]
 [ext_resource type="Texture2D" uid="uid://dpo506lvbhl46" path="res://assets/card_art/card_shield_bonk.png" id="2_8pjyn"]
@@ -17,7 +17,7 @@ mouse_filter = 0
 script = ExtResource("1_8pjyn")
 card_name = "Shield Bash"
 sprite_texture = ExtResource("2_8pjyn")
-tooltips = Array[String](["Deals damage equal to your block, removes %shield% block"])
+tooltips = Array[String](["Deals damage equal to your block"])
 tags = Array[int]([1, 0])
 card_effect = SubResource("Resource_jshir")
 rarity = 1

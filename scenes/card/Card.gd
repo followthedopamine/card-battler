@@ -20,6 +20,7 @@ enum CardTag {
 	AOE,
 	RANGED,
 	ALL,
+	FUSE
 }
 
 const INSTANT_SPEED: float = 0.1
@@ -36,6 +37,7 @@ var card_tag_tooltips: Dictionary[CardTag, String] = {
 	CardTag.AOE: "AOE: Hits the target enemy and adjacent enemies in a 3x3 grid",
 	CardTag.RANGED: "Ranged: Hits the furthest enemies first",
 	CardTag.ALL: "All: Hits every enemy at once",
+	CardTag.FUSE: "Always targets a random center space",
 }
 
 signal completed(card: Card)

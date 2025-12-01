@@ -15,5 +15,6 @@ script = ExtResource("1_qvvvn")
 card_name = "Invest"
 sprite_texture = ExtResource("2_qvvvn")
 tooltips = Array[String](["Gain %currency% ₩avies"])
+price = 4
 card_effect = SubResource("Resource_o8n32")
 metadata/_custom_type_script = "uid://c531eyaws05rr"

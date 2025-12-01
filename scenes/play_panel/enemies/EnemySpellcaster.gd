@@ -13,12 +13,14 @@ func _ready() -> void:
 	attack.target = ActionEffect.Target.PLAYER
 
 	var buff_random := ActionEffect.new()
+	buff_random.type = ActionEffect.Type.STRENGTH_BUFF_AOE
 	buff_random.strength = strength_buff
 	buff_random.target = ActionEffect.Target.ENEMY
 	buff_random.enemy_target = ActionEffect.GridTarget.RANDOM
 	buff_random.enemy_target_type = ActionEffect.GridTargetType.AOE
 
 	var shield_random := ActionEffect.new()
+	shield_random.type = ActionEffect.Type.BLOCK
 	shield_random.shield = shield_amount
 	shield_random.target = ActionEffect.Target.ENEMY
 	shield_random.enemy_target = ActionEffect.GridTarget.RANDOM

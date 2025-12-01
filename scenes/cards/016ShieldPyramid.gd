@@ -1,16 +1,22 @@
 extends Card
 
-@export var increase_amount: int = 1
-@onready var original_shield = card_effect.shield
+@export var increase_amount: int = 5
+@export var original_shield: int = 3
+
+var current_stacks = 0
+var max_stacks = 3
 
 func _ready() -> void:
+	card_effect.shield = original_shield
 	super()
-	#SignalBus.wave_end.connect(_on_wave_end)
 	
 func _on_wave_end(wave: int) -> void:
 	super(wave)
 	card_effect.shield = original_shield
+	current_stacks = 0
 
 func activate_card_effect() -> void:
 	super()
-	card_effect.shield += increase_amount
+	if current_stacks < max_stacks:
+		current_stacks += 1
+		card_effect.shield += increase_amount
