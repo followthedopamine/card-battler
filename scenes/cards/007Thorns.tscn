@@ -7,7 +7,7 @@
 [sub_resource type="Resource" id="Resource_dhjsj"]
 script = ExtResource("3_3q3hg")
 target = 2
-shield = 3.0
+shield = 5
 thorns = 3
 metadata/_custom_type_script = "uid://fuokg41g7d8s"
 
@@ -16,8 +16,8 @@ mouse_filter = 0
 script = ExtResource("1_e7auu")
 card_name = "Thorns"
 sprite_texture = ExtResource("2_vf68e")
-tooltips = Array[String](["Adds %thorns% stacks of thorns"])
-tags = Array[int]([5])
+tooltips = Array[String](["Adds %thorns% stacks of thorns. Adds %shield% block"])
+tags = Array[int]([5, 1])
 card_effect = SubResource("Resource_dhjsj")
 rarity = 1
 metadata/_custom_type_script = "uid://c531eyaws05rr"
