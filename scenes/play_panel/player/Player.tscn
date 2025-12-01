@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c8i30mnsc2nrm"]
+[gd_scene load_steps=24 format=3 uid="uid://c8i30mnsc2nrm"]
 
 [ext_resource type="Script" uid="uid://bubwwuv6nxkpf" path="res://scenes/play_panel/player/Player.gd" id="1_kpjcp"]
 [ext_resource type="Texture2D" uid="uid://cksa12pa46ip5" path="res://assets/player/main_guy.png" id="2_kpjcp"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://cqhbamimh6d5s" path="res://scenes/play_panel/buff_particle/BuffParticleEmitter.tscn" id="6_tdg3f"]
 [ext_resource type="PackedScene" uid="uid://cfaoke5uaogle" path="res://scenes/play_panel/damage_particle/DamageParticleEmitter.tscn" id="6_vts5b"]
 [ext_resource type="Script" uid="uid://ch2pxgdvjbcbt" path="res://scenes/play_panel/player/PlayerAnimationPlayer.gd" id="7_h52gd"]
-[ext_resource type="PackedScene" uid="uid://d3vgl4xvkig7t" path="res://scenes/play_panel/damage_particle/DamageParticleParticle.tscn" id="8_5jasm"]
 [ext_resource type="Texture2D" uid="uid://b4jl0ajaa3qek" path="res://assets/particles/puff.png" id="8_e4pbi"]
 [ext_resource type="Texture2D" uid="uid://dbl7lng10foe1" path="res://assets/particles/rectangle_particle.png" id="9_vts5b"]
 
@@ -265,19 +264,36 @@ sprite_frames = SubResource("SpriteFrames_kpjcp")
 flip_h = true
 
 [node name="StatusBar" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = 5.0
+offset_right = 61.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("4_cxr5p")
 status_icon_scene = ExtResource("5_cxr5p")
 metadata/_custom_type_script = "uid://d20if3istht6w"
 
 [node name="StatusHandler" type="Control" parent="." node_paths=PackedStringArray("status_bar")]
-anchors_preset = 0
-offset_left = -24.0
-offset_top = -22.0
-offset_right = 16.0
-offset_bottom = 18.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("3_e80uo")
 status_bar = NodePath("../StatusBar")
 metadata/_custom_type_script = "uid://mjiv7q0gvno6"
@@ -288,7 +304,6 @@ layout_mode = 0
 [node name="BuffParticleEmitter" parent="." instance=ExtResource("6_tdg3f")]
 layout_mode = 0
 particle_lifetime = 0.8
-particle_scene = ExtResource("8_5jasm")
 
 [node name="PlayerAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("smoke_particles", "blood_particles")]
 libraries = {
@@ -303,6 +318,7 @@ anchors_preset = 0
 offset_top = -5.0
 offset_right = 40.0
 offset_bottom = 35.0
+metadata/_edit_use_anchors_ = true
 
 [node name="SmokeGPUParticles2D" type="GPUParticles2D" parent="Control"]
 position = Vector2(-42, 7)

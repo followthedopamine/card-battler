@@ -6,6 +6,7 @@ const EXPLOSION_DAMAGE: int = 20
 func activate_card_effect() -> void:
 	var fuse_status: Status = Status.get_status(PlayerManager.player_node, Status.Type.FUSE)
 	var extra: int = 0
+
 	if fuse_status:
 		if fuse_status.stacks > 0:
 			return
