@@ -1,9 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://blqwvuyrllpkx"]
+[gd_scene load_steps=15 format=3 uid="uid://dianlvb1bqnpe"]
 
 [ext_resource type="Script" uid="uid://b74s6to1uceuu" path="res://scenes/main_menu/MainMenuGrid.gd" id="1_x8m1r"]
 [ext_resource type="FontFile" uid="uid://credfeuu46ysn" path="res://assets/fonts/Robot Heroes.ttf" id="2_4gyi6"]
-[ext_resource type="Script" uid="uid://v61pq8sc6afh" path="res://scenes/main_menu/Credits.gd" id="3_x8m1r"]
-[ext_resource type="Script" uid="uid://m80w0dh5boli" path="res://scenes/main_menu/back_button.gd" id="5_77vo5"]
+[ext_resource type="Script" path="res://scenes/main_menu/Credits.gd" id="3_x8m1r"]
+[ext_resource type="Script" path="res://scenes/main_menu/back_button.gd" id="5_77vo5"]
 
 [sub_resource type="Gradient" id="Gradient_1tnxq"]
 offsets = PackedFloat32Array(0, 0.4642857, 1)
@@ -83,7 +83,7 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 9.05
+size_flags_stretch_ratio = 9.0
 mouse_filter = 2
 texture = SubResource("GradientTexture2D_isws5")
 

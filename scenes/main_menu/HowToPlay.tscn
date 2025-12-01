@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://0rau7uqecx68"]
+[gd_scene load_steps=20 format=3 uid="uid://wk3oi73oaacg"]
 
 [ext_resource type="Script" uid="uid://b74s6to1uceuu" path="res://scenes/main_menu/MainMenuGrid.gd" id="1_f8wjy"]
 [ext_resource type="FontFile" uid="uid://credfeuu46ysn" path="res://assets/fonts/Robot Heroes.ttf" id="2_fl0rq"]
@@ -9,7 +9,7 @@
 [ext_resource type="StyleBox" uid="uid://wosehb3fc5xw" path="res://scenes/main_menu/MainMenuButtonNormal.tres" id="4_w525s"]
 [ext_resource type="StyleBox" uid="uid://fvtxa3safj1y" path="res://scenes/main_menu/MainMenuButtonHover.tres" id="5_druy7"]
 [ext_resource type="Texture2D" uid="uid://c8fhi8td8fmku" path="res://assets/how_to_play/6.png" id="5_o8b77"]
-[ext_resource type="Script" uid="uid://m80w0dh5boli" path="res://scenes/main_menu/back_button.gd" id="6_o8b77"]
+[ext_resource type="Script" path="res://scenes/main_menu/back_button.gd" id="6_o8b77"]
 [ext_resource type="Texture2D" uid="uid://c38syjo1kxpac" path="res://assets/how_to_play/5.png" id="7_druy7"]
 [ext_resource type="Texture2D" uid="uid://ijnxie6t01av" path="res://assets/how_to_play/7.png" id="8_h8gde"]
 
@@ -76,12 +76,11 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
+size_flags_stretch_ratio = 9.0
 mouse_filter = 2
 texture = SubResource("GradientTexture2D_isws5")
 
 [node name="Bottom" type="TextureRect" parent="VBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
