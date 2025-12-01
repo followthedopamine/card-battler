@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bhw1bhpnb51nc"]
+[gd_scene load_steps=10 format=3 uid="uid://bhw1bhpnb51nc"]
 
 [ext_resource type="Script" uid="uid://3nm0o4ibmbfu" path="res://scenes/play_panel/enemies/EnemyTank.gd" id="1_ynt7l"]
 [ext_resource type="Texture2D" uid="uid://dk3hyuij4grmi" path="res://assets/enemies/tank.png" id="2_ynt7l"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://mjiv7q0gvno6" path="res://scenes/status/StatusHandler.gd" id="5_pdrwp"]
 [ext_resource type="PackedScene" uid="uid://cfaoke5uaogle" path="res://scenes/play_panel/damage_particle/DamageParticleEmitter.tscn" id="6_o1s6x"]
 [ext_resource type="PackedScene" uid="uid://cqhbamimh6d5s" path="res://scenes/play_panel/buff_particle/BuffParticleEmitter.tscn" id="7_jtb67"]
-[ext_resource type="PackedScene" uid="uid://d3vgl4xvkig7t" path="res://scenes/play_panel/damage_particle/DamageParticleParticle.tscn" id="8_5cbmq"]
 [ext_resource type="PackedScene" uid="uid://bb1xh26f0t1k" path="res://scenes/play_panel/enemy/EnemyAnimationPlayer.tscn" id="9_5cbmq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_76ifo"]
@@ -69,6 +68,5 @@ particle_lifetime = 0.8
 [node name="BuffParticleEmitter" parent="." instance=ExtResource("7_jtb67")]
 layout_mode = 0
 particle_lifetime = 0.8
-particle_scene = ExtResource("8_5cbmq")
 
 [node name="EnemyAnimationPlayer" parent="." instance=ExtResource("9_5cbmq")]
