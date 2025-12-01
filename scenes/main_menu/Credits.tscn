@@ -203,10 +203,7 @@ Vaticanus - GGBotNet
 [b]Sound effects[/b]
 Ovani Sound
 
-[b]BG Music[/b]
-NoPayneNoGame - Waiting in the menu
-Bogart VGM - Maximum Overdrive
-[url]https://www.facebook.com/BogartVGM/[/url]"
+"
 script = ExtResource("3_x8m1r")
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/HBoxContainer"]
@@ -229,8 +226,18 @@ offset_right = 445.5
 offset_bottom = 399.0
 theme_override_constants/paragraph_separation = -6
 bbcode_enabled = true
-text = "[b]Playtesters[/b]
+text = "[b]BG Music[/b]
+NoPayneNoGame - Waiting in the menu
 
+Bogart VGM - Maximum Overdrive
+Bogart VGM - ​Retroracing Nightlife
+[url]https://www.facebook.com/BogartVGM/[/url]
+
+Ovani Sound -  Moon Eyes
+Ovani Sound - Raise Your Weapon
+Ovani Sound - Sound effects​
+
+[b]Playtesters[/b]
 Followthedopamine
 Umbles
 NoPayneNoGame
