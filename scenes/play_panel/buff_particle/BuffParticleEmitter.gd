@@ -18,12 +18,13 @@ func set_emission_box(box_size: Vector2):
 func set_emission_offset(offset: Vector2):
 	emission_shape_offset = Vector3(offset.x, offset.y, 0)
 
-func emit_particle(_texture: Texture2D = null):
+func emit_particle(texture: Texture2D = null):
 	var new_particle: GPUParticles2D = particle_scene.instantiate()
-	# if texture:
-	# 	new_particle.texture = texture
+	if texture:
+		new_particle.texture = texture
 
 	new_particle.lifetime = particle_lifetime
+	new_particle.process_material = new_particle.process_material.duplicate()
 	new_particle.process_material.emission_box_extents = emission_box_extents
 	new_particle.process_material.emission_shape_offset = emission_shape_offset
 
