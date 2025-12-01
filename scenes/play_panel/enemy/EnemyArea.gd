@@ -116,8 +116,8 @@ func _get_target(target: ActionEffect.GridTarget):
 func _get_aoe_targets(grid_target: EnemyCell):
 	var side_targets: Array[EnemyCell] = []
 
-	for row in range(max(0, grid_target.grid_pos.x - 1), min(enemy_grid_rows, grid_target.grid_pos.x + 1)):
-		for col in range(max(0, grid_target.grid_pos.y - 1), min(enemy_grid_cols, grid_target.grid_pos.y + 1)):
+	for row in range(max(0, grid_target.grid_pos.x - 1), min(enemy_grid_rows, grid_target.grid_pos.x + 2)):
+		for col in range(max(0, grid_target.grid_pos.y - 1), min(enemy_grid_cols, grid_target.grid_pos.y + 2)):
 			if enemy_cell_grid[row][col].get_has_enemy():
 				side_targets.push_back(enemy_cell_grid[row][col])
 
